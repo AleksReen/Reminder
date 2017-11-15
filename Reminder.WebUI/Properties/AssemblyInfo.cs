@@ -33,3 +33,5 @@ using System.Runtime.InteropServices;
 // используя "*", как показано ниже:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+//run the configurator
+[assembly: log4net.Config.XmlConfigurator( ConfigFile = "LoggerWeb.config", Watch = true)]

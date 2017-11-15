@@ -11,7 +11,7 @@ namespace Reminder.WebUI.Controllers
         // GET: Reminder
         public ActionResult Index()
         {
-            return View();
+             return View();
         }
     }
 }
