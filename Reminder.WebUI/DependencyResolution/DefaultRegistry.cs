@@ -16,7 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Reminder.WebUI.DependencyResolution {
-    using Domain.FakeModel;
+    
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -33,7 +33,6 @@ namespace Reminder.WebUI.DependencyResolution {
                 });
             //registration dependency
             //For<IExample>().Use<Example>();
-            For<IFakeInterface>().Use<FakeClass>();
         }
 
         #endregion
