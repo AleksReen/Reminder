@@ -160,6 +160,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Reminder.Business\Reminder.Business.csproj">
+      <Project>{6fbf9dc2-9d08-492e-a0c9-d8cbcca22d64}</Project>
+      <Name>Reminder.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Reminder.Domain\Reminder.Domain.csproj">
       <Project>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</Project>
       <Name>Reminder.Domain</Name>
