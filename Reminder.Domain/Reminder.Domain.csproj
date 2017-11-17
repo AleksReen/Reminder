@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeModel\FakeClass.cs" />
-    <Compile Include="FakeModel\IFakeInterface.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\MyReminder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
