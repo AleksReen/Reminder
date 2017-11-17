@@ -164,6 +164,10 @@
       <Project>{6fbf9dc2-9d08-492e-a0c9-d8cbcca22d64}</Project>
       <Name>Reminder.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reminder.Data\Reminder.Data.csproj">
+      <Project>{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}</Project>
+      <Name>Reminder.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Reminder.Domain\Reminder.Domain.csproj">
       <Project>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</Project>
       <Name>Reminder.Domain</Name>
