@@ -1,5 +1,6 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Data.DataProviders;
+using Reminder.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,24 @@ using System.Threading.Tasks;
 
 namespace Reminder.Business.Model
 {
-   public class BusinessModel : IBusinessProvider
+   public class BusinessModel : IReminderProvider
     {
-        private IDataProvider _dataProvider;
+        private readonly IDataProvider _dataProvider;
 
         public BusinessModel(IDataProvider provider)
         {
             _dataProvider = provider;
         }
 
-        public IDataProvider GetData()
+        public List<string> GetCategory()
         {
-            return _dataProvider;
+            var Category = _dataProvider.GetMyReminder().Select(x => x.CategoryId).Distinct<string>().ToList();
+            return Category;
+        }
+
+        public List<MyReminder> GetReminders()
+        {
+            return _dataProvider.GetMyReminder();
         }
     }
 }

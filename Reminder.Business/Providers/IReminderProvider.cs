@@ -1,4 +1,5 @@
 ﻿using Reminder.Data.DataProviders;
+using Reminder.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Reminder.Business.Providers
 {
-    public interface IBusinessProvider
+    public interface IReminderProvider
     {
-        IDataProvider GetData();
+        List<MyReminder> GetReminders();
+        List<string> GetCategory();
     }
 }

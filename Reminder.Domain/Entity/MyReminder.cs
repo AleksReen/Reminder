@@ -13,7 +13,7 @@ namespace Reminder.Domain.Entity
         public string Description { get; set; }
         public string Action { get; set; }
         public DateTime ReminderTime { get; set; }
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public int ImageId { get; set; }
     }
 }

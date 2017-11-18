@@ -37,7 +37,7 @@ namespace Reminder.WebUI.DependencyResolution {
             //registration dependency
             //For<IExample>().Use<Example>();
             For<IDataProvider>().Use<Data>();
-            For<IBusinessProvider>().Use<BusinessModel>();
+            For<IReminderProvider>().Use<BusinessModel>();
         }
 
         #endregion

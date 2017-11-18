@@ -10,12 +10,6 @@ namespace Reminder.Data.DataBase
 {
     public class Data: IDataProvider
     {
-        List<Category> СategoriesList = new List<Category>() {
-           new Category { CategoryId = 1, Name = "Home" },
-           new Category { CategoryId = 2, Name = "Family" },
-           new Category { CategoryId = 3, Name = "Business" }
-        };
-
         List<MyReminder> ReminderList = new List<MyReminder>()
         {
             new MyReminder { ReminderId = 1,
@@ -23,17 +17,60 @@ namespace Reminder.Data.DataBase
                              Description = "Test",
                              Action = "Test",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = 1,
+                             CategoryId = "Home",
+                             ImageId = 1
+                           },
+            new MyReminder { ReminderId = 2,
+                             Date = Convert.ToDateTime("18.11.2017"),
+                             Description = "Test2",
+                             Action = "Test2",
+                             ReminderTime = Convert.ToDateTime("18.11.2017 12:45"),
+                             CategoryId = "Family",
+                             ImageId = 1
+                           },
+            new MyReminder { ReminderId = 3,
+                             Date = Convert.ToDateTime("17.11.2017"),
+                             Description = "Test3",
+                             Action = "Test3",
+                             ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
+                             CategoryId = "Business",
+                             ImageId = 1
+                           },
+            new MyReminder { ReminderId = 4,
+                             Date = Convert.ToDateTime("17.11.2017"),
+                             Description = "Test4",
+                             Action = "Test4",
+                             ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
+                             CategoryId = "Home",
+                             ImageId = 1
+                           },
+            new MyReminder { ReminderId = 5,
+                             Date = Convert.ToDateTime("17.11.2017"),
+                             Description = "Test5",
+                             Action = "Test5",
+                             ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
+                             CategoryId = "Home",
+                             ImageId = 1
+                           },
+            new MyReminder { ReminderId = 6,
+                             Date = Convert.ToDateTime("17.11.2017"),
+                             Description = "Test6",
+                             Action = "Test6",
+                             ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
+                             CategoryId = "Business",
+                             ImageId = 1
+                           },
+            new MyReminder { ReminderId = 7,
+                             Date = Convert.ToDateTime("17.11.2017"),
+                             Description = "Test7",
+                             Action = "Test7",
+                             ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
+                             CategoryId = "Family",
                              ImageId = 1
                            }
         };
 
-        public List<Category> getCategory()
-        {
-            return СategoriesList;
-        }
-
-        public List<MyReminder> getMyReminder()
+        public List<MyReminder> GetMyReminder()
         {
             return ReminderList;
         }

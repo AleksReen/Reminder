@@ -10,15 +10,16 @@ namespace Reminder.WebUI.Controllers
 {
     public class ReminderController : Controller
     {
-        private IBusinessProvider _provider;
-        public ReminderController(IBusinessProvider prov)
+        private IReminderProvider _provider;
+        public ReminderController(IReminderProvider prov)
         {
             _provider = prov;
         }
         // GET: Reminder
         public ActionResult Index()
         {
-            var pr = _provider;
+            var pr = _provider.GetCategory();
+            var c = _provider.GetReminders();
 
              return View();
         }

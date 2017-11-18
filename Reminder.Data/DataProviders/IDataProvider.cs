@@ -9,7 +9,6 @@ namespace Reminder.Data.DataProviders
 {
     public interface IDataProvider
     {
-        List<Category> getCategory();
-        List<MyReminder> getMyReminder();
+        List<MyReminder> GetMyReminder();
     }
 }
