@@ -156,6 +156,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Reminder\_ReminderItem.cshtml" />
     <Content Include="Views\Category\_CategoryList.cshtml" />
+    <Content Include="Views\ReminderItem\GetDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ReminderItem\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Reminder.Business\Reminder.Business.csproj">

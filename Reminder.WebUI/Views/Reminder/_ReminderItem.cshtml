@@ -1,15 +1,12 @@
 ﻿@model Reminder.Domain.Entity.MyReminder
 
 <div class="col-md-5">
-    <h4>MyReminder</h4>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ReminderId)
-        </dt>
-
+       
         <dd>
-            @Html.DisplayFor(model => model.ReminderId)
+            @Html.HiddenFor(model => model.ReminderId)
         </dd>
 
         <dt>
@@ -18,22 +15,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Action)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Action)
         </dd>
 
         <dt>
@@ -63,6 +44,6 @@
     </dl>
 
     <p>
-        @Html.ActionLink("Details", "GetDatails", new { id = Model.ReminderId }) |
+        @Html.ActionLink("Details", "GetDetails", "ReminderItem", new { reminderId = Model.ReminderId }, null)
     </p>
 </div>

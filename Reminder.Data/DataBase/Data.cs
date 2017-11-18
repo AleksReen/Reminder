@@ -13,7 +13,9 @@ namespace Reminder.Data.DataBase
         List<MyReminder> ReminderList = new List<MyReminder>()
         {
             new MyReminder { ReminderId = 1,
+                            
                              Date = Convert.ToDateTime("17.11.2017"),
+                             Name = "repair the car",
                              Description = "Test",
                              Action = "Test",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
@@ -21,6 +23,7 @@ namespace Reminder.Data.DataBase
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 2,
+                             Name = "Meeting with family",
                              Date = Convert.ToDateTime("18.11.2017"),
                              Description = "Test2",
                              Action = "Test2",
@@ -29,6 +32,7 @@ namespace Reminder.Data.DataBase
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 3,
+                             Name = "To have a deal",
                              Date = Convert.ToDateTime("17.11.2017"),
                              Description = "Test3",
                              Action = "Test3",
@@ -37,6 +41,7 @@ namespace Reminder.Data.DataBase
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 4,
+                             Name = "repair the car",
                              Date = Convert.ToDateTime("17.11.2017"),
                              Description = "Test4",
                              Action = "Test4",
@@ -45,6 +50,7 @@ namespace Reminder.Data.DataBase
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 5,
+                             Name = "repair the car",
                              Date = Convert.ToDateTime("17.11.2017"),
                              Description = "Test5",
                              Action = "Test5",
@@ -53,6 +59,7 @@ namespace Reminder.Data.DataBase
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 6,
+                            Name = "To have a deal",
                              Date = Convert.ToDateTime("17.11.2017"),
                              Description = "Test6",
                              Action = "Test6",
@@ -61,6 +68,7 @@ namespace Reminder.Data.DataBase
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 7,
+                             Name = "Meeting with family",
                              Date = Convert.ToDateTime("17.11.2017"),
                              Description = "Test7",
                              Action = "Test7",

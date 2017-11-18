@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.WebUI.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,11 @@ namespace Reminder.WebUI.Controllers
             _provider = provider;
         }
         
+        public ActionResult GetDetails(int reminderId)
+        {
+            var model = _provider.GetReminders.Single(r => r.ReminderId == reminderId);
+
+            return View(model);
+        }
     }
 }
