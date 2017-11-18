@@ -19,15 +19,21 @@ namespace Reminder.Business.Model
             _dataProvider = provider;
         }
 
-        public List<string> GetCategory()
+        public List<string> GetCategory
         {
-            var Category = _dataProvider.GetMyReminder().Select(x => x.CategoryId).Distinct<string>().ToList();
-            return Category;
+            get
+            {
+                return _dataProvider.GetMyReminder().Select(x => x.CategoryId).Distinct<string>().ToList();
+            }
         }
 
-        public List<MyReminder> GetReminders()
+        public List<MyReminder> GetReminders
         {
-            return _dataProvider.GetMyReminder();
+            get
+            {
+                return _dataProvider.GetMyReminder();
+            }
         }
+
     }
 }

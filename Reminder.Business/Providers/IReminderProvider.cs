@@ -10,7 +10,7 @@ namespace Reminder.Business.Providers
 {
     public interface IReminderProvider
     {
-        List<MyReminder> GetReminders();
-        List<string> GetCategory();
+        List<MyReminder> GetReminders { get; }
+        List<string> GetCategory { get; }
     }
 }

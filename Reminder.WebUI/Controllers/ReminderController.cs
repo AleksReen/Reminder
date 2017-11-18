@@ -18,9 +18,7 @@ namespace Reminder.WebUI.Controllers
         // GET: Reminder
         public ActionResult Index()
         {
-            var pr = _provider.GetCategory();
-            var c = _provider.GetReminders();
-
+          
              return View();
         }
     }
