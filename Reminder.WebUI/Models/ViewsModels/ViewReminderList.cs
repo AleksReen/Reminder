@@ -8,6 +8,6 @@ namespace Reminder.WebUI.Models.ViewsModels
 {
     public class ViewReminderList
     {
-        public List<MyReminder> Reminders { get; set; }
+        public IEnumerable<MyReminder> Reminders { get; set; }
     }
 }

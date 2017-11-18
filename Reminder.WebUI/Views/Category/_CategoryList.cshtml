@@ -1,0 +1,9 @@
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewCategoryList
+
+<ul>
+    <li>All Category</li>
+    @foreach (string category in Model.Categories)
+    {
+        <li>@category</li>
+    }
+</ul>

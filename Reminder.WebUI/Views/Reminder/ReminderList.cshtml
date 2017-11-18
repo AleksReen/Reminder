@@ -15,16 +15,14 @@
 
 <div class="col-md-2">
    <h3>Categories</h3>
-    <ul>
-        <li>Some category....</li>
-    </ul>   
+    @Html.Action("CategoryList","Category") 
 </div>
 
 <div class="col-md-10">
     <h3>Reminders</h3>
     @foreach (MyReminder r in Model.Reminders)
     {      
-            Html.RenderPartial("_ReminderItem", r);
+      Html.RenderPartial("_ReminderItem", r);
     }
 </div>
 

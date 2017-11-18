@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReminderController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
@@ -137,6 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
+    <Compile Include="Models\ViewsModels\ViewCategoryList.cs" />
     <Compile Include="Models\ViewsModels\ViewReminderList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,6 +154,7 @@
     <Content Include="Views\Reminder\ReminderList.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Reminder\_ReminderItem.cshtml" />
+    <Content Include="Views\Category\_CategoryList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
