@@ -1,0 +1,13 @@
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderList
+
+@{
+    ViewBag.Title = "ReminderList";
+}
+
+<h2>ReminderList</h2>
+
+@foreach (var r in Model.Reminders)
+{
+    Html.Partial("_ReminderItem", r);
+}
+
