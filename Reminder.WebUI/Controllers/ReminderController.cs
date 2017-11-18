@@ -17,10 +17,14 @@ namespace Reminder.WebUI.Controllers
             _provider = prov;
         }
         // GET: Reminder
-        public ActionResult ReminderList()
+        public ActionResult ReminderList(string category)
         {
             ViewReminderList model = new ViewReminderList();
-            model.Reminders = _provider.GetReminders;
+
+            model.Reminders = _provider.GetReminders
+                                                    .Where(c => category == null || c.CategoryId == category)
+                                                    .OrderBy(c => c.ReminderId);
+                                                    
 
             return View(model);
         }

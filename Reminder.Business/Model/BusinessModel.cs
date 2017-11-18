@@ -23,7 +23,7 @@ namespace Reminder.Business.Model
         {
             get
             {
-                return _dataProvider.GetMyReminder().Select(x => x.CategoryId).Distinct().ToList();
+                return _dataProvider.GetMyReminder().Select(x => x.CategoryId).Distinct().OrderBy(x=>x).ToList();
             }
         }
 
