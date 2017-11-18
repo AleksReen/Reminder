@@ -1,4 +1,5 @@
-﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderList
+﻿@using Reminder.Domain.Entity
+@model Reminder.WebUI.Models.ViewsModels.ViewReminderList
 
 @{
     ViewBag.Title = "ReminderList";
@@ -6,8 +7,25 @@
 
 <h2>ReminderList</h2>
 
-@foreach (var r in Model.Reminders)
-{
-    Html.Partial("_ReminderItem", r);
-}
+<div class="form-group">
+    <div class="col-md-12">
+        <button class="btn btn-success">Search</button>
+    </div>
+</div>
+
+<div class="col-md-2">
+   <h3>Categories</h3>
+    <ul>
+        <li>Some category....</li>
+    </ul>   
+</div>
+
+<div class="col-md-10">
+    <h3>Reminders</h3>
+    @foreach (MyReminder r in Model.Reminders)
+    {      
+            Html.RenderPartial("_ReminderItem", r);
+    }
+</div>
+
 

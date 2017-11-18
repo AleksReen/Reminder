@@ -22,7 +22,7 @@ namespace Reminder.WebUI.Controllers
             ViewReminderList model = new ViewReminderList();
             model.Reminders = _provider.GetReminders;
 
-             return View(model);
+            return View(model);
         }
     }
 }
