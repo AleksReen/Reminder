@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
+    //the controller processes the navigation menu
     public class CategoryController : Controller
     {
         private IReminderProvider _provider;

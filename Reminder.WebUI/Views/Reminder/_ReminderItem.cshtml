@@ -28,10 +28,8 @@
         <dt>
             @Html.DisplayNameFor(model => model.CategoryId)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+        
+        @Html.Action("GetItemCategory","ReminderItem", new { id = Model.CategoryId})
 
         <dt>
             @Html.DisplayNameFor(model => model.ImageId)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reminder.Domain.Entity
 {
+    //essence describing Category
     public class Category
     {
         public int CategoryId { get; set; }

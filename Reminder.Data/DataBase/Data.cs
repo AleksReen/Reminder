@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace Reminder.Data.DataBase
 {
+    //class emulates the database
     public class Data: IDataProvider
     {
+        //fake table Category
+        List<Category> Category = new List<Category>() {
+            new Category { CategoryId = 1, Name =  "Home"},
+            new Category { CategoryId = 2, Name =  "Family"},
+            new Category { CategoryId = 3, Name =  "Business"},
+        }; 
+
+        //fake table Reminder
         List<MyReminder> ReminderList = new List<MyReminder>()
         {
             new MyReminder { ReminderId = 1,
@@ -19,7 +28,7 @@ namespace Reminder.Data.DataBase
                              Description = "Test",
                              Action = "Test",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = "Home",
+                             CategoryId = 1,
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 2,
@@ -28,7 +37,7 @@ namespace Reminder.Data.DataBase
                              Description = "Test2",
                              Action = "Test2",
                              ReminderTime = Convert.ToDateTime("18.11.2017 12:45"),
-                             CategoryId = "Family",
+                             CategoryId = 2,
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 3,
@@ -37,7 +46,7 @@ namespace Reminder.Data.DataBase
                              Description = "Test3",
                              Action = "Test3",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = "Business",
+                             CategoryId = 3,
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 4,
@@ -46,7 +55,7 @@ namespace Reminder.Data.DataBase
                              Description = "Test4",
                              Action = "Test4",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = "Home",
+                             CategoryId = 1,
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 5,
@@ -55,7 +64,7 @@ namespace Reminder.Data.DataBase
                              Description = "Test5",
                              Action = "Test5",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = "Home",
+                             CategoryId = 1,
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 6,
@@ -64,7 +73,7 @@ namespace Reminder.Data.DataBase
                              Description = "Test6",
                              Action = "Test6",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = "Business",
+                             CategoryId = 3,
                              ImageId = 1
                            },
             new MyReminder { ReminderId = 7,
@@ -73,14 +82,20 @@ namespace Reminder.Data.DataBase
                              Description = "Test7",
                              Action = "Test7",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-                             CategoryId = "Family",
+                             CategoryId = 2,
                              ImageId = 1
                            }
         };
 
-        public List<MyReminder> GetMyReminder()
+        //method invokes a list of reminders
+        public IEnumerable<MyReminder> GetMyReminder()
         {
             return ReminderList;
+        }
+        //method enumerates a list of categories
+        public IEnumerable<Category> GetCategory()
+        {
+            return Category;
         }
     }
 }

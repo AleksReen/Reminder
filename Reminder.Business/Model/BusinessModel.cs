@@ -10,30 +10,32 @@ using System.Threading.Tasks;
 
 namespace Reminder.Business.Model
 {
+    //class processes data from the database
    public class BusinessModel : IReminderProvider
     {
-        private readonly IDataProvider _dataProvider;
+        //link to dependency on class Data
+        private  IDataProvider _dataProvider;
 
         public BusinessModel(IDataProvider provider)
         {
             _dataProvider = provider;
         }
 
-        public List<string> GetCategory
+        //the property returns the processed value Category
+        public IEnumerable<Category> GetCategory
         {
             get
             {
-                return _dataProvider.GetMyReminder().Select(x => x.CategoryId).Distinct().OrderBy(x=>x).ToList();
+                return _dataProvider.GetCategory().OrderBy(x=>x.Name);
             }
         }
-
-        public List<MyReminder> GetReminders
+        //the property returns the processed value Category
+        public IEnumerable<MyReminder> GetReminders
         {
             get
             {
                 return _dataProvider.GetMyReminder();
             }
         }
-
     }
 }

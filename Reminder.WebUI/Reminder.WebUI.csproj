@@ -157,6 +157,7 @@
     <Content Include="Views\Reminder\_ReminderItem.cshtml" />
     <Content Include="Views\Category\_CategoryList.cshtml" />
     <Content Include="Views\ReminderItem\GetDetails.cshtml" />
+    <Content Include="Views\ReminderItem\_GetItemCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

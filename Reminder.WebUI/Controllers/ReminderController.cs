@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
+    //the controller processes the reminder page
     public class ReminderController : Controller
     {
         private IReminderProvider _provider;
@@ -16,18 +17,17 @@ namespace Reminder.WebUI.Controllers
         {
             _provider = prov;
         }
-        
-        
+
+        //method returns a list of reminders with the category
         // GET: Reminder
-        public ActionResult ReminderList(string category)
+        public ActionResult ReminderList(int? category)
         {
             ViewReminderList model = new ViewReminderList();
 
             model.Reminders = _provider.GetReminders
                                                     .Where(c => category == null || c.CategoryId == category)
                                                     .OrderBy(c => c.ReminderId);
-                                                    
-
+                                                  
             return View(model);
         }
     }

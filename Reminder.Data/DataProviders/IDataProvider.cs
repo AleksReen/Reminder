@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace Reminder.Data.DataProviders
 {
+    //provides an interface for class Data
     public interface IDataProvider
     {
-        List<MyReminder> GetMyReminder();
+        //method invokes a list of reminders
+        IEnumerable<MyReminder> GetMyReminder();
+
+        //method enumerates a list of categories
+        IEnumerable<Category> GetCategory();
     }
 }

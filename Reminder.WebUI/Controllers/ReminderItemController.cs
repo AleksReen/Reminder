@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
+    //the controller processes a separate reminder
     public class ReminderItemController : Controller
     {
         private IReminderProvider _provider;
@@ -17,11 +18,21 @@ namespace Reminder.WebUI.Controllers
             _provider = provider;
         }
         
+        //method returns a page with reminder details
         public ActionResult GetDetails(int reminderId)
         {
             var model = _provider.GetReminders.Single(r => r.ReminderId == reminderId);
 
             return View(model);
+        }
+        
+        //method returns the value of the category for the reminder
+        public ActionResult GetItemCategory(int id)
+        {
+            var category = _provider.GetCategory.Single(x => x.CategoryId == id);
+            string categoryName = category.Name;
+
+            return PartialView("_GetItemCategory", categoryName);
         }
     }
 }
