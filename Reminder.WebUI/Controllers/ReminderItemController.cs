@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Domain.Entity;
 using Reminder.WebUI.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Reminder.WebUI.Controllers
         public ReminderItemController(IReminderProvider provider)
         {
             _provider = provider;
+        }
+        //method returns a page with  reminder
+        public ActionResult GetReminderItem(MyReminder reminder)
+        {
+            return PartialView("_GetReminderItem", reminder);
         }
         
         //method returns a page with reminder details

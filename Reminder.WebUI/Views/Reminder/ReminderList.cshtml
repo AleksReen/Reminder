@@ -20,9 +20,9 @@
 
 <div class="col-md-10">
     <h3>Reminders</h3>
-    @foreach (MyReminder r in Model.Reminders)
-    {      
-      Html.RenderPartial("_ReminderItem", r);
+    @foreach (MyReminder reminder in Model.Reminders)
+    {
+        Html.RenderAction("GetReminderItem", "ReminderItem", reminder);
     }
 </div>
 
