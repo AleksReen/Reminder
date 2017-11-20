@@ -5,6 +5,4 @@
 
 <h2>Welcom to Reminder</h2>
 
-<button class="btn btn-info">
-    @Html.ActionLink("Let's Go", "ReminderList", "Reminder", null, new { @style = "color:black" })
-</button>
+<button class="btn btn-info" onclick="location.href='@Url.Action("ReminderList","Reminder")'">Let's Go</button>

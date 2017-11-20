@@ -1,0 +1,40 @@
+﻿<div>Some filters</div>
+
+@using (Ajax.BeginForm("GetSearchResult", new AjaxOptions { UpdateTargetId = "results" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.Label("", "Name")
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("name", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.Label("", "Date")
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("date", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.Label("", "Category")
+            </div>
+            <div class="col-md-12">
+                @Html.TextBox("category", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Search</button>
+
+    </div>
+}
