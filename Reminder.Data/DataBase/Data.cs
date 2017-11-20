@@ -22,9 +22,8 @@ namespace Reminder.Data.DataBase
         List<MyReminder> ReminderList = new List<MyReminder>()
         {
             new MyReminder { ReminderId = 1,
-                            
-                             Date = Convert.ToDateTime("17.11.2017"),
                              Name = "repair the car",
+                             Date = Convert.ToDateTime("17.11.2017"),
                              Description = "Test",
                              Action = "Test",
                              ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),

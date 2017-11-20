@@ -171,10 +171,9 @@
     <Content Include="Views\ReminderItem\_GetItemCategory.cshtml" />
     <Content Include="Views\Search\SearchList.cshtml" />
     <Content Include="Views\Search\_Filter.cshtml" />
-    <Content Include="Views\Search\_SearchResult.cshtml" />
-    <Content Include="Views\Search\eeeeeSearchList.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Search\_SearchResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
