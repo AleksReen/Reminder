@@ -34,12 +34,8 @@ namespace Reminder.WebUI.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
-            For<ICategoryClient>().Use<CategoryClient>();
-            For<IDataRepository>().Use<DataRepository>();
-            For<IReminderProvider>().Use<ReminderProvider>();
+            //For<IExample>().Use<Example>();           
         }
-
         #endregion
     }
 }
