@@ -33,7 +33,7 @@ namespace Reminder.WebUI.DependencyResolution {
 					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
-            For<IDataProvider>().Use<Data.DataBase.Data>();
+            For<IDataRepository>().Use<Data.DataBase.DataRepository>();
             For<IReminderProvider>().Use<ReminderProvider>();
         }
 

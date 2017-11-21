@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Reminder.Data.DataBase
 {
     //class emulates the database
-    public class Data: IDataProvider
+    public class DataRepository: IDataRepository
     {
         //fake table Category
         List<Category> Category = new List<Category>() {

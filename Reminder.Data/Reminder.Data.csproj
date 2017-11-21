@@ -44,8 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container\DataRegistry.cs" />
-    <Compile Include="DataBase\Data.cs" />
-    <Compile Include="DataProviders\IDataProvider.cs" />
+    <Compile Include="DataBase\DataRepository.cs" />
+    <Compile Include="DataProviders\IDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,9 +14,9 @@ namespace Reminder.Business.Model
    public class ReminderProvider : IReminderProvider
     {
         //link to dependency on class Data
-        private  IDataProvider _dataProvider;
+        private  IDataRepository _dataProvider;
 
-        public ReminderProvider(IDataProvider provider)
+        public ReminderProvider(IDataRepository provider)
         {
             _dataProvider = provider;
         }

@@ -8,7 +8,7 @@ namespace Reminder.Data.Container
     {
         public DataRegistry()
         {
-            For<IDataProvider>().Use<DataBase.Data>();
+            For<IDataRepository>().Use<DataBase.DataRepository>();
         }
     }
 }
