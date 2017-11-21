@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6FBF9DC2-9D08-492E-A0C9-D8CBCCA22D64}</ProjectGuid>
+    <ProjectGuid>{988DF16D-5BBF-49D9-8495-897EC866E353}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reminder.Business</RootNamespace>
-    <AssemblyName>Reminder.Business</AssemblyName>
+    <RootNamespace>Reminder.Dependencies</RootNamespace>
+    <AssemblyName>Reminder.Dependencies</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,19 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Container\BusinessRegistry.cs" />
-    <Compile Include="Model\ReminderProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\IReminderProvider.cs" />
+    <Compile Include="Registries\CommonRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Reminder.Business\Reminder.Business.csproj">
+      <Project>{6FBF9DC2-9D08-492E-A0C9-D8CBCCA22D64}</Project>
+      <Name>Reminder.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Reminder.Data\Reminder.Data.csproj">
       <Project>{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}</Project>
       <Name>Reminder.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reminder.Domain\Reminder.Domain.csproj">
-      <Project>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</Project>
-      <Name>Reminder.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

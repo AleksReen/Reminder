@@ -5,6 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder.WebUI", "Reminder.WebUI\Reminder.WebUI.csproj", "{022B5458-F549-4F0E-A59B-7909A3218686}"
 	ProjectSection(ProjectDependencies) = postProject
+		{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE} = {4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}
 		{9277EFED-FCC3-4E0E-A6D9-C0760B657873} = {9277EFED-FCC3-4E0E-A6D9-C0760B657873}
 	EndProjectSection
 EndProject
@@ -19,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder.Business", "Reminder.Business\Reminder.Business.csproj", "{6FBF9DC2-9D08-492E-A0C9-D8CBCCA22D64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder.Data", "Reminder.Data\Reminder.Data.csproj", "{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder.Dependencies", "Reminder.Dependencies\Reminder.Dependencies.csproj", "{988DF16D-5BBF-49D9-8495-897EC866E353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +49,10 @@ Global
 		{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E5C3EB4-9A49-443E-BB0D-D97D56DF93FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988DF16D-5BBF-49D9-8495-897EC866E353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988DF16D-5BBF-49D9-8495-897EC866E353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988DF16D-5BBF-49D9-8495-897EC866E353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988DF16D-5BBF-49D9-8495-897EC866E353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

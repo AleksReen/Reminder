@@ -19,8 +19,6 @@ namespace Reminder.WebUI.DependencyResolution {
     using Business.Model;
     using Business.Providers;
     using Data.DataProviders;
-    using Data.DataBase;
-    using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
 
@@ -34,10 +32,9 @@ namespace Reminder.WebUI.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //registration dependency
             //For<IExample>().Use<Example>();
-            For<IDataProvider>().Use<Data>();
-            For<IReminderProvider>().Use<BusinessModel>();
+            For<IDataProvider>().Use<Data.DataBase.Data>();
+            For<IReminderProvider>().Use<ReminderProvider>();
         }
 
         #endregion

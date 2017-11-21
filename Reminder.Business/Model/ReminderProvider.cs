@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 namespace Reminder.Business.Model
 {
     //class processes data from the database
-   public class BusinessModel : IReminderProvider
+   public class ReminderProvider : IReminderProvider
     {
         //link to dependency on class Data
         private  IDataProvider _dataProvider;
 
-        public BusinessModel(IDataProvider provider)
+        public ReminderProvider(IDataProvider provider)
         {
             _dataProvider = provider;
         }

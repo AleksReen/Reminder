@@ -13,6 +13,7 @@ namespace Reminder.WebUI.Controllers
     public class ReminderController : Controller
     {
         private IReminderProvider _provider;
+
         public ReminderController(IReminderProvider prov)
         {
             _provider = prov;
