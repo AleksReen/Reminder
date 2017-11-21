@@ -11,5 +11,15 @@ namespace Reminder.Domain.Entity
     {
         public int CategoryId { get; set; }
         public string Name { get; set; }
+
+        public Category()
+        {
+
+        }
+        public Category(int id, string name)
+        {
+            this.CategoryId = id;
+            this.Name = name;
+        }
     }
 }

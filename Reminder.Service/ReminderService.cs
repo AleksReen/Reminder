@@ -87,12 +87,12 @@ namespace Reminder.Service
                            }
         };
 
-        public IEnumerable<CategoryDto> GetCategory()
+        public List<CategoryDto> GetCategory()
         {
             return Category;
         }
 
-        public IEnumerable<MyReminderDto> GetMyReminder()
+        public List<MyReminderDto> GetMyReminder()
         {
             return ReminderList;
         }

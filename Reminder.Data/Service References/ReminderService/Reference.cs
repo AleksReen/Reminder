@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Reminder.WebUI.ServiceReference1 {
+namespace Reminder.Data.ReminderService {
     using System.Runtime.Serialization;
     using System;
     
@@ -232,29 +232,29 @@ namespace Reminder.WebUI.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IReminderService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetMyReminder", ReplyAction="http://tempuri.org/IReminderService/GetMyReminderResponse")]
-        Reminder.WebUI.ServiceReference1.MyReminderDto[] GetMyReminder();
+        Reminder.Data.ReminderService.MyReminderDto[] GetMyReminder();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetMyReminder", ReplyAction="http://tempuri.org/IReminderService/GetMyReminderResponse")]
-        System.Threading.Tasks.Task<Reminder.WebUI.ServiceReference1.MyReminderDto[]> GetMyReminderAsync();
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetMyReminderAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetCategory", ReplyAction="http://tempuri.org/IReminderService/GetCategoryResponse")]
-        Reminder.WebUI.ServiceReference1.CategoryDto[] GetCategory();
+        Reminder.Data.ReminderService.CategoryDto[] GetCategory();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetCategory", ReplyAction="http://tempuri.org/IReminderService/GetCategoryResponse")]
-        System.Threading.Tasks.Task<Reminder.WebUI.ServiceReference1.CategoryDto[]> GetCategoryAsync();
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetCategoryAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IReminderServiceChannel : Reminder.WebUI.ServiceReference1.IReminderService, System.ServiceModel.IClientChannel {
+    public interface IReminderServiceChannel : Reminder.Data.ReminderService.IReminderService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ReminderServiceClient : System.ServiceModel.ClientBase<Reminder.WebUI.ServiceReference1.IReminderService>, Reminder.WebUI.ServiceReference1.IReminderService {
+    public partial class ReminderServiceClient : System.ServiceModel.ClientBase<Reminder.Data.ReminderService.IReminderService>, Reminder.Data.ReminderService.IReminderService {
         
         public ReminderServiceClient() {
         }
@@ -275,19 +275,19 @@ namespace Reminder.WebUI.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public Reminder.WebUI.ServiceReference1.MyReminderDto[] GetMyReminder() {
+        public Reminder.Data.ReminderService.MyReminderDto[] GetMyReminder() {
             return base.Channel.GetMyReminder();
         }
         
-        public System.Threading.Tasks.Task<Reminder.WebUI.ServiceReference1.MyReminderDto[]> GetMyReminderAsync() {
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetMyReminderAsync() {
             return base.Channel.GetMyReminderAsync();
         }
         
-        public Reminder.WebUI.ServiceReference1.CategoryDto[] GetCategory() {
+        public Reminder.Data.ReminderService.CategoryDto[] GetCategory() {
             return base.Channel.GetCategory();
         }
         
-        public System.Threading.Tasks.Task<Reminder.WebUI.ServiceReference1.CategoryDto[]> GetCategoryAsync() {
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetCategoryAsync() {
             return base.Channel.GetCategoryAsync();
         }
     }

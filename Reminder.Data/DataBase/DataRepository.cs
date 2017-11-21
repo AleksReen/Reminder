@@ -1,4 +1,5 @@
-﻿using Reminder.Data.DataProviders;
+﻿using Reminder.Data.Clients;
+using Reminder.Data.DataProviders;
 using Reminder.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,18 @@ namespace Reminder.Data.DataBase
     //class emulates the database
     public class DataRepository: IDataRepository
     {
-        //fake table Category
-        List<Category> Category = new List<Category>() {
-            new Category { CategoryId = 1, Name =  "Home"},
-            new Category { CategoryId = 2, Name =  "Family"},
-            new Category { CategoryId = 3, Name =  "Business"},
-        }; 
+        ICategoryClient _category;
+
+        public DataRepository(ICategoryClient s)
+        {
+            _category = s;
+        }
+        ////fake table Category
+        //List<Category> Category = new List<Category>() {
+        //    new Category { CategoryId = 1, Name =  "Home"},
+        //    new Category { CategoryId = 2, Name =  "Family"},
+        //    new Category { CategoryId = 3, Name =  "Business"},
+        //}; 
 
         //fake table Reminder
         List<MyReminder> ReminderList = new List<MyReminder>()
@@ -94,7 +101,7 @@ namespace Reminder.Data.DataBase
         //method enumerates a list of categories
         public IEnumerable<Category> GetCategory()
         {
-            return Category;
+            return _category.GetCategories();
         }
     }
 }

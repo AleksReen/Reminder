@@ -35,6 +35,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,16 +45,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\CategoryClient.cs" />
+    <Compile Include="Clients\ICategoryClient.cs" />
     <Compile Include="Container\DataRegistry.cs" />
     <Compile Include="DataBase\DataRepository.cs" />
     <Compile Include="DataProviders\IDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ReminderService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Reminder.Domain\Reminder.Domain.csproj">
       <Project>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</Project>
       <Name>Reminder.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.CategoryDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.MyReminderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReminderService\ReminderService.wsdl" />
+    <None Include="Service References\ReminderService\ReminderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReminderService\ReminderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReminderService\ReminderService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ReminderService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReminderService\ReminderService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReminderService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReminderService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReminderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

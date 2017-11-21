@@ -14,10 +14,10 @@ namespace Reminder.Service
     {
         [OperationContract]
         //method invokes a list of reminders
-        IEnumerable<MyReminderDto> GetMyReminder();
+        List<MyReminderDto> GetMyReminder();
 
         [OperationContract]
         //method enumerates a list of categories
-        IEnumerable<CategoryDto> GetCategory();
+        List<CategoryDto> GetCategory();
     }
 }
