@@ -8,14 +8,12 @@
   <xs:element name="ArrayOfMyReminderDto" nillable="true" type="tns:ArrayOfMyReminderDto" />
   <xs:complexType name="MyReminderDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
       <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ImageId" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReminderId" type="xs:int" />
       <xs:element minOccurs="0" name="ReminderTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MyReminderDto" nillable="true" type="tns:MyReminderDto" />

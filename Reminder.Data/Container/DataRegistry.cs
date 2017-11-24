@@ -9,6 +9,7 @@ namespace Reminder.Data.Container
     {
         public DataRegistry()
         {
+            For<IReminderClient>().Use<ReminderClient>();
             For<ICategoryClient>().Use<CategoryClient>();
             For<IDataRepository>().Use<DataRepository>();
         }

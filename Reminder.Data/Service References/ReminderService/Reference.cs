@@ -23,28 +23,22 @@ namespace Reminder.Data.ReminderService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ActionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CategoryIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ImageIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private string ImageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ReminderIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime ReminderTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -53,19 +47,6 @@ namespace Reminder.Data.ReminderService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Action {
-            get {
-                return this.ActionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
-                    this.ActionField = value;
-                    this.RaisePropertyChanged("Action");
-                }
             }
         }
         
@@ -96,40 +77,14 @@ namespace Reminder.Data.ReminderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
+        public string Image {
             get {
-                return this.DescriptionField;
+                return this.ImageField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ImageId {
-            get {
-                return this.ImageIdField;
-            }
-            set {
-                if ((this.ImageIdField.Equals(value) != true)) {
-                    this.ImageIdField = value;
-                    this.RaisePropertyChanged("ImageId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.ImageField, value) != true)) {
+                    this.ImageField = value;
+                    this.RaisePropertyChanged("Image");
                 }
             }
         }
@@ -156,6 +111,19 @@ namespace Reminder.Data.ReminderService {
                 if ((this.ReminderTimeField.Equals(value) != true)) {
                     this.ReminderTimeField = value;
                     this.RaisePropertyChanged("ReminderTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
                 }
             }
         }
@@ -235,11 +203,11 @@ namespace Reminder.Data.ReminderService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetMyReminder", ReplyAction="http://tempuri.org/IReminderService/GetMyReminderResponse")]
-        Reminder.Data.ReminderService.MyReminderDto[] GetMyReminder();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
+        Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetMyReminder", ReplyAction="http://tempuri.org/IReminderService/GetMyReminderResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetMyReminderAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
         Reminder.Data.ReminderService.CategoryDto[] GetAllCategories();
@@ -275,12 +243,12 @@ namespace Reminder.Data.ReminderService {
                 base(binding, remoteAddress) {
         }
         
-        public Reminder.Data.ReminderService.MyReminderDto[] GetMyReminder() {
-            return base.Channel.GetMyReminder();
+        public Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders() {
+            return base.Channel.GetAllReminders();
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetMyReminderAsync() {
-            return base.Channel.GetMyReminderAsync();
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync() {
+            return base.Channel.GetAllRemindersAsync();
         }
         
         public Reminder.Data.ReminderService.CategoryDto[] GetAllCategories() {
