@@ -3,11 +3,11 @@
 namespace Reminder.Service.Contracts.Models.Dto
 {
     [DataContract]
-    public class CategoryDto
+    public class ReminderInfoDto
     {
         [DataMember]
-        public int CategoryId { get; set; }
+        public int ReminderId { get; set; }
         [DataMember]
-        public string CategoryName { get; set; }
+        public string Description { get; set; }
     }
 }

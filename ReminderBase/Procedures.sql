@@ -24,7 +24,7 @@ WHERE ReminderId = @ReminderId
 CREATE PROCEDURE GetReminderDescription
 @ReminderId int
 AS
-SELECT [Description] FROM RemindersInfo
+SELECT ReminderId, [Description] FROM RemindersInfo
 WHERE ReminderId = @ReminderId
 
 CREATE PROCEDURE GetReminderActions

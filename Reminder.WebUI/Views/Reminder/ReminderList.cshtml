@@ -23,7 +23,7 @@
     <h3>Reminders</h3>
     @foreach (MyReminder reminder in Model.Reminders)
     {
-        Html.RenderAction("GetReminderItem", "ReminderItem", reminder);
+        Html.RenderPartial("_GetReminderItem", reminder);
     }
 </div>
 

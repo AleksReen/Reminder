@@ -12,12 +12,16 @@ namespace Reminder.Service
     [ServiceContract]
     public interface IReminderService
     {
-        [OperationContract]
         //method invokes a list of reminders
+        [OperationContract]
         List<MyReminderDto> GetAllReminders();
 
-        [OperationContract]
         //method enumerates a list of categories
+        [OperationContract]
         List<CategoryDto> GetAllCategories();
+
+        //return Reminder description
+        [OperationContract]
+        ReminderInfoDto GetReminderDescription(int reminderId);
     }
 }

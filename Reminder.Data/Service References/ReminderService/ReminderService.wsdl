@@ -19,6 +19,12 @@
   <wsdl:message name="IReminderService_GetAllCategories_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_GetReminderDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReminderDescription" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_GetReminderDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReminderDescriptionResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="GetAllCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllCategories" message="tns:IReminderService_GetAllCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetAllCategoriesResponse" message="tns:IReminderService_GetAllCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReminderDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetReminderDescription" message="tns:IReminderService_GetReminderDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetReminderDescriptionResponse" message="tns:IReminderService_GetReminderDescription_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllCategories">
       <soap:operation soapAction="http://tempuri.org/IReminderService/GetAllCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReminderDescription">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/GetReminderDescription" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -98,6 +98,9 @@
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.MyReminderDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.ReminderInfoDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ReminderService\ReminderService.wsdl" />
     <None Include="Service References\ReminderService\ReminderService.xsd">
       <SubType>Designer</SubType>

@@ -16,25 +16,26 @@ namespace Reminder.Service
         public List<CategoryDto> GetAllCategories()
         {
             sqlCn.ConnectionString = connectionString;
-            List<CategoryDto> categoriesList = new List<CategoryDto>();
+            var categoriesList = new List<CategoryDto>();
 
-            using (SqlCommand cmd = new SqlCommand("GetAllCategories", sqlCn))
+            using (var cmd = new SqlCommand("GetAllCategories", sqlCn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 sqlCn.Open();
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    CategoryDto category = new CategoryDto()
+                    while (reader.Read())
                     {
-                        CategoryId = (int)reader["CategoryId"],
-                        CategoryName = reader["CategoryName"].ToString()
-                    };
-                    categoriesList.Add(category);
-                }
-
+                        var category = new CategoryDto()
+                        {
+                            CategoryId = (int)reader["CategoryId"],
+                            CategoryName = reader["CategoryName"].ToString()
+                        };
+                        categoriesList.Add(category);
+                    }
+                };
                 sqlCn.Close();
             }
             return categoriesList;
@@ -43,32 +44,58 @@ namespace Reminder.Service
         public List<MyReminderDto> GetAllReminders()
         {
             sqlCn.ConnectionString = connectionString;
-            List<MyReminderDto> remindersList = new List<MyReminderDto>();
+            var remindersList = new List<MyReminderDto>();
 
-            using (SqlCommand cmd = new SqlCommand("GetAllReminders", sqlCn))
+            using (var cmd = new SqlCommand("GetAllReminders", sqlCn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 sqlCn.Open();
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    MyReminderDto reminder = new MyReminderDto()
+                    while (reader.Read())
                     {
-                        ReminderId = (int)reader["ReminderId"],
-                        Title = reader["Title"].ToString(),
-                        Date = (DateTime)reader["Date"],
-                        ReminderTime = (DateTime)reader["ReminderTime"],
-                        Image = reader["Image"].ToString(),
-                        CategoryId = (int)reader["CategoryId"]
-                    };
-                    remindersList.Add(reminder);
+                        var reminder = new MyReminderDto()
+                        {
+                            ReminderId = (int)reader["ReminderId"],
+                            Title = reader["Title"].ToString(),
+                            Date = (DateTime)reader["Date"],
+                            ReminderTime = (DateTime)reader["ReminderTime"],
+                            Image = reader["Image"].ToString(),
+                            CategoryId = (int)reader["CategoryId"]
+                        };
+                        remindersList.Add(reminder);
+                    }
                 }
-
                 sqlCn.Close();
             }
             return remindersList;
+        }
+
+        public ReminderInfoDto GetReminderDescription(int reminderId)
+        {
+            sqlCn.ConnectionString = connectionString;
+            var reminderDescription = new ReminderInfoDto();
+
+            using (var cmd = new SqlCommand("GetReminderDescription", sqlCn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ReminderId", reminderId);
+
+                sqlCn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        reminderDescription.ReminderId = (int)reader["ReminderId"];
+                        reminderDescription.Description = reader["Description"].ToString();
+                    };
+                } 
+                sqlCn.Close();
+            }
+            return reminderDescription;
         }
     }
 }

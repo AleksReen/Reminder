@@ -9,6 +9,27 @@ namespace Reminder.Data.Clients
 {
     public class ReminderClient : IReminderClient
     {
+        public ReminderInfo GetReminderDescription(int id)
+        {
+            var reminderInfo = new ReminderInfo();
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                client.Open();
+
+                var reminderInfoDto = client.GetReminderDescription(id);
+
+                if (reminderInfoDto != null)
+                {
+                    reminderInfo.ReminderId = reminderInfoDto.ReminderId;
+                    reminderInfo.Description = reminderInfoDto.Description;
+                }
+
+                client.Close();
+            }
+            return reminderInfo;
+
+        }
+
         public List<MyReminder> GetReminders()
         {
             var listReminders = new List<MyReminder>();

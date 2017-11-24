@@ -25,8 +25,8 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult GetSearchResult(string name, string date, string category)
         {
-            if (name != null || date !=null || category!=null) {
-                IEnumerable<MyReminder> model = _provider.GetReminders.Where(x => x.Title.Contains(name));
+            if (name != null) {
+                IEnumerable<MyReminder> model = _provider.GetReminders.Select(x => x).Where(x => x.Title.Contains(name));
                 return PartialView("_SearchResult", model);
             }
 

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Contracts.Models\Dto\CategoryDto.cs" />
     <Compile Include="Contracts.Models\Dto\MyReminderDto.cs" />
+    <Compile Include="Contracts.Models\Dto\ReminderInfoDto.cs" />
     <Compile Include="IReminderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReminderService.cs" />

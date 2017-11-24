@@ -10,5 +10,6 @@ namespace Reminder.Data.Clients
     public interface IReminderClient
     {
         List<MyReminder> GetReminders();
+        ReminderInfo GetReminderDescription(int id);
     }
 }

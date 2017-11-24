@@ -37,5 +37,10 @@ namespace Reminder.Business.Model
                 return _dataProvider.GetMyReminder();
             }
         }
+
+        public ReminderInfo GetReminderDescription(int id)
+        {
+            return _dataProvider.GetReminderDescription(id);
+        }
     }
 }

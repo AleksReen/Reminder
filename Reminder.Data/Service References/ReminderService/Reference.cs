@@ -199,6 +199,67 @@ namespace Reminder.Data.ReminderService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReminderInfoDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
+    [System.SerializableAttribute()]
+    public partial class ReminderInfoDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReminderIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReminderId {
+            get {
+                return this.ReminderIdField;
+            }
+            set {
+                if ((this.ReminderIdField.Equals(value) != true)) {
+                    this.ReminderIdField = value;
+                    this.RaisePropertyChanged("ReminderId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
@@ -214,6 +275,12 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderDescription", ReplyAction="http://tempuri.org/IReminderService/GetReminderDescriptionResponse")]
+        Reminder.Data.ReminderService.ReminderInfoDto GetReminderDescription(int reminderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderDescription", ReplyAction="http://tempuri.org/IReminderService/GetReminderDescriptionResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderDescriptionAsync(int reminderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -257,6 +324,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync() {
             return base.Channel.GetAllCategoriesAsync();
+        }
+        
+        public Reminder.Data.ReminderService.ReminderInfoDto GetReminderDescription(int reminderId) {
+            return base.Channel.GetReminderDescription(reminderId);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderDescriptionAsync(int reminderId) {
+            return base.Channel.GetReminderDescriptionAsync(reminderId);
         }
     }
 }

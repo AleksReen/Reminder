@@ -18,16 +18,15 @@ namespace Reminder.WebUI.Controllers
         {
             _provider = provider;
         }
-        //method returns a page with  reminder
-        public ActionResult GetReminderItem(MyReminder reminder)
-        {
-            return PartialView("_GetReminderItem", reminder);
-        }
         
         //method returns a page with reminder details
         public ActionResult GetDetails(int reminderId)
         {
-            var model = _provider.GetReminders.Single(r => r.ReminderId == reminderId);
+            var model = new ViewReminderFullInfo();
+
+            model.Reminder = _provider.GetReminders.Single(r => r.ReminderId == reminderId); 
+            model.ReminderInfo = _provider.GetReminderDescription(reminderId);
+            model.Category = _provider.GetCategory.Single(x => x.CategoryId == model.Reminder.CategoryId);
 
             return View(model);
         }
@@ -36,7 +35,7 @@ namespace Reminder.WebUI.Controllers
         public ActionResult GetItemCategory(int id)
         {
             var category = _provider.GetCategory.Single(x => x.CategoryId == id);
-            string categoryName = category.CategoryName;
+            var categoryName = category.CategoryName;
 
             return PartialView("_GetItemCategory", categoryName);
         }

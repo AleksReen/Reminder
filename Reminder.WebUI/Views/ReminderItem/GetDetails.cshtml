@@ -1,4 +1,4 @@
-﻿@model Reminder.Common.Entity.MyReminder
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderFullInfo
 
 @{
     ViewBag.Title = "GetDetails";
@@ -10,56 +10,58 @@
     <h4>MyReminder</h4>
     <hr />
     <dl class="dl-horizontal">
+        
         <dt>
-            @Html.DisplayNameFor(model => model.ReminderId)
+            @Html.DisplayNameFor(model => model.Reminder.Image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReminderId)
+            @Html.DisplayFor(model => model.Reminder.Image)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Reminder.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Reminder.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Reminder.Date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.Reminder.Date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReminderTime)
+            @Html.DisplayNameFor(model => model.Reminder.ReminderTime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReminderTime)
+            @Html.DisplayFor(model => model.Reminder.ReminderTime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => model.Category.CategoryName)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.ReminderInfo.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @Html.DisplayFor(model => model.ReminderInfo.Description)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "ReminderList", "Reminder", new { category = Model.CategoryId}, null)
+    @Html.ActionLink("Back to All Category", "ReminderList", "Reminder") |
+    @Html.ActionLink($"Back to {Model.Category.CategoryName}", "ReminderList", "Reminder", new { category = Model.Category.CategoryId}, null)
+    
 </p>

@@ -20,61 +20,7 @@ namespace Reminder.Data.DataBase
             _categoryClient = catClient;
             _remClient = remClient;
         }
-       
-        ////fake table Reminder
-        //List<MyReminder> ReminderList = new List<MyReminder>()
-        //{
-        //    new MyReminder { ReminderId = 1,
-        //                     Title = "repair the car",
-        //                     Date = Convert.ToDateTime("17.11.2017"),                             
-        //                     ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-        //                     CategoryId = 1,
-        //                     Image = "not found"
-        //                   },
-        //    new MyReminder { ReminderId = 2,
-        //                     Title = "Meeting with family",
-        //                     Date = Convert.ToDateTime("18.11.2017"),
-        //                     ReminderTime = Convert.ToDateTime("18.11.2017 12:45"),
-        //                     CategoryId = 2,
-        //                     Image = "not found"
-        //                   },
-        //    new MyReminder { ReminderId = 3,
-        //                     Title = "To have a deal",
-        //                     Date = Convert.ToDateTime("17.11.2017"),                            
-        //                     ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-        //                     CategoryId = 3,
-        //                     Image = "not found"
-        //                   },
-        //    new MyReminder { ReminderId = 4,
-        //                     Title = "repair the car",
-        //                     Date = Convert.ToDateTime("17.11.2017"),
-        //                     ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-        //                     CategoryId = 1,
-        //                     Image = "not found"
-        //                   },
-        //    new MyReminder { ReminderId = 5,
-        //                     Title = "repair the car",
-        //                     Date = Convert.ToDateTime("17.11.2017"),
-        //                     ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-        //                     CategoryId = 1,
-        //                     Image = "not found"
-        //                   },
-        //    new MyReminder { ReminderId = 6,
-        //                    Title = "To have a deal",
-        //                     Date = Convert.ToDateTime("17.11.2017"),
-        //                     ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-        //                     CategoryId = 3,
-        //                     Image = "not found"
-        //                   },
-        //    new MyReminder { ReminderId = 7,
-        //                     Title = "Meeting with family",
-        //                     Date = Convert.ToDateTime("17.11.2017"),
-        //                     ReminderTime = Convert.ToDateTime("17.11.2017 12:45"),
-        //                     CategoryId = 2,
-        //                     Image = "not found"
-        //                   }
-        //};
-
+ 
         //method invokes a list of reminders
         public IEnumerable<MyReminder> GetMyReminder()
         {
@@ -84,6 +30,11 @@ namespace Reminder.Data.DataBase
         public IEnumerable<Category> GetCategory()
         {
             return _categoryClient.GetCategories();
+        }
+
+        public ReminderInfo GetReminderDescription(int id)
+        {
+            return _remClient.GetReminderDescription(id);
         }
     }
 }
