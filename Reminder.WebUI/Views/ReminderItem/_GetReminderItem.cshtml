@@ -1,7 +1,7 @@
 ﻿@model Reminder.Common.Entity.MyReminder
 
 <div class="col-md-5">
-    <h4>@Html.DisplayFor(model => model.Name)</h4>
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
     <hr />
     <dl class="dl-horizontal">
        
@@ -32,11 +32,11 @@
         @Html.Action("GetItemCategory","ReminderItem", new { id = Model.CategoryId})
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageId)
+            @Html.DisplayNameFor(model => model.Image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageId)
+            @Html.DisplayFor(model => model.Image)
         </dd>
 
     </dl>
