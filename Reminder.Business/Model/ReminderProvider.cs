@@ -26,7 +26,7 @@ namespace Reminder.Business.Model
         {
             get
             {
-                return _dataProvider.GetCategory().OrderBy(x=>x.Name);
+                return _dataProvider.GetCategory().OrderBy(x=>x.CategoryName);
             }
         }
         //the property returns the processed value Category

@@ -8,7 +8,7 @@
     @foreach (var category in Model.Categories)
     {
         <li>
-            @Html.RouteLink(category.Name, new { controller = "Reminder", action = "ReminderList", category = category.CategoryId });
+            @Html.RouteLink(category.CategoryName, new { controller = "Reminder", action = "ReminderList", category = category.CategoryId });
         </li>
     }
 </ul>

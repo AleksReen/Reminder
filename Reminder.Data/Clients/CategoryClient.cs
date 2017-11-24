@@ -17,13 +17,17 @@ namespace Reminder.Data.Clients
             {
                 client.Open();
 
-                var categoriesDto = client.GetCategory();
+                var categoriesDto = client.GetAllCategories();
 
                 if (categoriesDto != null)
                 {
                     foreach (var category in categoriesDto)
                     {
-                        var cat = new Category(category.CategoryId, category.Name);
+                        var cat = new Category()
+                        {
+                            CategoryId = category.CategoryId,
+                            CategoryName = category.CategoryName
+                        };
                         result.Add(cat);
                     }
                 }

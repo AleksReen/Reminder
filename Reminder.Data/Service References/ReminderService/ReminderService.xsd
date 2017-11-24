@@ -28,7 +28,7 @@
   <xs:complexType name="CategoryDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CategoryDto" nillable="true" type="tns:CategoryDto" />

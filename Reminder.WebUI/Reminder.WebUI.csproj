@@ -203,9 +203,9 @@
       <Project>{988DF16D-5BBF-49D9-8495-897EC866E353}</Project>
       <Name>Reminder.Dependencies</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Reminder.Domain\Reminder.Domain.csproj">
+    <ProjectReference Include="..\Reminder.Domain\Reminder.Common.csproj">
       <Project>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</Project>
-      <Name>Reminder.Domain</Name>
+      <Name>Reminder.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Reminder.Service\Reminder.Service.csproj">
       <Project>{C32F04F1-CC8F-4D7A-9B10-462F37C3FDFE}</Project>
