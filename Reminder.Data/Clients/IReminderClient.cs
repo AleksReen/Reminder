@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Reminder.Data.Clients
 {
-    public interface ICategoryClient
+    public interface IReminderClient
     {
-       List<Category> GetCategories();
+        List<MyReminder> GetReminders();
     }
 }

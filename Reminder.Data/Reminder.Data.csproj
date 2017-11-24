@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Clients\CategoryClient.cs" />
     <Compile Include="Clients\ICategoryClient.cs" />
+    <Compile Include="Clients\IReminderClient.cs" />
     <Compile Include="Container\DataRegistry.cs" />
     <Compile Include="DataBase\DataRepository.cs" />
     <Compile Include="DataProviders\IDataRepository.cs" />

@@ -7,8 +7,8 @@
     <ProjectGuid>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reminder.Domain</RootNamespace>
-    <AssemblyName>Reminder.Domain</AssemblyName>
+    <RootNamespace>Reminder.Common</RootNamespace>
+    <AssemblyName>Reminder.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

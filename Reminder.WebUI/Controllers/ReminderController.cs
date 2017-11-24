@@ -1,5 +1,5 @@
 ﻿using Reminder.Business.Providers;
-using Reminder.Domain.Entity;
+using Reminder.Common.Entity;
 using Reminder.WebUI.Models.ViewsModels;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using Reminder.Domain.Entity;
+﻿using Reminder.Common.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

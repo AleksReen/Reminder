@@ -42,30 +42,31 @@ namespace Reminder.Service
 
         public List<MyReminderDto> GetAllReminders()
         {
-            sqlCn.ConnectionString = connectionString;
+            //sqlCn.ConnectionString = connectionString;
             List<MyReminderDto> remindersList = new List<MyReminderDto>();
 
-            using (SqlCommand cmd = new SqlCommand("GetAllReminders", sqlCn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
+            //using (SqlCommand cmd = new SqlCommand("GetAllReminders", sqlCn))
+            //{
+            //    cmd.CommandType = CommandType.StoredProcedure;
 
-                sqlCn.Open();
+            //    sqlCn.Open();
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    MyReminderDto reminder = new MyReminderDto()
-                    {
-                        CategoryId = (int)reader["CategoryId"],
-                        CategoryName = reader["CategoryName"].ToString()
-                    };
-                    remindersList.Add(category);
-                }
+            //    SqlDataReader reader = cmd.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        MyReminderDto reminder = new MyReminderDto()
+            //        {
+            //            CategoryId = (int)reader["CategoryId"],
+            //            CategoryName = reader["CategoryName"].ToString()
+            //        };
+            //        remindersList.Add(category);
+            //    }
 
-                sqlCn.Close();
-            }
-            return categoriesList;
+            //    sqlCn.Close();
+            //}
+            return remindersList;
         }
+    }
 
     //    //fake table Reminder
     //    List<MyReminderDto> ReminderList = new List<MyReminderDto>()

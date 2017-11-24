@@ -12,18 +12,14 @@ namespace Reminder.Service.Contracts.Models.Dto
         [DataMember]
         public int ReminderId { get; set; }
         [DataMember]
-        public string Name { get; set; }
+        public string Title { get; set; }
         [DataMember]
         public DateTime Date { get; set; }
         [DataMember]
-        public string Description { get; set; }
-        [DataMember]
-        public string Action { get; set; }
-        [DataMember]
         public DateTime ReminderTime { get; set; }
         [DataMember]
-        public int CategoryId { get; set; }
+        public int Image { get; set; }
         [DataMember]
-        public int ImageId { get; set; }
+        public int CategoryId { get; set; }       
     }
 }

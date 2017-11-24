@@ -1,6 +1,6 @@
-﻿using Reminder.Data.Clients;
+﻿using Reminder.Common.Entity;
+using Reminder.Data.Clients;
 using Reminder.Data.DataProviders;
-using Reminder.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
