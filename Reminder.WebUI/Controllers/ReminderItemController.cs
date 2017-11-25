@@ -22,12 +22,8 @@ namespace Reminder.WebUI.Controllers
         //method returns a page with reminder details
         public ActionResult GetDetails(int reminderId)
         {
-            var model = new ViewReminderFullInfo();
-
-            model.Reminder = _provider.GetReminders.Single(r => r.ReminderId == reminderId); 
-            model.ReminderInfo = _provider.GetReminderDescription(reminderId);
-            model.Category = _provider.GetCategory.Single(x => x.CategoryId == model.Reminder.CategoryId);
-
+            var model = _provider.GetReminderInfo(reminderId);
+           
             return View(model);
         }
         

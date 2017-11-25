@@ -1,26 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Reminder.Common.Entity;
 
 namespace Reminder.Data.Clients
 {
     public class ReminderClient : IReminderClient
     {
-        public ReminderInfo GetReminderDescription(int id)
+        public ReminderInfo GetReminderInfo(int id)
         {
             var reminderInfo = new ReminderInfo();
             using (var client = new ReminderService.ReminderServiceClient())
             {
                 client.Open();
 
-                var reminderInfoDto = client.GetReminderDescription(id);
+                var reminderInfoDto = client.GetReminderInfo(id);
 
                 if (reminderInfoDto != null)
                 {
-                    reminderInfo.ReminderId = reminderInfoDto.ReminderId;
+                    reminderInfo.Reminder.ReminderId = reminderInfoDto.Reminder.ReminderId;
+                    reminderInfo.Reminder.Title = reminderInfoDto.Reminder.Title;
+                    reminderInfo.Reminder.Date = reminderInfoDto.Reminder.Date;
+                    reminderInfo.Reminder.ReminderTime = reminderInfoDto.Reminder.ReminderTime;
+                    reminderInfo.Reminder.Image = reminderInfoDto.Reminder.Image;
+                    reminderInfo.Reminder.CategoryId = reminderInfoDto.Reminder.CategoryId;
+
+                    reminderInfo.Actions = reminderInfoDto.Actions.ToList<string>();
+                    reminderInfo.Category = reminderInfoDto.Category;
                     reminderInfo.Description = reminderInfoDto.Description;
                 }
 

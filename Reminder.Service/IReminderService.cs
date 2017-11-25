@@ -22,6 +22,6 @@ namespace Reminder.Service
 
         //return Reminder description
         [OperationContract]
-        ReminderInfoDto GetReminderDescription(int reminderId);
+        ReminderInfoDto GetReminderInfo(int reminderId);
     }
 }

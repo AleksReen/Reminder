@@ -209,10 +209,16 @@ namespace Reminder.Data.ReminderService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] ActionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ReminderIdField;
+        private Reminder.Data.ReminderService.MyReminderDto ReminderField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -221,6 +227,32 @@ namespace Reminder.Data.ReminderService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Actions {
+            get {
+                return this.ActionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActionsField, value) != true)) {
+                    this.ActionsField = value;
+                    this.RaisePropertyChanged("Actions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
             }
         }
         
@@ -238,14 +270,14 @@ namespace Reminder.Data.ReminderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ReminderId {
+        public Reminder.Data.ReminderService.MyReminderDto Reminder {
             get {
-                return this.ReminderIdField;
+                return this.ReminderField;
             }
             set {
-                if ((this.ReminderIdField.Equals(value) != true)) {
-                    this.ReminderIdField = value;
-                    this.RaisePropertyChanged("ReminderId");
+                if ((object.ReferenceEquals(this.ReminderField, value) != true)) {
+                    this.ReminderField = value;
+                    this.RaisePropertyChanged("Reminder");
                 }
             }
         }
@@ -276,11 +308,11 @@ namespace Reminder.Data.ReminderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderDescription", ReplyAction="http://tempuri.org/IReminderService/GetReminderDescriptionResponse")]
-        Reminder.Data.ReminderService.ReminderInfoDto GetReminderDescription(int reminderId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
+        Reminder.Data.ReminderService.ReminderInfoDto GetReminderInfo(int reminderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderDescription", ReplyAction="http://tempuri.org/IReminderService/GetReminderDescriptionResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderDescriptionAsync(int reminderId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -326,12 +358,12 @@ namespace Reminder.Data.ReminderService {
             return base.Channel.GetAllCategoriesAsync();
         }
         
-        public Reminder.Data.ReminderService.ReminderInfoDto GetReminderDescription(int reminderId) {
-            return base.Channel.GetReminderDescription(reminderId);
+        public Reminder.Data.ReminderService.ReminderInfoDto GetReminderInfo(int reminderId) {
+            return base.Channel.GetReminderInfo(reminderId);
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderDescriptionAsync(int reminderId) {
-            return base.Channel.GetReminderDescriptionAsync(reminderId);
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId) {
+            return base.Channel.GetReminderInfoAsync(reminderId);
         }
     }
 }

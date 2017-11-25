@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:7868/ReminderService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:7868/ReminderService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:7868/ReminderService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto" />
+      <xsd:import schemaLocation="http://localhost:7868/ReminderService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IReminderService_GetAllReminders_InputMessage">
@@ -19,11 +20,11 @@
   <wsdl:message name="IReminderService_GetAllCategories_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
   </wsdl:message>
-  <wsdl:message name="IReminderService_GetReminderDescription_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetReminderDescription" />
+  <wsdl:message name="IReminderService_GetReminderInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReminderInfo" />
   </wsdl:message>
-  <wsdl:message name="IReminderService_GetReminderDescription_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetReminderDescriptionResponse" />
+  <wsdl:message name="IReminderService_GetReminderInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReminderInfoResponse" />
   </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
@@ -34,9 +35,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllCategories" message="tns:IReminderService_GetAllCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetAllCategoriesResponse" message="tns:IReminderService_GetAllCategories_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetReminderDescription">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetReminderDescription" message="tns:IReminderService_GetReminderDescription_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetReminderDescriptionResponse" message="tns:IReminderService_GetReminderDescription_OutputMessage" />
+    <wsdl:operation name="GetReminderInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfo" message="tns:IReminderService_GetReminderInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfoResponse" message="tns:IReminderService_GetReminderInfo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -59,8 +60,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetReminderDescription">
-      <soap:operation soapAction="http://tempuri.org/IReminderService/GetReminderDescription" style="document" />
+    <wsdl:operation name="GetReminderInfo">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/GetReminderInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

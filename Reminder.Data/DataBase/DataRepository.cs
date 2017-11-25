@@ -32,9 +32,9 @@ namespace Reminder.Data.DataBase
             return _categoryClient.GetCategories();
         }
 
-        public ReminderInfo GetReminderDescription(int id)
+        public ReminderInfo GetReminderInfo(int id)
         {
-            return _remClient.GetReminderDescription(id);
+            return _remClient.GetReminderInfo(id);
         }
     }
 }

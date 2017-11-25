@@ -16,6 +16,6 @@ namespace Reminder.Business.Providers
         //method enumerates a list of categories
         IEnumerable<Category> GetCategory { get; }
 
-        ReminderInfo GetReminderDescription(int id);
+        ReminderInfo GetReminderInfo(int id);
     }
 }

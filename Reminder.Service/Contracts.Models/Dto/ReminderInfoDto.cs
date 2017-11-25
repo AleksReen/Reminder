@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Reminder.Service.Contracts.Models.Dto
 {
@@ -6,8 +7,21 @@ namespace Reminder.Service.Contracts.Models.Dto
     public class ReminderInfoDto
     {
         [DataMember]
-        public int ReminderId { get; set; }
+        public MyReminderDto Reminder { get; set; }
+
+        [DataMember]
+        public List<string> Actions { get; set; }
+
         [DataMember]
         public string Description { get; set; }
+
+        [DataMember]
+        public string Category { get; set; }
+
+        public ReminderInfoDto()
+        {
+            Reminder = new MyReminderDto();
+            Actions = new List<string>();
+        }
     }
 }

@@ -16,6 +16,6 @@ namespace Reminder.Data.DataProviders
         //method enumerates a list of categories
         IEnumerable<Category> GetCategory();
 
-        ReminderInfo GetReminderDescription(int id);
+        ReminderInfo GetReminderInfo(int id);
     }
 }

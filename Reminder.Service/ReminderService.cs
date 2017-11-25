@@ -73,15 +73,15 @@ namespace Reminder.Service
             return remindersList;
         }
 
-        public ReminderInfoDto GetReminderDescription(int reminderId)
+        public ReminderInfoDto GetReminderInfo(int reminderId)
         {
             sqlCn.ConnectionString = connectionString;
-            var reminderDescription = new ReminderInfoDto();
+            var reminderInfo = new ReminderInfoDto();
 
-            using (var cmd = new SqlCommand("GetReminderDescription", sqlCn))
+            using (var cmd = new SqlCommand("GetReminderInfo", sqlCn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ReminderId", reminderId);
+                cmd.Parameters.AddWithValue("@id", reminderId);
 
                 sqlCn.Open();
 
@@ -89,13 +89,31 @@ namespace Reminder.Service
                 {
                     while (reader.Read())
                     {
-                        reminderDescription.ReminderId = (int)reader["ReminderId"];
-                        reminderDescription.Description = reader["Description"].ToString();
+                        if (reminderInfo.Reminder.ReminderId == default(int))
+                        {
+                            reminderInfo.Reminder.ReminderId = (int)reader["ReminderId"];
+                            reminderInfo.Reminder.Title = reader["Title"].ToString();
+                            reminderInfo.Reminder.Date = (DateTime)reader["Date"];
+                            reminderInfo.Reminder.ReminderTime = (DateTime)reader["ReminderTime"];
+                            reminderInfo.Reminder.Image = reader["Image"].ToString();
+                            reminderInfo.Reminder.CategoryId = (int)reader["CategoryId"];
+
+                            reminderInfo.Category = reader["CategoryName"].ToString();
+                            reminderInfo.Description = reader["Description"].ToString();
+
+                            reminderInfo.Actions.Add(reader["Action"].ToString());
+
+                        }
+                        else
+                        {
+                            reminderInfo.Actions.Add(reader["Action"].ToString());
+                        }
+                       
                     };
                 } 
                 sqlCn.Close();
             }
-            return reminderDescription;
+            return reminderInfo;
         }
     }
 }
