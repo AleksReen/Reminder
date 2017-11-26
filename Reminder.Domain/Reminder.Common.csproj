@@ -44,6 +44,7 @@
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\MyReminder.cs" />
     <Compile Include="Entity\ReminderInfo.cs" />
+    <Compile Include="HelperMethods\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
