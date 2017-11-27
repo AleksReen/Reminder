@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13D9DED1-DE6D-4195-A825-5B9B503FB1E0}</ProjectGuid>
+    <ProjectGuid>{BA52DE9D-C613-4D94-B911-06CAF375FADC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reminder.Service.Contracts</RootNamespace>
-    <AssemblyName>Reminder.Service.Contracts</AssemblyName>
+    <RootNamespace>Reminder.Service.ModelDto</RootNamespace>
+    <AssemblyName>Reminder.Service.ModelDto</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,14 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IReminderService.cs" />
+    <Compile Include="Dto\CategoryDto.cs" />
+    <Compile Include="Dto\MyReminderDto.cs" />
+    <Compile Include="Dto\ReminderInfoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Reminder.Service.ModelDto\Reminder.Service.ModelsDto.csproj">
-      <Project>{BA52DE9D-C613-4D94-B911-06CAF375FADC}</Project>
-      <Name>Reminder.Service.ModelsDto</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,7 +5,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace Reminder.Service
 {
     public class ReminderService : IReminderService

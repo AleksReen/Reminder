@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Reminder.Service.Contracts")]
+[assembly: AssemblyTitle("Reminder.Service.ModelDto")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Reminder.Service.Contracts")]
+[assembly: AssemblyProduct("Reminder.Service.ModelDto")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("13d9ded1-de6d-4195-a825-5b9b503fb1e0")]
+[assembly: Guid("ba52de9d-c613-4d94-b911-06caf375fadc")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

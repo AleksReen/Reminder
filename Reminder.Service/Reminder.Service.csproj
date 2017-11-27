@@ -65,10 +65,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts.Models\Dto\CategoryDto.cs" />
-    <Compile Include="Contracts.Models\Dto\MyReminderDto.cs" />
-    <Compile Include="Contracts.Models\Dto\ReminderInfoDto.cs" />
-    <Compile Include="IReminderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReminderService.cs" />
   </ItemGroup>
@@ -82,6 +78,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Reminder.Service.Contracts\Reminder.Service.Contracts.csproj">
+      <Project>{13D9DED1-DE6D-4195-A825-5B9B503FB1E0}</Project>
+      <Name>Reminder.Service.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reminder.Service.ModelDto\Reminder.Service.ModelsDto.csproj">
+      <Project>{BA52DE9D-C613-4D94-B911-06CAF375FADC}</Project>
+      <Name>Reminder.Service.ModelsDto</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
