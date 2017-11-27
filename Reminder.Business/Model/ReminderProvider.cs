@@ -1,12 +1,8 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Data.DataProviders;
 using Reminder.Common.Entity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Reminder.Business.Model
 {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reminder.Data.ReminderService;
+﻿using System.Collections.Generic;
 using Reminder.Common.Entity;
 
 namespace Reminder.Data.Clients
