@@ -3,39 +3,39 @@
 <div class="col-md-5">
     <h4>@Html.DisplayFor(model => model.Title)</h4>
     <hr />
-    <dl class="dl-horizontal">
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+    <div class="reminder-item-conteiner">
+        <div class="image-conteiner">
+            <img class="image-item" src="@Model.Image" alt="No image available" />
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReminderTime)
-        </dt>
+        <dl class="dl-vertical">
 
-        <dd>
-            @Html.DisplayFor(model => model.ReminderTime)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
-        
-        @Html.Action("GetItemCategory","ReminderItem", new { id = Model.CategoryId})
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ReminderTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ReminderTime)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </dt>
+
+            @Html.Action("GetItemCategory", "ReminderItem", new { id = Model.CategoryId })
+
+        </dl>
+    </div>
+    
 
     <p>
         @Html.ActionLink("Details", "GetDetails", "ReminderItem", new { reminderId = Model.ReminderId }, null)

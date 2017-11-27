@@ -9,71 +9,70 @@
 <div>
     <h4>MyReminder</h4>
     <hr />
-    <dl class="dl-horizontal">
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Reminder.Image)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Reminder.Image)
-        </dd>
+    <div class="reminder-item-conteiner">
+        <div class="image-conteiner">
+            <img class="image-item" src="@Model.Reminder.Image" alt="No image available" />
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Reminder.Title)
-        </dt>
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Reminder.Title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Reminder.Title)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Reminder.Date)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Reminder.Title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Reminder.Date)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Reminder.Date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Reminder.ReminderTime)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Reminder.Date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Reminder.ReminderTime)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Reminder.ReminderTime)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Actions)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Reminder.ReminderTime)
+            </dd>
 
-        <dd>
-            <ul>
-                @foreach (var action in Model.Actions)
-                {
-                    <li>@action</li>
-                }
-                   
-            </ul>
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Actions)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
+            <dd>
+                <ul>
+                    @foreach (var action in Model.Actions)
+                    {
+                        <li>@action</li>
+                    }
 
-    </dl>
+                </ul>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+
+        </dl>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Back to All Category", "ReminderList", "Reminder") |

@@ -1,0 +1,19 @@
+﻿
+.reminder-item-conteiner{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+    padding: 10px; 
+}
+
+.image-conteiner{
+    width:115px; 
+    height:115px; 
+    background-color:aliceblue; 
+    margin: 0px 20px 20px 0px;
+}
+
+.image-item{
+    width: 100%;
+}
