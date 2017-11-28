@@ -1,0 +1,3 @@
+CREATE PROCEDURE GetAllReminders
+AS
+SELECT*FROM Reminders

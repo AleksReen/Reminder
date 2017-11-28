@@ -17,8 +17,8 @@ CREATE TABLE Reminders
 	ReminderId int NOT NULL PRIMARY KEY IDENTITY,
 	Title nvarchar(max) NOT NULL,
 	[Date] date NOT NULL,
-	ReminderTime smalldatetime,
-	[Image] nvarchar(max),
+	ReminderTime smalldatetime NULL,
+	[Image] nvarchar(max) NULL,
 	CategoryId int NOT NULL 
 )
 
@@ -28,23 +28,27 @@ CREATE TABLE Categories
 	CategoryName nvarchar(50) NOT NULL
 )
 
-CREATE TABLE RemindersInfo
+CREATE TABLE Descriptions
 (
 	ReminderId int NOT NULL PRIMARY KEY,
-	[Description] nvarchar(max)
+	[Description] nvarchar(max) NULL
 )
 
-CREATE TABLE ReminderActions
+CREATE TABLE Actions
 (
-	ActionId int NOT NULL PRIMARY KEY IDENTITY,
-	[Action] nvarchar(max) NOT NULL,
-	ReminderId int NULL
+	ReminderId int NOT NULL,
+	ActionLine int NOT NULL,
+	[Action] nvarchar(max) NULL,	
 )
 
 --setting up keys and restrictions
+ALTER TABLE Actions ADD CONSTRAINT
+	PK_Actions PRIMARY KEY (ReminderId,ActionLine) 
+GO
 
-ALTER TABLE ReminderActions ADD CONSTRAINT
-	FK_ReminderActions_Reminders FOREIGN KEY(ReminderId) 
+
+ALTER TABLE Actions ADD CONSTRAINT
+	FK_Actions_Reminders FOREIGN KEY(ReminderId) 
 	REFERENCES Reminders(ReminderId) 
 	ON DELETE CASCADE
 GO
@@ -54,12 +58,12 @@ ALTER TABLE Reminders ADD CONSTRAINT
 	REFERENCES Categories(CategoryId)
 GO
 
-ALTER TABLE RemindersInfo ADD 
-	CONSTRAINT UQ_RemindersInfo UNIQUE(ReminderId)
+ALTER TABLE Descriptions ADD 
+	CONSTRAINT UQ_Descriptions UNIQUE(ReminderId)
 GO
 
-ALTER TABLE RemindersInfo ADD 
-	CONSTRAINT FK_RemindersInfo_Reminders FOREIGN KEY (ReminderId) 
+ALTER TABLE Descriptions ADD 
+	CONSTRAINT FK_Descriptions_Reminders FOREIGN KEY (ReminderId) 
 	REFERENCES Reminders(ReminderId) 
 	ON DELETE CASCADE
 GO

@@ -16,7 +16,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Reminder.WebUI.App_Start;
-
 using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
