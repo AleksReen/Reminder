@@ -1,11 +1,11 @@
 ﻿@using Reminder.Common.Entity
-@model Reminder.WebUI.Models.ViewsModels.ViewCategoryList
+@model IEnumerable<Category>
 
 <ul>
     <li>
         @Html.ActionLink( "All Category", "ReminderList", "Reminder", null, null)
     </li>
-    @foreach (var category in Model.Categories)
+    @foreach (var category in Model)
     {
         <li>
             @Html.RouteLink(category.CategoryName, new { controller = "Reminder", action = "ReminderList", category = category.CategoryId })

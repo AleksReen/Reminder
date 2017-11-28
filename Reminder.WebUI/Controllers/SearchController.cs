@@ -30,13 +30,13 @@ namespace Reminder.WebUI.Controllers
 
             if (!string.IsNullOrEmpty(name)) {
                 
-                IEnumerable<MyReminder> model = _provider.GetReminders.
+                IEnumerable<MyReminder> model = _provider.GetReminders().
                                                                        Where(x => x.Title.Contains(name, StringComparison.OrdinalIgnoreCase));
                 ViewBag.result = true;
                 return PartialView("_SearchResult", model);
             }
 
-            return PartialView("_SearchResult");
+            return new EmptyResult();
         }
     }
 }

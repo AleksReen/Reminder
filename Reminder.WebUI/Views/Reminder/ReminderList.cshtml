@@ -1,5 +1,5 @@
 ﻿@using Reminder.Common.Entity
-@model Reminder.WebUI.Models.ViewsModels.ViewReminderList
+@model IEnumerable<MyReminder>
 
 @{
     ViewBag.Title = "ReminderList";
@@ -21,7 +21,7 @@
 
 <div class="col-md-10">
     <h3>Reminders</h3>
-    @foreach (MyReminder reminder in Model.Reminders)
+    @foreach (var reminder in Model)
     {
         Html.RenderPartial("_GetReminderItem", reminder);
     }

@@ -1,10 +1,5 @@
 ﻿using Reminder.Business.Providers;
-using Reminder.Common.Entity;
-using Reminder.WebUI.Models.ViewsModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -30,8 +25,7 @@ namespace Reminder.WebUI.Controllers
         //method returns the value of the category for the reminder
         public ActionResult GetItemCategory(int id)
         {
-            var category = _provider.GetCategory.Single(x => x.CategoryId == id);
-            var categoryName = category.CategoryName;
+            var categoryName = _provider.GetCategory().Single(x => x.CategoryId == id).CategoryName;
 
             return PartialView("_GetItemCategory", categoryName);
         }

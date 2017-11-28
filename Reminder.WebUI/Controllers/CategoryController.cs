@@ -20,11 +20,10 @@ namespace Reminder.WebUI.Controllers
 
         // GET: Category
         public ActionResult CategoryList()
-        {
-            ViewCategoryList model = new ViewCategoryList();
-            model.Categories = _provider.GetCategory;
+        {          
+            var categories = _provider.GetCategory();
 
-            return PartialView("_CategoryList", model);
+            return PartialView("_CategoryList", categories);
         }
     }
 }

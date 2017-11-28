@@ -7,9 +7,9 @@ namespace Reminder.Business.Providers
     public interface IReminderProvider
     {
         //method invokes a list of reminders
-        IEnumerable<MyReminder> GetReminders { get; }
+        IEnumerable<MyReminder> GetReminders();
         //method enumerates a list of categories
-        IEnumerable<Category> GetCategory { get; }
+        IEnumerable<Category> GetCategory();
 
         ReminderInfo GetReminderInfo(int id);
     }
