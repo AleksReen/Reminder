@@ -5,7 +5,7 @@ namespace Reminder.Data.Clients
 {
     public class CategoryClient: ICategoryClient
     {
-        public List<Category> GetCategories()
+        public IReadOnlyList<Category> GetCategories()
         {
             var result = new List<Category>();
             using (var client = new ReminderService.ReminderServiceClient())

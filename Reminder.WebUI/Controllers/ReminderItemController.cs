@@ -25,7 +25,7 @@ namespace Reminder.WebUI.Controllers
         //method returns the value of the category for the reminder
         public ActionResult GetItemCategory(int id)
         {
-            var categoryName = _provider.GetCategory().Single(x => x.CategoryId == id).CategoryName;
+            var categoryName = _provider.GetCategories().Single(x => x.CategoryId == id).CategoryName;
 
             return PartialView("_GetItemCategory", categoryName);
         }

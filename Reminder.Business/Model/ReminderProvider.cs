@@ -18,14 +18,14 @@ namespace Reminder.Business.Model
         }
 
         //the property returns the processed value Category
-        public IEnumerable<Category> GetCategory()
+        public IReadOnlyList<Category> GetCategories()
         {
-            return _dataProvider.GetCategory().OrderBy(x=>x.CategoryName);
+            return _dataProvider.GetCategories();
         }
         //the property returns the processed value Category
-        public IEnumerable<MyReminder> GetReminders()
+        public IReadOnlyList<MyReminder> GetReminders()
         {
-            return _dataProvider.GetMyReminder();
+            return _dataProvider.GetMyReminders();
         }
 
         public ReminderInfo GetReminderInfo(int id)

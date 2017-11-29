@@ -5,6 +5,6 @@ namespace Reminder.Data.Clients
 {
     public interface ICategoryClient
     {
-       List<Category> GetCategories();
+       IReadOnlyList<Category> GetCategories();
     }
 }

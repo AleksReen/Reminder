@@ -11,7 +11,7 @@ namespace Reminder.Service
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ReminderBase"].ConnectionString;
 
-        public List<CategoryDto> GetAllCategories()
+        public CategoryDto [] GetAllCategories()
         {           
             var categoriesList = new List<CategoryDto>();
 
@@ -39,10 +39,10 @@ namespace Reminder.Service
                 }
             }
                       
-            return categoriesList;
+            return categoriesList.ToArray();
         }
 
-        public List<MyReminderDto> GetAllReminders()
+        public MyReminderDto [] GetAllReminders()
         {
             var remindersList = new List<MyReminderDto>();
 
@@ -74,7 +74,7 @@ namespace Reminder.Service
                 }
             }
             
-            return remindersList;
+            return remindersList.ToArray();
         }
 
         public ReminderInfoDto GetReminderInfo(int reminderId)
@@ -112,7 +112,6 @@ namespace Reminder.Service
                             {
                                 reminderInfo.Actions.Add(reader["Action"].ToString());
                             }
-
                         };
                     }
                     sqlCn.Close();

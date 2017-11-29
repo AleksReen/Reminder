@@ -35,7 +35,7 @@ namespace Reminder.Data.Clients
 
         }
 
-        public List<MyReminder> GetReminders()
+        public IReadOnlyList<MyReminder> GetReminders()
         {
             var listReminders = new List<MyReminder>();
             using (var client = new ReminderService.ReminderServiceClient())

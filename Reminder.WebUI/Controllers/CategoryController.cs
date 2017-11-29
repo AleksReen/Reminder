@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -16,7 +17,7 @@ namespace Reminder.WebUI.Controllers
         // GET: Category
         public ActionResult CategoryList()
         {          
-            var categories = _provider.GetCategory();
+            var categories = _provider.GetCategories().OrderBy(x => x.CategoryName);
 
             return PartialView("_CategoryList", categories);
         }
