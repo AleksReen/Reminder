@@ -1,0 +1,82 @@
+ERROR [2017-11-29 23:57:31,597] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:32,136] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:32,191] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:36,569] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:36,616] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:37,048] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:37,106] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:37,555] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:37,601] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:38,015] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:38,067] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:38,481] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:38,541] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:38,956] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:39,005] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:39,444] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:39,502] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:39,912] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:39,960] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:40,369] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:40,428] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:47,950] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:48,363] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:48,408] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:48,884] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:48,931] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:49,372] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:49,431] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:49,849] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:49,894] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:50,314] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:50,361] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:50,800] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:50,858] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:51,289] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:51,334] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:51,749] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:51,796] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:52,227] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:52,279] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30
+ERROR [2017-11-29 23:57:52,691] [Reminder.Data.Clients.CategoryClient.GetCategories] System.ServiceModel.FaultException`1[Reminder.Data.ReminderService.ServiceErrorDto]: DataBase Error (Дополнительные сведения об ошибке — Reminder.Data.ReminderService.ServiceErrorDto).
+ERROR [2017-11-29 23:57:52,737] [Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory] System.InvalidOperationException: Последовательность не содержит соответствующий элемент
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   в Reminder.WebUI.Controllers.ReminderItemController.GetItemCategory(Int32 id) в D:\GIT REPO\ASP\Reminder\Reminder.WebUI\Controllers\ReminderItemController.cs:строка 30

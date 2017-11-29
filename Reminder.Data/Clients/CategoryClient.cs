@@ -32,7 +32,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                 
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex);
                 }
                 client.Close();
             }
