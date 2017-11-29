@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Reminder.Common.Entity;
+using System.ServiceModel;
+using Reminder.Service.ModelDto.Dto;
 
 namespace Reminder.Data.Clients
 {
@@ -13,22 +15,34 @@ namespace Reminder.Data.Clients
             {
                 client.Open();
 
-                var reminderInfoDto = client.GetReminderInfo(id);
-
-                if (reminderInfoDto != null)
+                try
                 {
-                    reminderInfo.Reminder.ReminderId = reminderInfoDto.Reminder.ReminderId;
-                    reminderInfo.Reminder.Title = reminderInfoDto.Reminder.Title;
-                    reminderInfo.Reminder.Date = reminderInfoDto.Reminder.Date;
-                    reminderInfo.Reminder.ReminderTime = reminderInfoDto.Reminder.ReminderTime;
-                    reminderInfo.Reminder.Image = reminderInfoDto.Reminder.Image;
-                    reminderInfo.Reminder.CategoryId = reminderInfoDto.Reminder.CategoryId;
+                    var reminderInfoDto = client.GetReminderInfo(id);
 
-                    reminderInfo.Actions = reminderInfoDto.Actions.ToList<string>();
-                    reminderInfo.Category = reminderInfoDto.Category;
-                    reminderInfo.Description = reminderInfoDto.Description;
+                    if (reminderInfoDto != null)
+                    {
+                        reminderInfo.Reminder.ReminderId = reminderInfoDto.Reminder.ReminderId;
+                        reminderInfo.Reminder.Title = reminderInfoDto.Reminder.Title;
+                        reminderInfo.Reminder.Date = reminderInfoDto.Reminder.Date;
+                        reminderInfo.Reminder.ReminderTime = reminderInfoDto.Reminder.ReminderTime;
+                        reminderInfo.Reminder.Image = reminderInfoDto.Reminder.Image;
+                        reminderInfo.Reminder.CategoryId = reminderInfoDto.Reminder.CategoryId;
+
+                        reminderInfo.Actions = reminderInfoDto.Actions.ToList<string>();
+                        reminderInfo.Category = reminderInfoDto.Category;
+                        reminderInfo.Description = reminderInfoDto.Description;
+                    }
                 }
+                catch (FaultException<ServiceErrorDto> ex)
+                {
 
+                    throw;
+                }
+                finally
+                {
+                    client.Close();
+                }
+                
                 client.Close();
             }
             return reminderInfo;
@@ -42,25 +56,37 @@ namespace Reminder.Data.Clients
             {
                 client.Open();
 
-                var remindersDto = client.GetAllReminders();
-
-                if (remindersDto != null)
+                try
                 {
-                    foreach (var reminder in remindersDto)
+                    var remindersDto = client.GetAllReminders();
+
+                    if (remindersDto != null)
                     {
-                        var rem = new MyReminder()
+                        foreach (var reminder in remindersDto)
                         {
-                            ReminderId = reminder.ReminderId,
-                            Title = reminder.Title,
-                            Date = reminder.Date,
-                            ReminderTime = reminder.ReminderTime,
-                            Image = reminder.Image,
-                            CategoryId = reminder.CategoryId
-                        };
-                        listReminders.Add(rem);
+                            var rem = new MyReminder()
+                            {
+                                ReminderId = reminder.ReminderId,
+                                Title = reminder.Title,
+                                Date = reminder.Date,
+                                ReminderTime = reminder.ReminderTime,
+                                Image = reminder.Image,
+                                CategoryId = reminder.CategoryId
+                            };
+                            listReminders.Add(rem);
+                        }
                     }
                 }
+                catch (FaultException<ServiceErrorDto> ex)
+                {
 
+                    throw;
+                }
+                finally
+                {
+                    client.Close();
+                }
+                
                 client.Close();
             }
             return listReminders;

@@ -44,6 +44,7 @@
     <Compile Include="Dto\CategoryDto.cs" />
     <Compile Include="Dto\MyReminderDto.cs" />
     <Compile Include="Dto\ReminderInfoDto.cs" />
+    <Compile Include="Dto\ServiceErrorDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

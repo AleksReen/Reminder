@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Reminder.Common.Entity;
+using Reminder.Service.ModelDto.Dto;
+using System.ServiceModel;
 
 namespace Reminder.Data.Clients
 {
@@ -12,20 +14,29 @@ namespace Reminder.Data.Clients
             {
                 client.Open();
 
-                var categoriesDto = client.GetAllCategories();
-
-                if (categoriesDto != null)
+                try
                 {
-                    foreach (var category in categoriesDto)
+                    var categoriesDto = client.GetAllCategories();
+
+                    if (categoriesDto != null)
                     {
-                        var cat = new Category()
+                        foreach (var category in categoriesDto)
                         {
-                            CategoryId = category.CategoryId,
-                            CategoryName = category.CategoryName
-                        };
-                        result.Add(cat);
+                            var cat = new Category()
+                            {
+                                CategoryId = category.CategoryId,
+                                CategoryName = category.CategoryName
+                            };
+                            result.Add(cat);
+                        }
                     }
                 }
+                catch (FaultException<ServiceErrorDto> ex)
+                {
+                    
+                    throw;
+                }
+                
                 client.Close();
             }
             return result;

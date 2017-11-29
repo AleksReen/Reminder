@@ -9,310 +9,30 @@
 //------------------------------------------------------------------------------
 
 namespace Reminder.Data.ReminderService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MyReminderDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
-    [System.SerializableAttribute()]
-    public partial class MyReminderDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ImageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ReminderIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ReminderTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TitleField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryId {
-            get {
-                return this.CategoryIdField;
-            }
-            set {
-                if ((this.CategoryIdField.Equals(value) != true)) {
-                    this.CategoryIdField = value;
-                    this.RaisePropertyChanged("CategoryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Date {
-            get {
-                return this.DateField;
-            }
-            set {
-                if ((this.DateField.Equals(value) != true)) {
-                    this.DateField = value;
-                    this.RaisePropertyChanged("Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Image {
-            get {
-                return this.ImageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ImageField, value) != true)) {
-                    this.ImageField = value;
-                    this.RaisePropertyChanged("Image");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ReminderId {
-            get {
-                return this.ReminderIdField;
-            }
-            set {
-                if ((this.ReminderIdField.Equals(value) != true)) {
-                    this.ReminderIdField = value;
-                    this.RaisePropertyChanged("ReminderId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ReminderTime {
-            get {
-                return this.ReminderTimeField;
-            }
-            set {
-                if ((this.ReminderTimeField.Equals(value) != true)) {
-                    this.ReminderTimeField = value;
-                    this.RaisePropertyChanged("ReminderTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Title {
-            get {
-                return this.TitleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
-                    this.TitleField = value;
-                    this.RaisePropertyChanged("Title");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
-    [System.SerializableAttribute()]
-    public partial class CategoryDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryId {
-            get {
-                return this.CategoryIdField;
-            }
-            set {
-                if ((this.CategoryIdField.Equals(value) != true)) {
-                    this.CategoryIdField = value;
-                    this.RaisePropertyChanged("CategoryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CategoryName {
-            get {
-                return this.CategoryNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
-                    this.CategoryNameField = value;
-                    this.RaisePropertyChanged("CategoryName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReminderInfoDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
-    [System.SerializableAttribute()]
-    public partial class ReminderInfoDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ActionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Reminder.Data.ReminderService.MyReminderDto ReminderField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Actions {
-            get {
-                return this.ActionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ActionsField, value) != true)) {
-                    this.ActionsField = value;
-                    this.RaisePropertyChanged("Actions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Category {
-            get {
-                return this.CategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
-                    this.CategoryField = value;
-                    this.RaisePropertyChanged("Category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Reminder.Data.ReminderService.MyReminderDto Reminder {
-            get {
-                return this.ReminderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReminderField, value) != true)) {
-                    this.ReminderField = value;
-                    this.RaisePropertyChanged("Reminder");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
-        Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders();
+        Reminder.Service.Contracts.Models.Dto.MyReminderDto[] GetAllReminders();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync();
+        System.Threading.Tasks.Task<Reminder.Service.Contracts.Models.Dto.MyReminderDto[]> GetAllRemindersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
-        Reminder.Data.ReminderService.CategoryDto[] GetAllCategories();
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Service.ModelDto.Dto.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetAllCategoriesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Service.Contracts.Models.Dto.CategoryDto[] GetAllCategories();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync();
+        System.Threading.Tasks.Task<Reminder.Service.Contracts.Models.Dto.CategoryDto[]> GetAllCategoriesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
-        Reminder.Data.ReminderService.ReminderInfoDto GetReminderInfo(int reminderId);
+        Reminder.Service.Contracts.Models.Dto.ReminderInfoDto GetReminderInfo(int reminderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
+        System.Threading.Tasks.Task<Reminder.Service.Contracts.Models.Dto.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -342,27 +62,27 @@ namespace Reminder.Data.ReminderService {
                 base(binding, remoteAddress) {
         }
         
-        public Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders() {
+        public Reminder.Service.Contracts.Models.Dto.MyReminderDto[] GetAllReminders() {
             return base.Channel.GetAllReminders();
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync() {
+        public System.Threading.Tasks.Task<Reminder.Service.Contracts.Models.Dto.MyReminderDto[]> GetAllRemindersAsync() {
             return base.Channel.GetAllRemindersAsync();
         }
         
-        public Reminder.Data.ReminderService.CategoryDto[] GetAllCategories() {
+        public Reminder.Service.Contracts.Models.Dto.CategoryDto[] GetAllCategories() {
             return base.Channel.GetAllCategories();
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync() {
+        public System.Threading.Tasks.Task<Reminder.Service.Contracts.Models.Dto.CategoryDto[]> GetAllCategoriesAsync() {
             return base.Channel.GetAllCategoriesAsync();
         }
         
-        public Reminder.Data.ReminderService.ReminderInfoDto GetReminderInfo(int reminderId) {
+        public Reminder.Service.Contracts.Models.Dto.ReminderInfoDto GetReminderInfo(int reminderId) {
             return base.Channel.GetReminderInfo(reminderId);
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId) {
+        public System.Threading.Tasks.Task<Reminder.Service.Contracts.Models.Dto.ReminderInfoDto> GetReminderInfoAsync(int reminderId) {
             return base.Channel.GetReminderInfoAsync(reminderId);
         }
     }

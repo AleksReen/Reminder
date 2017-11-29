@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -38,6 +42,7 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Reminder.Service.ModelDto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="StructureMap, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
@@ -85,6 +90,10 @@
       <Project>{9277EFED-FCC3-4E0E-A6D9-C0760B657873}</Project>
       <Name>Reminder.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reminder.Service.ModelDto\Reminder.Service.ModelsDto.csproj">
+      <Project>{BA52DE9D-C613-4D94-B911-06CAF375FADC}</Project>
+      <Name>Reminder.Service.ModelsDto</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -92,15 +101,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.CategoryDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.MyReminderDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.ReminderInfoDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <None Include="Reminder.Service.Contracts.Models.Dto.CategoryDto.datasource" />
+    <None Include="Reminder.Service.Contracts.Models.Dto.MyReminderDto.datasource" />
+    <None Include="Reminder.Service.Contracts.Models.Dto.ReminderInfoDto.datasource" />
     <None Include="Service References\ReminderService\ReminderService.wsdl" />
     <None Include="Service References\ReminderService\ReminderService.xsd">
       <SubType>Designer</SubType>
@@ -112,6 +115,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ReminderService\ReminderService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReminderService\ReminderService4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

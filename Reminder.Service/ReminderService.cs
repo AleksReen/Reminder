@@ -1,15 +1,24 @@
 ﻿using Reminder.Service.Contracts.Models.Dto;
+using Reminder.Service.ModelDto.Dto;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.ServiceModel;
 
 namespace Reminder.Service
 {
     public class ReminderService : IReminderService
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["ReminderBase"].ConnectionString;
+        private readonly string connectionString;
+        private readonly ServiceErrorDto error; 
+
+        public ReminderService()
+        {           
+            connectionString = ConfigurationManager.ConnectionStrings["ReminderBase"].ConnectionString;
+            error = new ServiceErrorDto();
+        }
 
         public CategoryDto [] GetAllCategories()
         {           
@@ -23,18 +32,33 @@ namespace Reminder.Service
 
                     sqlCn.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var category = new CategoryDto()
+                            while (reader.Read())
                             {
-                                CategoryId = (int)reader["CategoryId"],
-                                CategoryName = reader["CategoryName"].ToString()
-                            };
-                            categoriesList.Add(category);
-                        }
-                    };
+                                var category = new CategoryDto()
+                                {
+                                    CategoryId = (int)reader["CategoryId"],
+                                    CategoryName = reader["CategoryName"].ToString()
+                                };
+                                categoriesList.Add(category);
+                            }
+                        };
+                    }
+                    catch (SqlException exp)
+                    {
+                        error.Message = "error reading data from the database";
+                        error.Details = exp.State.ToString();
+
+                        throw new FaultException<ServiceErrorDto>(error, "Data server error");
+                    }
+                    
+                    finally
+                    {
+                        sqlCn.Close();
+                    }
                     sqlCn.Close();
                 }
             }
@@ -54,22 +78,37 @@ namespace Reminder.Service
 
                     sqlCn.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var reminder = new MyReminderDto()
+                            while (reader.Read())
                             {
-                                ReminderId = (int)reader["ReminderId"],
-                                Title = reader["Title"].ToString(),
-                                Date = (DateTime)reader["Date"],
-                                ReminderTime = (DateTime)reader["ReminderTime"],
-                                Image = reader["Image"].ToString(),
-                                CategoryId = (int)reader["CategoryId"]
-                            };
-                            remindersList.Add(reminder);
+                                var reminder = new MyReminderDto()
+                                {
+                                    ReminderId = (int)reader["ReminderId"],
+                                    Title = reader["Title"].ToString(),
+                                    Date = (DateTime)reader["Date"],
+                                    ReminderTime = (DateTime)reader["ReminderTime"],
+                                    Image = reader["Image"].ToString(),
+                                    CategoryId = (int)reader["CategoryId"]
+                                };
+                                remindersList.Add(reminder);
+                            }
                         }
                     }
+                    catch (SqlException exp)
+                    {
+                        error.Message = "error reading data from the database";
+                        error.Details = exp.State.ToString();
+
+                        throw new FaultException<ServiceErrorDto>(error, "Data server error");
+                    }
+                    finally
+                    {
+                        sqlCn.Close();
+                    }
+
                     sqlCn.Close();
                 }
             }
@@ -90,30 +129,45 @@ namespace Reminder.Service
 
                     sqlCn.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reminderInfo.Reminder.ReminderId == default(int))
+                            while (reader.Read())
                             {
-                                reminderInfo.Reminder.ReminderId = (int)reader["ReminderId"];
-                                reminderInfo.Reminder.Title = reader["Title"].ToString();
-                                reminderInfo.Reminder.Date = (DateTime)reader["Date"];
-                                reminderInfo.Reminder.ReminderTime = (DateTime)reader["ReminderTime"];
-                                reminderInfo.Reminder.Image = reader["Image"].ToString();
-                                reminderInfo.Reminder.CategoryId = (int)reader["CategoryId"];
+                                if (reminderInfo.Reminder.ReminderId == default(int))
+                                {
+                                    reminderInfo.Reminder.ReminderId = (int)reader["ReminderId"];
+                                    reminderInfo.Reminder.Title = reader["Title"].ToString();
+                                    reminderInfo.Reminder.Date = (DateTime)reader["Date"];
+                                    reminderInfo.Reminder.ReminderTime = (DateTime)reader["ReminderTime"];
+                                    reminderInfo.Reminder.Image = reader["Image"].ToString();
+                                    reminderInfo.Reminder.CategoryId = (int)reader["CategoryId"];
 
-                                reminderInfo.Category = reader["CategoryName"].ToString();
-                                reminderInfo.Description = reader["Description"].ToString();
+                                    reminderInfo.Category = reader["CategoryName"].ToString();
+                                    reminderInfo.Description = reader["Description"].ToString();
 
-                                reminderInfo.Actions.Add(reader["Action"].ToString());
-                            }
-                            else
-                            {
-                                reminderInfo.Actions.Add(reader["Action"].ToString());
-                            }
-                        };
+                                    reminderInfo.Actions.Add(reader["Action"].ToString());
+                                }
+                                else
+                                {
+                                    reminderInfo.Actions.Add(reader["Action"].ToString());
+                                }
+                            };
+                        }
                     }
+                    catch (SqlException exp)
+                    {
+                        error.Message = "error reading data from the database";
+                        error.Details = exp.State.ToString();
+
+                        throw new FaultException<ServiceErrorDto>(error, "Data server error");
+                    }
+                    finally
+                    {
+                        sqlCn.Close();
+                    }
+
                     sqlCn.Close();
                 }
             }
