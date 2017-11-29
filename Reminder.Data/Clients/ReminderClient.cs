@@ -2,7 +2,6 @@
 using System.Linq;
 using Reminder.Common.Entity;
 using System.ServiceModel;
-using Reminder.Service.ModelDto.Dto;
 
 namespace Reminder.Data.Clients
 {
@@ -33,14 +32,9 @@ namespace Reminder.Data.Clients
                         reminderInfo.Description = reminderInfoDto.Description;
                     }
                 }
-                catch (FaultException<ServiceErrorDto> ex)
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-
-                    throw;
-                }
-                finally
-                {
-                    client.Close();
+                    
                 }
                 
                 client.Close();
@@ -77,16 +71,10 @@ namespace Reminder.Data.Clients
                         }
                     }
                 }
-                catch (FaultException<ServiceErrorDto> ex)
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-
-                    throw;
+                    
                 }
-                finally
-                {
-                    client.Close();
-                }
-                
                 client.Close();
             }
             return listReminders;

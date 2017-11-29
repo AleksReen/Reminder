@@ -50,14 +50,9 @@ namespace Reminder.Service
                     catch (SqlException exp)
                     {
                         error.Message = "error reading data from the database";
-                        error.Details = exp.State.ToString();
+                        error.Details = exp.ToString();
 
-                        throw new FaultException<ServiceErrorDto>(error, "Data server error");
-                    }
-                    
-                    finally
-                    {
-                        sqlCn.Close();
+                        throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
                     }
                     sqlCn.Close();
                 }
@@ -100,13 +95,9 @@ namespace Reminder.Service
                     catch (SqlException exp)
                     {
                         error.Message = "error reading data from the database";
-                        error.Details = exp.State.ToString();
+                        error.Details = exp.ToString();
 
-                        throw new FaultException<ServiceErrorDto>(error, "Data server error");
-                    }
-                    finally
-                    {
-                        sqlCn.Close();
+                        throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
                     }
 
                     sqlCn.Close();
@@ -163,11 +154,7 @@ namespace Reminder.Service
 
                         throw new FaultException<ServiceErrorDto>(error, "Data server error");
                     }
-                    finally
-                    {
-                        sqlCn.Close();
-                    }
-
+ 
                     sqlCn.Close();
                 }
             }

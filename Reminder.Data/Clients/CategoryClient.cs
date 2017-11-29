@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Reminder.Common.Entity;
-using Reminder.Service.ModelDto.Dto;
 using System.ServiceModel;
 
 namespace Reminder.Data.Clients
@@ -31,12 +30,10 @@ namespace Reminder.Data.Clients
                         }
                     }
                 }
-                catch (FaultException<ServiceErrorDto> ex)
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    
-                    throw;
+                 
                 }
-                
                 client.Close();
             }
             return result;
