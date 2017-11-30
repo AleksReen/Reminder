@@ -15,9 +15,18 @@ namespace Reminder.Service
         private readonly ServiceErrorDto error; 
 
         public ReminderService()
-        {           
-            connectionString = ConfigurationManager.ConnectionStrings["ReminderBase"].ConnectionString;
+        {
             error = new ServiceErrorDto();
+            try
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["ReminderBase"].ConnectionString;
+            }
+            catch (Exception)
+            {
+                error.Message = "conection string error";
+                throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
+            }
+            
         }
 
         public CategoryDto [] GetAllCategories()
@@ -26,14 +35,14 @@ namespace Reminder.Service
 
             using (var sqlCn = new SqlConnection(connectionString))
             {
-                using (var cmd = new SqlCommand("GetAllCategories", sqlCn))
+                using (var cmd = new SqlCommand("GetAllCategoriesq", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    sqlCn.Open();
-
                     try
                     {
+                        sqlCn.Open();
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -46,15 +55,14 @@ namespace Reminder.Service
                                 categoriesList.Add(category);
                             }
                         };
+
+                        sqlCn.Close();
                     }
-                    catch (SqlException exp)
+                    catch (SqlException)
                     {
                         error.Message = "error reading data from the database";
-                        error.Details = exp.ToString();
-
                         throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
                     }
-                    sqlCn.Close();
                 }
             }
                       
@@ -71,10 +79,10 @@ namespace Reminder.Service
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    sqlCn.Open();
-
                     try
                     {
+                        sqlCn.Open();
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -91,16 +99,14 @@ namespace Reminder.Service
                                 remindersList.Add(reminder);
                             }
                         }
+
+                        sqlCn.Close();
                     }
-                    catch (SqlException exp)
+                    catch (SqlException)
                     {
                         error.Message = "error reading data from the database";
-                        error.Details = exp.ToString();
-
                         throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
                     }
-
-                    sqlCn.Close();
                 }
             }
             
@@ -118,10 +124,10 @@ namespace Reminder.Service
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", reminderId);
 
-                    sqlCn.Open();
-
                     try
                     {
+                        sqlCn.Open();
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -146,16 +152,14 @@ namespace Reminder.Service
                                 }
                             };
                         }
+
+                        sqlCn.Close();
                     }
-                    catch (SqlException exp)
+                    catch (SqlException)
                     {
                         error.Message = "error reading data from the database";
-                        error.Details = exp.State.ToString();
-
-                        throw new FaultException<ServiceErrorDto>(error, "Data server error");
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
- 
-                    sqlCn.Close();
                 }
             }
               

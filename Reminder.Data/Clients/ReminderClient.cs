@@ -12,10 +12,10 @@ namespace Reminder.Data.Clients
             var reminderInfo = new ReminderInfo();
             using (var client = new ReminderService.ReminderServiceClient())
             {
-                client.Open();
-
                 try
                 {
+                    client.Open();
+
                     var reminderInfoDto = client.GetReminderInfo(id);
 
                     if (reminderInfoDto != null)
@@ -31,13 +31,14 @@ namespace Reminder.Data.Clients
                         reminderInfo.Category = reminderInfoDto.Category;
                         reminderInfo.Description = reminderInfoDto.Description;
                     }
+
+                    client.Close();
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex);
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
                 }
                 
-                client.Close();
             }
             return reminderInfo;
 
@@ -48,10 +49,10 @@ namespace Reminder.Data.Clients
             var listReminders = new List<MyReminder>();
             using (var client = new ReminderService.ReminderServiceClient())
             {
-                client.Open();
-
                 try
                 {
+                    client.Open();
+
                     var remindersDto = client.GetAllReminders();
 
                     if (remindersDto != null)
@@ -70,12 +71,13 @@ namespace Reminder.Data.Clients
                             listReminders.Add(rem);
                         }
                     }
+                    client.Close();
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex);
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
                 }
-                client.Close();
+                
             }
             return listReminders;
         }

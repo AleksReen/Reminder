@@ -11,10 +11,10 @@ namespace Reminder.Data.Clients
             var result = new List<Category>();
             using (var client = new ReminderService.ReminderServiceClient())
             {
-                client.Open();
-
                 try
                 {
+                    client.Open();
+
                     var categoriesDto = client.GetAllCategories();
 
                     if (categoriesDto != null)
@@ -29,12 +29,13 @@ namespace Reminder.Data.Clients
                             result.Add(cat);
                         }
                     }
+
+                    client.Close();
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex);
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
                 }
-                client.Close();
             }
             return result;
         }
