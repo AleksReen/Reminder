@@ -19,7 +19,8 @@ CREATE TABLE Reminders
 	[Date] date NOT NULL,
 	ReminderTime smalldatetime NULL,
 	[Image] nvarchar(max) NULL,
-	CategoryId int NOT NULL 
+	CategoryId int NOT NULL,
+	UserId int NOT NULL 
 )
 
 CREATE TABLE Categories 
@@ -41,11 +42,49 @@ CREATE TABLE Actions
 	[Action] nvarchar(max) NULL,	
 )
 
+CREATE TABLE Users
+(
+	UserId int NOT NULL PRIMARY KEY IDENTITY,
+	[Login] nvarchar(max) NOT NULL,
+	[Password]  nvarchar(max) NOT NULL,
+	Email nvarchar(max) NOT NULL
+)
+
+CREATE TABLE Roles
+(
+	RoleId int NOT NULL PRIMARY KEY IDENTITY,
+	[Role] nvarchar(max) NOT NULL
+)
+
+CREATE TABLE Users_Roles
+(
+	UserId int NOT NULL,
+	RoleId int NOT NULL
+)
+
 --setting up keys and restrictions
+ALTER TABLE Reminders ADD CONSTRAINT
+	FK_Reminders_Users FOREIGN KEY (UserID)
+	REFERENCES Users(UserId)
+GO
+
+ALTER TABLE Users_Roles ADD CONSTRAINT
+	PK_Users_Roles PRIMARY KEY (UserId,RoleId)
+GO
+
+ALTER TABLE Users_Roles ADD CONSTRAINT
+	FK_Users_Roles_Users FOREIGN KEY (UserId)
+	REFERENCES Users(UserId)
+GO
+
+ALTER TABLE Users_Roles ADD CONSTRAINT
+	FK_Users_Roles_Roles FOREIGN KEY (RoleId)
+	REFERENCES Roles(RoleId)
+GO
+
 ALTER TABLE Actions ADD CONSTRAINT
 	PK_Actions PRIMARY KEY (ReminderId,ActionLine) 
 GO
-
 
 ALTER TABLE Actions ADD CONSTRAINT
 	FK_Actions_Reminders FOREIGN KEY(ReminderId) 

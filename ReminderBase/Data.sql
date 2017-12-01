@@ -14,21 +14,46 @@ VALUES
 ('Rest')
 GO
 
+--заполнение таблицы Users
+INSERT INTO Users
+([Login], [Password], Email)
+VALUES
+('User1', '123', 'user@tut.by'),
+('User2', '123', 'user@tut.by')
+GO
+
+--заполнение таблицы Roles
+INSERT INTO Roles
+([Role])
+VALUES
+('user'),
+('edit'),
+('admin')
+GO
+--заполнение таблицы Users_Roles
+INSERT INTO Users_Roles
+(UserId, RoleId)
+VALUES
+(1,1),
+(2,1),
+(2,2),
+(2,3)
+
 --заполнение таблицы Reminders
 
 INSERT INTO Reminders
-(Title, [Date], ReminderTime, [Image], CategoryId)
+(Title, [Date], ReminderTime, [Image], CategoryId, UserID)
 VALUES
-('Починить автомобиль', '2017-11-20', CAST('2017-11-16 16:00:00'as smalldatetime), '..\Images\No-image-found.jpg', 3),
-('Встретить босса', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 4),
-('Починить полку', '2017-11-20', CAST('2017-11-16 16:00:00'as smalldatetime), '..\Images\No-image-found.jpg', 3),
-('Забрать ребёнка из школы', '2017-11-18', CAST('2017-11-17 12:30:00' as smalldatetime), '..\Images\No-image-found.jpg', 2),
-('Кемпинг', '2017-11-10', CAST('2017-11-09 13:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 5),
-('Поход в горы', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 5),
-('Оганизовать презинтацию', '2017-11-15', CAST('2017-11-14 13:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 4),
-('Сходить в магазин', '2017-11-20', CAST('2017-11-19 10:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 3),
-('Устроить жене свидание', '2017-11-22', CAST('2017-11-21 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 2),
-('Встретить родителей жены', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 1)
+('Починить автомобиль', '2017-11-20', CAST('2017-11-16 16:00:00'as smalldatetime), '..\Images\No-image-found.jpg', 3, 1),
+('Встретить босса', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 4, 1),
+('Починить полку', '2017-11-20', CAST('2017-11-16 16:00:00'as smalldatetime), '..\Images\No-image-found.jpg', 3, 1),
+('Забрать ребёнка из школы', '2017-11-18', CAST('2017-11-17 12:30:00' as smalldatetime), '..\Images\No-image-found.jpg', 2, 1),
+('Кемпинг', '2017-11-10', CAST('2017-11-09 13:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 5, 1),
+('Поход в горы', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 5, 2),
+('Оганизовать презинтацию', '2017-11-15', CAST('2017-11-14 13:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 4, 2),
+('Сходить в магазин', '2017-11-20', CAST('2017-11-19 10:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 3, 2),
+('Устроить жене свидание', '2017-11-22', CAST('2017-11-21 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 2, 2),
+('Встретить родителей жены', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 1, 2)
 GO
 
 --заполнение таблицы Actions
