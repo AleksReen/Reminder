@@ -1,5 +1,4 @@
-﻿
-namespace Reminder.Common.Entity
+﻿namespace Reminder.Common.Entity
 {
     public class User
     {
