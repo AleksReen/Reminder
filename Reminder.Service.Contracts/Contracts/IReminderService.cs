@@ -22,5 +22,10 @@ namespace Reminder.Service
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         ReminderInfoDto GetReminderInfo(int reminderId);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        LoginResultDto Login(string login, string password);
+
     }
 }

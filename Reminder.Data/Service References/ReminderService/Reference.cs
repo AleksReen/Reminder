@@ -353,6 +353,20 @@ namespace Reminder.Data.ReminderService {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginResultDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+    public enum LoginResultDto : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NoError = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        InvalidCredentials = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        EmptyCredentials = 2,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
@@ -377,6 +391,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Login", ReplyAction="http://tempuri.org/IReminderService/LoginResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/LoginServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.LoginResultDto Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Login", ReplyAction="http://tempuri.org/IReminderService/LoginResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.LoginResultDto> LoginAsync(string login, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -428,6 +449,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId) {
             return base.Channel.GetReminderInfoAsync(reminderId);
+        }
+        
+        public Reminder.Data.ReminderService.LoginResultDto Login(string login1, string password) {
+            return base.Channel.Login(login1, password);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.LoginResultDto> LoginAsync(string login, string password) {
+            return base.Channel.LoginAsync(login, password);
         }
     }
 }

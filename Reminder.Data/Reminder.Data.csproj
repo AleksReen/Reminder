@@ -42,6 +42,10 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="StructureMap, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
@@ -73,10 +77,14 @@
     <Compile Include="Clients\CategoryClient.cs" />
     <Compile Include="Clients\ICategoryClient.cs" />
     <Compile Include="Clients\IReminderClient.cs" />
+    <Compile Include="Clients\IUserClient.cs" />
     <Compile Include="Clients\ReminderClient.cs" />
+    <Compile Include="Clients\UserClient.cs" />
     <Compile Include="Container\DataRegistry.cs" />
     <Compile Include="DataBase\DataRepository.cs" />
+    <Compile Include="DataBase\UserRepository.cs" />
     <Compile Include="DataProviders\IDataRepository.cs" />
+    <Compile Include="DataProviders\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ReminderService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +105,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.CategoryDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.LoginResultDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.MyReminderDto.datasource">

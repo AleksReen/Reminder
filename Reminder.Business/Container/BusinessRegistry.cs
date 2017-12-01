@@ -8,6 +8,7 @@ namespace Reminder.Business.Container
     {
         public BusinessRegistry()
         {
+            For<ILoginProvider>().Use<LoginProvider>();
             For<IReminderProvider>().Use<ReminderProvider>();
         }
     }

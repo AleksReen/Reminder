@@ -8,8 +8,8 @@ namespace Reminder.Data.DataBase
     //class emulates the database
     public class DataRepository: IDataRepository
     {
-        ICategoryClient _categoryClient;
-        IReminderClient _remClient;
+        private ICategoryClient _categoryClient;
+        private IReminderClient _remClient;
 
         public DataRepository(ICategoryClient catClient, IReminderClient remClient)
         {

@@ -1,11 +1,15 @@
-﻿using Reminder.Service.Contracts.Models.Dto;
+﻿using Newtonsoft.Json;
+using Reminder.Service.Contracts.Models.Dto;
 using Reminder.Service.ModelDto.Dto;
+using Reminder.Service.ModelDto.Entity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.ServiceModel;
+using System.Web;
+using System.Web.Security;
 
 namespace Reminder.Service
 {
@@ -164,6 +168,68 @@ namespace Reminder.Service
             }
               
             return reminderInfo;
+        }
+
+        public LoginResultDto Login(string login, string password)
+        {
+            var user = new User() { Roles = new List<string>()};
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+                using (var cmd = new SqlCommand("GetLogin", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@login", login);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                if (user.UserId == default(int))
+                                {
+                                    user.UserId = (int)reader["UserId"];
+                                    user.Login = reader["Login"].ToString();
+                                    user.Roles.Add(reader["Role"].ToString());
+                                }
+                                else
+                                {
+                                    user.Roles.Add(reader["Role"].ToString());
+                                }
+                            };
+                        }
+
+                        sqlCn.Close();
+                    }
+                    catch (SqlException)
+                    {
+                        error.Message = "error reading data from the database";
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+
+
+                    if (user.UserId != default(int))
+                    {
+                        var userData = JsonConvert.SerializeObject(user);
+                        var ticket = new FormsAuthenticationTicket(2, login, DateTime.Now, DateTime.Now.AddHours(1), false, userData);
+                        var encTicket = FormsAuthentication.Encrypt(ticket);
+                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+                       
+                        HttpContext.Current.Response.Cookies.Add(authCookie);
+                       
+                        return LoginResultDto.NoError;
+                    }
+                    else
+                    {
+                        //TO DO
+                        return LoginResultDto.EmptyCredentials;
+                    }
+                }
+            }
         }
     }
 }

@@ -7,4 +7,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceErrorDto" nillable="true" type="tns:ServiceErrorDto" />
+  <xs:simpleType name="LoginResultDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoError" />
+      <xs:enumeration value="InvalidCredentials" />
+      <xs:enumeration value="EmptyCredentials" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LoginResultDto" nillable="true" type="tns:LoginResultDto" />
 </xs:schema>

@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\CategoryDto.cs" />
+    <Compile Include="Dto\LoginResultDto.cs" />
     <Compile Include="Dto\MyReminderDto.cs" />
     <Compile Include="Dto\ReminderInfoDto.cs" />
     <Compile Include="Dto\ServiceErrorDto.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

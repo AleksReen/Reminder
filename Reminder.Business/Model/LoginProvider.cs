@@ -8,11 +8,11 @@ namespace Reminder.Business.Model
 {
     public class LoginProvider : ILoginProvider
     {
-        private IDataRepository _dataProvider;
+        private IUserRepository _userProvider;
 
-        public LoginProvider(IDataRepository provider)
+        public LoginProvider(IUserRepository provider)
         {
-            _dataProvider = provider;
+            _userProvider = provider;
         }
 
         public LoginResult Login(string login, string password)
@@ -23,7 +23,7 @@ namespace Reminder.Business.Model
             }
             else
             {
-                return _dataProvider.Login(string login, string password);
+                return _userProvider.Login(login, password);
             }
         }
 

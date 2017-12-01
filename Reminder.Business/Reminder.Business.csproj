@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,8 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container\BusinessRegistry.cs" />
+    <Compile Include="Model\LoginProvider.cs" />
     <Compile Include="Model\ReminderProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ILoginProvider.cs" />
     <Compile Include="Providers\IReminderProvider.cs" />
   </ItemGroup>
   <ItemGroup>
