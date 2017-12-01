@@ -35,7 +35,7 @@ namespace Reminder.Service
 
             using (var sqlCn = new SqlConnection(connectionString))
             {
-                using (var cmd = new SqlCommand("GetAllCategoriesq", sqlCn))
+                using (var cmd = new SqlCommand("GetAllCategories", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 

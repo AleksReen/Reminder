@@ -3,6 +3,25 @@
     ViewBag.Title = "Home";
 }
 
-<h2>Welcom to Reminder</h2>
+<div class="col-md-4">
+    <h2>Welcom to Application</h2>
+    @Ajax.ActionLink("Let's Go", "Login", "Login", null,
+       new AjaxOptions { UpdateTargetId = "login" },
+       new { @class = "btn btn-info" })
+</div>
 
-<button class="btn btn-info" onclick="location.href='@Url.Action("ReminderList","Reminder")'">Let's Go</button>
+<div class="col-md-8">
+    <div id="login">
+        <h2>Description</h2>
+        <p>
+            Et nulla gubergren magna accusam aliquip lobortis ea vel ipsum facilisis vero
+            et eum dolor assum sanctus diam et at rebum accusam est lorem eros et accusam lorem
+            et clita lorem diam autem et nonumy dolor quod est et aliquyam et erat aliquyam lobortis
+            facilisis ut accusam tempor at accusam gubergren eirmod nulla dolore et ipsum vel diam est tempor
+            clita luptatum tation eos et exerci diam dolor sanctus amet consetetur ex vero amet invidunt illum
+            et feugiat assum nibh clita dolor sed dolore dolor clita clita luptatum erat diam nibh et sit nulla justo
+            diam lorem takimata no accusam
+        </p>
+    </div>
+</div>
+
