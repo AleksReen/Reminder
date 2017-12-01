@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reminder.Business.Providers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,12 @@ namespace Reminder.WebUI.Controllers
 {
     public class LoginController : Controller
     {
+        private ILoginProvider _provider;
+
+        public LoginController(ILoginProvider prov)
+        {
+            _provider = prov;
+        }
         // GET: Login
         public ActionResult Login()
         {
@@ -17,7 +24,7 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult Login(string login, string password)
         {
-            //var result = service.Login(userName, password);
+            var result = _provider.Login(login, password);
 
             //if (result == Business.Enums.LoginResult.NoError)
             //{
