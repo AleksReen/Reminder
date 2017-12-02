@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using Reminder.Common.Entity;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 
 namespace Reminder.WebUI.Models.Entity
@@ -7,7 +9,8 @@ namespace Reminder.WebUI.Models.Entity
     {
         public int UserId { get; set; }
         public string Login { get; set; }
-        public string[] Roles { get; set; }
+        public string [] Roles { get; set; }
+
         public IIdentity Identity
         {
             get; private set;

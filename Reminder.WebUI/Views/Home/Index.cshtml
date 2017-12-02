@@ -5,9 +5,19 @@
 
 <div class="col-md-4">
     <h2>Welcom to Application</h2>
-    @Ajax.ActionLink("Let's Go", "Login", "Login", null,
-       new AjaxOptions { UpdateTargetId = "login" },
-       new { @class = "btn btn-info" })
+
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Let's Go", "ReminderList", "Reminder", null, new { @class = "btn btn-info" })
+    }
+    else
+    {
+        @Ajax.ActionLink("Let's Go", "Login", "Login",
+                         null,
+                         new AjaxOptions { UpdateTargetId = "login" },
+                         new { @class = "btn btn-info" })
+    }
+
 </div>
 
 <div class="col-md-8">

@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Reminder.Service.Contracts.Models.Dto;
 using Reminder.Service.ModelDto.Dto;
-using Reminder.Service.ModelDto.Entity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -170,9 +169,9 @@ namespace Reminder.Service
             return reminderInfo;
         }
 
-        public LoginResultDto Login(string login, string password)
+        public UserDto GetCurrentUser(string login, string password)
         {
-            var user = new User() { Roles = new List<string>()};
+            var user = new UserDto();
 
             using (var sqlCn = new SqlConnection(connectionString))
             {
@@ -210,24 +209,7 @@ namespace Reminder.Service
                         error.Message = "error reading data from the database";
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-
-
-                    if (user.UserId != default(int))
-                    {
-                        var userData = JsonConvert.SerializeObject(user);
-                        var ticket = new FormsAuthenticationTicket(2, login, DateTime.Now, DateTime.Now.AddHours(1), false, userData);
-                        var encTicket = FormsAuthentication.Encrypt(ticket);
-                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
-                       
-                        HttpContext.Current.Response.Cookies.Add(authCookie);
-                       
-                        return LoginResultDto.NoError;
-                    }
-                    else
-                    {
-                        //TO DO
-                        return LoginResultDto.EmptyCredentials;
-                    }
+                    return user;
                 }
             }
         }

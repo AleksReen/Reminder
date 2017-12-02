@@ -36,13 +36,13 @@
   <wsdl:message name="IReminderService_GetReminderInfo_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q3:ServiceErrorDto" />
   </wsdl:message>
-  <wsdl:message name="IReminderService_Login_InputMessage">
-    <wsdl:part name="parameters" element="tns:Login" />
+  <wsdl:message name="IReminderService_GetCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUser" />
   </wsdl:message>
-  <wsdl:message name="IReminderService_Login_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  <wsdl:message name="IReminderService_GetCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IReminderService_Login_ServiceErrorDtoFault_FaultMessage">
+  <wsdl:message name="IReminderService_GetCurrentUser_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q4:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:portType name="IReminderService">
@@ -61,10 +61,10 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfoResponse" message="tns:IReminderService_GetReminderInfo_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfoServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetReminderInfo_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Login">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/Login" message="tns:IReminderService_Login_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/LoginResponse" message="tns:IReminderService_Login_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/LoginServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_Login_ServiceErrorDtoFault_FaultMessage" />
+    <wsdl:operation name="GetCurrentUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetCurrentUser" message="tns:IReminderService_GetCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetCurrentUserResponse" message="tns:IReminderService_GetCurrentUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetCurrentUserServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetCurrentUser_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -105,8 +105,8 @@
         <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="Login">
-      <soap:operation soapAction="http://tempuri.org/IReminderService/Login" style="document" />
+    <wsdl:operation name="GetCurrentUser">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/GetCurrentUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

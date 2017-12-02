@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:7868/ReminderService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="ServiceErrorDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string" />
@@ -7,12 +8,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceErrorDto" nillable="true" type="tns:ServiceErrorDto" />
-  <xs:simpleType name="LoginResultDto">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NoError" />
-      <xs:enumeration value="InvalidCredentials" />
-      <xs:enumeration value="EmptyCredentials" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="LoginResultDto" nillable="true" type="tns:LoginResultDto" />
+  <xs:complexType name="UserDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Roles" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDto" nillable="true" type="tns:UserDto" />
 </xs:schema>

@@ -2,6 +2,10 @@
 using System.Text;
 using Newtonsoft.Json;
 using System.ServiceModel;
+using System.Web.Security;
+using System;
+using System.Web;
+using Reminder.Common.Entity;
 
 namespace Reminder.Data.Clients
 {
@@ -15,13 +19,33 @@ namespace Reminder.Data.Clients
                 {
                     client.Open();
 
-                    var resultDto = client.Login(login,password);
-                    //TO DO
-                    LoginResult result = (LoginResult)resultDto;
-              
+                    var resultDto = client.GetCurrentUser(login,password);
+
+                    if (resultDto != null)
+                    {
+                        var user = new User()
+                        {
+                            UserId = resultDto.UserId,
+                            Login = resultDto.Login
+                        };
+                        foreach (var item in resultDto.Roles)
+                        {
+                            var role = new Role() { RoleName = item };
+                            user.Roles.Add(role);
+                        }
+
+                        var userData = JsonConvert.SerializeObject(user);
+                        var ticket = new FormsAuthenticationTicket(2, login, DateTime.Now, DateTime.Now.AddHours(1), false, userData);
+                        var encTicket = FormsAuthentication.Encrypt(ticket);
+                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+
+                        HttpContext.Current.Response.Cookies.Add(authCookie);
+
+                        return LoginResult.NoError;
+                    }
+
                     client.Close();
 
-                    return result;
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

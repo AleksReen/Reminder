@@ -353,18 +353,81 @@ namespace Reminder.Data.ReminderService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LoginResultDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-    public enum LoginResultDto : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+    [System.SerializableAttribute()]
+    public partial class UserDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NoError = 0,
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        InvalidCredentials = 1,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LoginField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        EmptyCredentials = 2,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] RolesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Login {
+            get {
+                return this.LoginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
+                    this.LoginField = value;
+                    this.RaisePropertyChanged("Login");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Roles {
+            get {
+                return this.RolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
+                    this.RolesField = value;
+                    this.RaisePropertyChanged("Roles");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -392,12 +455,12 @@ namespace Reminder.Data.ReminderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Login", ReplyAction="http://tempuri.org/IReminderService/LoginResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/LoginServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.LoginResultDto Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetCurrentUser", ReplyAction="http://tempuri.org/IReminderService/GetCurrentUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetCurrentUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Login", ReplyAction="http://tempuri.org/IReminderService/LoginResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.LoginResultDto> LoginAsync(string login, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetCurrentUser", ReplyAction="http://tempuri.org/IReminderService/GetCurrentUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -451,12 +514,12 @@ namespace Reminder.Data.ReminderService {
             return base.Channel.GetReminderInfoAsync(reminderId);
         }
         
-        public Reminder.Data.ReminderService.LoginResultDto Login(string login1, string password) {
-            return base.Channel.Login(login1, password);
+        public Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password) {
+            return base.Channel.GetCurrentUser(login, password);
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.LoginResultDto> LoginAsync(string login, string password) {
-            return base.Channel.LoginAsync(login, password);
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password) {
+            return base.Channel.GetCurrentUserAsync(login, password);
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Common.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -25,7 +21,6 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult Login(string login, string password)
         {
-
             var result = _provider.Login(login, password);
 
             if (result == LoginResult.NoError)
@@ -34,6 +29,13 @@ namespace Reminder.WebUI.Controllers
             }
             //TO DO
             return PartialView("_Login");
+        }
+
+        public ActionResult Logout()
+        {
+            _provider.Logout();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

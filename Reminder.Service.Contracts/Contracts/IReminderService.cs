@@ -1,6 +1,5 @@
 ﻿using Reminder.Service.Contracts.Models.Dto;
 using Reminder.Service.ModelDto.Dto;
-using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace Reminder.Service
@@ -25,7 +24,7 @@ namespace Reminder.Service
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        LoginResultDto Login(string login, string password);
+        UserDto GetCurrentUser(string login, string password);
 
     }
 }
