@@ -1,0 +1,38 @@
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewLogin
+
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="text-danger">
+            @Html.DisplayTextFor(model => model.Message)
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Login)
+            </div>
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.Login, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Login, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="col-md-12">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Login</button>
+
+    </div>
+}

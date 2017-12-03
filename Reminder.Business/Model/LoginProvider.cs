@@ -16,7 +16,7 @@ namespace Reminder.Business.Model
 
         public LoginResult Login(string login, string password)
         {
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(login))
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 return LoginResult.InvalidCredentials;
             }

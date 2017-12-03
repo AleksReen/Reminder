@@ -21,7 +21,7 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.GetCurrentUser(login,password);
 
-                    if (resultDto != null)
+                    if (resultDto.UserId != default(int) && !string.IsNullOrEmpty(resultDto.Login))
                     {
                         var user = new User()
                         {

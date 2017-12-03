@@ -18,8 +18,9 @@ GO
 INSERT INTO Users
 ([Login], [Password], Email)
 VALUES
-('User1', '123', 'user@tut.by'),
-('User2', '123', 'user@tut.by')
+('User', '6216F8A75FD5BB3D5F22B6F9958CDEDE3FC086C2', 'user@tut.by'),
+('Editor', '1C6637A8F2E1F75E06FF9984894D6BD16A3A36A9', 'editor@tut.by'),
+('Admin', '43814346E21444AAF4F70841BF7ED5AE93F55A9D', 'admin@tut.by')
 GO
 
 --заполнение таблицы Roles
@@ -37,7 +38,10 @@ VALUES
 (1,1),
 (2,1),
 (2,2),
-(2,3)
+(3,1),
+(3,2),
+(3,3)
+
 
 --заполнение таблицы Reminders
 
@@ -53,7 +57,7 @@ VALUES
 ('ќганизовать презинтацию', '2017-11-15', CAST('2017-11-14 13:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 4, 2),
 ('—ходить в магазин', '2017-11-20', CAST('2017-11-19 10:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 3, 2),
 ('”строить жене свидание', '2017-11-22', CAST('2017-11-21 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 2, 2),
-('¬стретить родителей жены', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 1, 2)
+('¬стретить родителей жены', '2017-11-15', CAST('2017-11-14 12:00:00' as smalldatetime), '..\Images\No-image-found.jpg', 1, 3)
 GO
 
 --заполнение таблицы Actions

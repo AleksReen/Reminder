@@ -1,5 +1,7 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Common.Enums;
+using Reminder.WebUI.Models.ViewsModels;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -15,20 +17,38 @@ namespace Reminder.WebUI.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            return PartialView("_Login");
+            return View("Login");
         }
 
         [HttpPost]
-        public ActionResult Login(string login, string password)
+        public ActionResult Login(ViewLogin loginInfo)
         {
-            var result = _provider.Login(login, password);
+            string passwordHash = null;
+
+            if (ModelState.IsValid)
+            {
+               passwordHash = Crypto.SHA1(loginInfo.Password);
+            }
+
+            var result = _provider.Login(loginInfo.Login, passwordHash);
 
             if (result == LoginResult.NoError)
             {
                 return RedirectToAction("ReminderList", "Reminder");
             }
+
+            
+            if (result == LoginResult.InvalidCredentials)
+            {
+                loginInfo.Message = "Invalid Credentials";
+            }
+
+            if (result == LoginResult.EmptyCredentials)
+            {
+                loginInfo.Message = "Empty Credentials";
+            }
             //TO DO
-            return PartialView("_Login");
+            return View("Login", loginInfo);
         }
 
         public ActionResult Logout()
