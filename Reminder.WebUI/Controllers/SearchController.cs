@@ -34,58 +34,65 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult GetSearchResult(ViewFilter filter)
         {
-            var user = User as UserPrincipal;
-            var searchList = new List<MyReminder>();
+            ViewBag.Result = true;
 
+            if (!string.IsNullOrEmpty(filter.Name) || filter.Category != default(int) || filter.Date != default(DateTime))
+            {
+                var user = User as UserPrincipal;
+                var searchList = new List<MyReminder>();
 
-            if (!string.IsNullOrEmpty(filter.Name)) {
- 
-                IEnumerable<MyReminder> model = _provider.GetReminders(user.UserId).
-                                                                       Where(x => x.Title.Contains(filter.Name, StringComparison.OrdinalIgnoreCase));
-                if (!model.Any())
+                IReadOnlyList<MyReminder> model = _provider.GetReminders(user.UserId);
+
+                if (!string.IsNullOrEmpty(filter.Name))
                 {
-                    foreach (var item in model)
+
+                    var result = model.Where(x => x.Title.Contains(filter.Name, StringComparison.OrdinalIgnoreCase));
+                    if (result.Any())
                     {
-                        searchList.Add(item);
+                        foreach (var item in result)
+                        {
+                            searchList.Add(item);
+                        }
                     }
+                }
+
+                if (filter.Category != default(int))
+                {
+                    var result = model.Where(x => x.CategoryId == filter.Category);
+
+                    if (result.Any())
+                    {
+                        foreach (var item in result)
+                        {
+                            searchList.Add(item);
+                        }
+                    }
+                }
+
+                if (filter.Date != default(DateTime))
+                {
+                    var result = model.Where(x => x.Date == filter.Date);
+
+                    if (result.Any())
+                    {
+                        foreach (var item in result)
+                        {
+                            searchList.Add(item);
+                        }
+                    }
+                }
+
+                if (searchList.Any())
+                {
+                    searchList.Distinct();
+                    return PartialView("_SearchResult", searchList);
                 }
             }
 
-            if (filter.Category != default(int))
-            {
-                IEnumerable<MyReminder> model = _provider.GetReminders(user.UserId).
-                                                                      Where(x => x.CategoryId == filter.Category);
+            ViewBag.Result = false;
+            ViewBag.Message = "Sorry, you do not have any reminders matching the parameters";
 
-                if (!model.Any())
-                {
-                    foreach (var item in model)
-                    {
-                        searchList.Add(item);
-                    }
-                }
-            }
-
-            if (filter.Date != default(DateTime))
-            {
-                IEnumerable<MyReminder> model = _provider.GetReminders(user.UserId).
-                                                                      Where(x => x.Date == filter.Date);
-
-                if (!model.Any())
-                {
-                    foreach (var item in model)
-                    {
-                        searchList.Add(item);
-                    }
-                }
-            }
-
-            if (searchList.Any())
-            {
-                searchList.Distinct();
-                return PartialView("_SearchResult", searchList);
-            }
-
-            return new EmptyResult();
+            return PartialView("_SearchResult");
         }
     }
 }
