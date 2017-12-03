@@ -44,7 +44,7 @@ namespace Reminder.Data.Clients
 
         }
 
-        public IReadOnlyList<MyReminder> GetReminders()
+        public IReadOnlyList<MyReminder> GetReminders(int userId)
         {
             var listReminders = new List<MyReminder>();
             using (var client = new ReminderService.ReminderServiceClient())
@@ -53,7 +53,7 @@ namespace Reminder.Data.Clients
                 {
                     client.Open();
 
-                    var remindersDto = client.GetAllReminders();
+                    var remindersDto = client.GetAllReminders(userId);
 
                     if (remindersDto != null)
                     {

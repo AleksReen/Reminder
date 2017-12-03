@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.WebUI.Models.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,9 +19,11 @@ namespace Reminder.WebUI.Controllers
         // GET: Reminder
         public ActionResult ReminderList(int? category)
         {
-            var reminders = _provider.GetReminders()
-                                                    .Where(c => category == null || c.CategoryId == category)
-                                                    .OrderBy(c => c.Date);                                                  
+            var user = User as UserPrincipal;
+
+            var reminders = _provider.GetReminders(user.UserId)
+                                                   .Where(c => category == null || c.CategoryId == category)
+                                                   .OrderBy(c => c.Date);   
             return View(reminders);
         }
     }

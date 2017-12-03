@@ -1,6 +1,7 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Common.Entity;
 using Reminder.Common.HelperMethods;
+using Reminder.WebUI.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,13 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult GetSearchResult(string name, string date, string category)
         {
+            //TO DO
             ViewBag.result = false;
 
             if (!string.IsNullOrEmpty(name)) {
-                
-                IEnumerable<MyReminder> model = _provider.GetReminders().
+
+                var user = User as UserPrincipal;
+                IEnumerable<MyReminder> model = _provider.GetReminders(user.UserId).
                                                                        Where(x => x.Title.Contains(name, StringComparison.OrdinalIgnoreCase));
                 ViewBag.result = true;
                 return PartialView("_SearchResult", model);

@@ -436,10 +436,10 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetAllRemindersServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders();
+        Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync();
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetAllCategoriesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
@@ -490,12 +490,12 @@ namespace Reminder.Data.ReminderService {
                 base(binding, remoteAddress) {
         }
         
-        public Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders() {
-            return base.Channel.GetAllReminders();
+        public Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders(int userId) {
+            return base.Channel.GetAllReminders(userId);
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync() {
-            return base.Channel.GetAllRemindersAsync();
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync(int userId) {
+            return base.Channel.GetAllRemindersAsync(userId);
         }
         
         public Reminder.Data.ReminderService.CategoryDto[] GetAllCategories() {

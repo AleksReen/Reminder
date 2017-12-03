@@ -18,9 +18,9 @@ namespace Reminder.Data.DataBase
         }
  
         //method invokes a list of reminders
-        public IReadOnlyList<MyReminder> GetMyReminders()
+        public IReadOnlyList<MyReminder> GetMyReminders(int userId)
         {
-            return _remClient.GetReminders();
+            return _remClient.GetReminders(userId);
         }
         //method enumerates a list of categories
         public IReadOnlyList<Category> GetCategories()

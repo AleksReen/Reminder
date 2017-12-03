@@ -72,7 +72,7 @@ namespace Reminder.Service
             return categoriesList.ToArray();
         }
 
-        public MyReminderDto [] GetAllReminders()
+        public MyReminderDto [] GetAllReminders(int userId)
         {
             var remindersList = new List<MyReminderDto>();
 
@@ -81,6 +81,7 @@ namespace Reminder.Service
                 using (var cmd = new SqlCommand("GetAllReminders", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@userId", userId);
 
                     try
                     {

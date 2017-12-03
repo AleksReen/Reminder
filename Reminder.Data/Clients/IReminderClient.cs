@@ -5,7 +5,7 @@ namespace Reminder.Data.Clients
 {
     public interface IReminderClient
     {
-        IReadOnlyList<MyReminder> GetReminders();
+        IReadOnlyList<MyReminder> GetReminders(int userId);
         ReminderInfo GetReminderInfo(int id);
     }
 }

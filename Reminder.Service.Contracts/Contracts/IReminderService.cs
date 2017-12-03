@@ -10,7 +10,7 @@ namespace Reminder.Service
         //method invokes a list of reminders
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        MyReminderDto [] GetAllReminders();
+        MyReminderDto [] GetAllReminders(int userId);
 
         //method enumerates a list of categories
         [OperationContract]

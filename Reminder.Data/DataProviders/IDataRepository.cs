@@ -8,7 +8,7 @@ namespace Reminder.Data.DataProviders
     public interface IDataRepository
     {
         //method invokes a list of reminders
-        IReadOnlyList<MyReminder> GetMyReminders();
+        IReadOnlyList<MyReminder> GetMyReminders(int userId);
 
         //method enumerates a list of categories
         IReadOnlyList<Category> GetCategories();

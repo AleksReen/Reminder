@@ -23,9 +23,9 @@ namespace Reminder.Business.Model
             return _dataProvider.GetCategories();
         }
         //the property returns the processed value Category
-        public IReadOnlyList<MyReminder> GetReminders()
+        public IReadOnlyList<MyReminder> GetReminders(int userId)
         {
-            return _dataProvider.GetMyReminders();
+            return _dataProvider.GetMyReminders(userId);
         }
 
         public ReminderInfo GetReminderInfo(int id)
