@@ -1,11 +1,6 @@
 ﻿@model IEnumerable<Reminder.Common.Entity.MyReminder>
 
-@if (!ViewBag.result)
-{
-    <div>No results</div>
-}
-else
-{
+
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -60,5 +55,5 @@ else
         }
 
     </table>
-}
+
 
