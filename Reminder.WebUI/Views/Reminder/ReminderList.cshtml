@@ -1,10 +1,7 @@
-﻿@using Reminder.Common.Entity
-@using Reminder.WebUI.Models.Entity
-@model IEnumerable<MyReminder>
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderList
 
 @{
     ViewBag.Title = "ReminderList";
-    var user = HttpContext.Current.User as UserPrincipal;
 }
 
 <h2>ReminderList</h2>
@@ -26,13 +23,13 @@
     @if (HttpContext.Current.User.Identity.IsAuthenticated)
     {
 
-        if (user.IsInRole("Editor"))
+        if (Model.CurrentUser.IsInRole("Editor"))
         {
             <h3>Edit Mode</h3>
             @Html.RouteLink("Editor", "Editor_Mode", new { controller = "Editor", action = "Index" })
         }
 
-        if (user.IsInRole("Admin"))
+        if (Model.CurrentUser.IsInRole("Admin"))
         {
             <h3>Admin Mode</h3>
             @Html.RouteLink("Admin", "Admin_Mode", new { controller = "Admin", action = "Index" })
@@ -43,7 +40,7 @@
 
 <div class="col-md-10">
     <h3>Reminders</h3>
-    @foreach (var reminder in Model)
+    @foreach (var reminder in Model.Reminders)
     {
         Html.RenderPartial("_GetReminderItem", reminder);
     }

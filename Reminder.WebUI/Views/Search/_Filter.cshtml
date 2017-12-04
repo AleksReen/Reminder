@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-12">
-               @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать страну", new { @class = "form-control"})
+               @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control", data_val = "false" })
                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +27,7 @@
 
             <div class="col-md-12">
                 <div class='input-group' id='datetimepicker'>
-                    @Html.TextBoxFor(model => model.Date, "", new { @class = "form-control datatimepicker-max-width" })
+                    @Html.TextBoxFor(model => model.Date, "", new { @class = "form-control datatimepicker-max-width", data_val = "false" })
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>

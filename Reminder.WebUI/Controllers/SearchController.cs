@@ -15,8 +15,7 @@ namespace Reminder.WebUI.Controllers
     public class SearchController : Controller
     {
         private IReminderProvider _provider;
-        // GET: Search
-
+ 
         public SearchController(IReminderProvider provider)
         {
             _provider = provider;
@@ -40,9 +39,8 @@ namespace Reminder.WebUI.Controllers
 
             if (!string.IsNullOrEmpty(filter.Name) || filter.Category != default(int) || filter.Date != default(DateTime))
             {
-                var user = User as UserPrincipal;
                 var searchList = new List<MyReminder>();
-
+                var user = User as UserPrincipal;
                 IReadOnlyList<MyReminder> model = _provider.GetReminders(user.UserId);
 
                 if (!string.IsNullOrEmpty(filter.Name))
