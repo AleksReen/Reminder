@@ -1,6 +1,6 @@
 ﻿@model Reminder.Common.Entity.MyReminder
 
-<div class="col-md-5">
+<div class="col-md-4">
     <h4>@Html.DisplayFor(model => model.Title)</h4>
     <hr />
 
@@ -31,13 +31,13 @@
                 @Html.DisplayNameFor(model => model.CategoryId)
             </dt>
 
-            @Html.Action("GetItemCategory", "ReminderItem", new { id = Model.CategoryId })
+            @Html.Action("GetCategoryName", "Category", new { id = Model.CategoryId })
 
         </dl>
     </div>
-    
-
-    <p>
-        @Html.ActionLink("Details", "GetDetails", "ReminderItem", new { reminderId = Model.ReminderId }, null)
-    </p>
+    <div class="button-conteiner">
+        @Html.ActionLink("Details", "GetDetails", "Details", new { reminderId = Model.ReminderId }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Edite", "GetDetails", "Details", new { reminderId = Model.ReminderId }, new { @class = "btn  btn-warning" })
+        @Html.ActionLink("Delete", "GetDetails", "Details", new { reminderId = Model.ReminderId }, new { @class = "btn btn-danger" })
+    </div>
 </div>

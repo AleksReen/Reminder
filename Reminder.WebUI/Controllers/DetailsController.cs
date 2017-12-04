@@ -6,11 +6,11 @@ using System.Web.Mvc;
 namespace Reminder.WebUI.Controllers
 {
     [Authorization(Roles = "User")]
-    public class ReminderItemController : Controller
+    public class DetailsController : Controller
     {
         private IReminderProvider _provider;
 
-        public ReminderItemController(IReminderProvider provider)
+        public DetailsController(IReminderProvider provider)
         {
             _provider = provider;
         }
@@ -20,13 +20,6 @@ namespace Reminder.WebUI.Controllers
             var model = _provider.GetReminderInfo(reminderId);
            
             return View(model);
-        }
-        
-        public ActionResult GetItemCategory(int id)
-        {
-            var categoryName = _provider.GetCategories().Single(x => x.CategoryId == id).CategoryName;
- 
-            return PartialView("_GetItemCategory", categoryName);
         }
     }
 }

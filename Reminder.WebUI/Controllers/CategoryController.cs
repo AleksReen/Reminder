@@ -21,5 +21,12 @@ namespace Reminder.WebUI.Controllers
 
             return PartialView("_CategoryList", categories);
         }
+
+        public ActionResult GetCategoryName(int id)
+        {
+            var categoryName = _provider.GetCategories().Single(x => x.CategoryId == id).CategoryName;
+
+            return PartialView("_GetCategoryName", categoryName);
+        }
     }
 }

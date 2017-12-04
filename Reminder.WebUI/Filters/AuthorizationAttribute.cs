@@ -16,12 +16,11 @@ namespace Reminder.WebUI.Filters
 
             if (user == null)
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Login", area = "" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Access", action = "Denied", area = "" }));
                 
             }
-
-            if (user != null)
-            {
+            else
+            { 
                 if (!user.IsInRole(Roles))
                 {
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Access", action = "Denied", area = "" }));

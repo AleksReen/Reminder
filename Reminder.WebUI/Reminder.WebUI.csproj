@@ -188,7 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReminderController.cs" />
-    <Compile Include="Controllers\ReminderItemController.cs" />
+    <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
@@ -196,7 +196,6 @@
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
     <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
     <Compile Include="Filters\AuthorizationAttribute.cs" />
-    <Compile Include="Filters\EditorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,10 +214,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Reminder\ReminderList.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_GetReminderItem.cshtml" />
+    <Content Include="Views\Reminder\_Reminder.cshtml" />
     <Content Include="Views\Category\_CategoryList.cshtml" />
-    <Content Include="Views\ReminderItem\GetDetails.cshtml" />
-    <Content Include="Views\ReminderItem\_GetItemCategory.cshtml" />
+    <Content Include="Views\Details\GetDetails.cshtml" />
+    <Content Include="Views\Category\_GetCategoryName.cshtml" />
     <Content Include="Views\Search\SearchList.cshtml" />
     <Content Include="Views\Search\_Filter.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
