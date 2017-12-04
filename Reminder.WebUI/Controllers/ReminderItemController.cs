@@ -1,10 +1,11 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.WebUI.Filters;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
-    //the controller processes a separate reminder
+    [Authorization(Roles = "User")]
     public class ReminderItemController : Controller
     {
         private IReminderProvider _provider;

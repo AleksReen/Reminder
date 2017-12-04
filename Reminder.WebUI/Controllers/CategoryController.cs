@@ -1,10 +1,11 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.WebUI.Filters;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
-    //the controller processes the navigation menu
+    [Authorization(Roles = "User")]
     public class CategoryController : Controller
     {
         private IReminderProvider _provider;
@@ -14,7 +15,6 @@ namespace Reminder.WebUI.Controllers
             _provider = provider;
         }
 
-        // GET: Category
         public ActionResult CategoryList()
         {          
             var categories = _provider.GetCategories().OrderBy(x => x.CategoryName);

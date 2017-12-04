@@ -1,11 +1,12 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
-    //the controller processes the reminder page
+    [Authorization(Roles = "User")]
     public class ReminderController : Controller
     {
         private IReminderProvider _provider;
@@ -15,8 +16,6 @@ namespace Reminder.WebUI.Controllers
             _provider = prov;
         }
 
-        //method returns a list of reminders with the category
-        // GET: Reminder
         public ActionResult ReminderList(int? category)
         {
             var user = User as UserPrincipal;

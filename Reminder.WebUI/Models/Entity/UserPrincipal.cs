@@ -23,7 +23,16 @@ namespace Reminder.WebUI.Models.Entity
 
         public bool IsInRole(string role)
         {
-            return Roles.Contains(role);
+            var roles = role.Split(new char[] { ',' });
+
+            for (int i = 0; i < roles.Length; i++)
+            {
+                if (Roles.Contains(roles[i]))
+                {
+                    return true;
+                }      
+            }
+            return false;
         }
     }
 }

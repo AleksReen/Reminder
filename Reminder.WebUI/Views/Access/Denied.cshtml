@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Denied";
+}
+
+<h2>Sorry, you do not have enough access rights</h2>
+
+<p>Contact your system administrator or use an account with the appropriate level of access</p>
+
+@Html.RouteLink("Login", new { controller = "Login", action = "Login"}, new { @class = "btn btn-info" })

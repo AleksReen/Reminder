@@ -1,6 +1,7 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Common.Entity;
 using Reminder.Common.HelperMethods;
+using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
 using Reminder.WebUI.Models.ViewsModels;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
+    [Authorization(Roles = "User")]
     public class SearchController : Controller
     {
         private IReminderProvider _provider;
