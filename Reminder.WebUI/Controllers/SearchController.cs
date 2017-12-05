@@ -14,16 +14,18 @@ namespace Reminder.WebUI.Controllers
     [Authorization(Roles = "User")]
     public class SearchController : Controller
     {
-        private IReminderProvider _provider;
- 
-        public SearchController(IReminderProvider provider)
+        private ICategoryProvider _providerCategory;
+        private IReminderProvider _providerReminder;
+
+        public SearchController(ICategoryProvider providerC, IReminderProvider providerR)
         {
-            _provider = provider;
+            _providerCategory = providerC;
+            _providerReminder = providerR;
         }
 
         public ActionResult SearchList()
         {          
-            ViewBag.Category = _provider.GetCategories().OrderBy(x => x.CategoryName);
+            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
            
             return View();
         }
@@ -41,7 +43,7 @@ namespace Reminder.WebUI.Controllers
             {
                 var searchList = new List<MyReminder>();
                 var user = User as UserPrincipal;
-                IReadOnlyList<MyReminder> model = _provider.GetReminders(user.UserId);
+                IReadOnlyList<MyReminder> model = _providerReminder.GetReminders(user.UserId);
 
                 if (!string.IsNullOrEmpty(filter.Name))
                 {

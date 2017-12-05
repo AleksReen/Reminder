@@ -8,9 +8,9 @@ namespace Reminder.WebUI.Controllers
 {
     public class LoginController : Controller
     {
-        private ILoginProvider _provider;
+        private IUserProvider _provider;
 
-        public LoginController(ILoginProvider prov)
+        public LoginController(IUserProvider prov)
         {
             _provider = prov;
         }

@@ -5,11 +5,11 @@ using Reminder.Data.DataProviders;
 
 namespace Reminder.Business.Model
 {
-    public class LoginProvider : ILoginProvider
+    public class UserProvider : IUserProvider
     {
         private IUserRepository _userProvider;
 
-        public LoginProvider(IUserRepository provider)
+        public UserProvider(IUserRepository provider)
         {
             _userProvider = provider;
         }

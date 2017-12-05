@@ -8,9 +8,9 @@ namespace Reminder.WebUI.Controllers
     [Authorization(Roles = "User")]
     public class CategoryController : Controller
     {
-        private IReminderProvider _provider;
+        private ICategoryProvider _provider;
 
-        public CategoryController(IReminderProvider provider)
+        public CategoryController(ICategoryProvider provider)
         {
             _provider = provider;
         }

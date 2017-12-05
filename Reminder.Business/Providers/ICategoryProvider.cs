@@ -1,4 +1,4 @@
-﻿using Reminder.Common.Enums;
+﻿using Reminder.Common.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Reminder.Business.Providers
 {
-   public interface ILoginProvider
-   {
-        ServerResponse Login(string login, string password);
-        void Logout();
+    public interface ICategoryProvider
+    {
+        IReadOnlyList<Category> GetCategories();
     }
 }
