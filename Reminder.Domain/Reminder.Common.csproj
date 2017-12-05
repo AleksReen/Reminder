@@ -46,7 +46,7 @@
     <Compile Include="Entity\ReminderInfo.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />
-    <Compile Include="Enums\LoginResult.cs" />
+    <Compile Include="Enums\ServerResponse.cs" />
     <Compile Include="HelperMethods\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

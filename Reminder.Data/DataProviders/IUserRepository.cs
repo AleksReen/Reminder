@@ -4,6 +4,6 @@ namespace Reminder.Data.DataProviders
 {
     public interface IUserRepository
     {
-        LoginResult Login(string login, string password);
+        ServerResponse Login(string login, string password);
     }
 }

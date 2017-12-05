@@ -12,7 +12,7 @@ namespace Reminder.Data.DataBase
         {
             _userClient = user;
         }
-        public LoginResult Login(string login, string password)
+        public ServerResponse Login(string login, string password)
         {
             return _userClient.Login(login, password);
         }

@@ -9,7 +9,7 @@ namespace Reminder.Business.Providers
 {
    public interface ILoginProvider
    {
-        LoginResult Login(string login, string password);
+        ServerResponse Login(string login, string password);
         void Logout();
     }
 }

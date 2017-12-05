@@ -32,18 +32,18 @@ namespace Reminder.WebUI.Controllers
 
             var result = _provider.Login(loginInfo.Login, passwordHash);
 
-            if (result == LoginResult.NoError)
+            if (result == ServerResponse.NoError)
             {
                 return RedirectToAction("ReminderList", "Reminder");
             }
 
             
-            if (result == LoginResult.InvalidCredentials)
+            if (result == ServerResponse.InvalidCredentials)
             {
                 loginInfo.Message = "Invalid Credentials";
             }
 
-            if (result == LoginResult.EmptyCredentials)
+            if (result == ServerResponse.EmptyCredentials)
             {
                 loginInfo.Message = "Empty Credentials";
             }

@@ -14,11 +14,11 @@ namespace Reminder.Business.Model
             _userProvider = provider;
         }
 
-        public LoginResult Login(string login, string password)
+        public ServerResponse Login(string login, string password)
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                return LoginResult.InvalidCredentials;
+                return ServerResponse.InvalidCredentials;
             }
             else
             {

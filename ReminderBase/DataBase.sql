@@ -75,6 +75,7 @@ GO
 ALTER TABLE Users_Roles ADD CONSTRAINT
 	FK_Users_Roles_Users FOREIGN KEY (UserId)
 	REFERENCES Users(UserId)
+	ON DELETE CASCADE
 GO
 
 ALTER TABLE Users_Roles ADD CONSTRAINT
@@ -95,6 +96,7 @@ GO
 ALTER TABLE Reminders ADD CONSTRAINT
 	FK_Reminders_Categories FOREIGN KEY (CategoryId)
 	REFERENCES Categories(CategoryId)
+	ON DELETE CASCADE
 GO
 
 ALTER TABLE Descriptions ADD 

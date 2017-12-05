@@ -9,6 +9,6 @@ namespace Reminder.Data.Clients
 {
     public interface IUserClient
     {
-        LoginResult Login(string login, string password);  
+        ServerResponse Login(string login, string password);  
     }
 }

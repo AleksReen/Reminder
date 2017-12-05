@@ -11,7 +11,7 @@ namespace Reminder.Data.Clients
 {
     public class UserClient : IUserClient
     {
-        public LoginResult Login(string login, string password)
+        public ServerResponse Login(string login, string password)
         {
             using (var client = new ReminderService.ReminderServiceClient())
             {
@@ -41,7 +41,7 @@ namespace Reminder.Data.Clients
 
                         HttpContext.Current.Response.Cookies.Add(authCookie);
 
-                        return LoginResult.NoError;
+                        return ServerResponse.NoError;
                     }
 
                     client.Close();
@@ -53,7 +53,7 @@ namespace Reminder.Data.Clients
                 }
             }
             
-            return LoginResult.EmptyCredentials;
+            return ServerResponse.EmptyCredentials;
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿
 namespace Reminder.Common.Enums
 {
-    public enum LoginResult
+    public enum ServerResponse
     {
         NoError,
         InvalidCredentials,
-        EmptyCredentials
+        EmptyCredentials,
+        DataBaseError
     }
 }
