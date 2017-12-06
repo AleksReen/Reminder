@@ -1,0 +1,38 @@
+﻿@model Reminder.WebUI.Areas.Editor.Models.ViewModelEditeCategory
+
+<div id="results">
+    <h3>Create Category</h3>
+    <hr />
+    @using (Ajax.BeginForm("EditeCategory", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.CategoryName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <button class="btn btn-success" type="submit">Create</button>
+
+        </div>
+    }
+</div>
