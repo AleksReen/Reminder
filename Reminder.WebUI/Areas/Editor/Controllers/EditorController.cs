@@ -53,7 +53,7 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
             return PartialView("_EditeCategory");
         }
         [HttpPost]
-        public ActionResult EditeCategory(ViewModelCreateCategory a)
+        public ActionResult EditeCategory(ViewModelEditeCategory editCategory)
         {
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return PartialView("_EditeCategory");

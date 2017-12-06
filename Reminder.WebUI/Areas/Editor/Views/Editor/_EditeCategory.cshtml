@@ -12,22 +12,22 @@
 
             <div class="form-group">
                 <div class="col-md-3">
-                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.EditeCategory, htmlAttributes: new { @class = "control-label" })
                 </div>
                 <div class="col-md-12">
-                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control"})
-                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.EditeCategory, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.EditeCategory, "", new { @class = "text-danger" })
                 </div>
             </div>
 
 
             <div class="form-group">
                 <div class="col-md-3">
-                    @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.NewName, htmlAttributes: new { @class = "control-label" })
                 </div>
                 <div class="col-md-12">
-                    @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control"})
-                    @Html.ValidationMessageFor(model => model.CategoryName, null, new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.NewName, new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.NewName, null, new { @class = "text-danger" })
                 </div>
             </div>
 
