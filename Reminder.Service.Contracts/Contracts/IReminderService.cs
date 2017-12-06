@@ -26,5 +26,17 @@ namespace Reminder.Service
         [FaultContract(typeof(ServiceErrorDto))]
         UserDto GetCurrentUser(string login, string password);
 
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ServerResultDto AddCategory(string categoryName);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ServerResultDto EditeCategory(int categoryId, string categoryName);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ServerResultDto DeleteCategory(int categoryId);
+
     }
 }

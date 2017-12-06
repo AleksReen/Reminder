@@ -16,4 +16,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDto" nillable="true" type="tns:UserDto" />
+  <xs:complexType name="ServerResultDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerResultDto" nillable="true" type="tns:ServerResultDto" />
 </xs:schema>

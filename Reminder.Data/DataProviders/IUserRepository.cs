@@ -6,9 +6,6 @@ namespace Reminder.Data.DataProviders
 {
     public interface IUserRepository
     {
-        IReadOnlyList<Category> GetCategories();
-        ServerResponse AddCategory(string categoryName);
-        ServerResponse EditeCategory(int categoryId, string categoryName);
-        ServerResponse DeleteCategory(int categotryId);
+        ServerResponse Login(string login, string password);
     }
 }

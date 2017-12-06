@@ -1,0 +1,25 @@
+﻿@model string
+
+<div id="results">
+    <h3>Delete Category</h3>
+    <hr />
+
+    @if (ViewBag.Result)
+    {
+        <h2>
+            <span class="glyphicons glyphicons-ok-circle" style="color:#5cb85c"></span>
+            The category you selected was successfully deleted
+        </h2>
+    }
+    else
+    {
+        <h2>
+            <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+            An attempt to delete the category failed
+        </h2>
+    }
+
+    @Ajax.ActionLink("Delete", "DeleteCategory", "Editor", new AjaxOptions { UpdateTargetId = "results" }, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
+
+</div>

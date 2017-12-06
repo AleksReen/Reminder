@@ -1,0 +1,25 @@
+﻿@model string
+
+<div id="results">
+    <h3>Edite Category</h3>
+    <hr />
+
+    @if (ViewBag.Result)
+    {
+        <h2>
+            <span class="glyphicons glyphicons-ok-circle" style="color:#5cb85c"></span>
+            The category you selected was successfully changed to <b>@Model</b>
+        </h2>
+    }
+    else
+    {
+        <h2>
+            <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+            An attempt to edite the category of <b>@Model</b> failed
+        </h2>
+    }
+
+    @Ajax.ActionLink("Edite", "EditeCategory", "Editor", new AjaxOptions { UpdateTargetId = "results" }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
+
+</div>

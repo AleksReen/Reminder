@@ -21,17 +21,17 @@ namespace Reminder.Business.Model
 
         public ServerResponse AddCategory(string categoryName)
         {
-            return ServerResponse.NoError;
+            return _dataProvider.AddCategory(categoryName);
         }
 
-        public ServerResponse DeleteCategory(int categotryId)
+        public ServerResponse DeleteCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            return _dataProvider.DeleteCategory(categoryId);
         }
 
         public ServerResponse EditeCategory(int categoryId, string categoryName)
         {
-            throw new NotImplementedException();
+            return _dataProvider.EditeCategory(categoryId, categoryName);
         }
 
         public IReadOnlyList<Category> GetCategories()

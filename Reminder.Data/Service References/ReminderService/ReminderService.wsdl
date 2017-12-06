@@ -45,6 +45,33 @@
   <wsdl:message name="IReminderService_GetCurrentUser_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q4:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_AddCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategory" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_AddCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_AddCategory_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q5:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_EditeCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditeCategory" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_EditeCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditeCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_EditeCategory_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q6:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_DeleteCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_DeleteCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_DeleteCategory_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q7:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -65,6 +92,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetCurrentUser" message="tns:IReminderService_GetCurrentUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetCurrentUserResponse" message="tns:IReminderService_GetCurrentUser_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetCurrentUserServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetCurrentUser_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/AddCategory" message="tns:IReminderService_AddCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/AddCategoryResponse" message="tns:IReminderService_AddCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/AddCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_AddCategory_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditeCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/EditeCategory" message="tns:IReminderService_EditeCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/EditeCategoryResponse" message="tns:IReminderService_EditeCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/EditeCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_EditeCategory_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/DeleteCategory" message="tns:IReminderService_DeleteCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/DeleteCategoryResponse" message="tns:IReminderService_DeleteCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/DeleteCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_DeleteCategory_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -107,6 +149,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetCurrentUser">
       <soap:operation soapAction="http://tempuri.org/IReminderService/GetCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditeCategory">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/EditeCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/DeleteCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -16,11 +16,11 @@
 
             <div class="form-group">
                 <div class="col-md-3">
-                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label" })
                 </div>
                 <div class="col-md-12">
-                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>
 

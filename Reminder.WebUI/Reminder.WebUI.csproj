@@ -150,6 +150,9 @@
     <Content Include="Areas\Editor\Views\Editor\_CreateCategory.cshtml" />
     <Content Include="Areas\Editor\Views\Editor\_EditeCategory.cshtml" />
     <Content Include="Areas\Editor\Views\Editor\_DeleteCategory.cshtml" />
+    <Content Include="Areas\Editor\Views\Editor\_ResultCreate.cshtml" />
+    <Content Include="Areas\Editor\Views\Editor\_ResultEdite.cshtml" />
+    <Content Include="Areas\Editor\Views\Editor\_ResultDelete.cshtml" />
     <None Include="Properties\PublishProfiles\ReminderSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

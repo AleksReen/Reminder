@@ -10,7 +10,7 @@ namespace Reminder.WebUI.Areas.Editor.Models
     {
         [Required(ErrorMessage = "Required field category")]
         [Display(Name = "Category name")]
-        public int Category { get; set; }
+        public int CategoryId { get; set; }
         [Required(ErrorMessage = "Required field new name")]
         [Display(Name = "New name")]
         public string NewName { get; set; }

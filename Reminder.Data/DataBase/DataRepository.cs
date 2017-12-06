@@ -2,10 +2,11 @@
 using Reminder.Data.Clients;
 using Reminder.Data.DataProviders;
 using System.Collections.Generic;
+using Reminder.Common.Enums;
+using System;
 
 namespace Reminder.Data.DataBase
 {
-    //class emulates the database
     public class DataRepository: IDataRepository
     {
         private ICategoryClient _categoryClient;
@@ -31,6 +32,21 @@ namespace Reminder.Data.DataBase
         public ReminderInfo GetReminderInfo(int id)
         {
             return _remClient.GetReminderInfo(id);
+        }
+
+        public ServerResponse AddCategory(string categoryName)
+        {
+            return _categoryClient.AddCategory(categoryName);
+        }
+
+        public ServerResponse EditeCategory(int categoryId, string categoryName)
+        {
+            return _categoryClient.EditeCategory(categoryId, categoryName);
+        }
+
+        public ServerResponse DeleteCategory(int categoryId)
+        {
+            return _categoryClient.DeleteCategory(categoryId);
         }
     }
 }

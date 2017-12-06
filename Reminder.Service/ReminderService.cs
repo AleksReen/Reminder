@@ -24,12 +24,12 @@ namespace Reminder.Service
             {
                 connectionString = ConfigurationManager.ConnectionStrings["ReminderBase"].ConnectionString;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                error.Message = "conection string error";
-                throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
+                error.Message = e.Message;
+                throw new FaultException<ServiceErrorDto>(error, "Database error");
             }
-            
+
         }
 
         public CategoryDto [] GetAllCategories()
@@ -61,10 +61,10 @@ namespace Reminder.Service
 
                         sqlCn.Close();
                     }
-                    catch (SqlException)
+                    catch (Exception e)
                     {
-                        error.Message = "error reading data from the database";
-                        throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
                 }
             }
@@ -106,10 +106,10 @@ namespace Reminder.Service
 
                         sqlCn.Close();
                     }
-                    catch (SqlException)
+                    catch (Exception e)
                     {
-                        error.Message = "error reading data from the database";
-                        throw new FaultException<ServiceErrorDto>(error, "DataBase Error");
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
                 }
             }
@@ -159,9 +159,9 @@ namespace Reminder.Service
 
                         sqlCn.Close();
                     }
-                    catch (SqlException)
+                    catch (Exception e)
                     {
-                        error.Message = "error reading data from the database";
+                        error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
                 }
@@ -208,12 +208,117 @@ namespace Reminder.Service
 
                         sqlCn.Close();
                     }
-                    catch (SqlException)
+                    catch (Exception e)
                     {
-                        error.Message = "error reading data from the database";
+                        error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
                     return user;
+                }
+            }
+        }
+
+        public ServerResultDto AddCategory(string categoryName)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("CreateCategory", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@categoryName", categoryName);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();                       
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
+
+        public ServerResultDto EditeCategory(int categoryId, string categoryName)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("EditeCategory", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CategoryName", categoryName);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
+
+        public ServerResultDto DeleteCategory(int categoryId)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("DeleteCategory", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
                 }
             }
         }

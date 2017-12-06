@@ -35,14 +35,18 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 var result = _providerCategory.AddCategory(category.CategoryName);
                 if (result == ServerResponse.NoError)
                 {
-                    category.Message = "Category added";
+                    category.Message = category.CategoryName;
+                    ViewBag.Result = true;
+                    return PartialView("_ResultCreate", category.CategoryName);
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
-                    category.Message = "Error adding to the database";
-                }
-                return PartialView("_CreateCategory", category);
+                    category.Message = category.CategoryName;
+                    ViewBag.Result = true;
+                    return PartialView("_ResultCreate", category.CategoryName);
+                } 
             }
+
             return PartialView("_CreateCategory");
         }
 
@@ -54,6 +58,23 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
         [HttpPost]
         public ActionResult EditeCategory(EditeCategory editeCategory)
         {
+            if (ModelState.IsValid)
+            {
+                var result = _providerCategory.EditeCategory(editeCategory.CategoryId, editeCategory.NewName);
+                if (result == ServerResponse.NoError)
+                {
+                    editeCategory.Message = editeCategory.NewName;
+                    ViewBag.Result = true;
+                    return PartialView("_ResultEdite", editeCategory.NewName);
+                }
+                if (result == ServerResponse.DataBaseError)
+                {
+                    editeCategory.Message = editeCategory.NewName;
+                    ViewBag.Result = false;
+                    return PartialView("_ResultEdite", editeCategory.NewName);
+                }
+            }
+
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return PartialView("_EditeCategory");
         }
@@ -66,6 +87,21 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
         [HttpPost]
         public ActionResult DeleteCategory(DeleteCategory deleteCategory)
         {
+            if (ModelState.IsValid)
+            {
+                var result = _providerCategory.DeleteCategory(deleteCategory.CategoryId);
+                if (result == ServerResponse.NoError)
+                {
+                    ViewBag.Result = true;
+                    return PartialView("_ResultDelete");
+                }
+                if (result == ServerResponse.DataBaseError)
+                {
+                    ViewBag.Result = true;
+                    return PartialView("_ResultDelete");
+                }
+            }
+
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return PartialView("_DeleteCategory");
         }
