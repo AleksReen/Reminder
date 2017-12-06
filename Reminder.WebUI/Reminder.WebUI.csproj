@@ -149,6 +149,7 @@
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Editor\Views\Editor\_CreateCategory.cshtml" />
     <Content Include="Areas\Editor\Views\Editor\_EditeCategory.cshtml" />
+    <Content Include="Areas\Editor\Views\Editor\_DeleteCategory.cshtml" />
     <None Include="Properties\PublishProfiles\ReminderSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -186,7 +187,8 @@
     <Compile Include="Areas\Editor\Controllers\EditorController.cs" />
     <Compile Include="Areas\Editor\EditorAreaRegistration.cs" />
     <Compile Include="Areas\Editor\Models\ViewModelCreateCategory.cs" />
-    <Compile Include="Areas\Editor\Models\ViewModelEditeCategory.cs" />
+    <Compile Include="Areas\Editor\Models\DeleteCategory.cs" />
+    <Compile Include="Areas\Editor\Models\EditeCategory.cs" />
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

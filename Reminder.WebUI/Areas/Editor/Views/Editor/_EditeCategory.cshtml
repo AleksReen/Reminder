@@ -1,7 +1,7 @@
-﻿@model Reminder.WebUI.Areas.Editor.Models.ViewModelEditeCategory
+﻿@model Reminder.WebUI.Areas.Editor.Models.EditeCategory
 
 <div id="results">
-    <h3>Create Category</h3>
+    <h3>Edite Category</h3>
     <hr />
     @using (Ajax.BeginForm("EditeCategory", new AjaxOptions { UpdateTargetId = "results" }))
     {
@@ -12,11 +12,11 @@
 
             <div class="form-group">
                 <div class="col-md-3">
-                    @Html.LabelFor(model => model.EditeCategory, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
                 </div>
                 <div class="col-md-12">
-                    @Html.DropDownListFor(model => model.EditeCategory, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control"})
-                    @Html.ValidationMessageFor(model => model.EditeCategory, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -31,8 +31,14 @@
                 </div>
             </div>
 
-            <button class="btn btn-success" type="submit">Create</button>
+            <button class="btn btn-warning" type="submit">Edite</button>
+
+            @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
 
         </div>
+        if (Model != null && !string.IsNullOrEmpty(Model.Message))
+        {
+            <div>@Model.Message</div>
+        }
     }
 </div>

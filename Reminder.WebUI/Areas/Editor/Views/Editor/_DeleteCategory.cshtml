@@ -1,0 +1,36 @@
+﻿@model Reminder.WebUI.Areas.Editor.Models.DeleteCategory
+
+<div id="results">
+    <h3>Delete Category</h3>
+    <hr />
+    <h3>
+        <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+        Attention! Deleting a category will delete the reminders of users of this category!
+    </h3>
+    @using (Ajax.BeginForm("DeleteCategory", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <button class="btn btn-danger" type="submit">Delete</button>
+            @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
+
+        </div>
+        if (Model != null && !string.IsNullOrEmpty(Model.Message))
+        {
+            <div>@Model.Message</div>
+        }
+    }
+</div>

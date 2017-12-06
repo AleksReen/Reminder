@@ -1,5 +1,4 @@
 ﻿using Reminder.Business.Providers;
-using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Editor.Models;
 using Reminder.WebUI.Filters;
@@ -53,10 +52,22 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
             return PartialView("_EditeCategory");
         }
         [HttpPost]
-        public ActionResult EditeCategory(ViewModelEditeCategory editCategory)
+        public ActionResult EditeCategory(EditeCategory editeCategory)
         {
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return PartialView("_EditeCategory");
+        }
+
+        public ActionResult DeleteCategory()
+        {
+            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            return PartialView("_DeleteCategory");
+        }
+        [HttpPost]
+        public ActionResult DeleteCategory(DeleteCategory deleteCategory)
+        {
+            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            return PartialView("_DeleteCategory");
         }
     }
 }

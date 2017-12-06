@@ -11,7 +11,7 @@
         @Html.ActionLink("Select an action", "Index", "Editor", new {area = "Editor"}, new { @class = "list-group-item active" })
         @Html.Raw(@Ajax.ActionLink("[replacetext]", "CreateCategory", "Editor", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-pencil'></span>  Create"))
         @Html.Raw(@Ajax.ActionLink("[replacetext]", "EditeCategory", "Editor", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-refresh'></span>  Edite"))
-        @Html.Raw(@Ajax.ActionLink("[replacetext]", "Index", "Home", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-trash'></span>  Delete"))
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "DeleteCategory", "Editor", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-trash'></span>  Delete"))
     </div>
 
 </div>

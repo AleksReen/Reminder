@@ -6,11 +6,11 @@ using System.Web;
 
 namespace Reminder.WebUI.Areas.Editor.Models
 {
-    public class ViewModelEditeCategory
+    public class EditeCategory
     {
         [Required(ErrorMessage = "Required field category")]
         [Display(Name = "Category name")]
-        public int EditeCategory { get; set; }
+        public int Category { get; set; }
         [Required(ErrorMessage = "Required field new name")]
         [Display(Name = "New name")]
         public string NewName { get; set; }
