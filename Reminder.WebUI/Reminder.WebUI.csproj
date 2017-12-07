@@ -196,6 +196,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ReminderController.cs" />
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Models\Entity\UserPrincipal.cs" />
     <Compile Include="Models\ViewsModels\ViewFilter.cs" />
     <Compile Include="Models\ViewsModels\ViewLogin.cs" />
+    <Compile Include="Models\ViewsModels\ViewRegistration.cs" />
     <Compile Include="Models\ViewsModels\ViewReminderFullInfo.cs" />
     <Compile Include="Models\ViewsModels\ViewReminderList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,6 +236,7 @@
     <Content Include="Views\Search\_SearchResult.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Access\Denied.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

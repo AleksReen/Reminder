@@ -32,6 +32,10 @@
                         @HttpContext.Current.User.Identity.Name
                     </span>
                 }
+                else
+                {
+                    @Html.ActionLink("Registration", "Registration", "Registration", new { area = "" }, new { @class = "navbar-brand navbar-right" })
+                }
             </div>
         </div>
     </div>
@@ -41,15 +45,15 @@
     </div>
 
     @*<div class="navbar-fixed-bottom row-fluid">
-         <div class="container">
-             <hr />
-                <footer class="row">
-                    <div class="col-md-12">
-                        <p>@DateTime.Now.ToShortDateString()</p>
-                    </div>
-                </footer>
-         </div>
-    </div>*@
+             <div class="container">
+                 <hr />
+                    <footer class="row">
+                        <div class="col-md-12">
+                            <p>@DateTime.Now.ToShortDateString()</p>
+                        </div>
+                    </footer>
+             </div>
+        </div>*@
 
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
