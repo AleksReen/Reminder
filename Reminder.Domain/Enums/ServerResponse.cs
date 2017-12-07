@@ -6,6 +6,7 @@ namespace Reminder.Common.Enums
         NoError,
         InvalidCredentials,
         EmptyCredentials,
-        DataBaseError
+        DataBaseError,
+        RegistrationFaild
     }
 }

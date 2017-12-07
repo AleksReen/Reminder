@@ -10,6 +10,7 @@ namespace Reminder.Business.Providers
    public interface IUserProvider
    {
         ServerResponse Login(string login, string password);
+        ServerResponse Registration(string login, string password, string email);
         void Logout();
     }
 }

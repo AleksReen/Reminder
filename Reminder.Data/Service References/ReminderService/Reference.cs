@@ -527,6 +527,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteCategory", ReplyAction="http://tempuri.org/IReminderService/DeleteCategoryResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> DeleteCategoryAsync(int categoryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Registration", ReplyAction="http://tempuri.org/IReminderService/RegistrationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/RegistrationServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ServerResultDto Registration(string login, string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Registration", ReplyAction="http://tempuri.org/IReminderService/RegistrationResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> RegistrationAsync(string login, string password, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -610,6 +617,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> DeleteCategoryAsync(int categoryId) {
             return base.Channel.DeleteCategoryAsync(categoryId);
+        }
+        
+        public Reminder.Data.ReminderService.ServerResultDto Registration(string login, string password, string email) {
+            return base.Channel.Registration(login, password, email);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> RegistrationAsync(string login, string password, string email) {
+            return base.Channel.RegistrationAsync(login, password, email);
         }
     }
 }

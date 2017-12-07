@@ -7,17 +7,14 @@ namespace Reminder.Service
     [ServiceContract]
     public interface IReminderService
     {
-        //method invokes a list of reminders
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         MyReminderDto [] GetAllReminders(int userId);
 
-        //method enumerates a list of categories
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         CategoryDto [] GetAllCategories();
 
-        //return Reminder description
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         ReminderInfoDto GetReminderInfo(int reminderId);
@@ -38,5 +35,8 @@ namespace Reminder.Service
         [FaultContract(typeof(ServiceErrorDto))]
         ServerResultDto DeleteCategory(int categoryId);
 
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ServerResultDto Registration(string login, string password, string email);
     }
 }

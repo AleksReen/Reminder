@@ -55,5 +55,32 @@ namespace Reminder.Data.Clients
             
             return ServerResponse.EmptyCredentials;
         }
+
+        public ServerResponse Registration(string login, string password, string email)
+        {                
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.Registration(login, password, email);
+
+                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    {
+                        return ServerResponse.NoError;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return ServerResponse.RegistrationFaild;
+        }
     }
 }

@@ -72,6 +72,15 @@
   <wsdl:message name="IReminderService_DeleteCategory_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q7:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_Registration_InputMessage">
+    <wsdl:part name="parameters" element="tns:Registration" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_Registration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_Registration_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q8:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -107,6 +116,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/DeleteCategory" message="tns:IReminderService_DeleteCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/DeleteCategoryResponse" message="tns:IReminderService_DeleteCategory_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/DeleteCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_DeleteCategory_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/Registration" message="tns:IReminderService_Registration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/RegistrationResponse" message="tns:IReminderService_Registration_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/RegistrationServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_Registration_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -185,6 +199,18 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteCategory">
       <soap:operation soapAction="http://tempuri.org/IReminderService/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/Registration" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

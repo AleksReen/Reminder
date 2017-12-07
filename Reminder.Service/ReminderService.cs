@@ -322,5 +322,41 @@ namespace Reminder.Service
                 }
             }
         }
+
+        public ServerResultDto Registration(string login, string password, string email)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("CreateUser", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@login", login);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
     }
 }
