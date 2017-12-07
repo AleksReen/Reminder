@@ -1,0 +1,63 @@
+﻿@model Reminder.WebUI.Areas.Admin.Models.ViewCreateUser
+
+<div id="results">
+    <h3>Create User</h3>
+    <hr />
+    @using (Ajax.BeginForm("CreateUser", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Login)
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.Login, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Login, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Password)
+                </div>
+                <div class="col-md-12">
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.RePassword)
+                </div>
+                <div class="col-md-12">
+                    @Html.PasswordFor(model => model.RePassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RePassword, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Email)
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <button class="btn btn-success" type="submit">Create</button>
+            @Html.ActionLink("Close", "Index", "Admin", new { area = "Admin" }, new { @class = "btn btn-primary" })
+
+        </div>
+
+        if (Model != null && !string.IsNullOrEmpty(Model.Message))
+        {
+            <div>@Model.Message</div>
+        }
+    }
+</div>

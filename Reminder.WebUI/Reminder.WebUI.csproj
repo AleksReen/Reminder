@@ -153,6 +153,8 @@
     <Content Include="Areas\Editor\Views\Editor\_ResultCreate.cshtml" />
     <Content Include="Areas\Editor\Views\Editor\_ResultEdite.cshtml" />
     <Content Include="Areas\Editor\Views\Editor\_ResultDelete.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_CreateUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_ResultCreateUser.cshtml" />
     <None Include="Properties\PublishProfiles\ReminderSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -187,6 +189,7 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Models\ViewCreateUser.cs" />
     <Compile Include="Areas\Editor\Controllers\EditorController.cs" />
     <Compile Include="Areas\Editor\EditorAreaRegistration.cs" />
     <Compile Include="Areas\Editor\Models\ViewModelCreateCategory.cs" />
@@ -246,7 +249,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Reminder.Business\Reminder.Business.csproj">

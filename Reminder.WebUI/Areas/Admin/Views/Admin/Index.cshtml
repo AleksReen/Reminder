@@ -1,7 +1,35 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
+    var options = new AjaxOptions { UpdateTargetId = "result" };
 }
 
-<h2>Index</h2>
-<div>Welcom to Admin Mode</div>
+<div class="col-md-4">
+    <h2>Welcom to Admin Mode</h2>
+
+    <div class="list-group list-unstyled">
+        @Html.ActionLink("Select an action", "Index", "Admin", new { area = "Admin" }, new { @class = "list-group-item active" })
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "CreateUser", "Admin", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-user'></span>  Create User"))
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "EditeCategory", "Editor", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-refresh'></span>  Edite"))
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "DeleteCategory", "Editor", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-trash'></span>  Delete"))
+    </div>
+
+    <div>
+        @Html.ActionLink("Return to MyReminder", "ReminderList", "Reminder", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+
+<div class="col-md-8">
+    <div id="result">
+        <h2>Description</h2>
+        <p>
+            Et nulla gubergren magna accusam aliquip lobortis ea vel ipsum facilisis vero
+            et eum dolor assum sanctus diam et at rebum accusam est lorem eros et accusam lorem
+            et clita lorem diam autem et nonumy dolor quod est et aliquyam et erat aliquyam lobortis
+            facilisis ut accusam tempor at accusam gubergren eirmod nulla dolore et ipsum vel diam est tempor
+            clita luptatum tation eos et exerci diam dolor sanctus amet consetetur ex vero amet invidunt illum
+            et feugiat assum nibh clita dolor sed dolore dolor clita clita luptatum erat diam nibh et sit nulla justo
+            diam lorem takimata no accusam
+        </p>
+    </div>
+</div>

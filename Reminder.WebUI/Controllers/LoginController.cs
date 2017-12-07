@@ -17,7 +17,7 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult Login()
         {
-            return View("Login", new ViewLogin ());
+            return View("Login");
         }
 
         [HttpPost]

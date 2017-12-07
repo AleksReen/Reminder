@@ -21,7 +21,7 @@ namespace Reminder.WebUI.Controllers
         // GET: Registration
         public ActionResult Registration()
         {
-            return View("Registration", new ViewRegistration ());
+            return View("Registration");
         }
 
         [HttpPost]

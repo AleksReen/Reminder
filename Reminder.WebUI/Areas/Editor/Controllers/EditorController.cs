@@ -42,7 +42,7 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 if (result == ServerResponse.DataBaseError)
                 {
                     category.Message = category.CategoryName;
-                    ViewBag.Result = true;
+                    ViewBag.Result = false;
                     return PartialView("_ResultCreate", category.CategoryName);
                 } 
             }
@@ -97,7 +97,7 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
-                    ViewBag.Result = true;
+                    ViewBag.Result = false;
                     return PartialView("_ResultDelete");
                 }
             }
