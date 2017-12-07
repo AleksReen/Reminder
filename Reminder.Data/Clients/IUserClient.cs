@@ -1,4 +1,5 @@
-﻿using Reminder.Common.Enums;
+﻿using Reminder.Common.Entity;
+using Reminder.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Reminder.Data.Clients
     {
         ServerResponse Login(string login, string password);
         ServerResponse Registration(string login, string password, string email);
+        IReadOnlyList<User> GetUsers();
     }
 }

@@ -38,5 +38,9 @@ namespace Reminder.Service
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         ServerResultDto Registration(string login, string password, string email);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        UserDto[] GetUsers();
     }
 }

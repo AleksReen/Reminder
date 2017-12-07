@@ -6,11 +6,53 @@ using System.Web.Security;
 using System;
 using System.Web;
 using Reminder.Common.Entity;
+using System.Collections.Generic;
 
 namespace Reminder.Data.Clients
 {
     public class UserClient : IUserClient
     {
+        public IReadOnlyList<User> GetUsers()
+        {
+            var listUsers = new List<User>();
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var usersDto = client.GetUsers();
+
+                    if (usersDto != null)
+                    {
+                        foreach (var user in usersDto)
+                        {
+                            var u = new User()
+                            {
+                                UserId = user.UserId,
+                                Login = user.Login,
+                                Email = user.Email,
+                            };
+                            foreach (var role in user.Roles)
+                            {
+                                var r = new Role();
+                                r.RoleName = role;
+                                u.Roles.Add(r);
+                            }
+                            listUsers.Add(u);
+                        }
+                    }
+                    client.Close();
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+
+            }
+            return listUsers;
+        }
+
         public ServerResponse Login(string login, string password)
         {
             using (var client = new ReminderService.ReminderServiceClient())

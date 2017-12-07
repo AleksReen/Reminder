@@ -50,23 +50,16 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
                     ViewBag.Result = false;
                     return PartialView("_ResultCreate", user.Login);
                 }
-
-                //var result = _providerCategory.AddCategory(category.CategoryName);
-                //if (result == ServerResponse.NoError)
-                //{
-                //    category.Message = category.CategoryName;
-                //    ViewBag.Result = true;
-                //    return PartialView("_ResultCreate", category.CategoryName);
-                //}
-                //if (result == ServerResponse.DataBaseError)
-                //{
-                //    category.Message = category.CategoryName;
-                //    ViewBag.Result = true;
-                //    return PartialView("_ResultCreate", category.CategoryName);
-                //}
             }
 
             return PartialView("_CreateUser");
+        }
+
+        public ActionResult ModifyUsers()
+        {
+            var userList = _provider.GetUsers().OrderBy(x => x.Login);
+            
+            return PartialView("_ModifyUsers", userList);
         }
     }
 }

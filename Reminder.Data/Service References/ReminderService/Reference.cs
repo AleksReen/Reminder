@@ -363,6 +363,9 @@ namespace Reminder.Data.ReminderService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LoginField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -378,6 +381,19 @@ namespace Reminder.Data.ReminderService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
             }
         }
         
@@ -534,6 +550,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Registration", ReplyAction="http://tempuri.org/IReminderService/RegistrationResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> RegistrationAsync(string login, string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetUsers", ReplyAction="http://tempuri.org/IReminderService/GetUsersResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetUsersServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetUsers", ReplyAction="http://tempuri.org/IReminderService/GetUsersResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -625,6 +648,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> RegistrationAsync(string login, string password, string email) {
             return base.Channel.RegistrationAsync(login, password, email);
+        }
+        
+        public Reminder.Data.ReminderService.UserDto[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
         }
     }
 }

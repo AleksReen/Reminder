@@ -6,6 +6,7 @@ namespace Reminder.Common.Entity
     {
         public int UserId { get; set; }
         public string Login { get; set; }
+        public string Email { get; set; }
         public List<Role> Roles { get; set; }
 
         public User()

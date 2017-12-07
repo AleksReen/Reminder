@@ -8,5 +8,6 @@ namespace Reminder.Data.DataProviders
     {
         ServerResponse Login(string login, string password);
         ServerResponse Registration(string login, string password, string email);
+        IReadOnlyList<User> GetUsers();
     }
 }

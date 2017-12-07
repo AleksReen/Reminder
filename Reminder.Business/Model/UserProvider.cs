@@ -3,6 +3,8 @@ using Reminder.Common.Enums;
 using System.Web.Security;
 using Reminder.Data.DataProviders;
 using System;
+using Reminder.Common.Entity;
+using System.Collections.Generic;
 
 namespace Reminder.Business.Model
 {
@@ -13,6 +15,11 @@ namespace Reminder.Business.Model
         public UserProvider(IUserRepository provider)
         {
             _userProvider = provider;
+        }
+
+        public IReadOnlyList<User> GetUsers()
+        {
+            return _userProvider.GetUsers();
         }
 
         public ServerResponse Login(string login, string password)

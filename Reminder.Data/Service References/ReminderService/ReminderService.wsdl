@@ -81,6 +81,15 @@
   <wsdl:message name="IReminderService_Registration_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q8:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_GetUsers_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q9:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -121,6 +130,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/Registration" message="tns:IReminderService_Registration_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/RegistrationResponse" message="tns:IReminderService_Registration_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/RegistrationServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_Registration_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetUsers" message="tns:IReminderService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetUsersResponse" message="tns:IReminderService_GetUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetUsersServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetUsers_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -211,6 +225,18 @@
     </wsdl:operation>
     <wsdl:operation name="Registration">
       <soap:operation soapAction="http://tempuri.org/IReminderService/Registration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/GetUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

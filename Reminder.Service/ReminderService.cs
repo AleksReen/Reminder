@@ -358,5 +358,47 @@ namespace Reminder.Service
                 }
             }
         }
+
+        public UserDto[] GetUsers()
+        {
+            var userList = new List<UserDto>();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+                using (var cmd = new SqlCommand("GetUsers", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                   
+                    try
+                    {
+                        sqlCn.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var user = new UserDto()
+                                {
+                                    UserId = (int)reader["UserId"],
+                                    Login = reader["Login"].ToString(),
+                                    Email = reader["Email"].ToString()
+                                };
+                                user.Roles.Add(reader["Role"].ToString());
+                                userList.Add(user);
+                            }
+                        }
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                }
+            }
+
+            return userList.ToArray();
+        }
     }
 }

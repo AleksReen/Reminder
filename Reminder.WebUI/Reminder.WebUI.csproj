@@ -155,6 +155,7 @@
     <Content Include="Areas\Editor\Views\Editor\_ResultDelete.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_CreateUser.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_ResultCreateUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_ModifyUsers.cshtml" />
     <None Include="Properties\PublishProfiles\ReminderSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -11,6 +11,8 @@ namespace Reminder.Service.ModelDto.Dto
         [DataMember]
         public string Login { get; set; }
         [DataMember]
+        public string Email { get; set; }
+        [DataMember]
         public List<string> Roles { get; set; }
 
         public UserDto()

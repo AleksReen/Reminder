@@ -2,6 +2,8 @@
 using Reminder.Common.Enums;
 using Reminder.Data.Clients;
 using System;
+using Reminder.Common.Entity;
+using System.Collections.Generic;
 
 namespace Reminder.Data.DataBase
 {
@@ -13,6 +15,12 @@ namespace Reminder.Data.DataBase
         {
             _userClient = user;
         }
+
+        public IReadOnlyList<User> GetUsers()
+        {
+            return _userClient.GetUsers();
+        }
+
         public ServerResponse Login(string login, string password)
         {
             return _userClient.Login(login, password);
