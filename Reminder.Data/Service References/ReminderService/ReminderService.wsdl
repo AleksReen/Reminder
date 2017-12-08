@@ -117,6 +117,15 @@
   <wsdl:message name="IReminderService_UpdateUser_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q12:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_DeleteUser_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q13:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -177,6 +186,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/UpdateUser" message="tns:IReminderService_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/UpdateUserResponse" message="tns:IReminderService_UpdateUser_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/UpdateUserServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_UpdateUser_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/DeleteUser" message="tns:IReminderService_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/DeleteUserResponse" message="tns:IReminderService_DeleteUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/DeleteUserServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_DeleteUser_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -315,6 +329,18 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap:operation soapAction="http://tempuri.org/IReminderService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/DeleteUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

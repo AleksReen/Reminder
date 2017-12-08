@@ -9,6 +9,7 @@ namespace Reminder.Data.DataProviders
         ServerResponse Login(string login, string password);
         ServerResponse Registration(string login, string password, string email);
         ServerResponse UpdateUser(int id, string login, string email, int roleId);
+        ServerResponse DeleteUser(int id);
         IReadOnlyList<UserReminder> GetUsers();
         IReadOnlyList<UserRole> GetRoles();
         UserReminder GetEditeUser(int id);

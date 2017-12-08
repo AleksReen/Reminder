@@ -17,6 +17,11 @@ namespace Reminder.Business.Model
             _userProvider = provider;
         }
 
+        public ServerResponse DeleteUser(int id)
+        {
+            return _userProvider.DeleteUser(id);
+        }
+
         public UserReminder GetEditeUser(int id)
         {
             return _userProvider.GetEditeUser(id);

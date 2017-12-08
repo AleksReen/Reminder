@@ -90,5 +90,25 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
             ViewBag.Roles = _provider.GetRoles();
             return PartialView("_EditeUser", updateUser);
         }
+
+        public ActionResult DeleteUser(UserReminder user)
+        {          
+            return PartialView("_DeleteUser", user);
+        }
+
+        public ActionResult СonfirmedDeleteUser(int id)
+        {
+            var result = _provider.DeleteUser(id);
+            if (result == ServerResponse.NoError)
+            {
+                ViewBag.Result = true;
+                return PartialView("_ResultDeleteUser");
+            }
+            else
+            {
+                ViewBag.Result = false;
+                return PartialView("_ResultUpdateUser");
+            }
+        }
     }
 }

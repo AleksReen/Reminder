@@ -639,6 +639,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateUser", ReplyAction="http://tempuri.org/IReminderService/UpdateUserResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateUserAsync(int id, string login, string email, int roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteUser", ReplyAction="http://tempuri.org/IReminderService/DeleteUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/DeleteUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ServerResultDto DeleteUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteUser", ReplyAction="http://tempuri.org/IReminderService/DeleteUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> DeleteUserAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -762,6 +769,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateUserAsync(int id, string login, string email, int roleId) {
             return base.Channel.UpdateUserAsync(id, login, email, roleId);
+        }
+        
+        public Reminder.Data.ReminderService.ServerResultDto DeleteUser(int id) {
+            return base.Channel.DeleteUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> DeleteUserAsync(int id) {
+            return base.Channel.DeleteUserAsync(id);
         }
     }
 }

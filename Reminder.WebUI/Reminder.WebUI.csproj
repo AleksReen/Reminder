@@ -158,6 +158,8 @@
     <Content Include="Areas\Admin\Views\Admin\_ModifyUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_EditeUser.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_ResultUpdateUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_DeleteUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_ResultDeleteUser.cshtml" />
     <None Include="Properties\PublishProfiles\ReminderSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

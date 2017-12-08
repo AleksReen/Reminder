@@ -13,6 +13,7 @@ namespace Reminder.Business.Providers
         ServerResponse Login(string login, string password);
         ServerResponse Registration(string login, string password, string email);
         ServerResponse UpdateUser(int id, string login, string email, int roleId);
+        ServerResponse DeleteUser(int id);
         void Logout();
         IReadOnlyList<UserReminder> GetUsers();
         IReadOnlyList<UserRole> GetRoles();

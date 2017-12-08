@@ -12,6 +12,33 @@ namespace Reminder.Data.Clients
 {
     public class UserClient : IUserClient
     {
+        public ServerResponse DeleteUser(int id)
+        {
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.DeleteUser(id);
+
+                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    {
+                        return ServerResponse.NoError;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return ServerResponse.DataBaseError;
+        }
+
         public UserReminder GetEditeUser(int id)
         {
             var user = new UserReminder();

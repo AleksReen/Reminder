@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Reminder.Service.Contracts.Models.Dto;
+﻿using Reminder.Service.Contracts.Models.Dto;
 using Reminder.Service.ModelDto.Dto;
 using System;
 using System.Collections.Generic;
@@ -7,8 +6,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.ServiceModel;
-using System.Web;
-using System.Web.Security;
 
 namespace Reminder.Service
 {
@@ -510,6 +507,40 @@ namespace Reminder.Service
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@roleId", roleId);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
+
+        public ServerResultDto DeleteUser(int id)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("DeleteUser", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
                     returnParameter.Direction = ParameterDirection.ReturnValue;

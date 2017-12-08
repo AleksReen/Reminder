@@ -32,7 +32,7 @@
                 </td>
                 <td>
                     @Ajax.ActionLink("Edit", "EditeUser", "Admin", new { id = item.UserId }, new AjaxOptions { UpdateTargetId = "result" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                    @Ajax.ActionLink("Delete", "DeleteUser", "Admin", item, new AjaxOptions { UpdateTargetId = "result" })
                 </td>
             </tr>
         }
