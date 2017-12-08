@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Reminder.Service.ModelDto.Dto
 {
     [DataContract]
-    public class UserDto
+    public class UserInfo
     {
         [DataMember]
         public int UserId { get; set; }
@@ -17,6 +17,11 @@ namespace Reminder.Service.ModelDto.Dto
         [DataMember]
         public string Email { get; set; }
         [DataMember]
-        public RoleDto UserRole { get; set; }
+        public List<RoleDto> Roles { get; set; }
+
+        public UserInfo()
+        {
+            Roles = new List<RoleDto>();
+        }
     }
 }

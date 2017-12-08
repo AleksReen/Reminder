@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reminder.Service.ModelDto.Dto
 {
     [DataContract]
-    public class UserDto
+    public class User
     {
         [DataMember]
         public int UserId { get; set; }
@@ -17,6 +13,11 @@ namespace Reminder.Service.ModelDto.Dto
         [DataMember]
         public string Email { get; set; }
         [DataMember]
-        public RoleDto UserRole { get; set; }
+        public List<string> Roles { get; set; }
+
+        public User()
+        {
+            Roles = new List<string>();
+        }
     }
 }

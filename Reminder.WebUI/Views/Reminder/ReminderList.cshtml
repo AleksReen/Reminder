@@ -24,7 +24,7 @@
     @if (HttpContext.Current.User.Identity.IsAuthenticated)
     {
 
-        if (Model.CurrentUser.IsInRole("Editor"))
+        if (Model.CurrentUser.IsInRole("Editor, Admin"))
         {
             <h3>Edit Mode</h3>
             @Html.RouteLink("Editor", "Editor_Mode", new { controller = "Editor", action = "Index" })

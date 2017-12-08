@@ -12,9 +12,43 @@ namespace Reminder.Data.Clients
 {
     public class UserClient : IUserClient
     {
-        public IReadOnlyList<User> GetUsers()
+        public UserReminder GetEditeUser(int id)
         {
-            var listUsers = new List<User>();
+            var user = new UserReminder();
+            //using (var client = new ReminderService.ReminderServiceClient())
+            //{
+            //    try
+            //    {
+            //        client.Open();
+
+            //        var userDto = client.EditeUser(id);
+
+            //        if (userDto != null)
+            //        {
+            //            user.UserId = userDto.UserId;
+            //            user.Login = userDto.Login;
+            //            user.Email = userDto.Email;
+
+            //            foreach (var role in userDto.Roles)
+            //            {
+            //                var r = new UserRole { RoleName = role };
+            //                user.UserRole.Add(r);
+            //            }
+            //        }
+            //        client.Close();
+            //    }
+            //    catch (FaultException<ReminderService.ServiceErrorDto> ex)
+            //    {
+            //        log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+            //    }
+
+            //}
+            return user;
+        }
+
+        public IReadOnlyList<UserReminder> GetUsers()
+        {
+            var listUsers = new List<UserReminder>();
             using (var client = new ReminderService.ReminderServiceClient())
             {
                 try
@@ -27,18 +61,20 @@ namespace Reminder.Data.Clients
                     {
                         foreach (var user in usersDto)
                         {
-                            var u = new User()
+                            var u = new UserReminder()
                             {
                                 UserId = user.UserId,
                                 Login = user.Login,
-                                Email = user.Email,
+                                Email = user.Email, 
                             };
-                            foreach (var role in user.Roles)
+
+                            var role = new UserRole
                             {
-                                var r = new Role();
-                                r.RoleName = role;
-                                u.Roles.Add(r);
-                            }
+                                RoleId = user.UserRole.RoleId,
+                                RoleName = user.UserRole.RoleName
+                            };
+                            u.UserRole = role;
+
                             listUsers.Add(u);
                         }
                     }
@@ -65,16 +101,18 @@ namespace Reminder.Data.Clients
 
                     if (resultDto.UserId != default(int) && !string.IsNullOrEmpty(resultDto.Login))
                     {
-                        var user = new User()
+                        var user = new UserReminder()
                         {
                             UserId = resultDto.UserId,
-                            Login = resultDto.Login
+                            Login = resultDto.Login,
                         };
-                        foreach (var item in resultDto.Roles)
+
+                        var role = new UserRole()
                         {
-                            var role = new Role() { RoleName = item };
-                            user.Roles.Add(role);
-                        }
+                           RoleName = resultDto.UserRole.RoleName
+                        };
+
+                        user.UserRole = role;
 
                         var userData = JsonConvert.SerializeObject(user);
                         var ticket = new FormsAuthenticationTicket(2, login, DateTime.Now, DateTime.Now.AddHours(1), false, userData);

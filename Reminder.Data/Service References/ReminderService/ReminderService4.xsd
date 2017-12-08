@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:7868/ReminderService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="ServiceErrorDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string" />
@@ -12,11 +11,18 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Roles" nillable="true" type="q1:ArrayOfstring" />
       <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserRole" nillable="true" type="tns:RoleDto" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDto" nillable="true" type="tns:UserDto" />
+  <xs:complexType name="RoleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleId" type="xs:int" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleDto" nillable="true" type="tns:RoleDto" />
   <xs:complexType name="ServerResultDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Result" type="xs:int" />

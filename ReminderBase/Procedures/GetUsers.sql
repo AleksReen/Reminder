@@ -1,11 +1,9 @@
 CREATE PROCEDURE GetUsers
 AS
-SELECT u.UserId, [Login], Email, [Role] = STUFF((SELECT ',' + r.[Role] 
-													FROM dbo.Roles r
-													JOIN Users_Roles as u_r
-													ON u_r.RoleId = r.RoleId
-													WHERE u.UserId = u_r.UserId
-										FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '')
+SELECT u.UserId, [Login], Email, r.RoleId, r.[Role] 
 FROM Users as u
-GROUP BY u.UserId, u.Login, u.Email
+JOIN Users_Roles as u_r
+ON u_r.UserId = u.UserId
+JOIN Roles as r
+ON r.RoleId = u_r.RoleId
 RETURN 0

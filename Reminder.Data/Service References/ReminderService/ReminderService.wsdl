@@ -90,6 +90,15 @@
   <wsdl:message name="IReminderService_GetUsers_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q9:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_EditeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditeUser" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_EditeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_EditeUser_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q10:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -135,6 +144,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetUsers" message="tns:IReminderService_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetUsersResponse" message="tns:IReminderService_GetUsers_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetUsersServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetUsers_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditeUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/EditeUser" message="tns:IReminderService_EditeUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/EditeUserResponse" message="tns:IReminderService_EditeUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/EditeUserServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_EditeUser_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -237,6 +251,18 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <soap:operation soapAction="http://tempuri.org/IReminderService/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditeUser">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/EditeUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

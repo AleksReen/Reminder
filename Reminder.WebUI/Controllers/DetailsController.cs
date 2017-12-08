@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
 {
-    [Authorization(Roles = "User")]
+    [Authorization(Roles = "User, Editor, Admin")]
     public class DetailsController : Controller
     {
         private IReminderProvider _provider;

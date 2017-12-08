@@ -17,7 +17,12 @@ namespace Reminder.Business.Model
             _userProvider = provider;
         }
 
-        public IReadOnlyList<User> GetUsers()
+        public UserReminder GetEditeUser(int id)
+        {
+            return _userProvider.GetEditeUser(id);
+        }
+
+        public IReadOnlyList<UserReminder> GetUsers()
         {
             return _userProvider.GetUsers();
         }

@@ -9,7 +9,7 @@ namespace Reminder.WebUI.Models.Entity
     {
         public int UserId { get; set; }
         public string Login { get; set; }
-        public string [] Roles { get; set; }
+        public string  Roles { get; set; }
 
         public IIdentity Identity
         {
@@ -25,13 +25,11 @@ namespace Reminder.WebUI.Models.Entity
         {
             var roles = role.Split(new char[] { ',' });
 
-            for (int i = 0; i < roles.Length; i++)
+            if (role.Contains(Roles))
             {
-                if (Roles.Contains(roles[i]))
-                {
-                    return true;
-                }      
+                return true;
             }
+
             return false;
         }
     }

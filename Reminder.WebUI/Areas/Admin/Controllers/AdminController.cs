@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Admin.Models;
 using Reminder.WebUI.Filters;
@@ -60,6 +61,13 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
             var userList = _provider.GetUsers().OrderBy(x => x.Login);
             
             return PartialView("_ModifyUsers", userList);
+        }
+
+        public ActionResult EditeUser(int id)
+        {
+            var user = _provider.GetEditeUser(id);
+
+            return PartialView("_EditeUser", user);
         }
     }
 }

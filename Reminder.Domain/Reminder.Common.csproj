@@ -44,8 +44,8 @@
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\MyReminder.cs" />
     <Compile Include="Entity\ReminderInfo.cs" />
-    <Compile Include="Entity\Role.cs" />
-    <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\UserRole.cs" />
+    <Compile Include="Entity\UserReminder.cs" />
     <Compile Include="Enums\ServerResponse.cs" />
     <Compile Include="HelperMethods\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,11 +25,11 @@ namespace Reminder.WebUI
             if (auth != null)
             {
                 var ticket = FormsAuthentication.Decrypt(auth.Value);
-                var model = JsonConvert.DeserializeObject<User>(ticket.UserData);
+                var model = JsonConvert.DeserializeObject<UserReminder>(ticket.UserData);
                 var principal = new UserPrincipal(ticket.Name);
                 principal.UserId = model.UserId;
                 principal.Login = model.Login;
-                principal.Roles = model.Roles.Select(x => x.RoleName).ToArray();
+                principal.Roles = model.UserRole.RoleName;
                 HttpContext.Current.User = principal;
             }
         }

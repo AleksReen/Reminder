@@ -369,10 +369,10 @@ namespace Reminder.Data.ReminderService {
         private string LoginField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] RolesField;
+        private int UserIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserIdField;
+        private Reminder.Data.ReminderService.RoleDto UserRoleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -411,19 +411,6 @@ namespace Reminder.Data.ReminderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Roles {
-            get {
-                return this.RolesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
-                    this.RolesField = value;
-                    this.RaisePropertyChanged("Roles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int UserId {
             get {
                 return this.UserIdField;
@@ -432,6 +419,80 @@ namespace Reminder.Data.ReminderService {
                 if ((this.UserIdField.Equals(value) != true)) {
                     this.UserIdField = value;
                     this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Reminder.Data.ReminderService.RoleDto UserRole {
+            get {
+                return this.UserRoleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserRoleField, value) != true)) {
+                    this.UserRoleField = value;
+                    this.RaisePropertyChanged("UserRole");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RoleDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+    [System.SerializableAttribute()]
+    public partial class RoleDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoleIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoleId {
+            get {
+                return this.RoleIdField;
+            }
+            set {
+                if ((this.RoleIdField.Equals(value) != true)) {
+                    this.RoleIdField = value;
+                    this.RaisePropertyChanged("RoleId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoleName {
+            get {
+                return this.RoleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleNameField, value) != true)) {
+                    this.RoleNameField = value;
+                    this.RaisePropertyChanged("RoleName");
                 }
             }
         }
@@ -557,6 +618,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetUsers", ReplyAction="http://tempuri.org/IReminderService/GetUsersResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/EditeUser", ReplyAction="http://tempuri.org/IReminderService/EditeUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/EditeUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto EditeUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/EditeUser", ReplyAction="http://tempuri.org/IReminderService/EditeUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -656,6 +724,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
+        }
+        
+        public Reminder.Data.ReminderService.UserDto EditeUser(int id) {
+            return base.Channel.EditeUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id) {
+            return base.Channel.EditeUserAsync(id);
         }
     }
 }
