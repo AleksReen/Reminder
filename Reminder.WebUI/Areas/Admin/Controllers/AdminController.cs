@@ -6,6 +6,7 @@ using Reminder.WebUI.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -92,7 +93,7 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
         }
 
         public ActionResult DeleteUser(UserReminder user)
-        {          
+        {
             return PartialView("_DeleteUser", user);
         }
 

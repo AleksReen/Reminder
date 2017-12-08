@@ -1,25 +1,30 @@
 ﻿@model string
 
-<div id="results">
-    <h3>Delete User</h3>
+<div>
+    <h3>
+        Delete User
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.gif" />
+        </span>
+    </h3>
     <hr />
 
     @if (ViewBag.Result)
     {
-        <h2>
-            <span class="glyphicons glyphicons-ok-circle" style="color:#5cb85c"></span>
+        <h4>
+            <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c"></span>
             User deleted from database
-        </h2>
+        </h4>
     }
     else
     {
-        <h2>
+        <h4>
             <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
             An attempt to delete a user failed
-        </h2>
+        </h4>
     }
 
-    @Ajax.ActionLink("UserList", "ModifyUsers", "Admin", new AjaxOptions { UpdateTargetId = "results" }, new { @class = "btn btn-success" })
+    @Ajax.ActionLink("UserList", "ModifyUsers", "Admin", new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }, new { @class = "btn btn-success" })
     @Html.ActionLink("Close", "Index", "Admin", new { area = "Admin" }, new { @class = "btn btn-primary" })
 
 </div>
