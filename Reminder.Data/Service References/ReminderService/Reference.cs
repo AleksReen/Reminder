@@ -625,6 +625,20 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/EditeUser", ReplyAction="http://tempuri.org/IReminderService/EditeUserResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetRoles", ReplyAction="http://tempuri.org/IReminderService/GetRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetRolesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.RoleDto[] GetRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetRoles", ReplyAction="http://tempuri.org/IReminderService/GetRolesResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.RoleDto[]> GetRolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateUser", ReplyAction="http://tempuri.org/IReminderService/UpdateUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdateUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ServerResultDto UpdateUser(int id, string login, string email, int roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateUser", ReplyAction="http://tempuri.org/IReminderService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateUserAsync(int id, string login, string email, int roleId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -732,6 +746,22 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id) {
             return base.Channel.EditeUserAsync(id);
+        }
+        
+        public Reminder.Data.ReminderService.RoleDto[] GetRoles() {
+            return base.Channel.GetRoles();
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.RoleDto[]> GetRolesAsync() {
+            return base.Channel.GetRolesAsync();
+        }
+        
+        public Reminder.Data.ReminderService.ServerResultDto UpdateUser(int id, string login, string email, int roleId) {
+            return base.Channel.UpdateUser(id, login, email, roleId);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateUserAsync(int id, string login, string email, int roleId) {
+            return base.Channel.UpdateUserAsync(id, login, email, roleId);
         }
     }
 }

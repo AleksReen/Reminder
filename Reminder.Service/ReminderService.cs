@@ -385,9 +385,11 @@ namespace Reminder.Service
                                 };
                                 var role = new RoleDto
                                 {
-                                    RoleId = (int)reader["UserId"],
+                                    RoleId = (int)reader["RoleId"],
                                     RoleName = reader["Role"].ToString()
                                 };
+
+                                user.UserRole = role;
                                 
                                 userList.Add(user);
                             }
@@ -425,18 +427,15 @@ namespace Reminder.Service
                         {
                             while (reader.Read())
                             {
-                                if (user.UserId == default(int))
+                                user.UserId = (int)reader["UserId"];
+                                user.Login = reader["Login"].ToString();
+                                user.Email = reader["Email"].ToString();
+                                var role = new RoleDto
                                 {
-                                    user.UserId = (int)reader["UserId"];
-                                    user.Login = reader["Login"].ToString();
-                                    user.Email = reader["Email"].ToString();
-                                    var role = new RoleDto
-                                    {
-                                        RoleId = (int)reader["RoleId"],
-                                        RoleName = reader["Role"].ToString()
-                                    };
-                                    user.UserRole = role;
-                                }
+                                    RoleId = (int)reader["RoleId"],
+                                    RoleName = reader["Role"].ToString()
+                                };
+                                user.UserRole = role;
                             };
                         }
                         sqlCn.Close();
@@ -447,6 +446,89 @@ namespace Reminder.Service
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
                     return user;
+                }
+            }
+        }
+
+        public RoleDto[] GetRoles()
+        {
+            var roleList = new List<RoleDto>();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+                using (var cmd = new SqlCommand("GetRoles", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var role = new RoleDto
+                                {
+                                    RoleId = (int)reader["RoleId"],
+                                    RoleName = reader["Role"].ToString()
+                                };
+
+                                roleList.Add(role);
+                            }
+                        }
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                }
+            }
+            return roleList.ToArray();
+        }
+
+        public ServerResultDto UpdateUser(int id, string login, string email, int roleId)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("UpdateUser", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@login", login);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@roleId", roleId);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
                 }
             }
         }

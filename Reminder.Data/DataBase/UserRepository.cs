@@ -3,6 +3,7 @@ using Reminder.Common.Enums;
 using Reminder.Data.Clients;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
+using System;
 
 namespace Reminder.Data.DataBase
 {
@@ -33,6 +34,16 @@ namespace Reminder.Data.DataBase
         public ServerResponse Registration(string login, string password, string email)
         {
             return _userClient.Registration(login, password, email);
+        }
+
+        public IReadOnlyList<UserRole> GetRoles()
+        {
+            return _userClient.GetRoles();
+        }
+
+        public ServerResponse UpdateUser(int id, string login, string email, int roleId)
+        {
+            return _userClient.UpdateUser(id, login, email, roleId);
         }
     }
 }

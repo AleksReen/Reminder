@@ -12,7 +12,9 @@ namespace Reminder.Data.Clients
     {
         ServerResponse Login(string login, string password);
         ServerResponse Registration(string login, string password, string email);
+        ServerResponse UpdateUser(int id, string login, string email, int roleId);
         IReadOnlyList<UserReminder> GetUsers();
+        IReadOnlyList<UserRole> GetRoles();
         UserReminder GetEditeUser(int id);
         
     }

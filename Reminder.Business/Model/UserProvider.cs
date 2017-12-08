@@ -22,6 +22,11 @@ namespace Reminder.Business.Model
             return _userProvider.GetEditeUser(id);
         }
 
+        public IReadOnlyList<UserRole> GetRoles()
+        {
+            return _userProvider.GetRoles();
+        }
+
         public IReadOnlyList<UserReminder> GetUsers()
         {
             return _userProvider.GetUsers();
@@ -54,6 +59,11 @@ namespace Reminder.Business.Model
             {
                 return _userProvider.Registration(login, password, email);
             }
+        }
+
+        public ServerResponse UpdateUser(int id, string login, string email, int roleId)
+        {
+            return _userProvider.UpdateUser(id, login, email, roleId);
         }
     }
 }

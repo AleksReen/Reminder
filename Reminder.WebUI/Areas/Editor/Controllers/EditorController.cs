@@ -35,13 +35,11 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 var result = _providerCategory.AddCategory(category.CategoryName);
                 if (result == ServerResponse.NoError)
                 {
-                    category.Message = category.CategoryName;
                     ViewBag.Result = true;
                     return PartialView("_ResultCreate", category.CategoryName);
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
-                    category.Message = category.CategoryName;
                     ViewBag.Result = false;
                     return PartialView("_ResultCreate", category.CategoryName);
                 } 
@@ -63,13 +61,11 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 var result = _providerCategory.EditeCategory(editeCategory.CategoryId, editeCategory.NewName);
                 if (result == ServerResponse.NoError)
                 {
-                    editeCategory.Message = editeCategory.NewName;
                     ViewBag.Result = true;
                     return PartialView("_ResultEdite", editeCategory.NewName);
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
-                    editeCategory.Message = editeCategory.NewName;
                     ViewBag.Result = false;
                     return PartialView("_ResultEdite", editeCategory.NewName);
                 }

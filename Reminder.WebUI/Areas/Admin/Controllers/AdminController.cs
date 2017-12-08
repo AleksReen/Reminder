@@ -40,14 +40,12 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
                 var result = _provider.Registration(user.Login, user.Password, user.Email);
                 if (result == ServerResponse.NoError)
                 {
-                    user.Message = user.Login;
                     ViewBag.Result = true;
                     return PartialView("_ResultCreateUser", user.Login);
 
                 }
                 if (result == ServerResponse.RegistrationFaild)
                 {
-                    user.Message = user.Login;
                     ViewBag.Result = false;
                     return PartialView("_ResultCreate", user.Login);
                 }
@@ -66,8 +64,31 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
         public ActionResult EditeUser(int id)
         {
             var user = _provider.GetEditeUser(id);
+            ViewBag.Roles = _provider.GetRoles();
 
             return PartialView("_EditeUser", user);
+        }
+
+        [HttpPost]
+        public ActionResult EditeUser(UserReminder updateUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = _provider.UpdateUser(updateUser.UserId, updateUser.Login, updateUser.Email, updateUser.UserRole.RoleId);
+                if (result == ServerResponse.NoError)
+                {
+                    ViewBag.Result = true;
+                    return PartialView("_ResultUpdateUser", updateUser.Login);
+
+                }
+                if (result == ServerResponse.DataBaseError)
+                {
+                    ViewBag.Result = false;
+                    return PartialView("_ResultUpdateUser", updateUser.Login);
+                }
+            }
+            ViewBag.Roles = _provider.GetRoles();
+            return PartialView("_EditeUser", updateUser);
         }
     }
 }

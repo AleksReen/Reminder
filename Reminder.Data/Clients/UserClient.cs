@@ -15,35 +15,71 @@ namespace Reminder.Data.Clients
         public UserReminder GetEditeUser(int id)
         {
             var user = new UserReminder();
-            //using (var client = new ReminderService.ReminderServiceClient())
-            //{
-            //    try
-            //    {
-            //        client.Open();
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
 
-            //        var userDto = client.EditeUser(id);
+                    var userDto = client.EditeUser(id);
 
-            //        if (userDto != null)
-            //        {
-            //            user.UserId = userDto.UserId;
-            //            user.Login = userDto.Login;
-            //            user.Email = userDto.Email;
+                    if (userDto != null)
+                    {
+                        user.UserId = userDto.UserId;
+                        user.Login = userDto.Login;
+                        user.Email = userDto.Email;
 
-            //            foreach (var role in userDto.Roles)
-            //            {
-            //                var r = new UserRole { RoleName = role };
-            //                user.UserRole.Add(r);
-            //            }
-            //        }
-            //        client.Close();
-            //    }
-            //    catch (FaultException<ReminderService.ServiceErrorDto> ex)
-            //    {
-            //        log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
-            //    }
+                        var role = new UserRole()
+                        {
+                            RoleId = userDto.UserRole.RoleId,
+                            RoleName = userDto.UserRole.RoleName
+                        };
+                        user.UserRole = role;
+                    }
+                    client.Close();
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
 
-            //}
+            }
             return user;
+        }
+
+        public IReadOnlyList<UserRole> GetRoles()
+        {
+            var roleList = new List<UserRole>();
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var rolesDto = client.GetRoles();
+
+                    if (rolesDto != null)
+                    {
+                        foreach (var role in rolesDto)
+                        {
+                            var r = new UserRole
+                            {
+                                RoleId = role.RoleId,
+                                RoleName = role.RoleName
+                            };
+                            
+                            roleList.Add(r);
+                        }
+                    }
+                    client.Close();
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+
+            }
+            return roleList;
         }
 
         public IReadOnlyList<UserReminder> GetUsers()
@@ -161,6 +197,33 @@ namespace Reminder.Data.Clients
             }
 
             return ServerResponse.RegistrationFaild;
+        }
+
+        public ServerResponse UpdateUser(int id, string login, string email, int roleId)
+        {
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.UpdateUser(id, login, email, roleId);
+
+                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    {
+                        return ServerResponse.NoError;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return ServerResponse.DataBaseError;
         }
     }
 }

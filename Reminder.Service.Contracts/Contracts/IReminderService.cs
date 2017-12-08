@@ -46,5 +46,13 @@ namespace Reminder.Service
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         UserDto EditeUser(int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        RoleDto [] GetRoles();
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ServerResultDto UpdateUser(int id, string login, string email, int roleId);
     }
 }

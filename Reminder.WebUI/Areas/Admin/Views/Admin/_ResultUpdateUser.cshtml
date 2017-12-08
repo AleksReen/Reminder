@@ -1,25 +1,25 @@
 ﻿@model string
 
 <div id="results">
-    <h3>Create User</h3>
+    <h3>Edit User</h3>
     <hr />
 
     @if (ViewBag.Result)
     {
         <h2>
             <span class="glyphicons glyphicons-ok-circle" style="color:#5cb85c"></span>
-            Registration <b>@Model</b> was created successfully in the database
+            User <b>@Model</b> has been successfully updated in the database
         </h2>
     }
     else
     {
         <h2>
             <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
-            An attempt to add the user of <b>@Model</b> failed
+            An attempt to edite the user of <b>@Model</b> failed
         </h2>
     }
 
-    @Ajax.ActionLink("Create", "CreateUser", "Admin", new AjaxOptions { UpdateTargetId = "results" }, new { @class = "btn btn-success" })
+    @Ajax.ActionLink("UserList", "ModifyUsers", "Admin", new AjaxOptions { UpdateTargetId = "results" }, new { @class = "btn btn-success" })
     @Html.ActionLink("Close", "Index", "Admin", new { area = "Admin" }, new { @class = "btn btn-primary" })
 
 </div>
