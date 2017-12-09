@@ -1,0 +1,40 @@
+﻿@model Reminder.Common.Entity.UserReminder
+
+<div class="form-horizontal">
+    <h3>
+        Update Profile
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.gif" />
+        </span>
+    </h3>
+    <hr />
+    @using (Ajax.BeginForm("UpdateProfile", new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </div>
+    }
+</div>
+

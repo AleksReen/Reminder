@@ -26,11 +26,8 @@
                 <ul class="nav navbar-nav"></ul>
                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
-                    //TO DO
                     @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand navbar-right" })
-                    <span class="navbar-brand navbar-right">
-                        @HttpContext.Current.User.Identity.Name
-                    </span>
+                    @Html.ActionLink(HttpContext.Current.User.Identity.Name, "ProfilePage","Profile", null,new { @class = "navbar-brand navbar-right" })
                 }
                 else
                 {

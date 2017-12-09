@@ -1,0 +1,4 @@
+ERROR [2017-12-06 17:17:01,644] [Reminder.Data.Clients.CategoryClient.DeleteCategory] Процедура или функция "EditeCategory" ожидает параметр "@CategoryName", который не был указан.
+ERROR [2017-12-06 17:19:38,524] [Reminder.Data.Clients.CategoryClient.DeleteCategory] Процедура или функция "EditeCategory" ожидает параметр "@CategoryName", который не был указан.
+ERROR [2017-12-06 17:19:45,204] [Reminder.Data.Clients.CategoryClient.DeleteCategory] Процедура или функция "EditeCategory" ожидает параметр "@CategoryName", который не был указан.
+ERROR [2017-12-06 17:19:55,869] [Reminder.Data.Clients.CategoryClient.DeleteCategory] Процедура или функция "EditeCategory" ожидает параметр "@CategoryName", который не был указан.

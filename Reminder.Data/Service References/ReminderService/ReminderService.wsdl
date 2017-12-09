@@ -126,6 +126,24 @@
   <wsdl:message name="IReminderService_DeleteUser_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q13:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_UpdateProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfile" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdateProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdateProfile_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q14:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdatePassword_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q15:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -191,6 +209,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/DeleteUser" message="tns:IReminderService_DeleteUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/DeleteUserResponse" message="tns:IReminderService_DeleteUser_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/DeleteUserServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_DeleteUser_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/UpdateProfile" message="tns:IReminderService_UpdateProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/UpdateProfileResponse" message="tns:IReminderService_UpdateProfile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/UpdateProfileServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_UpdateProfile_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/UpdatePassword" message="tns:IReminderService_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/UpdatePasswordResponse" message="tns:IReminderService_UpdatePassword_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/UpdatePasswordServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_UpdatePassword_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -341,6 +369,30 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="http://tempuri.org/IReminderService/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/UpdateProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/UpdatePassword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

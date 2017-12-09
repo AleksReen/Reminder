@@ -1,0 +1,31 @@
+﻿@model string
+
+<div>
+    <h3>
+        Update Profile
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.gif" />
+        </span>
+    </h3>
+    <hr />
+
+    @if (ViewBag.Result)
+    {
+        <h4>
+            <span class="glyphicons glyphicons-ok-circle" style="color:#5cb85c"></span>
+            The profile has been changed to <b>@Model</b>.
+            <b>To use the changes, log out and log in with new parameters !!!</b>
+            @Html.ActionLink("Logout", "Logout", "Login")
+        </h4>
+    }
+    else
+    {
+        <h4>
+            <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+            An attempt to edite the profile of <b>@Model</b> failed
+        </h4>
+    }
+
+    @Html.ActionLink("Close", "ProfilePage", "Profile", null, new { @class = "btn btn-primary" })
+
+</div>

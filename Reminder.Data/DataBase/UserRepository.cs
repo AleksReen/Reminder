@@ -50,5 +50,15 @@ namespace Reminder.Data.DataBase
         {
             return _userClient.DeleteUser(id);
         }
+
+        public ServerResponse UpdateProfile(int id, string login, string email)
+        {
+            return _userClient.UpdateProfile(id, login, email);
+        }
+
+        public ServerResponse UpdatePassword(int id, string password)
+        {
+            return _userClient.UpdatePassword(id, password);
+        }
     }
 }

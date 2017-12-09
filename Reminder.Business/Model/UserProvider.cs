@@ -66,6 +66,16 @@ namespace Reminder.Business.Model
             }
         }
 
+        public ServerResponse UpdatePassword(int id, string password)
+        {
+            return _userProvider.UpdatePassword(id, password);
+        }
+
+        public ServerResponse UpdateProfile(int id, string login, string email)
+        {
+            return _userProvider.UpdateProfile(id, login, email);
+        }
+
         public ServerResponse UpdateUser(int id, string login, string email, int roleId)
         {
             return _userProvider.UpdateUser(id, login, email, roleId);

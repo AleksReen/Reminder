@@ -646,6 +646,20 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteUser", ReplyAction="http://tempuri.org/IReminderService/DeleteUserResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> DeleteUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateProfile", ReplyAction="http://tempuri.org/IReminderService/UpdateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdateProfileServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ServerResultDto UpdateProfile(int id, string login, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateProfile", ReplyAction="http://tempuri.org/IReminderService/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateProfileAsync(int id, string login, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdatePassword", ReplyAction="http://tempuri.org/IReminderService/UpdatePasswordResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdatePasswordServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ServerResultDto UpdatePassword(int id, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdatePassword", ReplyAction="http://tempuri.org/IReminderService/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdatePasswordAsync(int id, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -777,6 +791,22 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> DeleteUserAsync(int id) {
             return base.Channel.DeleteUserAsync(id);
+        }
+        
+        public Reminder.Data.ReminderService.ServerResultDto UpdateProfile(int id, string login, string email) {
+            return base.Channel.UpdateProfile(id, login, email);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateProfileAsync(int id, string login, string email) {
+            return base.Channel.UpdateProfileAsync(id, login, email);
+        }
+        
+        public Reminder.Data.ReminderService.ServerResultDto UpdatePassword(int id, string password) {
+            return base.Channel.UpdatePassword(id, password);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdatePasswordAsync(int id, string password) {
+            return base.Channel.UpdatePasswordAsync(id, password);
         }
     }
 }

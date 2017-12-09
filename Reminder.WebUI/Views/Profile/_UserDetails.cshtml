@@ -1,0 +1,26 @@
+﻿@model Reminder.Common.Entity.UserReminder
+
+<h3>
+    User Details
+    <span id="loader" style="display:none">
+        <img src="~/Content/loaders/loader-blue.gif" />
+    </span>
+</h3>
+    <hr />
+    <ul>
+        <li>
+            <b>
+                @Html.DisplayNameFor(model => model.Login):
+            </b> @Html.DisplayFor(model => model.Login)
+        </li>
+        <li>
+            <b>
+                @Html.DisplayNameFor(model => model.Email):
+            </b> @Html.DisplayFor(model => model.Email)
+        </li>
+        <li>
+            <b>
+                @Html.DisplayNameFor(model => model.UserRole):
+            </b> @Html.DisplayFor(model => model.UserRole.RoleName)
+        </li>
+</ul>

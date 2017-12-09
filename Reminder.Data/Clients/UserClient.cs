@@ -226,6 +226,60 @@ namespace Reminder.Data.Clients
             return ServerResponse.RegistrationFaild;
         }
 
+        public ServerResponse UpdatePassword(int id, string password)
+        {
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.UpdatePassword(id, password);
+
+                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    {
+                        return ServerResponse.NoError;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return ServerResponse.DataBaseError;
+        }
+
+        public ServerResponse UpdateProfile(int id, string login, string email)
+        {
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.UpdateProfile(id, login, email);
+
+                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    {
+                        return ServerResponse.NoError;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return ServerResponse.DataBaseError;
+        }
+   
         public ServerResponse UpdateUser(int id, string login, string email, int roleId)
         {
             using (var client = new ReminderService.ReminderServiceClient())

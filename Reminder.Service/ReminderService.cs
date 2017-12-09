@@ -12,7 +12,7 @@ namespace Reminder.Service
     public class ReminderService : IReminderService
     {
         private readonly string connectionString;
-        private readonly ServiceErrorDto error; 
+        private readonly ServiceErrorDto error;
 
         public ReminderService()
         {
@@ -29,8 +29,8 @@ namespace Reminder.Service
 
         }
 
-        public CategoryDto [] GetAllCategories()
-        {           
+        public CategoryDto[] GetAllCategories()
+        {
             var categoriesList = new List<CategoryDto>();
 
             using (var sqlCn = new SqlConnection(connectionString))
@@ -65,11 +65,11 @@ namespace Reminder.Service
                     }
                 }
             }
-                      
+
             return categoriesList.ToArray();
         }
 
-        public MyReminderDto [] GetAllReminders(int userId)
+        public MyReminderDto[] GetAllReminders(int userId)
         {
             var remindersList = new List<MyReminderDto>();
 
@@ -110,7 +110,7 @@ namespace Reminder.Service
                     }
                 }
             }
-            
+
             return remindersList.ToArray();
         }
 
@@ -163,7 +163,7 @@ namespace Reminder.Service
                     }
                 }
             }
-              
+
             return reminderInfo;
         }
 
@@ -234,7 +234,7 @@ namespace Reminder.Service
                     {
                         sqlCn.Open();
 
-                        cmd.ExecuteNonQuery();                       
+                        cmd.ExecuteNonQuery();
                         result.Result = (int)returnParameter.Value;
 
                         sqlCn.Close();
@@ -365,7 +365,7 @@ namespace Reminder.Service
                 using (var cmd = new SqlCommand("GetUsers", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                   
+
                     try
                     {
                         sqlCn.Open();
@@ -387,7 +387,7 @@ namespace Reminder.Service
                                 };
 
                                 user.UserRole = role;
-                                
+
                                 userList.Add(user);
                             }
                         }
@@ -541,6 +541,83 @@ namespace Reminder.Service
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
+
+        public ServerResultDto UpdateProfile(int id, string login, string email)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("UpdateProfile", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@login", login);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
+
+        public ServerResultDto UpdatePassword(int id, string password)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("UpdatePassword", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@newPassword", password);
 
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
                     returnParameter.Direction = ParameterDirection.ReturnValue;
