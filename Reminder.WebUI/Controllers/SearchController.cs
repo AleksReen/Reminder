@@ -37,17 +37,22 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult GetSearchResult(ViewFilter filter)
         {
+            if (filter == null)
+            {  
+                throw new NullReferenceException();
+            }
+        
             ViewBag.Result = true;
 
             if (!string.IsNullOrEmpty(filter.Name) || filter.Category != default(int) || filter.Date != default(DateTime))
             {
                 var searchList = new List<MyReminder>();
                 var user = User as UserPrincipal;
+
                 IReadOnlyList<MyReminder> model = _providerReminder.GetReminders(user.UserId);
 
                 if (!string.IsNullOrEmpty(filter.Name))
                 {
-
                     var result = model.Where(x => x.Title.Contains(filter.Name, StringComparison.OrdinalIgnoreCase));
                     if (result.Any())
                     {
