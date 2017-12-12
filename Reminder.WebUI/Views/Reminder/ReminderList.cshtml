@@ -2,16 +2,15 @@
 
 @{
     ViewBag.Title = "ReminderList";
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
 }
 
 <h2>ReminderList</h2>
 
 <div class="form-group">
     <div class="col-md-12">
-        <button class="btn btn-success"
-                onclick="location.href='@Url.Action("SearchList","Search")'">
-            Search
-        </button>
+        @Html.ActionLink("Search", "SearchList", "Search", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Add Reminder", "AddReminder", "Reminder", null, new { @class = "btn btn-danger" })
     </div>
 </div>
 
@@ -40,7 +39,9 @@
 </div>
 
 <div class="col-md-10">
-    <h3>Reminders</h3>
+    <h3>
+        Reminders
+    </h3>
     @foreach (var reminder in Model.Reminders)
     {
         Html.RenderPartial("_Reminder", reminder);

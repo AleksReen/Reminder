@@ -21,3 +21,13 @@
 .button-conteiner{
     text-align:right;
 }
+
+.datatimepicker-style{
+    max-width: 246px;
+    z-index: 9
+}
+
+.input-group{
+    max-width: 280px;
+}
+
