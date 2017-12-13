@@ -30,7 +30,7 @@ namespace Reminder.WebUI.Controllers
 
                if (result == ServerResponse.NoError)
                {
-                    return RedirectToAction("ReminderList", "Reminder");
+                    return RedirectToAction("Index", "Reminder");
                }
 
                 if (result == ServerResponse.InvalidCredentials)

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Serialization;
@@ -27,30 +28,35 @@ namespace Reminder.WebUI.Controllers
             _providerCategory = provC;
         }
 
+        public ActionResult Index()
+        {
+            var user = User as UserPrincipal;
+            return View(new ViewReminderIndex { CurrentUser = user});
+        }
+
+
         public ActionResult ReminderList(int? category)
         {
-            var model = new ViewReminderList();
+            Thread.Sleep(2000);
             var user = User as UserPrincipal;
             var reminders = _providerReminder.GetReminders(user.UserId)
                                                    .Where(c => category == null || c.CategoryId == category)
                                                    .OrderBy(c => c.Date);
-            model.CurrentUser = user;
-            model.Reminders = reminders;
-
-            return View(model);
+            return PartialView("_ReminderList", reminders);
         }
 
         public ActionResult DeleteReminder(ViewDeleteReminder delRem)
         {
-
+            Thread.Sleep(2000);
             return PartialView("_DeleteReminder", delRem);
         }
 
         
         public ActionResult СonfirmedDeleteReminder(int id)
         {
-
-            return RedirectToAction("ReminderList");
+            Thread.Sleep(2000);
+            ViewBag.Result = true;
+            return PartialView("_ResultDeleteReminder");
         }
 
 

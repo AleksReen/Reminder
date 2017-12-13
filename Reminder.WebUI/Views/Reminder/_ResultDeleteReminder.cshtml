@@ -1,0 +1,32 @@
+﻿@model string
+
+@{
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader"};
+}
+
+<div>
+    <h3>
+        Delete Reminder
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.gif" />
+        </span>
+    </h3>
+    <hr />
+
+    @if (ViewBag.Result)
+    {
+        <h4>
+            <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c"></span>
+            Reminder deleted from database
+        </h4>
+    }
+    else
+    {
+        <h4>
+            <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+            An attempt to delete a reminder failed
+        </h4>
+    }
+
+    @Ajax.ActionLink("Reminder List", "ReminderList", "Reminder", options, new { @class = "btn btn-success" })
+</div>

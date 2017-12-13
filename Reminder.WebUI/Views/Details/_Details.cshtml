@@ -1,13 +1,12 @@
 ﻿@model Reminder.Common.Entity.ReminderInfo
 
-@{
-    ViewBag.Title = "GetDetails";
-}
-
-<h2>GetDetails</h2>
-
 <div>
-    <h4>MyReminder</h4>
+    <h3>
+        Details
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.gif" />
+        </span>
+    </h3>
     <hr />
 
     <div class="reminder-item-conteiner">
@@ -75,7 +74,8 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Back to All Category", "ReminderList", "Reminder") |
-    @Html.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId}, null)
+    @Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }) |
     
+    @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" })
 </p>
+

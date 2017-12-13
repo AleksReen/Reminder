@@ -1,11 +1,10 @@
-﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderList
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderIndex
 
 @{
-    ViewBag.Title = "ReminderList";
-    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+    ViewBag.Title = "Index";
 }
 
-<h2>ReminderList</h2>
+<h2>Reminder list</h2>
 
 <div class="form-group">
     <div class="col-md-12">
@@ -14,15 +13,12 @@
     </div>
 </div>
 
-
 <div class="col-md-2">
     <h3>Categories</h3>
     @Html.Action("CategoryList", "Category")
 
-
     @if (HttpContext.Current.User.Identity.IsAuthenticated)
     {
-
         if (Model.CurrentUser.IsInRole("Editor, Admin"))
         {
             <h3>Edit Mode</h3>
@@ -40,17 +36,6 @@
 
 <div class="col-md-10">
     <div id="result">
-        <h3>
-            Reminders
-            <span id="loader" style="display:none">
-                <img src="~/Content/loaders/loader-blue.gif" />
-            </span>
-        </h3>
-        @foreach (var reminder in Model.Reminders)
-        {
-            Html.RenderPartial("_Reminder", reminder);
-        }
+        @Html.Action("ReminderList", "Reminder")
     </div>
 </div>
-
-

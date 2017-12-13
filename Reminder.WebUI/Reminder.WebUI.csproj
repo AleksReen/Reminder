@@ -233,6 +233,7 @@
     <Compile Include="Models\ViewsModels\ViewFilter.cs" />
     <Compile Include="Models\ViewsModels\ViewLogin.cs" />
     <Compile Include="Models\ViewsModels\ViewNewReminder.cs" />
+    <Compile Include="Models\ViewsModels\ViewReminderIndex.cs" />
     <Compile Include="Models\ViewsModels\ViewUserPassword.cs" />
     <Compile Include="Models\ViewsModels\ViewRegistration.cs" />
     <Compile Include="Models\ViewsModels\ViewReminderFullInfo.cs" />
@@ -244,11 +245,9 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Reminder\ReminderList.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Reminder\_Reminder.cshtml" />
     <Content Include="Views\Category\_CategoryList.cshtml" />
-    <Content Include="Views\Details\GetDetails.cshtml" />
     <Content Include="Views\Category\_GetCategoryName.cshtml" />
     <Content Include="Views\Search\SearchList.cshtml" />
     <Content Include="Views\Search\_Filter.cshtml" />
@@ -266,7 +265,10 @@
     <Content Include="Views\Profile\_ResultSetPassword.cshtml" />
     <Content Include="Views\Reminder\AddReminder.cshtml" />
     <Content Include="Views\Reminder\_DeleteReminder.cshtml" />
-    <Content Include="Views\Reminder\_Reminders.cshtml" />
+    <Content Include="Views\Reminder\Index.cshtml" />
+    <Content Include="Views\Reminder\_ReminderList.cshtml" />
+    <Content Include="Views\Reminder\_ResultDeleteReminder.cshtml" />
+    <Content Include="Views\Details\_Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

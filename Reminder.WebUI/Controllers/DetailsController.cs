@@ -19,7 +19,7 @@ namespace Reminder.WebUI.Controllers
         {
             var model = _provider.GetReminderInfo(reminderId);
            
-            return View(model);
+            return PartialView("_Details", model);
         }
     }
 }

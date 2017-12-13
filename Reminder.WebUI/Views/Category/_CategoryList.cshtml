@@ -3,12 +3,15 @@
 
 <ul>
     <li>
-        @Html.ActionLink( "All Category", "ReminderList", "Reminder", null, null)
+        @Ajax.ActionLink("All Category", "ReminderList", "Reminder", null, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" })
     </li>
     @foreach (var category in Model)
     {
-        <li>
+        @*<li>
             @Html.RouteLink(category.CategoryName, new { controller = "Reminder", action = "ReminderList", category = category.CategoryId })
+        </li>*@
+        <li>
+            @Ajax.ActionLink(category.CategoryName, "ReminderList", "Reminder", new { category = category.CategoryId }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" })
         </li>
     }
 </ul>

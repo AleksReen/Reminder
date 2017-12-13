@@ -8,7 +8,7 @@
 
     @if (HttpContext.Current.User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink("Let's Go", "ReminderList", "Reminder", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Let's Go", "Index", "Reminder", null, new { @class = "btn btn-info" })
     }
     else
     {
