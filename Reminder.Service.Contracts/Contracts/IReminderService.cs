@@ -71,5 +71,9 @@ namespace Reminder.Service
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         ServerResultDto AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ImgPathDto DeleteReminder(int id);
     }
 }

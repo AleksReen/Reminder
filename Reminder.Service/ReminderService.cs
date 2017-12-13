@@ -669,5 +669,39 @@ namespace Reminder.Service
                 }
             }
         }
+
+        public ImgPathDto DeleteReminder(int id)
+        {
+            var result = new ImgPathDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("DeleteReminder", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ReminderID", id);
+
+                    var returnParameter = cmd.Parameters.Add("@imageUrl", SqlDbType.NVarChar);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Path = returnParameter.Value.ToString();
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
     }
 }

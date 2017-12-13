@@ -31,5 +31,10 @@ namespace Reminder.Business.Model
         {
             return _dataProvider.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
         }
+
+        public string DeleteReminder(int id)
+        {
+            return _dataProvider.DeleteReminder(id);
+        }
     }
 }

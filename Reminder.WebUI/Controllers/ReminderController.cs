@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
@@ -38,6 +39,20 @@ namespace Reminder.WebUI.Controllers
 
             return View(model);
         }
+
+        public ActionResult DeleteReminder(ViewDeleteReminder delRem)
+        {
+
+            return PartialView("_DeleteReminder", delRem);
+        }
+
+        
+        public ActionResult СonfirmedDeleteReminder(int id)
+        {
+
+            return RedirectToAction("ReminderList");
+        }
+
 
         public ActionResult AddReminder()
         {

@@ -36,6 +36,34 @@ namespace Reminder.Data.Clients
             return ServerResponse.DataBaseError;
         }
 
+        public string DeleteReminder(int id)
+        {
+           
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.DeleteReminder(id);
+
+                    if (!string.IsNullOrEmpty(resultDto.Path))
+                    {
+                        return resultDto.Path;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return default(string);
+        }
+
         public ReminderInfo GetReminderInfo(int id)
         {
             var reminderInfo = new ReminderInfo();

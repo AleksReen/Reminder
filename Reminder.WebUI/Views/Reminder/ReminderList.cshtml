@@ -39,13 +39,18 @@
 </div>
 
 <div class="col-md-10">
-    <h3>
-        Reminders
-    </h3>
-    @foreach (var reminder in Model.Reminders)
-    {
-        Html.RenderPartial("_Reminder", reminder);
-    }
+    <div id="result">
+        <h3>
+            Reminders
+            <span id="loader" style="display:none">
+                <img src="~/Content/loaders/loader-blue.gif" />
+            </span>
+        </h3>
+        @foreach (var reminder in Model.Reminders)
+        {
+            Html.RenderPartial("_Reminder", reminder);
+        }
+    </div>
 </div>
 
 

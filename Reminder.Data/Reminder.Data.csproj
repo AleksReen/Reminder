@@ -108,6 +108,9 @@
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.CategoryDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.ImgPathDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.MyReminderDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

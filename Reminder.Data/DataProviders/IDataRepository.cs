@@ -16,5 +16,6 @@ namespace Reminder.Data.DataProviders
         ServerResponse EditeCategory(int categoryId, string categoryName);
         ServerResponse DeleteCategory(int categotryId);
         ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+        string DeleteReminder(int id);
     }
 }

@@ -1,0 +1,18 @@
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewDeleteReminder
+
+<div id="result">
+    <h3>
+        Delete Reminder
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.gif" />
+        </span>
+    </h3>
+    <hr />
+
+    <h4>
+        <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c"></span>
+        Are you sure you want to delete reminder <b>@Model.reminderTitle</b>?
+    </h4>
+
+    @Html.ActionLink("Delete", "СonfirmedDeleteReminder", "Reminder", new { id = Model.reminderId }, new { @class = "btn btn-danger" })
+</div>

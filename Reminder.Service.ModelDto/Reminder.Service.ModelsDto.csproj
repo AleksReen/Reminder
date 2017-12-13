@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\CategoryDto.cs" />
+    <Compile Include="Dto\ImgPathDto.cs" />
     <Compile Include="Dto\MyReminderDto.cs" />
     <Compile Include="Dto\ReminderInfoDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />

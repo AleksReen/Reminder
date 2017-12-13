@@ -41,4 +41,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRoleDto" nillable="true" type="tns:ArrayOfRoleDto" />
+  <xs:complexType name="ImgPathDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImgPathDto" nillable="true" type="tns:ImgPathDto" />
 </xs:schema>

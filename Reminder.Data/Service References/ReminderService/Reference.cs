@@ -552,6 +552,51 @@ namespace Reminder.Data.ReminderService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ImgPathDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+    [System.SerializableAttribute()]
+    public partial class ImgPathDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PathField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Path {
+            get {
+                return this.PathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PathField, value) != true)) {
+                    this.PathField = value;
+                    this.RaisePropertyChanged("Path");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
@@ -667,6 +712,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/AddReminder", ReplyAction="http://tempuri.org/IReminderService/AddReminderResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> AddReminderAsync(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteReminder", ReplyAction="http://tempuri.org/IReminderService/DeleteReminderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/DeleteReminderServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ImgPathDto DeleteReminder(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteReminder", ReplyAction="http://tempuri.org/IReminderService/DeleteReminderResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ImgPathDto> DeleteReminderAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -822,6 +874,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> AddReminderAsync(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
             return base.Channel.AddReminderAsync(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
+        }
+        
+        public Reminder.Data.ReminderService.ImgPathDto DeleteReminder(int id) {
+            return base.Channel.DeleteReminder(id);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ImgPathDto> DeleteReminderAsync(int id) {
+            return base.Channel.DeleteReminderAsync(id);
         }
     }
 }

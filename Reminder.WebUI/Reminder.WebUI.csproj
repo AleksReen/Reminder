@@ -229,6 +229,7 @@
     </Compile>
     <Compile Include="Logger.cs" />
     <Compile Include="Models\Entity\UserPrincipal.cs" />
+    <Compile Include="Models\ViewsModels\ViewDeleteReminder.cs" />
     <Compile Include="Models\ViewsModels\ViewFilter.cs" />
     <Compile Include="Models\ViewsModels\ViewLogin.cs" />
     <Compile Include="Models\ViewsModels\ViewNewReminder.cs" />
@@ -264,6 +265,8 @@
     <Content Include="Views\Profile\_SetPassword.cshtml" />
     <Content Include="Views\Profile\_ResultSetPassword.cshtml" />
     <Content Include="Views\Reminder\AddReminder.cshtml" />
+    <Content Include="Views\Reminder\_DeleteReminder.cshtml" />
+    <Content Include="Views\Reminder\_Reminders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
