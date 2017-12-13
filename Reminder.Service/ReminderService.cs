@@ -683,7 +683,8 @@ namespace Reminder.Service
                     cmd.Parameters.AddWithValue("@ReminderID", id);
 
                     var returnParameter = cmd.Parameters.Add("@imageUrl", SqlDbType.NVarChar);
-                    returnParameter.Direction = ParameterDirection.ReturnValue;
+                    returnParameter.Size = 500;
+                    returnParameter.Direction = ParameterDirection.Output;
 
                     try
                     {
