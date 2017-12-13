@@ -7,8 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Serialization;
 
 namespace Reminder.WebUI.Controllers
 {
@@ -46,30 +48,43 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult AddReminder(ViewNewReminder newReminder)
         {
-            if (!ChechExtImg(newReminder.Image))
+            if (newReminder.Image != null && !ChechExtImg(newReminder.Image))
             {
                 return View("AddReminder", newReminder);
             }
 
             if (ModelState.IsValid)
             {
+
                 var userId = GetCurrentUser();
+                var title = newReminder.Reminder.Title;
+                var date = newReminder.Reminder.Date;
+                var reminderTime = newReminder.Reminder.ReminderTime;
+                var categoryId = newReminder.CategoryId;
+                var description = newReminder.Description;
                 var imgName = GetNewImageName(newReminder.Image);
                 var imagePath = GetImagePath(newReminder.Image, imgName);
-                var action = GetFilterActions(newReminder.Actions);
 
+                var actions = GetActions(newReminder.Actions);
 
-                var result = ServerResponse.NoError;
-                //var result = _provider.UpdateUser(updateUser.UserId, updateUser.Login, updateUser.Email, updateUser.UserRole.RoleId);
+                var result = _providerReminder.AddReminder(title, date, reminderTime, imagePath, categoryId, userId, actions, description);
                 if (result == ServerResponse.NoError)
                 {
-                    SaveImage(newReminder.Image, imgName);
-
+                    if (newReminder.Image != null && !string.IsNullOrEmpty(imgName))
+                    {
+                        SaveImage(newReminder.Image, imgName);
+                    }
+                    
+                    ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+                    ViewBag.Result = true;
+                    return View("AddReminder", new ViewNewReminder() { Message = "reminder was successfully created" });
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
-                    //ViewBag.Result = false;
-                    //return PartialView("_ResultUpdateUser", updateUser.Login);
+                    ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+                    ViewBag.Result = false;
+                    newReminder.Message = "Some Errors";
+                    return View("AddReminder", newReminder);
                 }
             }
 
@@ -77,6 +92,7 @@ namespace Reminder.WebUI.Controllers
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return View("AddReminder", newReminder);
         }
+
 
         private int GetCurrentUser()
         {
@@ -106,6 +122,7 @@ namespace Reminder.WebUI.Controllers
 
         private bool ChechExtImg(HttpPostedFileBase Image)
         {
+
             var exFormat = new string[] { ".jpg", ".jpeg", ".gif", ".png" };
             var ex = Path.GetExtension(Image.FileName);
 
@@ -118,21 +135,34 @@ namespace Reminder.WebUI.Controllers
 
         private string GetNewImageName(HttpPostedFileBase Image)
         {
-            var ex = Path.GetExtension(Image.FileName);
-            var name = Path.GetFileNameWithoutExtension(Image.FileName);
-            var nameRandom = new Random().Next(1, 1000000).ToString();
-
-            return name + nameRandom + ex;
-        }
-        private string [] GetFilterActions(IEnumerable<string> list)
-        {
-            var filterList = list.Where(x => !string.IsNullOrEmpty(x)); 
-
-            if (!list.Any())
+            if (Image != null)
             {
-                list = null;
+                var ex = Path.GetExtension(Image.FileName);
+                var name = Path.GetFileNameWithoutExtension(Image.FileName);
+                var nameRandom = new Random().Next(1, 1000000).ToString();
+
+                return name + nameRandom + ex;
             }
-            return filterList.ToArray<string>();
+            return null;
+        }
+        private string GetActions(IEnumerable<string> list)
+        {
+            var filter = list.Where(x => !string.IsNullOrEmpty(x)); 
+
+            if (filter.Any())
+            {
+                var actions = ToXmlString(filter.ToArray());
+                return actions;
+            }
+            return null;
+        }
+
+        private string ToXmlString(string[] list)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(string[]));
+            MemoryStream ms = new MemoryStream();
+            xs.Serialize(ms, list);
+            return Encoding.UTF8.GetString(ms.ToArray());
         }
     } 
 }

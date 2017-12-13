@@ -2,11 +2,40 @@
 using System.Linq;
 using Reminder.Common.Entity;
 using System.ServiceModel;
+using Reminder.Common.Enums;
+using System;
 
 namespace Reminder.Data.Clients
 {
     public class ReminderClient : IReminderClient
     {
+        public ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
+        {
+            using (var client = new ReminderService.ReminderServiceClient())
+            {
+                try
+                {
+                    client.Open();
+
+                    var resultDto = client.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
+
+                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    {
+                        return ServerResponse.NoError;
+                    }
+
+                    client.Close();
+
+                }
+                catch (FaultException<ReminderService.ServiceErrorDto> ex)
+                {
+                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                }
+            }
+
+            return ServerResponse.DataBaseError;
+        }
+
         public ReminderInfo GetReminderInfo(int id)
         {
             var reminderInfo = new ReminderInfo();

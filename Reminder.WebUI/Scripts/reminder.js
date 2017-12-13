@@ -7,6 +7,13 @@
     })
 
     $(function () {
+        $('#datetimepicker2').datetimepicker({
+            useCurrent: false,
+            format: "DD.MM.YYYY hh:mm:ss A"
+        });
+    });
+
+    $(function () {
         var actionCount = 2
         $("#newAction").click(function () {
             var clon = $("#action_group").clone();
@@ -16,11 +23,11 @@
             actionCount++;
         })
     })
-
-    $(function () {
-        $('#datetimepicker2').datetimepicker({
-            useCurrent: false,
-            format: "DD.MM.YYYY hh:mm:ss A "
-        });
-    });
 });
+
+(function () {
+    jQuery.validator.methods.date = function (value, element) {
+        var formats = ["DD.MM.YYYY", "DD.MM.YYYY hh:mm:ss A"];
+        return moment(value, formats, true).isValid();
+    };
+})(jQuery, moment);

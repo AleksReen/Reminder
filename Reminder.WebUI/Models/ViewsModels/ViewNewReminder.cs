@@ -16,5 +16,6 @@ namespace Reminder.WebUI.Models.ViewsModels
         public int CategoryId { get; set; }
 
         public HttpPostedFileBase Image { get; set; }
+        public string Message { get; set; }
     }
 }

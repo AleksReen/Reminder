@@ -144,6 +144,15 @@
   <wsdl:message name="IReminderService_UpdatePassword_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q15:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_AddReminder_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReminder" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_AddReminder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReminderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_AddReminder_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q16:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -219,6 +228,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/UpdatePassword" message="tns:IReminderService_UpdatePassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/UpdatePasswordResponse" message="tns:IReminderService_UpdatePassword_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/UpdatePasswordServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_UpdatePassword_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReminder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/AddReminder" message="tns:IReminderService_AddReminder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/AddReminderResponse" message="tns:IReminderService_AddReminder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/AddReminderServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_AddReminder_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -393,6 +407,18 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePassword">
       <soap:operation soapAction="http://tempuri.org/IReminderService/UpdatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddReminder">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/AddReminder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,5 +1,6 @@
 ﻿using Reminder.Service.Contracts.Models.Dto;
 using Reminder.Service.ModelDto.Dto;
+using System;
 using System.ServiceModel;
 
 namespace Reminder.Service
@@ -66,5 +67,9 @@ namespace Reminder.Service
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         ServerResultDto UpdatePassword(int id, string password);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceErrorDto))]
+        ServerResultDto AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
     }
 }

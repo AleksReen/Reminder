@@ -261,7 +261,7 @@ namespace Reminder.Service
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CategoryId", categoryId);
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CategoryName", categoryName);
 
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
@@ -498,14 +498,8 @@ namespace Reminder.Service
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@login", login);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@email", email);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@roleId", roleId);
 
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
@@ -575,11 +569,7 @@ namespace Reminder.Service
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@login", login);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@email", email);
 
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
@@ -615,10 +605,49 @@ namespace Reminder.Service
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@newPassword", password);
 
+                    var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                    try
+                    {
+                        sqlCn.Open();
+
+                        cmd.ExecuteNonQuery();
+                        result.Result = (int)returnParameter.Value;
+
+                        sqlCn.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        error.Message = e.Message;
+                        throw new FaultException<ServiceErrorDto>(error, "Database error");
+                    }
+                    return result;
+                }
+            }
+        }
+
+        public ServerResultDto AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
+        {
+            var result = new ServerResultDto();
+
+            using (var sqlCn = new SqlConnection(connectionString))
+            {
+
+                using (var cmd = new SqlCommand("AddReminder", sqlCn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@date", date);
+                    cmd.Parameters.AddWithValue("@dateReminder", dateReminder);
+                    cmd.Parameters.AddWithValue("@image", image);
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@actions", actions);
+                    cmd.Parameters.AddWithValue("@description", descriptions);
+                    
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
                     returnParameter.Direction = ParameterDirection.ReturnValue;
 

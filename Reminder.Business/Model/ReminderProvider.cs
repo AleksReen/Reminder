@@ -3,13 +3,13 @@ using Reminder.Data.DataProviders;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using Reminder.Common.Enums;
+using System;
 
 namespace Reminder.Business.Model
 {
-    //class processes data from the database
    public class ReminderProvider : IReminderProvider
     {
-        //link to dependency on class Data
         private  IDataRepository _dataProvider;
 
         public ReminderProvider(IDataRepository provider)
@@ -17,7 +17,6 @@ namespace Reminder.Business.Model
             _dataProvider = provider;
         }
 
-        //the property returns the processed value Category
         public IReadOnlyList<MyReminder> GetReminders(int userId)
         {
             return _dataProvider.GetMyReminders(userId);
@@ -26,6 +25,11 @@ namespace Reminder.Business.Model
         public ReminderInfo GetReminderInfo(int id)
         {
             return _dataProvider.GetReminderInfo(id);
+        }
+
+        public ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
+        {
+            return _dataProvider.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
         }
     }
 }

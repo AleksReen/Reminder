@@ -17,13 +17,12 @@ namespace Reminder.Data.DataBase
             _categoryClient = catClient;
             _remClient = remClient;
         }
- 
-        //method invokes a list of reminders
+
         public IReadOnlyList<MyReminder> GetMyReminders(int userId)
         {
             return _remClient.GetReminders(userId);
         }
-        //method enumerates a list of categories
+
         public IReadOnlyList<Category> GetCategories()
         {
             return _categoryClient.GetCategories();
@@ -47,6 +46,11 @@ namespace Reminder.Data.DataBase
         public ServerResponse DeleteCategory(int categoryId)
         {
             return _categoryClient.DeleteCategory(categoryId);
+        }
+
+        public ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
+        {
+            return _remClient.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
         }
     }
 }
