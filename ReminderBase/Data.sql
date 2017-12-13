@@ -18,9 +18,9 @@ GO
 INSERT INTO Users
 ([Login], [Password], Email)
 VALUES
-('User', '6216F8A75FD5BB3D5F22B6F9958CDEDE3FC086C2', 'user@tut.by'),
-('Editor', '1C6637A8F2E1F75E06FF9984894D6BD16A3A36A9', 'editor@tut.by'),
-('Admin', '43814346E21444AAF4F70841BF7ED5AE93F55A9D', 'admin@tut.by')
+('User', '6216F8A75FD5BB3D5F22B6F9958CDEDE3FC086C2', 'user@tut.by'), --password 111
+('Editor', '1C6637A8F2E1F75E06FF9984894D6BD16A3A36A9', 'editor@tut.by'), --password 222
+('Admin', '43814346E21444AAF4F70841BF7ED5AE93F55A9D', 'admin@tut.by') --password 333
 GO
 
 --заполнение таблицы Roles
@@ -36,12 +36,8 @@ INSERT INTO Users_Roles
 (UserId, RoleId)
 VALUES
 (1,1),
-(2,1),
 (2,2),
-(3,1),
-(3,2),
 (3,3)
-
 
 --заполнение таблицы Reminders
 
