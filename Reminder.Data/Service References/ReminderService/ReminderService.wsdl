@@ -162,6 +162,15 @@
   <wsdl:message name="IReminderService_DeleteReminder_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q17:ServiceErrorDto" />
   </wsdl:message>
+  <wsdl:message name="IReminderService_UpdateReminder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReminder" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdateReminder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReminderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReminderService_UpdateReminder_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q18:ServiceErrorDto" />
+  </wsdl:message>
   <wsdl:portType name="IReminderService">
     <wsdl:operation name="GetAllReminders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllReminders" message="tns:IReminderService_GetAllReminders_InputMessage" />
@@ -247,6 +256,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/DeleteReminder" message="tns:IReminderService_DeleteReminder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/DeleteReminderResponse" message="tns:IReminderService_DeleteReminder_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/DeleteReminderServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_DeleteReminder_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReminder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/UpdateReminder" message="tns:IReminderService_UpdateReminder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/UpdateReminderResponse" message="tns:IReminderService_UpdateReminder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/UpdateReminderServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_UpdateReminder_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
@@ -445,6 +459,18 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteReminder">
       <soap:operation soapAction="http://tempuri.org/IReminderService/DeleteReminder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReminder">
+      <soap:operation soapAction="http://tempuri.org/IReminderService/UpdateReminder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

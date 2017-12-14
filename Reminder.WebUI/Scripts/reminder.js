@@ -14,15 +14,16 @@
     });
 
     $(function () {
-        var actionCount = 2
-        $("#newAction").click(function () {
+        var actionCount = $(".block").length;
+        $("#newAction").click(function () {          
             var clon = $("#action_group").clone();
-            clon.children(".control-label").text('Action ' + actionCount);
-            clon.children("div.col-md-10").children("input").val("");
+            clon.children(".control-label").text('Action ' + ++actionCount);
+            clon.children("div.col-md-10").children("input").val("").attr("value","").attr("id","Action"+actionCount);
             $("#action_conteiner").append(clon);
-            actionCount++;
         })
     })
+
+    $('#message').delay(2000).hide('slow');
 });
 
 (function () {

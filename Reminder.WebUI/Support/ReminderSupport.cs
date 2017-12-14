@@ -19,7 +19,7 @@ namespace Reminder.WebUI.Support
                 return imagePath = Path.Combine("/Images/" + name);
             }
 
-            return imagePath = "../Images/No-image-found.jpg";
+            return imagePath = "/Images/No-image-found.jpg";
         }
 
         public static bool ChechExtImg(HttpPostedFileBase Image)

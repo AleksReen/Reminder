@@ -236,7 +236,6 @@
     <Compile Include="Models\ViewsModels\ViewReminderIndex.cs" />
     <Compile Include="Models\ViewsModels\ViewUserPassword.cs" />
     <Compile Include="Models\ViewsModels\ViewRegistration.cs" />
-    <Compile Include="Models\ViewsModels\ViewReminderFullInfo.cs" />
     <Compile Include="Models\ViewsModels\ViewReminderList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\ReminderSupport.cs" />
@@ -270,6 +269,7 @@
     <Content Include="Views\Reminder\_ReminderList.cshtml" />
     <Content Include="Views\Reminder\_ResultDeleteReminder.cshtml" />
     <Content Include="Views\Details\_Details.cshtml" />
+    <Content Include="Views\Reminder\EditeReminder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
@@ -24,10 +25,18 @@ namespace Reminder.WebUI.Controllers
             _providerCategory = provC;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string message, bool? resultAction)
         {
             var user = User as UserPrincipal;
-            return View(new ViewReminderIndex { CurrentUser = user});
+            var model = new ViewReminderIndex { CurrentUser = user };
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                model.Message = message;
+                model.Result = (bool)resultAction;
+            }
+
+            return View(model);
         }
 
 
@@ -124,6 +133,82 @@ namespace Reminder.WebUI.Controllers
 
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return View("AddReminder", newReminder);
+        }
+
+        public ActionResult EditeReminder(int reminderId)
+        {
+            var model = _providerReminder.GetReminderInfo(reminderId);
+            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+           
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditeReminder(ReminderInfo updateReminder, HttpPostedFileBase Img)
+        {
+            if (Img != null && !ReminderSupport.ChechExtImg(Img))
+            {
+                ViewBag.Result = false;
+                ViewBag.Message = "Invalid image format";
+                ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+                return View(updateReminder);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var reminderId = updateReminder.Reminder.ReminderId;
+                var title = updateReminder.Reminder.Title;
+                var date = updateReminder.Reminder.Date;
+                var reminderTime = updateReminder.Reminder.ReminderTime;
+                var categoryId = updateReminder.Reminder.CategoryId;
+                var description = updateReminder.Description;
+
+                var imagePath = "";
+                var imgName = "";
+                if (Img != null)
+                {
+                    imgName = ReminderSupport.GetNewImageName(Img);
+                    imagePath = ReminderSupport.GetImagePath(Img, imgName);
+                }
+                else
+                {
+                    imagePath = updateReminder.Reminder.Image;
+                }
+
+                var actions = ReminderSupport.GetActions(updateReminder.Actions);
+
+                var result = _providerReminder.UpdateReminder(reminderId, title, date, reminderTime, imagePath, categoryId, actions, description);
+                
+                if (result == ServerResponse.NoError)
+                {
+                    if (imagePath != defaultPath && imagePath != updateReminder.Reminder.Image)
+                    {
+                        SaveImage(Img, imgName);
+
+                        var fullPath = Server.MapPath(updateReminder.Reminder.Image);
+                        
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                    }
+
+                    ////ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+                    ////ViewBag.Result = true;
+                    //ViewBag.Message = "reminder was successfully updated";
+                    
+                    return RedirectToAction("Index", new { message = "reminder was successfully updated", resultAction = true});
+                }
+
+                if (result == ServerResponse.DataBaseError)
+                {                   
+                    //ViewBag.Result = false;
+                    //ViewBag.Message.Message = "Some Errors";
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(updateReminder);
         }
 
 

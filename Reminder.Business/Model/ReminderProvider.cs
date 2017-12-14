@@ -36,5 +36,10 @@ namespace Reminder.Business.Model
         {
             return _dataProvider.DeleteReminder(id);
         }
+
+        public ServerResponse UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions)
+        {
+            return _dataProvider.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
     }
 }

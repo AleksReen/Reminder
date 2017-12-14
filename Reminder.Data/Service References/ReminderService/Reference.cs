@@ -719,6 +719,13 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteReminder", ReplyAction="http://tempuri.org/IReminderService/DeleteReminderResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ImgPathDto> DeleteReminderAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateReminder", ReplyAction="http://tempuri.org/IReminderService/UpdateReminderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdateReminderServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.ServerResultDto UpdateReminder(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateReminder", ReplyAction="http://tempuri.org/IReminderService/UpdateReminderResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateReminderAsync(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -882,6 +889,14 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ImgPathDto> DeleteReminderAsync(int id) {
             return base.Channel.DeleteReminderAsync(id);
+        }
+        
+        public Reminder.Data.ReminderService.ServerResultDto UpdateReminder(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
+            return base.Channel.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ServerResultDto> UpdateReminderAsync(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
+            return base.Channel.UpdateReminderAsync(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
         }
     }
 }

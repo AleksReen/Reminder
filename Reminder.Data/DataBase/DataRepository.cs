@@ -57,5 +57,10 @@ namespace Reminder.Data.DataBase
         {
             return _remClient.DeleteReminder(id);
         }
+
+        public ServerResponse UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions)
+        {
+            return _remClient.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
     }
 }
