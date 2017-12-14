@@ -58,7 +58,6 @@
             </div>
         </div>
 
-
         <div id="action_conteiner">
 
             @if (Model != null && Model.Actions != null)
@@ -111,10 +110,7 @@
             <div class="col-md-10">
                 <a class='btn' href='javascript:;'>
                     Choose File...
-                    <input type="file" name="Img" size="40"
-                           style="position:absolute;z-index:2;top:0; left:0;filter: alpha(opacity=0); opacity:0;
-                                   background-color:transparent;color:transparent;"
-                           onchange='$("#upload-file-info").html($(this).val());'>
+                    <input type="file" name="Img" size="40" class="upload" onchange='$("#upload-file-info").html($(this).val());'>
                 </a>
                 <span class='label label-info' id="upload-file-info"></span>
 
@@ -125,7 +121,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.ActionLink("Back to List", "Index", "Reminder", null, new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>

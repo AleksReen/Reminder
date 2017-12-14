@@ -95,6 +95,7 @@ namespace Reminder.WebUI.Controllers
         {
             if (newReminder.Image != null && !ReminderSupport.ChechExtImg(newReminder.Image))
             {
+                ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
                 return View("AddReminder", newReminder);
             }
 
@@ -117,17 +118,12 @@ namespace Reminder.WebUI.Controllers
                     {
                         SaveImage(newReminder.Image, imgName);
                     }
-                    
-                    ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
-                    ViewBag.Result = true;
-                    return View("AddReminder", new ViewNewReminder() { Message = "reminder was successfully created" });
+
+                    return RedirectToAction("Index", new { message = "reminder was successfully created", resultAction = true });
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
-                    ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
-                    ViewBag.Result = false;
-                    newReminder.Message = "Some Errors";
-                    return View("AddReminder", newReminder);
+                    return RedirectToAction("Index", new { message = "Some Errors", resultAction = true });
                 }
             }
 
@@ -148,8 +144,6 @@ namespace Reminder.WebUI.Controllers
         {
             if (Img != null && !ReminderSupport.ChechExtImg(Img))
             {
-                ViewBag.Result = false;
-                ViewBag.Message = "Invalid image format";
                 ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
                 return View(updateReminder);
             }
@@ -193,18 +187,12 @@ namespace Reminder.WebUI.Controllers
                         }
                     }
 
-                    ////ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
-                    ////ViewBag.Result = true;
-                    //ViewBag.Message = "reminder was successfully updated";
-                    
                     return RedirectToAction("Index", new { message = "reminder was successfully updated", resultAction = true});
                 }
 
                 if (result == ServerResponse.DataBaseError)
-                {                   
-                    //ViewBag.Result = false;
-                    //ViewBag.Message.Message = "Some Errors";
-                    return RedirectToAction("Index");
+                {                                       
+                    return RedirectToAction("Index", new { message = "Some Errors", resultAction = false });
                 }
             }
 

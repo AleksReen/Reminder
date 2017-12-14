@@ -1,5 +1,5 @@
 ﻿@model Reminder.WebUI.Models.ViewsModels.ViewFilter
-@using (Ajax.BeginForm("GetSearchResult", new AjaxOptions { UpdateTargetId = "results" }))
+@using (Ajax.BeginForm("GetSearchResult", new AjaxOptions { UpdateTargetId = "results", LoadingElementId = "loader" }))
 {
     @Html.AntiForgeryToken()
 
