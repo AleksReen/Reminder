@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="reminder-list">
+<h2 class="col-md-offset-2 reminder-list">
     Reminder list
 </h2>
 
@@ -26,20 +26,15 @@
     </div>
 }
 
-@*<div class="form-group">
-    <div class="col-md-12">
-        @Html.ActionLink("Add Reminder", "AddReminder", "Reminder", null, new { @class = "btn btn-success" })
-        @Html.ActionLink("Search", "SearchList", "Search", null, new { @class = "btn btn-primary search" })       
-    </div>
-</div>*@
-
 <div class="col-md-2">
     <div class="form-group">
         @Html.ActionLink("Search", "SearchList", "Search", null, new { @class = "btn btn-primary block" })
     </div>
     
 
-    <h3>Categories</h3>
+    <h3 class="block-header">
+        Categories
+    </h3>
     @Html.Action("CategoryList", "Category")
     <hr />
 
@@ -47,7 +42,9 @@
     {
         if (Model.CurrentUser.IsInRole("Editor, Admin"))
         {
-            <h3>Edit Mode</h3>
+            <h3 class="block-header">
+                Edit Mode
+            </h3>
             <div>
                 @Html.ActionLink("Editor", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-warning block"})
             </div>
@@ -56,7 +53,9 @@
 
         if (Model.CurrentUser.IsInRole("Admin"))
         {
-            <h3>Admin Mode</h3>           
+            <h3 class="block-header">
+                Admin Mode
+            </h3>
             <div>
                 @Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, new { @class = "btn btn-danger block" })
             </div>

@@ -53,13 +53,11 @@
             </dt>
 
             <dd>
-                <ul>
                     @foreach (var action in Model.Actions)
                     {
-                        <li>@action</li>
+                            <div>@action</div>
                     }
 
-                </ul>
             </dd>
 
             <dt>
@@ -73,9 +71,10 @@
         </dl>
     </div>
 </div>
+<br />
 <p>
-    @Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }) |
+@Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }, new { @class = "btn btn-primary" })
     
-    @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" })
+    @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }, new { @class = "btn btn-primary" })
 </p>
 

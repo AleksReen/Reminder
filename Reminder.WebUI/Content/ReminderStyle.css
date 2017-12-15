@@ -1,9 +1,14 @@
-﻿.reminder-item-conteiner{
+﻿body {
+    background-image: url('bg-img/bg-light.png');
+}
+
+.reminder-item-conteiner{
     display: flex; 
     flex-direction: row; 
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 0 50px 0 50px; 
     padding: 10px; 
+    background-color:white;
 }
 
 .image-conteiner{
@@ -44,5 +49,9 @@
     color:transparent;
 }
 .reminder-list{
+    text-align:center;
+}
+
+.block-header{
     text-align:center;
 }
