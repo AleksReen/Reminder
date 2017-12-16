@@ -1,9 +1,18 @@
 ﻿@model Reminder.WebUI.Areas.Editor.Models.EditeCategory
 
-<div id="results">
-    <h3>Edite Category</h3>
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div>
+    <h3>
+        Edite Category
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
     <hr />
-    @using (Ajax.BeginForm("EditeCategory", new AjaxOptions { UpdateTargetId = "results" }))
+    @using (Ajax.BeginForm("EditeCategory", options))
     {
         @Html.AntiForgeryToken()
 
@@ -15,7 +24,7 @@
                     @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label" })
                 </div>
                 <div class="col-md-12">
-                    @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Выбрать категорию", new { @class = "form-control"})
+                    @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Select a category", new { @class = "form-control"})
                     @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -1,14 +1,18 @@
 ﻿@model Reminder.WebUI.Areas.Admin.Models.ViewCreateUser
 
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
 <div>
     <h3>
         Create User
-        <span id="loader" style="display:none">
-            <img src="~/Content/loaders/loader-blue.gif" />
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
         </span>
     </h3>    
     <hr />
-    @using (Ajax.BeginForm("CreateUser", new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }))
+    @using (Ajax.BeginForm("CreateUser", options))
     {
         @Html.AntiForgeryToken()
 

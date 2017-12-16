@@ -215,10 +215,8 @@ namespace Reminder.Service
             }
         }
 
-        public ServerResultDto AddCategory(string categoryName)
+        public int AddCategory(string categoryName)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
 
@@ -235,33 +233,30 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto EditeCategory(int categoryId, string categoryName)
+        public int EditeCategory(int categoryId, string categoryName)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("EditeCategory", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CategoryId", categoryId);
 
-                    //cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CategoryName", categoryName);
 
                     var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
@@ -272,27 +267,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto DeleteCategory(int categoryId)
+        public int DeleteCategory(int categoryId)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("DeleteCategory", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -306,27 +299,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto Registration(string login, string password, string email)
+        public int Registration(string login, string password, string email)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("CreateUser", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -342,16 +333,17 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
@@ -487,13 +479,10 @@ namespace Reminder.Service
             return roleList.ToArray();
         }
 
-        public ServerResultDto UpdateUser(int id, string login, string email, int roleId)
+        public int UpdateUser(int id, string login, string email, int roleId)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("UpdateUser", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -510,27 +499,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto DeleteUser(int id)
+        public int DeleteUser(int id)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("DeleteUser", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -544,27 +531,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto UpdateProfile(int id, string login, string email)
+        public int UpdateProfile(int id, string login, string email)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("UpdateProfile", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -580,27 +565,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto UpdatePassword(int id, string password)
+        public int UpdatePassword(int id, string password)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("UpdatePassword", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -615,27 +598,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
-                    }
-                    return result;
+                    }                   
                 }
             }
         }
 
-        public ServerResultDto AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
+        public int AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("AddReminder", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -656,24 +637,23 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ImgPathDto DeleteReminder(int id)
+        public string DeleteReminder(int id)
         {
-            var result = new ImgPathDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
 
@@ -691,27 +671,25 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Path = returnParameter.Value.ToString();
+                        var result = returnParameter.Value.ToString();
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }
 
-        public ServerResultDto UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions)
+        public int UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions)
         {
-            var result = new ServerResultDto();
-
             using (var sqlCn = new SqlConnection(connectionString))
             {
-
                 using (var cmd = new SqlCommand("UpdateReminder", sqlCn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -732,16 +710,17 @@ namespace Reminder.Service
                         sqlCn.Open();
 
                         cmd.ExecuteNonQuery();
-                        result.Result = (int)returnParameter.Value;
+                        var result = (int)returnParameter.Value;
 
                         sqlCn.Close();
+
+                        return result;
                     }
                     catch (Exception e)
                     {
                         error.Message = e.Message;
                         throw new FaultException<ServiceErrorDto>(error, "Database error");
                     }
-                    return result;
                 }
             }
         }

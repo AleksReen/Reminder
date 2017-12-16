@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    var options = new AjaxOptions { UpdateTargetId = "result" };
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
 }
 
 <div class="col-md-4">
@@ -22,7 +22,12 @@
 
 <div class="col-md-8">
     <div id="result">
-        <h2>Description</h2>
+        <h2>
+            Description
+            <span id="loader" style="display:none">
+                <img src="~/Content/loaders/loader-blue.png" />
+            </span>
+        </h2>
         <p>
             Et nulla gubergren magna accusam aliquip lobortis ea vel ipsum facilisis vero
             et eum dolor assum sanctus diam et at rebum accusam est lorem eros et accusam lorem

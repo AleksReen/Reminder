@@ -15,9 +15,15 @@ namespace Reminder.WebUI.Controllers
             _provider = prov;
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string message, bool? resultAction)
         {
-            return View("Login");
+            var model = new ViewLogin();
+            if (!string.IsNullOrEmpty(message))
+            {
+                model.Message = message;
+                model.Result = (bool)resultAction;
+            }
+            return View(model);
         }
 
         [HttpPost]

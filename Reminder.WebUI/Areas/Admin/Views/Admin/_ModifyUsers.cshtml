@@ -1,10 +1,14 @@
 ﻿@model IEnumerable<Reminder.Common.Entity.UserReminder>
 
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
 <div>
     <h3>
         Users table
-        <span id="loader" style="display:none">
-            <img src="~/Content/loaders/loader-blue.gif" />
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
         </span>
     </h3>
     <table class="table">
@@ -34,8 +38,8 @@
                     @Html.DisplayFor(modelItem => item.UserRole.RoleName)
                 </td>
                 <td>
-                    @Ajax.ActionLink("Edit", "EditeUser", "Admin", new { id = item.UserId }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }) |
-                    @Ajax.ActionLink("Delete", "DeleteUser", "Admin", item, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" })
+                    @Ajax.ActionLink("Edit", "EditeUser", "Admin", new { id = item.UserId }, options) |
+                    @Ajax.ActionLink("Delete", "DeleteUser", "Admin", item, options)
                 </td>
             </tr>
         }

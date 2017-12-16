@@ -19,13 +19,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -47,12 +46,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.DeleteReminder(id);
 
-                    if (!string.IsNullOrEmpty(resultDto.Path))
-                    {
-                        return resultDto.Path;
-                    }
-
                     client.Close();
+
+                    if (!string.IsNullOrEmpty(resultDto))
+                    {
+                        return resultDto;
+                    }
 
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
@@ -149,13 +148,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

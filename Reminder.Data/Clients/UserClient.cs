@@ -22,13 +22,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.DeleteUser(id);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -209,13 +208,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.Registration(login, password, email);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -236,13 +234,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.UpdatePassword(id, password);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -263,13 +260,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.UpdateProfile(id, login, email);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -290,13 +286,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.UpdateUser(id, login, email, roleId);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

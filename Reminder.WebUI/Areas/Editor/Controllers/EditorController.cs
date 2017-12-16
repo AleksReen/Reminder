@@ -3,6 +3,7 @@ using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Editor.Models;
 using Reminder.WebUI.Filters;
 using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Areas.Editor.Controllers
@@ -24,12 +25,14 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
 
         public ActionResult CreateCategory()
         {
+            Thread.Sleep(2000);
             return PartialView("_CreateCategory");
         }
 
         [HttpPost]
         public ActionResult CreateCategory(ViewModelCreateCategory category)
         {
+            Thread.Sleep(2000);
             if (ModelState.IsValid)
             {
                 var result = _providerCategory.AddCategory(category.CategoryName);
@@ -50,12 +53,14 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
 
         public ActionResult EditeCategory()
         {
+            Thread.Sleep(2000);
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return PartialView("_EditeCategory");
         }
         [HttpPost]
         public ActionResult EditeCategory(EditeCategory editeCategory)
         {
+            Thread.Sleep(2000);
             if (ModelState.IsValid)
             {
                 var result = _providerCategory.EditeCategory(editeCategory.CategoryId, editeCategory.NewName);
@@ -77,12 +82,14 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
 
         public ActionResult DeleteCategory()
         {
+            Thread.Sleep(2000);
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return PartialView("_DeleteCategory");
         }
         [HttpPost]
         public ActionResult DeleteCategory(DeleteCategory deleteCategory)
         {
+            Thread.Sleep(2000);
             if (ModelState.IsValid)
             {
                 var result = _providerCategory.DeleteCategory(deleteCategory.CategoryId);

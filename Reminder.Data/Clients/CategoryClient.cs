@@ -18,12 +18,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.AddCategory(categoryName);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
 
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
@@ -45,12 +45,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.DeleteCategory(categoryId);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
 
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
@@ -72,13 +72,12 @@ namespace Reminder.Data.Clients
 
                     var resultDto = client.EditeCategory(categoryId, categoryName);
 
-                    if (resultDto.Result == (int)ServerResponse.NoError)
+                    client.Close();
+
+                    if (resultDto == (int)ServerResponse.NoError)
                     {
                         return ServerResponse.NoError;
                     }
-
-                    client.Close();
-
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

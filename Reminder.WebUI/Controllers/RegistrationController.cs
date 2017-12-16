@@ -18,7 +18,6 @@ namespace Reminder.WebUI.Controllers
         {
             _provider = prov;
         }
-        // GET: Registration
         public ActionResult Registration()
         {
             return View("Registration");
@@ -33,7 +32,8 @@ namespace Reminder.WebUI.Controllers
                 var result = _provider.Registration(regForm.Login,regForm.Password,regForm.Email);
                 if (result == ServerResponse.NoError)
                 {
-                    regForm.Message = "Registration was successful, use your login and password to log in.";
+                    var response = new { message = "Registration was successful, use your login and password to log in", resultAction = true };
+                    return RedirectToAction("Login", "Login", response);
                 }
                 if (result == ServerResponse.RegistrationFaild)
                 {

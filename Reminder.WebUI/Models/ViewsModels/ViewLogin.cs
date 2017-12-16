@@ -14,5 +14,6 @@ namespace Reminder.WebUI.Models.ViewsModels
         public string Password { get; set; }
 
         public string Message { get; set; }
+        public bool Result { get; set; }
     }
 }

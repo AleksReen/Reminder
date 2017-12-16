@@ -1,15 +1,18 @@
 ﻿@model Reminder.Common.Entity.UserReminder
 
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
 
 <div class="form-horizontal">
     <h3>
         Update User
-        <span id="loader" style="display:none">
-            <img src="~/Content/loaders/loader-blue.gif" />
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
         </span>
     </h3>
     <hr />
-    @using (Ajax.BeginForm("EditeUser", new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }))
+    @using (Ajax.BeginForm("EditeUser", options))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -41,7 +44,8 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Update" class="btn btn-warning" />
-                </div>
+                    @Ajax.ActionLink("UserList", "ModifyUsers", "Admin", options, new { @class = "btn btn-primary" })
+                </div>                
             </div>
         }
 </div>

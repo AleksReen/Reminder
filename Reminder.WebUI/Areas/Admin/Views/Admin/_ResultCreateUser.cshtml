@@ -1,10 +1,14 @@
 ﻿@model string
 
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
 <div>
     <h3>
         Create User
-        <span id="loader" style="display:none">
-            <img src="~/Content/loaders/loader-blue.gif" />
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
         </span>
     </h3>
     <hr />
@@ -24,7 +28,7 @@
         </h4>
     }
 
-    @Ajax.ActionLink("Create", "CreateUser", "Admin", new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }, new { @class = "btn btn-success" })
+    @Ajax.ActionLink("Create", "CreateUser", "Admin", options, new { @class = "btn btn-success" })
     @Html.ActionLink("Close", "Index", "Admin", new { area = "Admin" }, new { @class = "btn btn-primary" })
 
 </div>

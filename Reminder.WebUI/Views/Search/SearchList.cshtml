@@ -8,8 +8,8 @@
 <div class="col-md-3">
     <h3>
         Filter
-        <span id="loader" style="display:none">
-            <img src="~/Content/loaders/loader-blue.gif" />
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
         </span>
     </h3>
     @Html.Partial("_Filter")
@@ -20,7 +20,7 @@
     <h3>
         Result       
     </h3>
-    <div id="results">
+    <div id="result">
        @Html.Action("GetSearchResult")
     </div>
 

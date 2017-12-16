@@ -26,19 +26,19 @@ namespace Reminder.Service
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto AddCategory(string categoryName);
+        int AddCategory(string categoryName);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto EditeCategory(int categoryId, string categoryName);
+        int EditeCategory(int categoryId, string categoryName);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto DeleteCategory(int categoryId);
+        int DeleteCategory(int categoryId);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto Registration(string login, string password, string email);
+        int Registration(string login, string password, string email);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
@@ -54,30 +54,30 @@ namespace Reminder.Service
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto UpdateUser(int id, string login, string email, int roleId);
+        int UpdateUser(int id, string login, string email, int roleId);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto DeleteUser(int id);
+        int DeleteUser(int id);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto UpdateProfile(int id, string login, string email);
+        int UpdateProfile(int id, string login, string email);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto UpdatePassword(int id, string password);
+        int UpdatePassword(int id, string password);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+        int AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ImgPathDto DeleteReminder(int id);
+        string DeleteReminder(int id);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
-        ServerResultDto UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
+        int UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
     }
 }

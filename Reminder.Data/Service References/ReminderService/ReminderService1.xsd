@@ -67,7 +67,7 @@
   <xs:element name="AddCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="AddCategoryResult" nillable="true" type="q5:ServerResultDto" />
+        <xs:element minOccurs="0" name="AddCategoryResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -82,7 +82,7 @@
   <xs:element name="EditeCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="EditeCategoryResult" nillable="true" type="q6:ServerResultDto" />
+        <xs:element minOccurs="0" name="EditeCategoryResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -96,7 +96,7 @@
   <xs:element name="DeleteCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="DeleteCategoryResult" nillable="true" type="q7:ServerResultDto" />
+        <xs:element minOccurs="0" name="DeleteCategoryResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -112,7 +112,7 @@
   <xs:element name="RegistrationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="RegistrationResult" nillable="true" type="q8:ServerResultDto" />
+        <xs:element minOccurs="0" name="RegistrationResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -124,7 +124,7 @@
   <xs:element name="GetUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="GetUsersResult" nillable="true" type="q9:ArrayOfUserDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="GetUsersResult" nillable="true" type="q5:ArrayOfUserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -138,7 +138,7 @@
   <xs:element name="EditeUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="EditeUserResult" nillable="true" type="q10:UserDto" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="EditeUserResult" nillable="true" type="q6:UserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -150,7 +150,7 @@
   <xs:element name="GetRolesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="GetRolesResult" nillable="true" type="q11:ArrayOfRoleDto" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="GetRolesResult" nillable="true" type="q7:ArrayOfRoleDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -167,7 +167,7 @@
   <xs:element name="UpdateUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="UpdateUserResult" nillable="true" type="q12:ServerResultDto" />
+        <xs:element minOccurs="0" name="UpdateUserResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -181,7 +181,7 @@
   <xs:element name="DeleteUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="DeleteUserResult" nillable="true" type="q13:ServerResultDto" />
+        <xs:element minOccurs="0" name="DeleteUserResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -197,7 +197,7 @@
   <xs:element name="UpdateProfileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="UpdateProfileResult" nillable="true" type="q14:ServerResultDto" />
+        <xs:element minOccurs="0" name="UpdateProfileResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -212,7 +212,7 @@
   <xs:element name="UpdatePasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="UpdatePasswordResult" nillable="true" type="q15:ServerResultDto" />
+        <xs:element minOccurs="0" name="UpdatePasswordResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -233,7 +233,7 @@
   <xs:element name="AddReminderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="AddReminderResult" nillable="true" type="q16:ServerResultDto" />
+        <xs:element minOccurs="0" name="AddReminderResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -247,7 +247,7 @@
   <xs:element name="DeleteReminderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="DeleteReminderResult" nillable="true" type="q17:ImgPathDto" />
+        <xs:element minOccurs="0" name="DeleteReminderResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -268,7 +268,7 @@
   <xs:element name="UpdateReminderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" minOccurs="0" name="UpdateReminderResult" nillable="true" type="q18:ServerResultDto" />
+        <xs:element minOccurs="0" name="UpdateReminderResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

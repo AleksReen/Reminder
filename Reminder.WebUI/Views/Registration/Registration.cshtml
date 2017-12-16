@@ -13,9 +13,8 @@
 
         @if (Model != null && !string.IsNullOrEmpty(Model.Message))
         {
-            <div class="text-danger">
+            <div id="message" class="alert alert-danger" style="max-width:280px">
                 @Model.Message
-                @Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "btn btn-primary" })
             </div>
         }
 
@@ -55,11 +54,12 @@
             </div>
             <div class="col-md-12">
                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+               @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
             </div>
         </div>
 
         <button class="btn btn-success" type="submit">Registration</button>
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class="btn btn-primary"})
 
     </div>
 }

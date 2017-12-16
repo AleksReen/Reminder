@@ -1,9 +1,18 @@
 ﻿@model Reminder.WebUI.Areas.Editor.Models.ViewModelCreateCategory 
 
-<div id="results">
-    <h3>Create Category</h3>
+@{
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div>
+    <h3>
+        Create Category
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
     <hr />
-    @using (Ajax.BeginForm("CreateCategory", new AjaxOptions { UpdateTargetId = "results"}))
+    @using (Ajax.BeginForm("CreateCategory", options))
     {
         @Html.AntiForgeryToken()
 

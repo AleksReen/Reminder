@@ -1,0 +1,1 @@
+ERROR [2017-12-09 20:43:03,609] [Reminder.Data.Clients.UserClient.UpdatePassword] Процедура или функция "UpdateProfile" ожидает параметр "@login", который не был указан.

@@ -108,9 +108,6 @@
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.CategoryDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.ImgPathDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.MyReminderDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -118,9 +115,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.RoleDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReminderService\Reminder.Data.ReminderService.ServerResultDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReminderService\Reminder.Data.ReminderService.UserDto.datasource">

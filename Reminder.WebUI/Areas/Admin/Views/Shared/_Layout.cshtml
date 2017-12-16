@@ -24,7 +24,6 @@
                 </ul>
                 @if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
-                    //TO DO
                     @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand navbar-right" })
                     <span class="navbar-brand navbar-right">
                         @HttpContext.Current.User.Identity.Name

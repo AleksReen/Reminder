@@ -23,12 +23,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RoleDto" nillable="true" type="tns:RoleDto" />
-  <xs:complexType name="ServerResultDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Result" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ServerResultDto" nillable="true" type="tns:ServerResultDto" />
   <xs:complexType name="ArrayOfUserDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDto" nillable="true" type="tns:UserDto" />
@@ -41,10 +35,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRoleDto" nillable="true" type="tns:ArrayOfRoleDto" />
-  <xs:complexType name="ImgPathDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ImgPathDto" nillable="true" type="tns:ImgPathDto" />
 </xs:schema>

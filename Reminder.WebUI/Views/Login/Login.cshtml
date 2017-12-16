@@ -1,6 +1,27 @@
 ﻿@model Reminder.WebUI.Models.ViewsModels.ViewLogin
 
-<h2>Login</h2>
+<h2>
+    Login
+</h2>
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Message))
+{
+    <div style="max-width:280px">
+        @if (Model.Result)
+        {
+            <div id="message" class="alert alert-success">
+                @Model.Message
+            </div>
+        }
+        else
+        {
+            <div id="message" class="alert alert-danger">
+                @Model.Message
+            </div>
+        }
+    </div>
+}
+
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -8,12 +29,7 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @if (Model != null && !string.IsNullOrEmpty(Model.Message))
-        {
-            <div class="text-danger">
-                @Model.Message
-            </div>
-        }
+        
        
         <div class="form-group">
             <div class="col-md-12">
