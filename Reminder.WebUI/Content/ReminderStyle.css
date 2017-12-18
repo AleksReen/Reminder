@@ -5,10 +5,19 @@
 .reminder-item-conteiner{
     display: flex; 
     flex-direction: row; 
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 0 50px 0 50px; 
     padding: 10px; 
     background-color:white;
+}
+
+.reminder-future{
+    box-shadow: 0 0 30px rgba(17%,40%,60%, 1);
+}
+.reminder-current{
+    box-shadow: 0 0 30px rgba(24%, 56%, 24%, 1);
+}
+.reminder-fail{
+    box-shadow: 0 0 30px rgba(73%, 17%, 16%, 1);
 }
 
 .image-conteiner{
@@ -23,6 +32,7 @@
 
 .button-conteiner{
     text-align:right;
+    padding-bottom:10px;
 }
 
 .datatimepicker-style{

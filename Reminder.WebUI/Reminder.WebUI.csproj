@@ -139,7 +139,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\business.jpg" />
+    <Content Include="Images\family.jpg" />
+    <Content Include="Images\home.jpg" />
+    <Content Include="Images\meeting.jpg" />
     <Content Include="Images\No-image-found.jpg" />
+    <Content Include="Images\rest.jpg" />
     <Content Include="LoggerWeb.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -5,7 +5,8 @@
     var options = new AjaxOptions
     {
         UpdateTargetId = "result",
-        LoadingElementId = "loader"
+        LoadingElementId = "loader",
+        OnSuccess = "reminderStyle"
     };
 }
 
@@ -15,7 +16,7 @@
 
     @foreach (var category in Model)
     {
-        @Html.Raw(@Ajax.ActionLink("[replacetext]", "ReminderList", "Reminder", new { category = category.CategoryId }, options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", $"<span class='glyphicon glyphicon-user'></span>  {category.CategoryName}"))
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "ReminderList", "Reminder", new { category = category.CategoryId }, options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", $"<span class='glyphicon glyphicon-star-empty'></span>  {category.CategoryName}"))
     }
 </div>
 

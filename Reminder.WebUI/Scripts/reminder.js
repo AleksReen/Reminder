@@ -24,11 +24,50 @@
     })
 
     $('#message').delay(2000).hide('slow');
+
+    (function () {
+        jQuery.validator.methods.date = function (value, element) {
+            var formats = ["DD.MM.YYYY", "DD.MM.YYYY hh:mm:ss A"];
+            return moment(value, formats, true).isValid();
+        };
+    })(jQuery, moment);
+
+    reminderStyle();
 });
 
-(function () {
-    jQuery.validator.methods.date = function (value, element) {
-        var formats = ["DD.MM.YYYY", "DD.MM.YYYY hh:mm:ss A"];
-        return moment(value, formats, true).isValid();
-    };
-})(jQuery, moment);
+function reminderStyle () {
+    var reminders = $(".reminder-item-conteiner");
+
+    var now = new Date();
+    var currDate = now.getDate();
+    var currMonth = now.getMonth() + 1;
+    var currYear = now.getFullYear();
+    var currHour = now.getHours();
+    var currMinutes = now.getMinutes();
+    var currSeconds = now.getSeconds();
+
+    var currFullDate = currDate + '.' + currMonth + '.' + currYear;
+    var currFullDateTime = currFullDate + " " + currHour + ":" + currMinutes + ":" + currSeconds;
+
+    for (var i = 0; i < reminders.length; i++) {
+
+        var reminderDate = $(reminders[i]).find("#reminderDate").text().trim();
+        var reminderTime = $(reminders[i]).find("#reminderTime").text().trim();
+
+        if (reminderDate >= currFullDate && reminderTime >= currFullDateTime) {
+            $(reminders[i]).addClass("reminder-future")
+        }
+
+        if (reminderDate >= currFullDate && reminderTime <= currFullDateTime) {
+            $(reminders[i]).addClass("reminder-current")
+        }
+
+        if (reminderDate <= currFullDate && reminderTime <= currFullDateTime) {
+            $(reminders[i]).addClass("reminder-fail")
+        }
+    }
+};
+
+
+
+
