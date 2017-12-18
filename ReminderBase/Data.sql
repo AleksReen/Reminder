@@ -27,9 +27,9 @@ GO
 INSERT INTO Roles
 ([Role])
 VALUES
-('user'),
-('edit'),
-('admin')
+('User'),
+('Edit'),
+('Admin')
 GO
 --заполнение таблицы Users_Roles
 INSERT INTO Users_Roles

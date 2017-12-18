@@ -1,5 +1,9 @@
 ﻿@model Reminder.Common.Entity.ReminderInfo
 
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
 <div>
     <h3>
         Details
@@ -55,7 +59,7 @@
             <dd>
                     @foreach (var action in Model.Actions)
                     {
-                            <div>@action</div>
+                        <div>@action</div>
                     }
 
             </dd>
@@ -73,8 +77,8 @@
 </div>
 <br />
 <p>
-@Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, options, new { @class = "btn btn-primary" })
     
-    @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, options, new { @class = "btn btn-primary" })
 </p>
 

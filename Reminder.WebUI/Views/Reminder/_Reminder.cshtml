@@ -40,7 +40,7 @@
     </div>
     <br />
     <div class="button-conteiner">
-        @Ajax.ActionLink("Details", "GetDetails", "Details", new { reminderId = Model.ReminderId }, options, new { @class = "btn btn-info" })
+        @Ajax.ActionLink("Details", "GetDetails", "Details", new { reminderId = Model.ReminderId }, options, new { @class = "btn btn-primary" })
         @Html.ActionLink("Edite", "EditeReminder", "Reminder", new { reminderId = Model.ReminderId }, new { @class = "btn  btn-warning" })
         @Ajax.ActionLink("Delete", "DeleteReminder", "Reminder", new { reminderTitle = Model.Title, reminderId = Model.ReminderId}, options, new { @class = "btn btn-danger" })
     </div>

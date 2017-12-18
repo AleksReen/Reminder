@@ -1,0 +1,7 @@
+1. install DataBase.sql
+2. install Data.sql
+3. install all from Functions
+4. install all from Procedures
+
+-- login name - Aleks
+-- password - 123 
