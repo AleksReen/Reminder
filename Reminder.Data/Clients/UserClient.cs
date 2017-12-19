@@ -14,7 +14,7 @@ namespace Reminder.Data.Clients
     {
         public ServerResponse DeleteUser(int id)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -41,7 +41,7 @@ namespace Reminder.Data.Clients
         public UserReminder GetEditeUser(int id)
         {
             var user = new UserReminder();
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -76,7 +76,7 @@ namespace Reminder.Data.Clients
         public IReadOnlyList<UserRole> GetRoles()
         {
             var roleList = new List<UserRole>();
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -111,7 +111,7 @@ namespace Reminder.Data.Clients
         public IReadOnlyList<UserReminder> GetUsers()
         {
             var listUsers = new List<UserReminder>();
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -153,7 +153,7 @@ namespace Reminder.Data.Clients
 
         public ServerResponse Login(string login, string password)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -200,7 +200,7 @@ namespace Reminder.Data.Clients
 
         public ServerResponse Registration(string login, string password, string email)
         {                
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -226,7 +226,7 @@ namespace Reminder.Data.Clients
 
         public ServerResponse UpdatePassword(int id, string password)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -252,7 +252,7 @@ namespace Reminder.Data.Clients
 
         public ServerResponse UpdateProfile(int id, string login, string email)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {
@@ -278,7 +278,7 @@ namespace Reminder.Data.Clients
    
         public ServerResponse UpdateUser(int id, string login, string email, int roleId)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.UserServiceClient())
             {
                 try
                 {

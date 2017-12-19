@@ -1,4 +1,5 @@
-﻿using Reminder.Service.Contracts.Models.Dto;
+﻿using Reminder.Service.Contracts.Contracts;
+using Reminder.Service.Contracts.Models.Dto;
 using Reminder.Service.ModelDto.Dto;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.ServiceModel;
 
 namespace Reminder.Service
 {
-    public class ReminderService : IReminderService
+    public class ReminderService : IReminderService, IUserService
     {
         private readonly string connectionString;
         private readonly ServiceErrorDto error;

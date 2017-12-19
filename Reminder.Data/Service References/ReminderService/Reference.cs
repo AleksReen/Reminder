@@ -532,13 +532,6 @@ namespace Reminder.Data.ReminderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetCurrentUser", ReplyAction="http://tempuri.org/IReminderService/GetCurrentUserResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetCurrentUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetCurrentUser", ReplyAction="http://tempuri.org/IReminderService/GetCurrentUserResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/AddCategory", ReplyAction="http://tempuri.org/IReminderService/AddCategoryResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/AddCategoryServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
         int AddCategory(string categoryName);
@@ -559,62 +552,6 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteCategory", ReplyAction="http://tempuri.org/IReminderService/DeleteCategoryResponse")]
         System.Threading.Tasks.Task<int> DeleteCategoryAsync(int categoryId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Registration", ReplyAction="http://tempuri.org/IReminderService/RegistrationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/RegistrationServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        int Registration(string login, string password, string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/Registration", ReplyAction="http://tempuri.org/IReminderService/RegistrationResponse")]
-        System.Threading.Tasks.Task<int> RegistrationAsync(string login, string password, string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetUsers", ReplyAction="http://tempuri.org/IReminderService/GetUsersResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetUsersServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.UserDto[] GetUsers();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetUsers", ReplyAction="http://tempuri.org/IReminderService/GetUsersResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/EditeUser", ReplyAction="http://tempuri.org/IReminderService/EditeUserResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/EditeUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.UserDto EditeUser(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/EditeUser", ReplyAction="http://tempuri.org/IReminderService/EditeUserResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetRoles", ReplyAction="http://tempuri.org/IReminderService/GetRolesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetRolesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.RoleDto[] GetRoles();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetRoles", ReplyAction="http://tempuri.org/IReminderService/GetRolesResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.RoleDto[]> GetRolesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateUser", ReplyAction="http://tempuri.org/IReminderService/UpdateUserResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdateUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        int UpdateUser(int id, string login, string email, int roleId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateUser", ReplyAction="http://tempuri.org/IReminderService/UpdateUserResponse")]
-        System.Threading.Tasks.Task<int> UpdateUserAsync(int id, string login, string email, int roleId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteUser", ReplyAction="http://tempuri.org/IReminderService/DeleteUserResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/DeleteUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        int DeleteUser(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteUser", ReplyAction="http://tempuri.org/IReminderService/DeleteUserResponse")]
-        System.Threading.Tasks.Task<int> DeleteUserAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateProfile", ReplyAction="http://tempuri.org/IReminderService/UpdateProfileResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdateProfileServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        int UpdateProfile(int id, string login, string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateProfile", ReplyAction="http://tempuri.org/IReminderService/UpdateProfileResponse")]
-        System.Threading.Tasks.Task<int> UpdateProfileAsync(int id, string login, string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdatePassword", ReplyAction="http://tempuri.org/IReminderService/UpdatePasswordResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdatePasswordServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        int UpdatePassword(int id, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdatePassword", ReplyAction="http://tempuri.org/IReminderService/UpdatePasswordResponse")]
-        System.Threading.Tasks.Task<int> UpdatePasswordAsync(int id, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/AddReminder", ReplyAction="http://tempuri.org/IReminderService/AddReminderResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/AddReminderServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
@@ -689,14 +626,6 @@ namespace Reminder.Data.ReminderService {
             return base.Channel.GetReminderInfoAsync(reminderId);
         }
         
-        public Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password) {
-            return base.Channel.GetCurrentUser(login, password);
-        }
-        
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password) {
-            return base.Channel.GetCurrentUserAsync(login, password);
-        }
-        
         public int AddCategory(string categoryName) {
             return base.Channel.AddCategory(categoryName);
         }
@@ -719,6 +648,134 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<int> DeleteCategoryAsync(int categoryId) {
             return base.Channel.DeleteCategoryAsync(categoryId);
+        }
+        
+        public int AddReminder(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
+            return base.Channel.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddReminderAsync(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
+            return base.Channel.AddReminderAsync(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
+        }
+        
+        public string DeleteReminder(int id) {
+            return base.Channel.DeleteReminder(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> DeleteReminderAsync(int id) {
+            return base.Channel.DeleteReminderAsync(id);
+        }
+        
+        public int UpdateReminder(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
+            return base.Channel.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateReminderAsync(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
+            return base.Channel.UpdateReminderAsync(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IUserService")]
+    public interface IUserService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCurrentUser", ReplyAction="http://tempuri.org/IUserService/GetCurrentUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/GetCurrentUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCurrentUser", ReplyAction="http://tempuri.org/IUserService/GetCurrentUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Registration", ReplyAction="http://tempuri.org/IUserService/RegistrationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/RegistrationServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int Registration(string login, string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Registration", ReplyAction="http://tempuri.org/IUserService/RegistrationResponse")]
+        System.Threading.Tasks.Task<int> RegistrationAsync(string login, string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/GetUsersServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/EditeUser", ReplyAction="http://tempuri.org/IUserService/EditeUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/EditeUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto EditeUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/EditeUser", ReplyAction="http://tempuri.org/IUserService/EditeUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/GetRolesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.RoleDto[] GetRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.RoleDto[]> GetRolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/UpdateUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdateUser(int id, string login, string email, int roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserAsync(int id, string login, string email, int roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/DeleteUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int DeleteUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        System.Threading.Tasks.Task<int> DeleteUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/UpdateProfileServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdateProfile(int id, string login, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<int> UpdateProfileAsync(int id, string login, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdatePassword", ReplyAction="http://tempuri.org/IUserService/UpdatePasswordResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/UpdatePasswordServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdatePassword(int id, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdatePassword", ReplyAction="http://tempuri.org/IUserService/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<int> UpdatePasswordAsync(int id, string password);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserServiceChannel : Reminder.Data.ReminderService.IUserService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<Reminder.Data.ReminderService.IUserService>, Reminder.Data.ReminderService.IUserService {
+        
+        public UserServiceClient() {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password) {
+            return base.Channel.GetCurrentUser(login, password);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password) {
+            return base.Channel.GetCurrentUserAsync(login, password);
         }
         
         public int Registration(string login, string password, string email) {
@@ -783,30 +840,6 @@ namespace Reminder.Data.ReminderService {
         
         public System.Threading.Tasks.Task<int> UpdatePasswordAsync(int id, string password) {
             return base.Channel.UpdatePasswordAsync(id, password);
-        }
-        
-        public int AddReminder(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
-            return base.Channel.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
-        }
-        
-        public System.Threading.Tasks.Task<int> AddReminderAsync(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
-            return base.Channel.AddReminderAsync(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
-        }
-        
-        public string DeleteReminder(int id) {
-            return base.Channel.DeleteReminder(id);
-        }
-        
-        public System.Threading.Tasks.Task<string> DeleteReminderAsync(int id) {
-            return base.Channel.DeleteReminderAsync(id);
-        }
-        
-        public int UpdateReminder(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
-            return base.Channel.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
-        }
-        
-        public System.Threading.Tasks.Task<int> UpdateReminderAsync(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
-            return base.Channel.UpdateReminderAsync(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
         }
     }
 }
