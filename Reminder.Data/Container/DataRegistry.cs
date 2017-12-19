@@ -11,6 +11,7 @@ namespace Reminder.Data.Container
             For<IReminderClient>().Use<ReminderClient>();
             For<ICategoryClient>().Use<CategoryClient>();
             For<IUserRepository>().Use<UserRepository>();
+            For<ICategoryRepository>().Use<CategoryRepository>();
             For<IDataRepository>().Use<DataRepository>();
         }
     }

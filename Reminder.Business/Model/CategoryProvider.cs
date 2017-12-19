@@ -8,9 +8,9 @@ namespace Reminder.Business.Model
 {
     public class CategoryProvider : ICategoryProvider
     {
-        private IDataRepository _dataProvider;
+        private ICategoryRepository _dataProvider;
 
-        public CategoryProvider(IDataRepository provider)
+        public CategoryProvider(ICategoryRepository provider)
         {
             _dataProvider = provider;
         }

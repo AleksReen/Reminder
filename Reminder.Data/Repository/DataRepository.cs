@@ -9,12 +9,10 @@ namespace Reminder.Data.Repository
 {
     public class DataRepository: IDataRepository
     {
-        private ICategoryClient _categoryClient;
         private IReminderClient _remClient;
 
         public DataRepository(ICategoryClient catClient, IReminderClient remClient)
         {
-            _categoryClient = catClient;
             _remClient = remClient;
         }
 
@@ -23,29 +21,9 @@ namespace Reminder.Data.Repository
             return _remClient.GetReminders(userId);
         }
 
-        public IReadOnlyList<Category> GetCategories()
-        {
-            return _categoryClient.GetCategories();
-        }
-
         public ReminderInfo GetReminderInfo(int id)
         {
             return _remClient.GetReminderInfo(id);
-        }
-
-        public ServerResponse AddCategory(string categoryName)
-        {
-            return _categoryClient.AddCategory(categoryName);
-        }
-
-        public ServerResponse EditeCategory(int categoryId, string categoryName)
-        {
-            return _categoryClient.EditeCategory(categoryId, categoryName);
-        }
-
-        public ServerResponse DeleteCategory(int categoryId)
-        {
-            return _categoryClient.DeleteCategory(categoryId);
         }
 
         public ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)

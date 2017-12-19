@@ -10,7 +10,7 @@ namespace Reminder.Business.Test
     [TestClass]
     public class CategoryProviderTest
     {
-        private Mock<IDataRepository> _dataProvider;
+        private Mock<ICategoryRepository> _dataProvider;
         private CategoryProvider testClass;
 
         private Category[] categoryList = {
@@ -24,7 +24,7 @@ namespace Reminder.Business.Test
         [TestInitialize]
         public void TestInitialize()
         {
-            _dataProvider = new Mock<IDataRepository>();
+            _dataProvider = new Mock<ICategoryRepository>();
             testClass = new CategoryProvider(_dataProvider.Object);
         }
 

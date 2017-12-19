@@ -82,7 +82,9 @@
     <Compile Include="Clients\ReminderClient.cs" />
     <Compile Include="Clients\UserClient.cs" />
     <Compile Include="Container\DataRegistry.cs" />
+    <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\DataRepository.cs" />
+    <Compile Include="Repository\ICategoryRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\IDataRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
@@ -155,9 +157,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataProviders\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
