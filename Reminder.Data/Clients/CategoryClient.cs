@@ -2,11 +2,19 @@
 using Reminder.Common.Entity;
 using System.ServiceModel;
 using Reminder.Common.Enums;
+using log4net;
 
 namespace Reminder.Data.Clients
 {
     public class CategoryClient: ICategoryClient
     {
+        private ILog logger;
+
+        public CategoryClient()
+        {
+            logger = LogManager.GetLogger("LOGGER");
+        }
+
         public ServerResponse AddCategory(string categoryName)
         {
             using (var client = new ReminderService.CategoryServiceClient())
@@ -27,7 +35,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -54,7 +62,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -80,7 +88,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -115,7 +123,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
             return result;

@@ -1,5 +1,4 @@
 ﻿using Reminder.Common.Enums;
-using System.Text;
 using Newtonsoft.Json;
 using System.ServiceModel;
 using System.Web.Security;
@@ -7,11 +6,18 @@ using System;
 using System.Web;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
+using log4net;
 
 namespace Reminder.Data.Clients
 {
     public class UserClient : IUserClient
     {
+        private ILog logger;
+
+        public UserClient()
+        {
+            logger = LogManager.GetLogger("LOGGER");
+        }
         public ServerResponse DeleteUser(int id)
         {
             using (var client = new ReminderService.UserServiceClient())
@@ -31,10 +37,9 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
-
             return ServerResponse.DataBaseError;
         }
 
@@ -66,9 +71,8 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
-
             }
             return user;
         }
@@ -101,9 +105,8 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
-
             }
             return roleList;
         }
@@ -144,9 +147,8 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
-
             }
             return listUsers;
         }
@@ -191,7 +193,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
             
@@ -217,7 +219,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -243,7 +245,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -269,7 +271,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -295,7 +297,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 

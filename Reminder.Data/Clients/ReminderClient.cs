@@ -4,11 +4,18 @@ using Reminder.Common.Entity;
 using System.ServiceModel;
 using Reminder.Common.Enums;
 using System;
+using log4net;
 
 namespace Reminder.Data.Clients
 {
     public class ReminderClient : IReminderClient
     {
+        private ILog logger;
+
+        public ReminderClient()
+        {
+            logger = LogManager.GetLogger("LOGGER");
+        }
         public ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
         {
             using (var client = new ReminderService.ReminderServiceClient())
@@ -28,7 +35,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -56,7 +63,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
@@ -92,7 +99,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
                 
             }
@@ -131,7 +138,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
                 
             }
@@ -157,7 +164,7 @@ namespace Reminder.Data.Clients
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
-                    log4net.LogManager.GetLogger("LOGGER").Error(ex.Detail.Message);
+                    logger.Error(ex.Detail.Message);
                 }
             }
 
