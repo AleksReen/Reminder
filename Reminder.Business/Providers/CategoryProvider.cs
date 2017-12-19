@@ -4,7 +4,7 @@ using Reminder.Common.Entity;
 using Reminder.Data.Repository;
 using Reminder.Common.Enums;
 
-namespace Reminder.Business.Model
+namespace Reminder.Business.Providers
 {
     public class CategoryProvider : ICategoryProvider
     {

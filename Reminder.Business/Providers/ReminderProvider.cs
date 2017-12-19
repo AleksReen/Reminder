@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Reminder.Common.Enums;
 using System;
 
-namespace Reminder.Business.Model
+namespace Reminder.Business.Providers
 {
    public class ReminderProvider : IReminderProvider
     {

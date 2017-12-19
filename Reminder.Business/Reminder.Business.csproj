@@ -66,9 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container\BusinessRegistry.cs" />
-    <Compile Include="Model\CategoryProvider.cs" />
-    <Compile Include="Model\UserProvider.cs" />
-    <Compile Include="Model\ReminderProvider.cs" />
+    <Compile Include="Providers\CategoryProvider.cs" />
+    <Compile Include="Providers\UserProvider.cs" />
+    <Compile Include="Providers\ReminderProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ICategoryProvider.cs" />
     <Compile Include="Providers\IUserProvider.cs" />

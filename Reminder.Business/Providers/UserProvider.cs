@@ -5,7 +5,7 @@ using Reminder.Data.Repository;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
 
-namespace Reminder.Business.Model
+namespace Reminder.Business.Providers
 {
     public class UserProvider : IUserProvider
     {

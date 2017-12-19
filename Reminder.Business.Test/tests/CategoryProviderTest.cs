@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Reminder.Data.Repository;
 using Moq;
-using Reminder.Business.Model;
+using Reminder.Business.Providers;
 using Reminder.Common.Enums;
 using Reminder.Common.Entity;
 
