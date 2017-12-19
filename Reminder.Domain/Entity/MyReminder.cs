@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Reminder.Common.Entity
 {
-    //essence describing Category
     public class MyReminder
     {
         public int ReminderId { get; set; }
@@ -16,9 +15,10 @@ namespace Reminder.Common.Entity
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Required field ReminderTime")]
+        [Display(Name = "Reminder Time")]
         public DateTime ReminderTime { get; set; }
         public string Image { get; set; }
-        
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
         public int UserId { get; set; }

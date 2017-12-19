@@ -16,15 +16,6 @@ namespace Reminder.WebUI.Test
         private Mock<IReminderProvider> reminderProvider;
         private SearchController controller;
 
-
-        private MyReminder[] remindersList = {
-            new MyReminder {ReminderId = 1, Title = "Починить автомобиль", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 3, UserId = 1},
-            new MyReminder {ReminderId = 2, Title = "Встретить босса", Date = Convert.ToDateTime("2017-11-15"), ReminderTime = Convert.ToDateTime("2017-11-14 12:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 4, UserId = 1},
-            new MyReminder {ReminderId = 3, Title = "Починить полку", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 3, UserId = 1},
-            new MyReminder {ReminderId = 4, Title = "Забрать ребёнка из школы", Date = Convert.ToDateTime("2017-11-18"), ReminderTime = Convert.ToDateTime("2017-11-17 12:30:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 2, UserId = 1},
-            new MyReminder {ReminderId = 5, Title = "Кемпинг", Date = Convert.ToDateTime("2017-11-10"), ReminderTime = Convert.ToDateTime("2017-11-09 13:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 5, UserId = 1},
-        };
-
         [TestInitialize]
         public void TestInitialize()
         {

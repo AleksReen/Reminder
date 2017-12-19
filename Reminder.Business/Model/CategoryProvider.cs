@@ -1,9 +1,5 @@
 ﻿using Reminder.Business.Providers;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Reminder.Common.Entity;
 using Reminder.Data.DataProviders;
 using Reminder.Common.Enums;
