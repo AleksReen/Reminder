@@ -10,7 +10,7 @@ using System.ServiceModel;
 
 namespace Reminder.Service
 {
-    public class ReminderService : IReminderService, IUserService
+    public class ReminderService : IReminderService, IUserService, ICategoryService
     {
         private readonly string connectionString;
         private readonly ServiceErrorDto error;

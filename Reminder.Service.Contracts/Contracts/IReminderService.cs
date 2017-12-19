@@ -11,26 +11,10 @@ namespace Reminder.Service
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         MyReminderDto [] GetAllReminders(int userId);
-
-        [OperationContract]
-        [FaultContract(typeof(ServiceErrorDto))]
-        CategoryDto [] GetAllCategories();
-
+      
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]
         ReminderInfoDto GetReminderInfo(int reminderId);
-
-        [OperationContract]
-        [FaultContract(typeof(ServiceErrorDto))]
-        int AddCategory(string categoryName);
-
-        [OperationContract]
-        [FaultContract(typeof(ServiceErrorDto))]
-        int EditeCategory(int categoryId, string categoryName);
-
-        [OperationContract]
-        [FaultContract(typeof(ServiceErrorDto))]
-        int DeleteCategory(int categoryId);
 
         [OperationContract]
         [FaultContract(typeof(ServiceErrorDto))]

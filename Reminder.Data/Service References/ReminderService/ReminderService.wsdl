@@ -18,15 +18,6 @@
   <wsdl:message name="IReminderService_GetAllReminders_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q1:ServiceErrorDto" />
   </wsdl:message>
-  <wsdl:message name="IReminderService_GetAllCategories_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCategories" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_GetAllCategories_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_GetAllCategories_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q2:ServiceErrorDto" />
-  </wsdl:message>
   <wsdl:message name="IReminderService_GetReminderInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetReminderInfo" />
   </wsdl:message>
@@ -34,34 +25,7 @@
     <wsdl:part name="parameters" element="tns:GetReminderInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IReminderService_GetReminderInfo_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q3:ServiceErrorDto" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_AddCategory_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddCategory" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_AddCategory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_AddCategory_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q4:ServiceErrorDto" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_EditeCategory_InputMessage">
-    <wsdl:part name="parameters" element="tns:EditeCategory" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_EditeCategory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EditeCategoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_EditeCategory_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q5:ServiceErrorDto" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_DeleteCategory_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteCategory" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_DeleteCategory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IReminderService_DeleteCategory_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q6:ServiceErrorDto" />
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q2:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IReminderService_AddReminder_InputMessage">
     <wsdl:part name="parameters" element="tns:AddReminder" />
@@ -70,7 +34,7 @@
     <wsdl:part name="parameters" element="tns:AddReminderResponse" />
   </wsdl:message>
   <wsdl:message name="IReminderService_AddReminder_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q7:ServiceErrorDto" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q3:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IReminderService_DeleteReminder_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteReminder" />
@@ -79,7 +43,7 @@
     <wsdl:part name="parameters" element="tns:DeleteReminderResponse" />
   </wsdl:message>
   <wsdl:message name="IReminderService_DeleteReminder_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q8:ServiceErrorDto" />
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q4:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IReminderService_UpdateReminder_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateReminder" />
@@ -88,7 +52,7 @@
     <wsdl:part name="parameters" element="tns:UpdateReminderResponse" />
   </wsdl:message>
   <wsdl:message name="IReminderService_UpdateReminder_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q9:ServiceErrorDto" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q5:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetCurrentUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUser" />
@@ -97,7 +61,7 @@
     <wsdl:part name="parameters" element="tns:GetCurrentUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetCurrentUser_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q10:ServiceErrorDto" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q6:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_Registration_InputMessage">
     <wsdl:part name="parameters" element="tns:Registration" />
@@ -106,7 +70,7 @@
     <wsdl:part name="parameters" element="tns:RegistrationResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_Registration_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q11:ServiceErrorDto" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q7:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
@@ -115,7 +79,7 @@
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetUsers_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q12:ServiceErrorDto" />
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q8:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_EditeUser_InputMessage">
     <wsdl:part name="parameters" element="tns:EditeUser" />
@@ -124,7 +88,7 @@
     <wsdl:part name="parameters" element="tns:EditeUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_EditeUser_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q13:ServiceErrorDto" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q9:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetRoles_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRoles" />
@@ -133,7 +97,7 @@
     <wsdl:part name="parameters" element="tns:GetRolesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetRoles_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q14:ServiceErrorDto" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q10:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdateUser_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUser" />
@@ -142,7 +106,7 @@
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdateUser_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q15:ServiceErrorDto" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q11:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_DeleteUser_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUser" />
@@ -151,7 +115,7 @@
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_DeleteUser_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q16:ServiceErrorDto" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q12:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdateProfile_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateProfile" />
@@ -160,7 +124,7 @@
     <wsdl:part name="parameters" element="tns:UpdateProfileResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdateProfile_ServiceErrorDtoFault_FaultMessage">
-    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q17:ServiceErrorDto" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q13:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdatePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePassword" />
@@ -169,6 +133,42 @@
     <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_UpdatePassword_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q14:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetAllCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCategories" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetAllCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetAllCategories_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q15:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_AddCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_AddCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_AddCategory_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q16:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_EditeCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditeCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_EditeCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditeCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_EditeCategory_ServiceErrorDtoFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q17:ServiceErrorDto" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_DeleteCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_DeleteCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_DeleteCategory_ServiceErrorDtoFault_FaultMessage">
     <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto" name="detail" element="q18:ServiceErrorDto" />
   </wsdl:message>
   <wsdl:portType name="IReminderService">
@@ -177,30 +177,10 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetAllRemindersResponse" message="tns:IReminderService_GetAllReminders_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetAllRemindersServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetAllReminders_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetAllCategories" message="tns:IReminderService_GetAllCategories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetAllCategoriesResponse" message="tns:IReminderService_GetAllCategories_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetAllCategoriesServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetAllCategories_ServiceErrorDtoFault_FaultMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetReminderInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfo" message="tns:IReminderService_GetReminderInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfoResponse" message="tns:IReminderService_GetReminderInfo_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/GetReminderInfoServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_GetReminderInfo_ServiceErrorDtoFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddCategory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/AddCategory" message="tns:IReminderService_AddCategory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/AddCategoryResponse" message="tns:IReminderService_AddCategory_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/AddCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_AddCategory_ServiceErrorDtoFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EditeCategory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/EditeCategory" message="tns:IReminderService_EditeCategory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/EditeCategoryResponse" message="tns:IReminderService_EditeCategory_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/EditeCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_EditeCategory_ServiceErrorDtoFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCategory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/DeleteCategory" message="tns:IReminderService_DeleteCategory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReminderService/DeleteCategoryResponse" message="tns:IReminderService_DeleteCategory_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IReminderService/DeleteCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IReminderService_DeleteCategory_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddReminder">
       <wsdl:input wsaw:Action="http://tempuri.org/IReminderService/AddReminder" message="tns:IReminderService_AddReminder_InputMessage" />
@@ -265,6 +245,28 @@
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserService/UpdatePasswordServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:IUserService_UpdatePassword_ServiceErrorDtoFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="ICategoryService">
+    <wsdl:operation name="GetAllCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/GetAllCategories" message="tns:ICategoryService_GetAllCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetAllCategoriesResponse" message="tns:ICategoryService_GetAllCategories_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoryService/GetAllCategoriesServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:ICategoryService_GetAllCategories_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/AddCategory" message="tns:ICategoryService_AddCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/AddCategoryResponse" message="tns:ICategoryService_AddCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoryService/AddCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:ICategoryService_AddCategory_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditeCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/EditeCategory" message="tns:ICategoryService_EditeCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/EditeCategoryResponse" message="tns:ICategoryService_EditeCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoryService/EditeCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:ICategoryService_EditeCategory_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/DeleteCategory" message="tns:ICategoryService_DeleteCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/DeleteCategoryResponse" message="tns:ICategoryService_DeleteCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICategoryService/DeleteCategoryServiceErrorDtoFault" name="ServiceErrorDtoFault" message="tns:ICategoryService_DeleteCategory_ServiceErrorDtoFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReminderService" type="tns:IReminderService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllReminders">
@@ -279,56 +281,8 @@
         <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <soap:operation soapAction="http://tempuri.org/IReminderService/GetAllCategories" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceErrorDtoFault">
-        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
     <wsdl:operation name="GetReminderInfo">
       <soap:operation soapAction="http://tempuri.org/IReminderService/GetReminderInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceErrorDtoFault">
-        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="AddCategory">
-      <soap:operation soapAction="http://tempuri.org/IReminderService/AddCategory" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceErrorDtoFault">
-        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="EditeCategory">
-      <soap:operation soapAction="http://tempuri.org/IReminderService/EditeCategory" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceErrorDtoFault">
-        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCategory">
-      <soap:operation soapAction="http://tempuri.org/IReminderService/DeleteCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -487,11 +441,65 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICategoryService" type="tns:ICategoryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllCategories">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/GetAllCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditeCategory">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/EditeCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceErrorDtoFault">
+        <soap:fault use="literal" name="ServiceErrorDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ReminderService">
     <wsdl:port name="BasicHttpBinding_IReminderService" binding="tns:BasicHttpBinding_IReminderService">
       <soap:address location="http://localhost:7868/ReminderService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IUserService" binding="tns:BasicHttpBinding_IUserService">
+      <soap:address location="http://localhost:7868/ReminderService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICategoryService" binding="tns:BasicHttpBinding_ICategoryService">
       <soap:address location="http://localhost:7868/ReminderService.svc" />
     </wsdl:port>
   </wsdl:service>

@@ -2,7 +2,6 @@
 using Reminder.Common.Entity;
 using System.ServiceModel;
 using Reminder.Common.Enums;
-using System;
 
 namespace Reminder.Data.Clients
 {
@@ -10,7 +9,7 @@ namespace Reminder.Data.Clients
     {
         public ServerResponse AddCategory(string categoryName)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.CategoryServiceClient())
             {
                 try
                 {
@@ -37,7 +36,7 @@ namespace Reminder.Data.Clients
 
         public ServerResponse DeleteCategory(int categoryId)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.CategoryServiceClient())
             {
                 try
                 {
@@ -64,7 +63,7 @@ namespace Reminder.Data.Clients
 
         public ServerResponse EditeCategory(int categoryId, string categoryName)
         {
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.CategoryServiceClient())
             {
                 try
                 {
@@ -91,7 +90,7 @@ namespace Reminder.Data.Clients
         public IReadOnlyList<Category> GetCategories()
         {
             var result = new List<Category>();
-            using (var client = new ReminderService.ReminderServiceClient())
+            using (var client = new ReminderService.CategoryServiceClient())
             {
                 try
                 {
