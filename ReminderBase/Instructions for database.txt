@@ -1,7 +1,9 @@
-1. install DataBase.sql
-2. install Data.sql
-3. install all from Functions
-4. install all from Procedures
+1. install DataBase/ReminderBase.sql
+2. install all from Tables
+3. install all from TablesKey
+4. install all from TablesData
+5. install all from Functions
+6. install all from Procedures
 
 -- login name - Aleks
 -- password - 123 

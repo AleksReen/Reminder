@@ -1,0 +1,49 @@
+USE ReminderBase
+GO
+
+ALTER TABLE Reminders ADD CONSTRAINT
+	FK_Reminders_Users FOREIGN KEY (UserID)
+	REFERENCES Users(UserId)
+	ON DELETE CASCADE
+GO
+
+ALTER TABLE Users_Roles ADD CONSTRAINT
+	PK_Users_Roles PRIMARY KEY (UserId,RoleId)
+GO
+
+ALTER TABLE Users_Roles ADD CONSTRAINT
+	FK_Users_Roles_Users FOREIGN KEY (UserId)
+	REFERENCES Users(UserId)
+	ON DELETE CASCADE
+GO
+
+ALTER TABLE Users_Roles ADD CONSTRAINT
+	FK_Users_Roles_Roles FOREIGN KEY (RoleId)
+	REFERENCES Roles(RoleId)
+GO
+
+ALTER TABLE Actions ADD CONSTRAINT
+	PK_Actions PRIMARY KEY (ReminderId,ActionLine) 
+GO
+
+ALTER TABLE Actions ADD CONSTRAINT
+	FK_Actions_Reminders FOREIGN KEY(ReminderId) 
+	REFERENCES Reminders(ReminderId) 
+	ON DELETE CASCADE
+GO
+
+ALTER TABLE Reminders ADD CONSTRAINT
+	FK_Reminders_Categories FOREIGN KEY (CategoryId)
+	REFERENCES Categories(CategoryId)
+	ON DELETE CASCADE
+GO
+
+ALTER TABLE Descriptions ADD 
+	CONSTRAINT UQ_Descriptions UNIQUE(ReminderId)
+GO
+
+ALTER TABLE Descriptions ADD 
+	CONSTRAINT FK_Descriptions_Reminders FOREIGN KEY (ReminderId) 
+	REFERENCES Reminders(ReminderId) 
+	ON DELETE CASCADE
+GO
