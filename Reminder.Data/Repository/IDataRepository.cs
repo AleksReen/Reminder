@@ -3,7 +3,7 @@ using Reminder.Common.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace Reminder.Data.DataProviders
+namespace Reminder.Data.Repository
 {
     public interface IDataRepository
     {

@@ -1,5 +1,4 @@
-﻿using Reminder.Data.DataProviders;
-using Reminder.Data.DataBase;
+﻿using Reminder.Data.Repository;
 using StructureMap.Configuration.DSL;
 using Reminder.Data.Clients;
 

@@ -1,11 +1,11 @@
 ﻿using Reminder.Common.Entity;
 using Reminder.Data.Clients;
-using Reminder.Data.DataProviders;
+using Reminder.Data.Repository;
 using System.Collections.Generic;
 using Reminder.Common.Enums;
 using System;
 
-namespace Reminder.Data.DataBase
+namespace Reminder.Data.Repository
 {
     public class DataRepository: IDataRepository
     {

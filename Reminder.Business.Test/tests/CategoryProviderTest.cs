@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Reminder.Data.DataProviders;
+using Reminder.Data.Repository;
 using Moq;
 using Reminder.Business.Model;
 using Reminder.Common.Enums;

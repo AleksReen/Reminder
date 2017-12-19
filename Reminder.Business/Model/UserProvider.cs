@@ -1,7 +1,7 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.Common.Enums;
 using System.Web.Security;
-using Reminder.Data.DataProviders;
+using Reminder.Data.Repository;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
 
