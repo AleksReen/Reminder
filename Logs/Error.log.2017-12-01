@@ -1,3 +1,0 @@
-
-ERROR [2017-12-01 13:49:00,828] [Reminder.Data.Clients.ReminderClient.GetReminders] error reading data from the database
-ERROR [2017-12-01 13:49:01,718] [Reminder.Data.Clients.CategoryClient.GetCategories] error reading data from the database
