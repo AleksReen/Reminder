@@ -1,8 +1,8 @@
-﻿using Reminder.Data.Repository;
-using Reminder.Common.Enums;
+﻿using Reminder.Common.Enums;
 using Reminder.Data.Clients;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
+using System;
 
 namespace Reminder.Data.Repository
 {
@@ -12,6 +12,10 @@ namespace Reminder.Data.Repository
 
         public UserRepository(IUserClient user)
         {
+            if (user == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "user");
+            }
             _userClient = user;
         }
 

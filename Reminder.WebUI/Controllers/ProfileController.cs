@@ -4,6 +4,7 @@ using Reminder.Common.Enums;
 using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
 using Reminder.WebUI.Models.ViewsModels;
+using System;
 using System.Threading;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -15,9 +16,13 @@ namespace Reminder.WebUI.Controllers
     {
         private IUserProvider _provider;
 
-        public ProfileController(IUserProvider userProvider)
+        public ProfileController(IUserProvider provider)
         {
-            _provider = userProvider;
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
+            _provider = provider;
         }
         // GET: Profile
         public ActionResult ProfilePage()

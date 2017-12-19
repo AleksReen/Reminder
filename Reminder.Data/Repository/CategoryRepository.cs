@@ -1,6 +1,7 @@
 ﻿using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.Data.Clients;
+using System;
 using System.Collections.Generic;
 
 namespace Reminder.Data.Repository
@@ -11,6 +12,10 @@ namespace Reminder.Data.Repository
 
         public CategoryRepository(ICategoryClient catClient)
         {
+            if (catClient == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "catClient");
+            }
             _categoryClient = catClient;
         }
 

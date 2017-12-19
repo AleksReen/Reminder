@@ -4,10 +4,7 @@ using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Admin.Models;
 using Reminder.WebUI.Filters;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -20,6 +17,10 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
 
         public AdminController(IUserProvider provider)
         {
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
             _provider = provider;
         }
         public ActionResult Index()

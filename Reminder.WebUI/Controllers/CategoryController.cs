@@ -1,5 +1,6 @@
 ﻿using Reminder.Business.Providers;
 using Reminder.WebUI.Filters;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -12,6 +13,10 @@ namespace Reminder.WebUI.Controllers
 
         public CategoryController(ICategoryProvider provider)
         {
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
             _provider = provider;
         }
 

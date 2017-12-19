@@ -2,6 +2,7 @@
 using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Editor.Models;
 using Reminder.WebUI.Filters;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Web.Mvc;
@@ -15,6 +16,10 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
 
         public EditorController(ICategoryProvider provider)
         {
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
             _providerCategory = provider;
         }
 

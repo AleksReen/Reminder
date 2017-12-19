@@ -2,9 +2,6 @@
 using Reminder.Common.Enums;
 using Reminder.WebUI.Models.ViewsModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
@@ -14,9 +11,13 @@ namespace Reminder.WebUI.Controllers
     {
         private IUserProvider _provider;
 
-        public RegistrationController(IUserProvider prov)
+        public RegistrationController(IUserProvider provider)
         {
-            _provider = prov;
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
+            _provider = provider;
         }
         public ActionResult Registration()
         {

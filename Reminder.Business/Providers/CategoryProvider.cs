@@ -1,8 +1,8 @@
-﻿using Reminder.Business.Providers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Reminder.Common.Entity;
 using Reminder.Data.Repository;
 using Reminder.Common.Enums;
+using System;
 
 namespace Reminder.Business.Providers
 {
@@ -12,6 +12,10 @@ namespace Reminder.Business.Providers
 
         public CategoryProvider(ICategoryRepository provider)
         {
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
             _dataProvider = provider;
         }
 

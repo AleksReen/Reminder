@@ -1,5 +1,4 @@
-﻿using Reminder.Business.Providers;
-using Reminder.Data.Repository;
+﻿using Reminder.Data.Repository;
 using Reminder.Common.Entity;
 using System.Collections.Generic;
 using Reminder.Common.Enums;
@@ -13,6 +12,10 @@ namespace Reminder.Business.Providers
 
         public ReminderProvider(IDataRepository provider)
         {
+            if (provider == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
             _dataProvider = provider;
         }
 

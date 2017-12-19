@@ -19,7 +19,16 @@ namespace Reminder.WebUI.Controllers
 
         public SearchController(ICategoryProvider providerC, IReminderProvider providerR)
         {
+            if (providerC == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "providerC");
+            }
             _providerCategory = providerC;
+
+            if (providerR == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "providerR");
+            }
             _providerReminder = providerR;
         }
 

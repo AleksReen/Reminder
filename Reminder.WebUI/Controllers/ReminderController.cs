@@ -5,6 +5,7 @@ using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
 using Reminder.WebUI.Models.ViewsModels;
 using Reminder.WebUI.Support;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -21,7 +22,16 @@ namespace Reminder.WebUI.Controllers
 
         public ReminderController(IReminderProvider provR, ICategoryProvider provC)
         {
+            if (provR == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provR");
+            }
             _providerReminder = provR;
+
+            if (provC == null)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provC");
+            }
             _providerCategory = provC;
         }
 
