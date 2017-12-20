@@ -7,8 +7,8 @@
 <div>
     <h3>
         Details
-        <span id="loader" style="display:none">
-            <img src="~/Content/loaders/loader-blue.gif" />
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
         </span>
     </h3>
     <hr />
@@ -77,8 +77,15 @@
 </div>
 <br />
 <p>
-    @Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, options, new { @class = "btn btn-primary" })
-    
-    @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, options, new { @class = "btn btn-primary" })
+    @if (ViewBag.Return == null)
+    {
+        @Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, options, new { @class = "btn btn-primary" })
+        @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, options, new { @class = "btn btn-primary" })
+    }
+    else
+    {
+        @Ajax.ActionLink("Back to Search", null, null, null, options, new { @class = "btn btn-primary", href = ViewBag.Return})
+    }
+
 </p>
 

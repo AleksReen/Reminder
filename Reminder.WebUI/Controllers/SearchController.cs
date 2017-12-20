@@ -100,8 +100,8 @@ namespace Reminder.WebUI.Controllers
 
                 if (searchList.Any())
                 {
-                    searchList.Distinct();
-                    return PartialView("_SearchResult", searchList);
+                    var result = searchList.Distinct();
+                    return PartialView("_SearchResult", result);
                 }
             }
 

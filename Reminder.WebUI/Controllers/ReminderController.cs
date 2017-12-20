@@ -16,7 +16,7 @@ namespace Reminder.WebUI.Controllers
     [Authorization(Roles = "User, Editor, Admin")]
     public class ReminderController : Controller
     {
-        private readonly string defaultPath = "/Images/No-image-found.jpg";
+        private readonly string defaultPath = @"/Images/No-image-found.jpg";
         private IReminderProvider _providerReminder;
         private ICategoryProvider _providerCategory;
 
@@ -52,7 +52,6 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult ReminderList(int? category)
         {
-            Thread.Sleep(2000);
             var user = User as UserPrincipal;
             var reminders = _providerReminder.GetReminders(user.UserId)
                                                    .Where(c => category == null || c.CategoryId == category)
@@ -60,14 +59,18 @@ namespace Reminder.WebUI.Controllers
             return PartialView("_ReminderList", reminders);
         }
 
-        public ActionResult DeleteReminder(ViewDeleteReminder delRem)
+        public ActionResult DeleteReminder(ViewDeleteReminder delRem, string returnUrl)
         {
-            Thread.Sleep(2000);
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                ViewBag.Return = returnUrl;
+            }
+           
             return PartialView("_DeleteReminder", delRem);
         }
 
         
-        public ActionResult СonfirmedDeleteReminder(int id)
+        public ActionResult СonfirmedDeleteReminder(int id, string returnUrl)
         {
             var result = _providerReminder.DeleteReminder(id);
             if (result != default(string))
@@ -84,11 +87,13 @@ namespace Reminder.WebUI.Controllers
                 }
 
                 ViewBag.Result = true;
+                ViewBag.Return = returnUrl;
                 return PartialView("_ResultDeleteReminder");
             }
             else
             {
                 ViewBag.Result = false;
+                ViewBag.Return = returnUrl;
                 return PartialView("_ResultDeleteReminder");
             }   
         }
@@ -141,16 +146,17 @@ namespace Reminder.WebUI.Controllers
             return View("AddReminder", newReminder);
         }
 
-        public ActionResult EditeReminder(int reminderId)
+        public ActionResult EditeReminder(int reminderId, string returnUrl)
         {
             var model = _providerReminder.GetReminderInfo(reminderId);
             ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
-           
+            ViewBag.Return = returnUrl;
+
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditeReminder(ReminderInfo updateReminder, HttpPostedFileBase Img)
+        public ActionResult EditeReminder(ReminderInfo updateReminder, HttpPostedFileBase Img, string returnUrl)
         {
             if (Img != null && !ReminderSupport.ChechExtImg(Img))
             {
@@ -195,6 +201,11 @@ namespace Reminder.WebUI.Controllers
                         {
                             System.IO.File.Delete(fullPath);
                         }
+                    }
+
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
                     }
 
                     return RedirectToAction("Index", new { message = "reminder was successfully updated", resultAction = true});

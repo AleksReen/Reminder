@@ -64,9 +64,9 @@
             {
                 foreach (var Actions in Model.Actions)
                 {
-                   
+
                     <div id="action_group" class="form-group block">
-                        @Html.Label($"Action {count}", htmlAttributes: new { @class = "control-label col-md-2"})
+                        @Html.Label($"Action {count}", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.TextBoxFor(model => Actions, new { @class = "form-control", @id = $"Action{count}" })
                         </div>
@@ -80,7 +80,7 @@
                 <div id="action_group" class="form-group block">
                     @Html.Label($"Action {count}", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Actions, new { @class = "form-control",  @id = $"Action{count}" })
+                        @Html.TextBoxFor(model => model.Actions, new { @class = "form-control", @id = $"Action{count}" })
                     </div>
                 </div>
 
@@ -122,7 +122,16 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-success" />
-                @Html.ActionLink("Back to List", "Index", "Reminder", null, new { @class = "btn btn-primary" })
+                @if (ViewBag.Return == null)
+                {
+                    @Html.ActionLink("Back to List", "Index", "Reminder", null, new { @class = "btn btn-primary" });
+                }
+                else
+                {
+                    @Html.ActionLink("Back to Search", null, null, new { @class = "btn btn-primary", href = ViewBag.Return});
+                    @Html.Hidden("returnUrl", new { returnUrl = ViewBag.Return });
+                }
+
             </div>
         </div>
     </div>

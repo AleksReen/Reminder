@@ -1,7 +1,7 @@
 ﻿@model string
 
 @{
-    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader"};
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
 }
 
 <div>
@@ -28,5 +28,13 @@
         </h4>
     }
 
-    @Ajax.ActionLink("Reminder List", "ReminderList", "Reminder", options, new { @class = "btn btn-success" })
+    @if (ViewBag.Return == null)
+    {
+        @Ajax.ActionLink("Reminder List", "ReminderList", "Reminder", options, new { @class = "btn btn-success" });
+    }
+    else
+    {
+        @Ajax.ActionLink("Close", null, null, options, new { @class = "btn btn-primary", href = ViewBag.Return });
+    }
+
 </div>

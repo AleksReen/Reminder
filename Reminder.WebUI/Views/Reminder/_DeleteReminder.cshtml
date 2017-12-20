@@ -16,4 +16,13 @@
     Are you sure you want to delete reminder <b>@Model.reminderTitle</b>?
 </h4>
     
-@Ajax.ActionLink("Delete", "СonfirmedDeleteReminder", "Reminder", new { id = Model.reminderId}, options, new { @class = "btn btn-danger" })
+@Ajax.ActionLink("Delete", "СonfirmedDeleteReminder", "Reminder", new { id = Model.reminderId, returnUrl = ViewBag.Return }, options, new { @class = "btn btn-danger" })
+
+@if (ViewBag.Return == null)
+{
+    @Ajax.ActionLink("Close", "ReminderList", "Reminder", options, new { @class = "btn btn-primary" });
+}
+else
+{
+    @Ajax.ActionLink("Close", null, null, options, new { @class = "btn btn-primary", href = ViewBag.Return });
+}

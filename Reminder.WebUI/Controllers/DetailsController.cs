@@ -19,10 +19,11 @@ namespace Reminder.WebUI.Controllers
             _provider = provider;
         }
         
-        public ActionResult GetDetails(int reminderId)
+        public ActionResult GetDetails(int reminderId, string returnUrl)
         {
             var model = _provider.GetReminderInfo(reminderId);
-           
+            ViewBag.Return = returnUrl;
+
             return PartialView("_Details", model);
         }
     }
