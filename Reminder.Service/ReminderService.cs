@@ -72,6 +72,12 @@ namespace Reminder.Service
 
         public MyReminderDto[] GetAllReminders(int userId)
         {
+            if ( userId <= 0)
+            {
+                error.Message = "Parameter userId cannot be <= 0 ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             var remindersList = new List<MyReminderDto>();
 
             using (var sqlCn = new SqlConnection(connectionString))
@@ -117,6 +123,12 @@ namespace Reminder.Service
 
         public ReminderInfoDto GetReminderInfo(int reminderId)
         {
+            if (reminderId <= 0)
+            {
+                error.Message = "Parameter userId cannot be <= 0 ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             var reminderInfo = new ReminderInfoDto();
 
             using (var sqlCn = new SqlConnection(connectionString))
@@ -170,6 +182,12 @@ namespace Reminder.Service
 
         public UserDto GetCurrentUser(string login, string password)
         {
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                error.Message = "Parameter cannot be null or empty ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             var user = new UserDto();
 
             using (var sqlCn = new SqlConnection(connectionString))
@@ -218,6 +236,12 @@ namespace Reminder.Service
 
         public int AddCategory(string categoryName)
         {
+            if (string.IsNullOrEmpty(categoryName))
+            {
+                error.Message = "Parameter cannot be null or empty ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
 
@@ -251,6 +275,12 @@ namespace Reminder.Service
 
         public int EditeCategory(int categoryId, string categoryName)
         {
+            if (string.IsNullOrEmpty(categoryName) || categoryId <= 0)
+            {
+                error.Message = "Invalid parameters";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("EditeCategory", sqlCn))
@@ -285,6 +315,12 @@ namespace Reminder.Service
 
         public int DeleteCategory(int categoryId)
         {
+            if (categoryId <= 0)
+            {
+                error.Message = "Parameter userId cannot be <= 0 ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("DeleteCategory", sqlCn))
@@ -317,6 +353,12 @@ namespace Reminder.Service
 
         public int Registration(string login, string password, string email)
         {
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
+            {
+                error.Message = "Parameter cannot be null or empty ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("CreateUser", sqlCn))
@@ -400,6 +442,12 @@ namespace Reminder.Service
 
         public UserDto EditeUser(int id)
         {
+            if (id <= 0)
+            {
+                error.Message = "Parameter userId cannot be <= 0 ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             var user = new UserDto();
 
             using (var sqlCn = new SqlConnection(connectionString))
@@ -482,6 +530,11 @@ namespace Reminder.Service
 
         public int UpdateUser(int id, string login, string email, int roleId)
         {
+            if (id <= 0 || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(email) || roleId <= 0)
+            {
+                error.Message = "Invalid parameters";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("UpdateUser", sqlCn))
@@ -517,6 +570,12 @@ namespace Reminder.Service
 
         public int DeleteUser(int id)
         {
+            if (id <= 0)
+            {
+                error.Message = "Parameter userId cannot be <= 0 ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("DeleteUser", sqlCn))
@@ -549,6 +608,11 @@ namespace Reminder.Service
 
         public int UpdateProfile(int id, string login, string email)
         {
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(email) || id <= 0)
+            {
+                error.Message = "Invalid parameters";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("UpdateProfile", sqlCn))
@@ -583,6 +647,12 @@ namespace Reminder.Service
 
         public int UpdatePassword(int id, string password)
         {
+            if (string.IsNullOrEmpty(password) || id <= 0)
+            {
+                error.Message = "Invalid parameters";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("UpdatePassword", sqlCn))
@@ -616,6 +686,12 @@ namespace Reminder.Service
 
         public int AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions)
         {
+            if (string.IsNullOrEmpty(title) ||  categoryId <= 0)
+            {
+                error.Message = "Invalid parameters";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("AddReminder", sqlCn))
@@ -655,6 +731,12 @@ namespace Reminder.Service
 
         public string DeleteReminder(int id)
         {
+            if (id <= 0)
+            {
+                error.Message = "Parameter userId cannot be <= 0 ";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
 
@@ -689,6 +771,12 @@ namespace Reminder.Service
 
         public int UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions)
         {
+            if (reminderId <= 0 || categoryId <= 0 || string.IsNullOrEmpty(title))
+            {
+                error.Message = "Invalid parameters";
+                throw new FaultException<ServiceErrorDto>(error, "Service error");
+            }
+
             using (var sqlCn = new SqlConnection(connectionString))
             {
                 using (var cmd = new SqlCommand("UpdateReminder", sqlCn))

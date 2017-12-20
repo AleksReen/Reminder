@@ -21,7 +21,7 @@ namespace Reminder.WebUI.Controllers
         }
 
         public ActionResult CategoryList()
-        {          
+        {
             var categories = _provider.GetCategories().OrderBy(x => x.CategoryName);
 
             return PartialView("_CategoryList", categories);
@@ -29,9 +29,22 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult GetCategoryName(int id)
         {
-            var categoryName = _provider.GetCategories().Single(x => x.CategoryId == id).CategoryName;
+            if (id <= 0)
+            {
+                throw new ArgumentException("Parameter cannot be null", "provider");
+            }
 
-            return PartialView("_GetCategoryName", categoryName);
+            try
+            {
+                var categoryName = _provider.GetCategories().First(x => x.CategoryId == id).CategoryName;
+                return PartialView("_GetCategoryName", categoryName);
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Error(e.Message);
+            }
+
+            return HttpNotFound();
         }
     }
 }
