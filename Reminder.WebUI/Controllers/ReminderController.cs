@@ -7,7 +7,6 @@ using Reminder.WebUI.Models.ViewsModels;
 using Reminder.WebUI.Support;
 using System;
 using System.Linq;
-using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 

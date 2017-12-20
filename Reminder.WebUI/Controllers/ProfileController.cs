@@ -31,8 +31,6 @@ namespace Reminder.WebUI.Controllers
         }
         public ActionResult UserDetails()
         {
-            Thread.Sleep(2000);
-
             var user = User as UserPrincipal;
             var profile = _provider.GetEditeUser(user.UserId);
 
@@ -41,7 +39,6 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult UpdateProfile()
         {
-            Thread.Sleep(2000);
             var user = User as UserPrincipal;
             var profile = _provider.GetEditeUser(user.UserId);
             return PartialView("_UpdateProfile", profile);
@@ -50,8 +47,6 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(UserReminder update)
         {
-            Thread.Sleep(2000);
-
             if (ModelState.IsValid)
             {
                 var result = _provider.UpdateProfile(update.UserId, update.Login, update.Email);
@@ -72,16 +67,12 @@ namespace Reminder.WebUI.Controllers
        
         public ActionResult SetPassword()
         {
-            Thread.Sleep(2000);
-            
             return PartialView("_SetPassword");
         }
 
         [HttpPost]
         public ActionResult SetPassword(ViewUserPassword userPassword)
         {
-            Thread.Sleep(2000);
-
             if (ModelState.IsValid)
             {
                 var password = Crypto.SHA1(userPassword.Password);
