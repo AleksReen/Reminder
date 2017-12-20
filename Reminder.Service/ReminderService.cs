@@ -102,7 +102,8 @@ namespace Reminder.Service
                                     Date = (DateTime)reader["Date"],
                                     ReminderTime = (DateTime)reader["ReminderTime"],
                                     Image = reader["Image"].ToString(),
-                                    CategoryId = (int)reader["CategoryId"]
+                                    CategoryId = (int)reader["CategoryId"],
+                                    CategoryName = reader["CategoryName"].ToString()
                                 };
                                 remindersList.Add(reminder);
                             }
@@ -154,10 +155,8 @@ namespace Reminder.Service
                                     reminderInfo.Reminder.ReminderTime = (DateTime)reader["ReminderTime"];
                                     reminderInfo.Reminder.Image = reader["Image"].ToString();
                                     reminderInfo.Reminder.CategoryId = (int)reader["CategoryId"];
-
-                                    reminderInfo.Category = reader["CategoryName"].ToString();
+                                    reminderInfo.Reminder.CategoryName = reader["CategoryName"].ToString();
                                     reminderInfo.Description = reader["Description"].ToString();
-
                                     reminderInfo.Actions.Add(reader["Action"].ToString());
                                 }
                                 else

@@ -53,7 +53,7 @@ namespace Reminder.WebUI.Controllers
         {
             var user = User as UserPrincipal;
             var reminders = _providerReminder.GetReminders(user.UserId)
-                                                   .Where(c => category == null || c.CategoryId == category)
+                                                   .Where(c => category == null || c.Category.CategoryId == category)
                                                    .OrderBy(c => c.Date);
             return PartialView("_ReminderList", reminders);
         }
@@ -169,7 +169,7 @@ namespace Reminder.WebUI.Controllers
                 var title = updateReminder.Reminder.Title;
                 var date = updateReminder.Reminder.Date;
                 var reminderTime = updateReminder.Reminder.ReminderTime;
-                var categoryId = updateReminder.Reminder.CategoryId;
+                var categoryId = updateReminder.Reminder.Category.CategoryId;
                 var description = updateReminder.Description;
 
                 var imagePath = "";

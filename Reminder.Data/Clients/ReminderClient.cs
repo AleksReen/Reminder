@@ -88,10 +88,10 @@ namespace Reminder.Data.Clients
                         reminderInfo.Reminder.Date = reminderInfoDto.Reminder.Date;
                         reminderInfo.Reminder.ReminderTime = reminderInfoDto.Reminder.ReminderTime;
                         reminderInfo.Reminder.Image = reminderInfoDto.Reminder.Image;
-                        reminderInfo.Reminder.CategoryId = reminderInfoDto.Reminder.CategoryId;
+                        reminderInfo.Reminder.Category.CategoryId = reminderInfoDto.Reminder.CategoryId;
+                        reminderInfo.Reminder.Category.CategoryName = reminderInfoDto.Reminder.CategoryName;
 
-                        reminderInfo.Actions = reminderInfoDto.Actions.ToList<string>();
-                        reminderInfo.Category = reminderInfoDto.Category;
+                        reminderInfo.Actions = reminderInfoDto.Actions.ToList();
                         reminderInfo.Description = reminderInfoDto.Description;
                     }
 
@@ -129,8 +129,13 @@ namespace Reminder.Data.Clients
                                 Date = reminder.Date,
                                 ReminderTime = reminder.ReminderTime,
                                 Image = reminder.Image,
-                                CategoryId = reminder.CategoryId
+                                Category = new Category()
+                                {
+                                    CategoryId = reminder.CategoryId,
+                                    CategoryName = reminder.CategoryName
+                                }
                             };
+
                             listReminders.Add(rem);
                         }
                     }

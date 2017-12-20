@@ -74,7 +74,7 @@ namespace Reminder.WebUI.Controllers
 
                 if (filter.Category != default(int))
                 {
-                    var result = model.Where(x => x.CategoryId == filter.Category);
+                    var result = model.Where(x => x.Category.CategoryId == filter.Category);
 
                     if (result.Any())
                     {

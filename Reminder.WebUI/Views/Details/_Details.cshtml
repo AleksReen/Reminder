@@ -1,6 +1,6 @@
 ﻿@model Reminder.Common.Entity.ReminderInfo
 
-@{ 
+@{
     var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
 }
 
@@ -57,19 +57,19 @@
             </dt>
 
             <dd>
-                    @foreach (var action in Model.Actions)
-                    {
-                        <div>@action</div>
-                    }
+                @foreach (var action in Model.Actions)
+                {
+                    <div>@action</div>
+                }
 
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.Reminder.Category.CategoryName)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Category)
+                @Html.DisplayFor(model => model.Reminder.Category.CategoryName)
             </dd>
 
         </dl>
@@ -80,11 +80,12 @@
     @if (ViewBag.Return == null)
     {
         @Ajax.ActionLink("Back to All Category", "ReminderList", "Reminder", null, options, new { @class = "btn btn-primary" })
-        @Ajax.ActionLink($"Back to category {Model.Category}", "ReminderList", "Reminder", new { category = Model.Reminder.CategoryId }, options, new { @class = "btn btn-primary" })
+        <span>&nbsp;</span>
+        @Ajax.ActionLink($"Back to category {Model.Reminder.Category.CategoryName}", "ReminderList", "Reminder", new { category = Model.Reminder.Category.CategoryId }, options, new { @class = "btn btn-primary" })
     }
     else
     {
-        @Ajax.ActionLink("Back to Search", null, null, null, options, new { @class = "btn btn-primary", href = ViewBag.Return})
+        @Ajax.ActionLink("Back to Search", null, null, null, options, new { @class = "btn btn-primary", href = ViewBag.Return })
     }
 
 </p>

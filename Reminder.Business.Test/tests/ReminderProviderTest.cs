@@ -16,14 +16,14 @@ namespace Reminder.Business.Test
         private ReminderProvider testClass;
 
         private MyReminder[] remindersList = {
-            new MyReminder {ReminderId = 1, Title = "Починить автомобиль", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 3, UserId = 1},
-            new MyReminder {ReminderId = 2, Title = "Встретить босса", Date = Convert.ToDateTime("2017-11-15"), ReminderTime = Convert.ToDateTime("2017-11-14 12:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 4, UserId = 1},
-            new MyReminder {ReminderId = 3, Title = "Починить полку", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 3, UserId = 1},
-            new MyReminder {ReminderId = 4, Title = "Забрать ребёнка из школы", Date = Convert.ToDateTime("2017-11-18"), ReminderTime = Convert.ToDateTime("2017-11-17 12:30:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 2, UserId = 1},
-            new MyReminder {ReminderId = 5, Title = "Кемпинг", Date = Convert.ToDateTime("2017-11-10"), ReminderTime = Convert.ToDateTime("2017-11-09 13:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 5, UserId = 1},
+            new MyReminder {ReminderId = 1, Title = "Починить автомобиль", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", Category = new Category { CategoryId = 3 }, UserId = 1},
+            new MyReminder {ReminderId = 2, Title = "Встретить босса", Date = Convert.ToDateTime("2017-11-15"), ReminderTime = Convert.ToDateTime("2017-11-14 12:00:00"), Image = @"..\Images\No-image-found.jpg", Category = new Category { CategoryId = 4 }, UserId = 1},
+            new MyReminder {ReminderId = 3, Title = "Починить полку", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", Category = new Category { CategoryId = 3 }, UserId = 1},
+            new MyReminder {ReminderId = 4, Title = "Забрать ребёнка из школы", Date = Convert.ToDateTime("2017-11-18"), ReminderTime = Convert.ToDateTime("2017-11-17 12:30:00"), Image = @"..\Images\No-image-found.jpg", Category = new Category { CategoryId = 2 }, UserId = 1},
+            new MyReminder {ReminderId = 5, Title = "Кемпинг", Date = Convert.ToDateTime("2017-11-10"), ReminderTime = Convert.ToDateTime("2017-11-09 13:00:00"), Image = @"..\Images\No-image-found.jpg", Category = new Category { CategoryId = 5 }, UserId = 1},
         };
 
-        private MyReminder tR = new MyReminder { ReminderId = 1, Title = "test", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 3, UserId = 1 };
+        private MyReminder tR = new MyReminder { ReminderId = 1, Title = "test", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", Category = new Category { CategoryId = 3 }, UserId = 1 };
 
         [TestInitialize]
         public void TestInitialize()
@@ -37,8 +37,15 @@ namespace Reminder.Business.Test
         {
             var info = new ReminderInfo
             {
-                Reminder = new MyReminder { ReminderId = 1, Title = "Починить автомобиль", Date = Convert.ToDateTime("2017-11-20"), ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"), Image = @"..\Images\No-image-found.jpg", CategoryId = 3, UserId = 1 },
-                Category = "Meetings",
+                Reminder = new MyReminder {
+                    ReminderId = 1,
+                    Title = "Починить автомобиль",
+                    Date = Convert.ToDateTime("2017-11-20"),
+                    ReminderTime = Convert.ToDateTime("2017-11-16 16:00:00"),
+                    Image = @"..\Images\No-image-found.jpg",
+                    Category = new Category { CategoryId = 3, CategoryName = "Meetings" },
+                    UserId = 1 },
+
                 Actions = new List<string>() { "Позвонить механику", "Взять с собой инструмент" },
                 Description = "Мастер Андрей, подготовит список нужных деталей для покупки в магазине"
             };
@@ -80,7 +87,7 @@ namespace Reminder.Business.Test
         [TestMethod]
         public void ReminderProvider_AddReminder_GetResultFromServer_PassParam()
         {
-            var result = testClass.AddReminder(tR.Title, tR.Date, tR.ReminderTime,tR.Image, tR.CategoryId, tR.UserId, null, null);
+            var result = testClass.AddReminder(tR.Title, tR.Date, tR.ReminderTime,tR.Image, tR.Category.CategoryId, tR.UserId, null, null);
             Assert.IsNotNull(result);
             Assert.IsTrue(result == ServerResponse.NoError);
         }
@@ -88,7 +95,7 @@ namespace Reminder.Business.Test
         [TestMethod]
         public void ReminderProvider_UpdateReminder_GetResultFromServer_PassParam()
         {
-            var result = testClass.UpdateReminder(tR.ReminderId, tR.Title, tR.Date, tR.ReminderTime, tR.Image, tR.CategoryId, null, null);
+            var result = testClass.UpdateReminder(tR.ReminderId, tR.Title, tR.Date, tR.ReminderTime, tR.Image, tR.Category.CategoryId, null, null);
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result == ServerResponse.NoError);

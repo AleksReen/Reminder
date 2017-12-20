@@ -18,9 +18,15 @@ namespace Reminder.Common.Entity
         [Display(Name = "Reminder Time")]
         public DateTime ReminderTime { get; set; }
         public string Image { get; set; }
+
         [Display(Name = "Category")]
-        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
         public int UserId { get; set; }
+
+        public MyReminder()
+        {
+            Category = new Category();
+        }
     }
 }

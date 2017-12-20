@@ -26,25 +26,5 @@ namespace Reminder.WebUI.Controllers
 
             return PartialView("_CategoryList", categories);
         }
-
-        public ActionResult GetCategoryName(int id)
-        {
-            if (id <= 0)
-            {
-                throw new ArgumentException("Parameter cannot be null", "provider");
-            }
-
-            try
-            {
-                var categoryName = _provider.GetCategories().First(x => x.CategoryId == id).CategoryName;
-                return PartialView("_GetCategoryName", categoryName);
-            }
-            catch (Exception e)
-            {
-                Logger.Log.Error(e.Message);
-            }
-
-            return HttpNotFound();
-        }
     }
 }

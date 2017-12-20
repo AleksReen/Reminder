@@ -15,9 +15,6 @@ namespace Reminder.Service.Contracts.Models.Dto
         [DataMember]
         public string Description { get; set; }
 
-        [DataMember]
-        public string Category { get; set; }
-
         public ReminderInfoDto()
         {
             Reminder = new MyReminderDto();

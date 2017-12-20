@@ -26,6 +26,9 @@ namespace Reminder.Data.ReminderService {
         private int CategoryIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -59,6 +62,19 @@ namespace Reminder.Data.ReminderService {
                 if ((this.CategoryIdField.Equals(value) != true)) {
                     this.CategoryIdField = value;
                     this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CategoryName {
+            get {
+                return this.CategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
+                    this.CategoryNameField = value;
+                    this.RaisePropertyChanged("CategoryName");
                 }
             }
         }
@@ -212,9 +228,6 @@ namespace Reminder.Data.ReminderService {
         private string[] ActionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -239,19 +252,6 @@ namespace Reminder.Data.ReminderService {
                 if ((object.ReferenceEquals(this.ActionsField, value) != true)) {
                     this.ActionsField = value;
                     this.RaisePropertyChanged("Actions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Category {
-            get {
-                return this.CategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
-                    this.CategoryField = value;
-                    this.RaisePropertyChanged("Category");
                 }
             }
         }

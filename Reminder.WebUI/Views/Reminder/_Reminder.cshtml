@@ -31,10 +31,13 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
             </dt>
 
-            @Html.Action("GetCategoryName", "Category", new { id = Model.CategoryId })
+            <dd id="reminderTime">
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </dd>
+            @*@Html.Action("GetCategoryName", "Category", new { id = Model.Category.CategoryId })*@
 
         </dl>
     </div>
