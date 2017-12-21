@@ -72,27 +72,20 @@ namespace Reminder.WebUI.Controllers
         public ActionResult СonfirmedDeleteReminder(int id, string returnUrl)
         {
             var result = _providerReminder.DeleteReminder(id);
+            ViewBag.Return = returnUrl;
             if (result != default(string))
             {               
                 if (result != defaultPath )
                 {
-                    var fullPath = Server.MapPath(result);
-
-                    if (System.IO.File.Exists(fullPath))
-                    {
-                        System.IO.File.Delete(fullPath);
-                    }
-                    
+                    DeleteImage(result);
                 }
 
-                ViewBag.Result = true;
-                ViewBag.Return = returnUrl;
+                ViewBag.Result = true;              
                 return PartialView("_ResultDeleteReminder");
             }
             else
             {
                 ViewBag.Result = false;
-                ViewBag.Return = returnUrl;
                 return PartialView("_ResultDeleteReminder");
             }   
         }
@@ -100,16 +93,17 @@ namespace Reminder.WebUI.Controllers
 
         public ActionResult AddReminder()
         {
-            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            ViewBag.Category = GetCategories();
             return View("AddReminder");
         }
 
         [HttpPost]
         public ActionResult AddReminder(ViewNewReminder newReminder)
         {
+            ViewBag.Category = GetCategories();
+            
             if (newReminder.Image != null && !ReminderSupport.ChechExtImg(newReminder.Image))
-            {
-                ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            {                
                 return View("AddReminder", newReminder);
             }
 
@@ -141,14 +135,13 @@ namespace Reminder.WebUI.Controllers
                 }
             }
 
-            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
             return View("AddReminder", newReminder);
         }
 
         public ActionResult EditeReminder(int reminderId, string returnUrl)
         {
             var model = _providerReminder.GetReminderInfo(reminderId);
-            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            ViewBag.Category = GetCategories();
             ViewBag.Return = returnUrl;
 
             return View(model);
@@ -157,9 +150,10 @@ namespace Reminder.WebUI.Controllers
         [HttpPost]
         public ActionResult EditeReminder(ReminderInfo updateReminder, HttpPostedFileBase Img, string returnUrl)
         {
+            ViewBag.Category = GetCategories();
+
             if (Img != null && !ReminderSupport.ChechExtImg(Img))
             {
-                ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
                 return View(updateReminder);
             }
 
@@ -193,13 +187,7 @@ namespace Reminder.WebUI.Controllers
                     if (imagePath != defaultPath && imagePath != updateReminder.Reminder.Image)
                     {
                         SaveImage(Img, imgName);
-
-                        var fullPath = Server.MapPath(updateReminder.Reminder.Image);
-                        
-                        if (System.IO.File.Exists(fullPath))
-                        {
-                            System.IO.File.Delete(fullPath);
-                        }
+                        DeleteImage(updateReminder.Reminder.Image);
                     }
 
                     if (!string.IsNullOrEmpty(returnUrl))
@@ -215,10 +203,13 @@ namespace Reminder.WebUI.Controllers
                     return RedirectToAction("Index", new { message = "Some Errors", resultAction = false });
                 }
             }
-
             return View(updateReminder);
         }
 
+        private IOrderedEnumerable<Category> GetCategories()
+        {
+            return _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+        }
 
         private int GetCurrentUser()
         {
@@ -231,6 +222,16 @@ namespace Reminder.WebUI.Controllers
             if (Image != null)
             {
                 Image.SaveAs(Server.MapPath("~/Images/" + name));  
+            }
+        }
+
+        private void DeleteImage(string path)
+        {
+            var fullPath = Server.MapPath(path);
+
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
             }
         }
     } 
