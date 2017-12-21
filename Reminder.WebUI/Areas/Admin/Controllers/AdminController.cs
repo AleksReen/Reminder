@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Business.ReminderCache;
 using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Admin.Models;
@@ -13,15 +14,20 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
     [Authorization(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private IUserProvider _provider;
+        private readonly string cacheKeyRole = "Role";
+        private readonly string cacheKeyUsers = "Users";
 
-        public AdminController(IUserProvider provider)
+        private IUserProvider _provider;
+        private IAppCache _cache;
+
+        public AdminController(IUserProvider provider, IAppCache cache)
         {
             if (provider == null)
             {
                 throw new ArgumentException("Parameter cannot be null", "provider");
             }
             _provider = provider;
+            _cache = cache;
         }
         public ActionResult Index()
         {
@@ -43,6 +49,7 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
                 if (result == ServerResponse.NoError)
                 {
                     ViewBag.Result = true;
+                    _cache.RemoveValue(cacheKeyUsers);
                     return PartialView("_ResultCreateUser", user.Login);
 
                 }
@@ -58,7 +65,7 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
 
         public ActionResult ModifyUsers()
         {
-            var userList = _provider.GetUsers().OrderBy(x => x.Login);
+            var userList = _cache.GetValue(cacheKeyUsers, () =>_provider.GetUsers().OrderBy(x => x.Login), 2);
             
             return PartialView("_ModifyUsers", userList);
         }
@@ -66,7 +73,7 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
         public ActionResult EditeUser(int id)
         {
             var user = _provider.GetEditeUser(id);
-            ViewBag.Roles = _provider.GetRoles();
+            ViewBag.Roles = _cache.GetValue(cacheKeyRole, () => _provider.GetRoles());
 
             return PartialView("_EditeUser", user);
         }
@@ -80,8 +87,8 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
                 if (result == ServerResponse.NoError)
                 {
                     ViewBag.Result = true;
+                    _cache.RemoveValue(cacheKeyUsers);
                     return PartialView("_ResultUpdateUser", updateUser.Login);
-
                 }
                 if (result == ServerResponse.DataBaseError)
                 {
@@ -89,7 +96,7 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
                     return PartialView("_ResultUpdateUser", updateUser.Login);
                 }
             }
-            ViewBag.Roles = _provider.GetRoles();
+            ViewBag.Roles = _cache.GetValue(cacheKeyRole, () => _provider.GetRoles());
             return PartialView("_EditeUser", updateUser);
         }
 
@@ -104,6 +111,7 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
             if (result == ServerResponse.NoError)
             {
                 ViewBag.Result = true;
+                _cache.RemoveValue(cacheKeyUsers);
                 return PartialView("_ResultDeleteUser");
             }
             else

@@ -8,7 +8,6 @@ using Reminder.WebUI.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -17,6 +16,7 @@ namespace Reminder.WebUI.Controllers
     public class SearchController : Controller
     {
         private readonly string cacheKeyCategory = "Categories";
+        private readonly string cacheKeyReminders = "Reminders";
         private ICategoryProvider _providerCategory;
         private IReminderProvider _providerReminder;
         private IAppCache _cache;
@@ -57,8 +57,8 @@ namespace Reminder.WebUI.Controllers
             {
                 var searchList = new List<MyReminder>();
                 var user = User as UserPrincipal;
-
-                IReadOnlyList<MyReminder> model = _providerReminder.GetReminders(user.UserId);
+                
+                var model = _cache.GetValue(cacheKeyReminders, () => _providerReminder.GetReminders(user.UserId));
 
                 if (!string.IsNullOrEmpty(filter.Name))
                 {

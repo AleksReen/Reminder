@@ -18,6 +18,7 @@ namespace Reminder.WebUI.Controllers
     {
         private readonly string defaultPath = @"/Images/No-image-found.jpg";
         private readonly string cacheKeyCategory = "Categories";
+        private readonly string cacheKeyReminders = "Reminders";
 
         private IReminderProvider _providerReminder;
         private ICategoryProvider _providerCategory;
@@ -48,13 +49,17 @@ namespace Reminder.WebUI.Controllers
             return View(model);
         }
 
-
         public ActionResult ReminderList(int? category)
         {
             var user = User as UserPrincipal;
-            var reminders = _providerReminder.GetReminders(user.UserId)
-                                                   .Where(c => category == null || c.Category.CategoryId == category)
-                                                   .OrderBy(c => c.Date);
+
+            var remindersCache = _cache.GetValue(cacheKeyReminders, () => _providerReminder.GetReminders(user.UserId));           
+            var reminders = remindersCache .Where(c => category == null || c.Category.CategoryId == category).OrderBy(c => c.Date);
+
+            //var reminders = _providerReminder.GetReminders(user.UserId)
+            //                                       .Where(c => category == null || c.Category.CategoryId == category)
+            //                                       .OrderBy(c => c.Date);
+
             return PartialView("_ReminderList", reminders);
         }
 
@@ -80,7 +85,8 @@ namespace Reminder.WebUI.Controllers
                     DeleteImage(result);
                 }
 
-                ViewBag.Result = true;              
+                ViewBag.Result = true;
+                _cache.RemoveValue(cacheKeyReminders);              
                 return PartialView("_ResultDeleteReminder");
             }
             else
@@ -89,7 +95,6 @@ namespace Reminder.WebUI.Controllers
                 return PartialView("_ResultDeleteReminder");
             }   
         }
-
 
         public ActionResult AddReminder()
         {
@@ -127,6 +132,7 @@ namespace Reminder.WebUI.Controllers
                         SaveImage(newReminder.Image, imgName);
                     }
 
+                    _cache.RemoveValue(cacheKeyReminders);
                     return RedirectToAction("Index", new { message = "reminder was successfully created", resultAction = true });
                 }
                 if (result == ServerResponse.DataBaseError)
@@ -184,6 +190,8 @@ namespace Reminder.WebUI.Controllers
                 
                 if (result == ServerResponse.NoError)
                 {
+                    _cache.RemoveValue(cacheKeyReminders);
+
                     if (imagePath != defaultPath && imagePath != updateReminder.Reminder.Image)
                     {
                         SaveImage(Img, imgName);
