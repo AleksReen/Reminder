@@ -6,6 +6,7 @@ using Reminder.WebUI.Controllers;
 using Reminder.Common.Entity;
 using System.Web.Mvc;
 using Reminder.WebUI.Models.ViewsModels;
+using Reminder.Business.ReminderCache;
 
 namespace Reminder.WebUI.Test
 {
@@ -14,6 +15,7 @@ namespace Reminder.WebUI.Test
     {
         private Mock<ICategoryProvider> categoryProvider;
         private Mock<IReminderProvider> reminderProvider;
+        private Mock<IAppCache> cache;
         private SearchController controller;
 
         [TestInitialize]
@@ -21,7 +23,8 @@ namespace Reminder.WebUI.Test
         {
             categoryProvider = new Mock<ICategoryProvider>();
             reminderProvider = new Mock<IReminderProvider>();
-            controller = new SearchController(categoryProvider.Object, reminderProvider.Object);
+            cache = new Mock<IAppCache>();
+            controller = new SearchController(categoryProvider.Object, reminderProvider.Object, cache.Object);
         }
   
         [TestMethod]

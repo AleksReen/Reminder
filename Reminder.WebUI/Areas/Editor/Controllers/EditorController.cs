@@ -1,10 +1,12 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Business.ReminderCache;
 using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Areas.Editor.Models;
 using Reminder.WebUI.Filters;
 using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Areas.Editor.Controllers
@@ -12,15 +14,18 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
     [Authorization(Roles = "Editor, Admin")]
     public class EditorController : Controller
     {
+        private readonly string cacheKeyCategory = "Categories";
         private ICategoryProvider _providerCategory;
+        private IAppCache _cache;
 
-        public EditorController(ICategoryProvider provider)
+        public EditorController(ICategoryProvider provider, IAppCache cache)
         {
-            if (provider == null)
+            if (provider == null || cache == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "provider");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _providerCategory = provider;
+            _cache = cache;
         }
 
         public ActionResult Index()
@@ -42,6 +47,7 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 if (result == ServerResponse.NoError)
                 {
                     ViewBag.Result = true;
+                    _cache.RemoveValue(cacheKeyCategory);
                     return PartialView("_ResultCreate", category.CategoryName);
                 }
                 if (result == ServerResponse.DataBaseError)
@@ -68,6 +74,7 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 if (result == ServerResponse.NoError)
                 {
                     ViewBag.Result = true;
+                    _cache.RemoveValue(cacheKeyCategory);
                     return PartialView("_ResultEdite", editeCategory.NewName);
                 }
                 if (result == ServerResponse.DataBaseError)
@@ -95,6 +102,7 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
                 if (result == ServerResponse.NoError)
                 {
                     ViewBag.Result = true;
+                    _cache.RemoveValue(cacheKeyCategory);
                     return PartialView("_ResultDelete");
                 }
                 if (result == ServerResponse.DataBaseError)
@@ -110,7 +118,8 @@ namespace Reminder.WebUI.Areas.Editor.Controllers
 
         private IOrderedEnumerable<Category> GetCategories()
         {
-            return _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            return _cache.GetValue(cacheKeyCategory,
+                   () => _providerCategory.GetCategories().OrderBy(x => x.CategoryName));
         }
     }
 }

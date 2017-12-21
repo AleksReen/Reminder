@@ -5,7 +5,6 @@ using Reminder.WebUI.Filters;
 using Reminder.WebUI.Models.Entity;
 using Reminder.WebUI.Models.ViewsModels;
 using System;
-using System.Threading;
 using System.Web.Helpers;
 using System.Web.Mvc;
 

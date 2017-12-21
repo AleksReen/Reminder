@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Business.ReminderCache;
 using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Filters;
@@ -16,22 +17,21 @@ namespace Reminder.WebUI.Controllers
     public class ReminderController : Controller
     {
         private readonly string defaultPath = @"/Images/No-image-found.jpg";
+        private readonly string cacheKeyCategory = "Categories";
+
         private IReminderProvider _providerReminder;
         private ICategoryProvider _providerCategory;
+        private IAppCache _cache;
 
-        public ReminderController(IReminderProvider provR, ICategoryProvider provC)
+        public ReminderController(IReminderProvider provR, ICategoryProvider provC, IAppCache cache)
         {
-            if (provR == null)
+            if (provR == null || provC == null || cache == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "provR");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _providerReminder = provR;
-
-            if (provC == null)
-            {
-                throw new ArgumentException("Parameter cannot be null", "provC");
-            }
             _providerCategory = provC;
+            _cache = cache;
         }
 
         public ActionResult Index(string message, bool? resultAction)
@@ -208,7 +208,8 @@ namespace Reminder.WebUI.Controllers
 
         private IOrderedEnumerable<Category> GetCategories()
         {
-            return _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
+            return _cache.GetValue(cacheKeyCategory,
+                   () => _providerCategory.GetCategories().OrderBy(x => x.CategoryName));
         }
 
         private int GetCurrentUser()

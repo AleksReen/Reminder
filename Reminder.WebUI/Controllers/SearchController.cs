@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Business.ReminderCache;
 using Reminder.Common.Entity;
 using Reminder.Common.HelperMethods;
 using Reminder.WebUI.Filters;
@@ -7,6 +8,7 @@ using Reminder.WebUI.Models.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -14,28 +16,26 @@ namespace Reminder.WebUI.Controllers
     [Authorization(Roles = "User, Editor, Admin")]
     public class SearchController : Controller
     {
+        private readonly string cacheKeyCategory = "Categories";
         private ICategoryProvider _providerCategory;
         private IReminderProvider _providerReminder;
+        private IAppCache _cache;
 
-        public SearchController(ICategoryProvider providerC, IReminderProvider providerR)
+        public SearchController(ICategoryProvider providerC, IReminderProvider providerR, IAppCache cache)
         {
-            if (providerC == null)
+            if (providerC == null || providerR == null || cache == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "providerC");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _providerCategory = providerC;
-
-            if (providerR == null)
-            {
-                throw new ArgumentException("Parameter cannot be null", "providerR");
-            }
             _providerReminder = providerR;
+            _cache = cache;
         }
 
         public ActionResult SearchList()
         {          
-            ViewBag.Category = _providerCategory.GetCategories().OrderBy(x => x.CategoryName);
-           
+            ViewBag.Category = _cache.GetValue(cacheKeyCategory,
+                   () => _providerCategory.GetCategories().OrderBy(x => x.CategoryName));
             return View();
         }
         public ActionResult GetSearchResult()
