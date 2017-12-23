@@ -56,10 +56,6 @@ namespace Reminder.WebUI.Controllers
             var remindersCache = _cache.GetValue(cacheKeyReminders, () => _providerReminder.GetReminders(user.UserId));           
             var reminders = remindersCache .Where(c => category == null || c.Category.CategoryId == category).OrderBy(c => c.Date);
 
-            //var reminders = _providerReminder.GetReminders(user.UserId)
-            //                                       .Where(c => category == null || c.Category.CategoryId == category)
-            //                                       .OrderBy(c => c.Date);
-
             return PartialView("_ReminderList", reminders);
         }
 
