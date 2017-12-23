@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE EditeUser
 	@id int
 AS

@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE UpdateReminder
+﻿USE ReminderBase
+GO
+
+CREATE PROCEDURE UpdateReminder
 	@reminderId int,
 	@title nvarchar(max),
 	@date date,

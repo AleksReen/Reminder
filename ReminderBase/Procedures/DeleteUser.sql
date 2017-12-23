@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE DeleteUser
 	@id int
 AS

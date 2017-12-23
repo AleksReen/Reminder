@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE DeleteCategory
+﻿USE ReminderBase
+GO
+
+CREATE PROCEDURE DeleteCategory
 @CategoryId int
 AS
 

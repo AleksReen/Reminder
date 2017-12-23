@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE UpdateUser
 	@id int,
 	@login nvarchar(max),

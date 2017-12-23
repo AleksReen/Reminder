@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Business.ReminderCache;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Models.ViewsModels;
 using System;
@@ -9,15 +10,19 @@ namespace Reminder.WebUI.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly string cacheKeyReminders = "Reminders";
         private IUserProvider _provider;
+        private IAppCache _cache;
 
-        public LoginController(IUserProvider provider)
+
+        public LoginController(IUserProvider provider, IAppCache cache)
         {
-            if (provider == null)
+            if (provider == null || cache == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "provider");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _provider = provider;
+            _cache = cache;
         }
 
         public ActionResult Login(string message, bool? resultAction)
@@ -61,6 +66,7 @@ namespace Reminder.WebUI.Controllers
         public ActionResult Logout()
         {
             _provider.Logout();
+            _cache.RemoveValue(cacheKeyReminders);
 
             return RedirectToAction("Index", "Home");
         }

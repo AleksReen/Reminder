@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE GetLogin 
 (
 	@login nvarchar(50),

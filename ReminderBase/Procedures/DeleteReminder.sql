@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE DeleteReminder
+﻿USE ReminderBase
+GO
+
+CREATE PROCEDURE DeleteReminder
 	@ReminderID int,
 	@imageUrl nvarchar(max) output
 AS

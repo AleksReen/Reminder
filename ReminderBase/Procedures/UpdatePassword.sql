@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE UpdatePassword
 	@id int,
 	@newPassword nvarchar(max)

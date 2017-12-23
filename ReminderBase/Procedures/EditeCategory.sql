@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE EditCategory
+﻿USE ReminderBase
+GO
+
+CREATE PROCEDURE EditeCategory
 @CategoryId int,
 @CategoryName nvarchar(max)
 AS

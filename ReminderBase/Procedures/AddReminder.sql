@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE AddReminder
 	@title nvarchar(max),
 	@date date,

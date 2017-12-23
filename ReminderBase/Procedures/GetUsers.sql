@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE GetUsers
 AS
 SELECT u.UserId, [Login], Email, r.RoleId, r.[Role] 

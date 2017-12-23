@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE UpdateProfile
 	@id int,
 	@login nvarchar(max),

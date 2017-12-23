@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE CreateUser
 	@login nvarchar(max),
 	@password nvarchar(max),
