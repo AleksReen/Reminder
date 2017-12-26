@@ -3,7 +3,7 @@ using Reminder.Service.ModelDto.Dto;
 using System;
 using System.ServiceModel;
 
-namespace Reminder.Service
+namespace Reminder.Service.Contracts.Contracts
 {
     [ServiceContract]
     public interface IReminderService

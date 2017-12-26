@@ -35,6 +35,13 @@
     padding-bottom:10px;
 }
 
+.details-button-conteiner{
+    text-align:right;
+}
+.details-button-conteiner > a {
+    margin-left:3px;
+}
+
 .datatimepicker-style{
     max-width: 246px;
     z-index: 9
