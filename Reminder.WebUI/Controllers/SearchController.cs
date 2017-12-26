@@ -32,10 +32,17 @@ namespace Reminder.WebUI.Controllers
             _cache = cache;
         }
 
-        public ActionResult SearchList()
-        {          
+        public ActionResult SearchList(string message, bool? resultAction)
+        {
+            if (!string.IsNullOrEmpty(message))
+            {
+                ViewBag.Message = message;
+                ViewBag.Result = (bool)resultAction;
+            }
+
             ViewBag.Category = _cache.GetValue(cacheKeyCategory,
                    () => _providerCategory.GetCategories().OrderBy(x => x.CategoryName));
+
             return View();
         }
         public ActionResult GetSearchResult()

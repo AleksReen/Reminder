@@ -196,10 +196,11 @@ namespace Reminder.WebUI.Controllers
 
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
-                        return Redirect(returnUrl);
+                        var url = returnUrl.Split('/');
+                        return RedirectToAction(url[2], url[1], new { message = $"{updateReminder.Reminder.Title} was successfully updated", resultAction = true });
                     }
 
-                    return RedirectToAction("Index", new { message = "reminder was successfully updated", resultAction = true});
+                    return RedirectToAction("Index", new { message = $"{updateReminder.Reminder.Title} was successfully updated", resultAction = true});
                 }
 
                 if (result == ServerResponse.DataBaseError)
