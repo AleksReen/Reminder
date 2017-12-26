@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE FUNCTION [dbo].[f_GenerateActionsTable]
 (
 	@reminderId int,	
