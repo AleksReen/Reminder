@@ -54,61 +54,36 @@ namespace Reminder.WebUI.Controllers
         public ActionResult GetSearchResult(ViewFilter filter)
         {
             if (filter == null)
-            {  
+            {
                 throw new NullReferenceException();
             }
-        
-            ViewBag.Result = true;
+
 
             if (!string.IsNullOrEmpty(filter.Name) || filter.Category != default(int) || filter.Date != default(DateTime))
             {
-                var searchList = new List<MyReminder>();
                 var user = User as UserPrincipal;
-                
-                var model = _cache.GetValue(cacheKeyReminders, () => _providerReminder.GetReminders(user.UserId));
+
+                var searchModel = _cache.GetValue(cacheKeyReminders, () => _providerReminder.GetReminders(user.UserId)) as IEnumerable<MyReminder>;
 
                 if (!string.IsNullOrEmpty(filter.Name))
                 {
-                    var result = model.Where(x => x.Title.Contains(filter.Name, StringComparison.OrdinalIgnoreCase));
-                    if (result.Any())
-                    {
-                        foreach (var item in result)
-                        {
-                            searchList.Add(item);
-                        }
-                    }
+                    searchModel = searchModel.Where(x => x.Title.Contains(filter.Name, StringComparison.OrdinalIgnoreCase));
                 }
 
                 if (filter.Category != default(int))
                 {
-                    var result = model.Where(x => x.Category.CategoryId == filter.Category);
-
-                    if (result.Any())
-                    {
-                        foreach (var item in result)
-                        {
-                            searchList.Add(item);
-                        }
-                    }
+                    searchModel = searchModel.Where(x => x.Category.CategoryId == filter.Category);
                 }
 
                 if (filter.Date != default(DateTime))
                 {
-                    var result = model.Where(x => x.Date == filter.Date);
-
-                    if (result.Any())
-                    {
-                        foreach (var item in result)
-                        {
-                            searchList.Add(item);
-                        }
-                    }
+                    searchModel = searchModel.Where(x => x.Date == filter.Date);
                 }
 
-                if (searchList.Any())
+                if (searchModel.Any())
                 {
-                    var result = searchList.Distinct();
-                    return PartialView("_SearchResult", result);
+                    ViewBag.Result = true;
+                    return PartialView("_SearchResult", searchModel);
                 }
             }
 
