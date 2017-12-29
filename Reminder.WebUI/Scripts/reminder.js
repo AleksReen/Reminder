@@ -17,8 +17,8 @@
         var actionCount = $(".block").length;
         $("#newAction").click(function () {          
             var clon = $("#action_group").clone();
-            clon.children(".control-label").text('Action ' + ++actionCount);
-            clon.children("div.col-md-10").children("input").val("").attr("value","").attr("id","Action"+actionCount);
+            clon.find(".control-label").text('Action ' + ++actionCount);
+            clon.find("input").val("").attr("value", "").attr("id", "Action" + actionCount);
             $("#action_conteiner").append(clon);
         })
     })
@@ -38,33 +38,35 @@
 function reminderStyle () {
     var reminders = $(".reminder-item-conteiner");
 
-    var now = new Date();
-    var currDate = now.getDate();
-    var currMonth = now.getMonth() + 1;
-    var currYear = now.getFullYear();
-    var currHour = now.getHours();
-    var currMinutes = now.getMinutes();
-    var currSeconds = now.getSeconds();
+    if (reminders.length > 0) {
+        var now = new Date();
+        var currDate = now.getDate();
+        var currMonth = now.getMonth() + 1;
+        var currYear = now.getFullYear();
+        var currHour = now.getHours();
+        var currMinutes = now.getMinutes();
+        var currSeconds = now.getSeconds();
 
-    var currFullDate = currDate + '.' + currMonth + '.' + currYear;
-    var currFullDateTime = currFullDate + " " + currHour + ":" + currMinutes + ":" + currSeconds;
+        var currFullDate = currDate + '.' + currMonth + '.' + currYear;
+        var currFullDateTime = currFullDate + " " + currHour + ":" + currMinutes + ":" + currSeconds;
 
-    for (var i = 0; i < reminders.length; i++) {
+        for (var i = 0; i < reminders.length; i++) {
 
-        var reminderDate = $(reminders[i]).find("#reminderDate").text().trim();
-        var reminderTime = $(reminders[i]).find("#reminderTime").text().trim();
+            var reminderDate = $(reminders[i]).find("#reminderDate").text().trim();
+            var reminderTime = $(reminders[i]).find("#reminderTime").text().trim();
 
-        if (reminderDate >= currFullDate && reminderTime >= currFullDateTime) {
-            $(reminders[i]).addClass("reminder-future")
-        }
+            if (reminderDate >= currFullDate && reminderTime >= currFullDateTime) {
+                $(reminders[i]).addClass("reminder-future")
+            }
 
-        if (reminderDate >= currFullDate && reminderTime <= currFullDateTime) {
-            $(reminders[i]).addClass("reminder-current")
-        }
+            if (reminderDate >= currFullDate && reminderTime <= currFullDateTime) {
+                $(reminders[i]).addClass("reminder-current")
+            }
 
-        if (reminderDate <= currFullDate && reminderTime <= currFullDateTime) {
-            $(reminders[i]).addClass("reminder-fail")
-        }
+            if (reminderDate <= currFullDate && reminderTime <= currFullDateTime) {
+                $(reminders[i]).addClass("reminder-fail")
+            }
+        }  
     }
 };
 

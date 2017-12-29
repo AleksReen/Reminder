@@ -4,6 +4,7 @@ namespace Reminder.Common.Entity
 {
     public class Category
     {
+        [Display(Name = "Category")]
         [Required(ErrorMessage = "Required field Category Name")]
         public int CategoryId { get; set; }
 

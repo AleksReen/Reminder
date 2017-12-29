@@ -114,7 +114,7 @@ namespace Reminder.WebUI.Controllers
                 var title = newReminder.Reminder.Title;
                 var date = newReminder.Reminder.Date;
                 var reminderTime = newReminder.Reminder.ReminderTime;
-                var categoryId = newReminder.CategoryId;
+                var categoryId = newReminder.Reminder.Category.CategoryId;
                 var description = newReminder.Description;
                 var imgName = ReminderSupport.GetNewImageName(newReminder.Image);
                 var imagePath = ReminderSupport.GetImagePath(newReminder.Image, imgName);
@@ -129,7 +129,7 @@ namespace Reminder.WebUI.Controllers
                     }
 
                     _cache.RemoveValue(cacheKeyReminders);
-                    return RedirectToAction("Index", new { message = "reminder was successfully created", resultAction = true });
+                    return RedirectToAction("Index", new { message = $"{newReminder.Reminder.Title} was successfully created", resultAction = true });
                 }
                 if (result == ServerResponse.DataBaseError)
                 {

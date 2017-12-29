@@ -1,7 +1,7 @@
 ﻿@model Reminder.Common.Entity.MyReminder
 
 @{
-    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle" };
 }
 
 <div class="col-md-4">
@@ -34,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Category.CategoryName)
             </dt>
 
-            <dd id="reminderTime">
+            <dd>
                 @Html.DisplayFor(model => model.Category.CategoryName)
             </dd>
         </dl>
