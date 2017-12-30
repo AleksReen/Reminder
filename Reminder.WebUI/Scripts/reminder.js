@@ -35,41 +35,49 @@
     reminderStyle();
 });
 
-function reminderStyle () {
+function ConvertToDateTime(dateTime) {
+
+    var dateArray = dateTime.split(" ");
+
+    var remDate = dateArray[0].split(".");
+    var remTime = dateArray[1];
+
+    if (remTime) {
+        remTime = remTime.split(":");
+        return new Date(remDate[2], remDate[1] - 1, remDate[0], remTime[0], remTime[1], remTime[2])
+    }
+    return new Date(remDate[2], remDate[1] - 1, remDate[0]);
+}
+
+function reminderStyle() {
     var reminders = $(".reminder-item-conteiner");
 
     if (reminders.length > 0) {
-        var now = new Date();
-        var currDate = now.getDate();
-        var currMonth = now.getMonth() + 1;
-        var currYear = now.getFullYear();
-        var currHour = now.getHours();
-        var currMinutes = now.getMinutes();
-        var currSeconds = now.getSeconds();
 
-        var currFullDate = currDate + '.' + currMonth + '.' + currYear;
-        var currFullDateTime = currFullDate + " " + currHour + ":" + currMinutes + ":" + currSeconds;
+        var now = new Date();
 
         for (var i = 0; i < reminders.length; i++) {
 
             var reminderDate = $(reminders[i]).find("#reminderDate").text().trim();
             var reminderTime = $(reminders[i]).find("#reminderTime").text().trim();
 
-            if (reminderDate >= currFullDate && reminderTime >= currFullDateTime) {
-                $(reminders[i]).addClass("reminder-future")
-            }
+            var rDate = ConvertToDateTime(reminderDate);
+            var rDateTime = ConvertToDateTime(reminderTime);
 
-            if (reminderDate >= currFullDate && reminderTime <= currFullDateTime) {
-                $(reminders[i]).addClass("reminder-current")
-            }
+            if (rDate >= now) {
 
-            if (reminderDate <= currFullDate && reminderTime <= currFullDateTime) {
+                if (rDateTime >= now) {
+                    $(reminders[i]).addClass("reminder-future")
+                } else {
+                    $(reminders[i]).addClass("reminder-current")
+                }
+
+            } else {
                 $(reminders[i]).addClass("reminder-fail")
             }
-        }  
+        }
     }
 };
-
 
 
 
