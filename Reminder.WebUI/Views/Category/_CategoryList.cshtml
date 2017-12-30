@@ -1,15 +1,23 @@
 ﻿@using Reminder.Common.Entity
 @model IEnumerable<Category>
 
-<ul>
-    <li>
-        @Html.ActionLink( "All Category", "ReminderList", "Reminder", null, null)
-    </li>
+@{ 
+    var options = new AjaxOptions
+    {
+        UpdateTargetId = "result",
+        LoadingElementId = "loader",
+        OnSuccess = "reminderStyle"
+    };
+}
+
+<div class="list-group list-unstyled">
+
+    @Ajax.ActionLink("All Category", "ReminderList", "Reminder", null, options, new { @class = "list-group-item active" })
+
     @foreach (var category in Model)
     {
-        <li>
-            @Html.RouteLink(category.CategoryName, new { controller = "Reminder", action = "ReminderList", category = category.CategoryId })
-        </li>
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "ReminderList", "Reminder", new { category = category.CategoryId }, options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", $"<span class='glyphicon glyphicon-star-empty'></span>  {category.CategoryName}"))
     }
-</ul>
+</div>
+
 

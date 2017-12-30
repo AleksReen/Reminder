@@ -10,6 +10,7 @@
   <xs:complexType name="MyReminderDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReminderId" type="xs:int" />
@@ -18,6 +19,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MyReminderDto" nillable="true" type="tns:MyReminderDto" />
+  <xs:complexType name="ReminderInfoDto">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Actions" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reminder" nillable="true" type="tns:MyReminderDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReminderInfoDto" nillable="true" type="tns:ReminderInfoDto" />
   <xs:complexType name="ArrayOfCategoryDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryDto" nillable="true" type="tns:CategoryDto" />
@@ -31,13 +40,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CategoryDto" nillable="true" type="tns:CategoryDto" />
-  <xs:complexType name="ReminderInfoDto">
-    <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Actions" nillable="true" type="q1:ArrayOfstring" />
-      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Reminder" nillable="true" type="tns:MyReminderDto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ReminderInfoDto" nillable="true" type="tns:ReminderInfoDto" />
 </xs:schema>

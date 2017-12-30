@@ -5,15 +5,40 @@
 
 <h2>SearchList</h2>
 
+@if (ViewBag.Message != null)
+{
+    <div id="resultAction">
+        @if (ViewBag.Result)
+        {
+          <div id="message" class="alert alert-success">
+            @ViewBag.Message
+          </div>
+        }
+        else
+        {
+          <div id="message" class="alert alert-danger">
+            @ViewBag.Message
+          </div>
+        }
+    </div>
+}
+
 <div class="col-md-3">
-    <h3>Filter</h3>
+    <h3>
+        Filter
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
     @Html.Partial("_Filter")
 
 </div>
 
 <div class="col-md-9">
-    <h3>Result</h3>
-    <div id="results">
+    <h3>
+        Result       
+    </h3>
+    <div id="result">
        @Html.Action("GetSearchResult")
     </div>
 

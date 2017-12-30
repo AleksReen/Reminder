@@ -1,0 +1,34 @@
+﻿@model string
+
+@{
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div>
+    <h3>
+        Delete Category
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
+    <hr />
+
+    @if (ViewBag.Result)
+    {
+        <h4>
+            <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c"></span>
+            The category you selected was successfully deleted
+        </h4>
+    }
+    else
+    {
+        <h4>
+            <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+            An attempt to delete the category failed
+        </h4>
+    }
+
+    @Ajax.ActionLink("Back", "DeleteCategory", "Editor", options, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
+
+</div>

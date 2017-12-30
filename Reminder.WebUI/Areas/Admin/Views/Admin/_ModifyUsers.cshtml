@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Reminder.Common.Entity.UserReminder>
+
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div>
+    <h3>
+        Users table
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
+    <table class="table table-hover table-color">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserRole.RoleName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserRole.RoleName)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Edit", "EditeUser", "Admin", new { id = item.UserId }, options) |
+                    @Ajax.ActionLink("Delete", "DeleteUser", "Admin", item, options)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,7 @@
+USE ReminderBase
+GO
+
+CREATE PROCEDURE GetRoles
+AS
+	SELECT*FROM Roles
+RETURN 0

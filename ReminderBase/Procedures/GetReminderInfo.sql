@@ -1,3 +1,6 @@
+USE ReminderBase
+GO
+
 CREATE PROCEDURE GetReminderInfo
 	@id int
 	AS

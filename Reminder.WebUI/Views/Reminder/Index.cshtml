@@ -1,0 +1,76 @@
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewReminderIndex
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="col-md-offset-2 reminder-list">
+    Reminder list
+</h2>
+
+@if (Model != null && Model.Message != null)
+{
+    <div id="resultAction">
+        @if (Model.Result)
+        {
+          <div id="message" class="alert alert-success">
+            @Model.Message
+          </div>
+        }
+        else
+        {
+          <div id="message" class="alert alert-danger">
+            @Model.Message
+          </div>
+        }
+    </div>
+}
+
+<div class="col-md-2">
+    <div class="form-group">
+        @Html.ActionLink("Search", "SearchList", "Search", null, new { @class = "btn btn-primary block" })
+    </div>
+    
+
+    <h3 class="block-header">
+        Categories
+    </h3>
+    @Html.Action("CategoryList", "Category")
+    <hr />
+
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        if (Model.CurrentUser.IsInRole("Editor, Admin"))
+        {
+            <h3 class="block-header">
+                Edit Mode
+            </h3>
+            <div>
+                @Html.ActionLink("Editor", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-warning block"})
+            </div>
+            <hr />
+        }
+
+        if (Model.CurrentUser.IsInRole("Admin"))
+        {
+            <h3 class="block-header">
+                Admin Mode
+            </h3>
+            <div>
+                @Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, new { @class = "btn btn-danger block" })
+            </div>
+        }
+        <hr />
+    }
+
+</div>
+
+<div class="col-md-10">
+    <div class="form-group">
+        @Html.ActionLink("Add Reminder", "AddReminder", "Reminder", null, new { @class = "btn btn-success block" })
+    </div>
+    
+    <div id="result">
+        @Html.Action("ReminderList", "Reminder")
+    </div>
+</div>

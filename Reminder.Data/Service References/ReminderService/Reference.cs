@@ -26,6 +26,9 @@ namespace Reminder.Data.ReminderService {
         private int CategoryIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -59,6 +62,19 @@ namespace Reminder.Data.ReminderService {
                 if ((this.CategoryIdField.Equals(value) != true)) {
                     this.CategoryIdField = value;
                     this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CategoryName {
+            get {
+                return this.CategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
+                    this.CategoryNameField = value;
+                    this.RaisePropertyChanged("CategoryName");
                 }
             }
         }
@@ -201,6 +217,237 @@ namespace Reminder.Data.ReminderService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReminderInfoDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
+    [System.SerializableAttribute()]
+    public partial class ReminderInfoDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] ActionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Reminder.Data.ReminderService.MyReminderDto ReminderField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Actions {
+            get {
+                return this.ActionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActionsField, value) != true)) {
+                    this.ActionsField = value;
+                    this.RaisePropertyChanged("Actions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Reminder.Data.ReminderService.MyReminderDto Reminder {
+            get {
+                return this.ReminderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReminderField, value) != true)) {
+                    this.ReminderField = value;
+                    this.RaisePropertyChanged("Reminder");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+    [System.SerializableAttribute()]
+    public partial class UserDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LoginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Reminder.Data.ReminderService.RoleDto UserRoleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Login {
+            get {
+                return this.LoginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
+                    this.LoginField = value;
+                    this.RaisePropertyChanged("Login");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Reminder.Data.ReminderService.RoleDto UserRole {
+            get {
+                return this.UserRoleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserRoleField, value) != true)) {
+                    this.UserRoleField = value;
+                    this.RaisePropertyChanged("UserRole");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RoleDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+    [System.SerializableAttribute()]
+    public partial class RoleDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoleIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoleId {
+            get {
+                return this.RoleIdField;
+            }
+            set {
+                if ((this.RoleIdField.Equals(value) != true)) {
+                    this.RoleIdField = value;
+                    this.RaisePropertyChanged("RoleId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoleName {
+            get {
+                return this.RoleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleNameField, value) != true)) {
+                    this.RoleNameField = value;
+                    this.RaisePropertyChanged("RoleName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
     [System.SerializableAttribute()]
     public partial class CategoryDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -260,116 +507,16 @@ namespace Reminder.Data.ReminderService {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReminderInfoDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.Contracts.Models.Dto")]
-    [System.SerializableAttribute()]
-    public partial class ReminderInfoDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ActionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Reminder.Data.ReminderService.MyReminderDto ReminderField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Actions {
-            get {
-                return this.ActionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ActionsField, value) != true)) {
-                    this.ActionsField = value;
-                    this.RaisePropertyChanged("Actions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Category {
-            get {
-                return this.CategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
-                    this.CategoryField = value;
-                    this.RaisePropertyChanged("Category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Reminder.Data.ReminderService.MyReminderDto Reminder {
-            get {
-                return this.ReminderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReminderField, value) != true)) {
-                    this.ReminderField = value;
-                    this.RaisePropertyChanged("Reminder");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IReminderService")]
     public interface IReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetAllRemindersServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders();
+        Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllReminders", ReplyAction="http://tempuri.org/IReminderService/GetAllRemindersResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetAllCategoriesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
-        Reminder.Data.ReminderService.CategoryDto[] GetAllCategories();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetAllCategories", ReplyAction="http://tempuri.org/IReminderService/GetAllCategoriesResponse")]
-        System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync();
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/GetReminderInfoServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
@@ -377,6 +524,27 @@ namespace Reminder.Data.ReminderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/GetReminderInfo", ReplyAction="http://tempuri.org/IReminderService/GetReminderInfoResponse")]
         System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/AddReminder", ReplyAction="http://tempuri.org/IReminderService/AddReminderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/AddReminderServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int AddReminder(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/AddReminder", ReplyAction="http://tempuri.org/IReminderService/AddReminderResponse")]
+        System.Threading.Tasks.Task<int> AddReminderAsync(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteReminder", ReplyAction="http://tempuri.org/IReminderService/DeleteReminderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/DeleteReminderServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        string DeleteReminder(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/DeleteReminder", ReplyAction="http://tempuri.org/IReminderService/DeleteReminderResponse")]
+        System.Threading.Tasks.Task<string> DeleteReminderAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateReminder", ReplyAction="http://tempuri.org/IReminderService/UpdateReminderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IReminderService/UpdateReminderServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdateReminder(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReminderService/UpdateReminder", ReplyAction="http://tempuri.org/IReminderService/UpdateReminderResponse")]
+        System.Threading.Tasks.Task<int> UpdateReminderAsync(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -406,12 +574,273 @@ namespace Reminder.Data.ReminderService {
                 base(binding, remoteAddress) {
         }
         
-        public Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders() {
-            return base.Channel.GetAllReminders();
+        public Reminder.Data.ReminderService.MyReminderDto[] GetAllReminders(int userId) {
+            return base.Channel.GetAllReminders(userId);
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync() {
-            return base.Channel.GetAllRemindersAsync();
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.MyReminderDto[]> GetAllRemindersAsync(int userId) {
+            return base.Channel.GetAllRemindersAsync(userId);
+        }
+        
+        public Reminder.Data.ReminderService.ReminderInfoDto GetReminderInfo(int reminderId) {
+            return base.Channel.GetReminderInfo(reminderId);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId) {
+            return base.Channel.GetReminderInfoAsync(reminderId);
+        }
+        
+        public int AddReminder(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
+            return base.Channel.AddReminder(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddReminderAsync(string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions) {
+            return base.Channel.AddReminderAsync(title, date, dateReminder, image, categoryId, userId, actions, descriptions);
+        }
+        
+        public string DeleteReminder(int id) {
+            return base.Channel.DeleteReminder(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> DeleteReminderAsync(int id) {
+            return base.Channel.DeleteReminderAsync(id);
+        }
+        
+        public int UpdateReminder(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
+            return base.Channel.UpdateReminder(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateReminderAsync(int reminderId, string title, System.DateTime date, System.DateTime dateReminder, string image, int categoryId, string actions, string descriptions) {
+            return base.Channel.UpdateReminderAsync(reminderId, title, date, dateReminder, image, categoryId, actions, descriptions);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.IUserService")]
+    public interface IUserService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCurrentUser", ReplyAction="http://tempuri.org/IUserService/GetCurrentUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/GetCurrentUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCurrentUser", ReplyAction="http://tempuri.org/IUserService/GetCurrentUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Registration", ReplyAction="http://tempuri.org/IUserService/RegistrationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/RegistrationServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int Registration(string login, string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Registration", ReplyAction="http://tempuri.org/IUserService/RegistrationResponse")]
+        System.Threading.Tasks.Task<int> RegistrationAsync(string login, string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/GetUsersServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/EditeUser", ReplyAction="http://tempuri.org/IUserService/EditeUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/EditeUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.UserDto EditeUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/EditeUser", ReplyAction="http://tempuri.org/IUserService/EditeUserResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/GetRolesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.RoleDto[] GetRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetRoles", ReplyAction="http://tempuri.org/IUserService/GetRolesResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.RoleDto[]> GetRolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/UpdateUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdateUser(int id, string login, string email, int roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserAsync(int id, string login, string email, int roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/DeleteUserServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int DeleteUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        System.Threading.Tasks.Task<int> DeleteUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/UpdateProfileServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdateProfile(int id, string login, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<int> UpdateProfileAsync(int id, string login, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdatePassword", ReplyAction="http://tempuri.org/IUserService/UpdatePasswordResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/IUserService/UpdatePasswordServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int UpdatePassword(int id, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdatePassword", ReplyAction="http://tempuri.org/IUserService/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<int> UpdatePasswordAsync(int id, string password);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserServiceChannel : Reminder.Data.ReminderService.IUserService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<Reminder.Data.ReminderService.IUserService>, Reminder.Data.ReminderService.IUserService {
+        
+        public UserServiceClient() {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Reminder.Data.ReminderService.UserDto GetCurrentUser(string login, string password) {
+            return base.Channel.GetCurrentUser(login, password);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> GetCurrentUserAsync(string login, string password) {
+            return base.Channel.GetCurrentUserAsync(login, password);
+        }
+        
+        public int Registration(string login, string password, string email) {
+            return base.Channel.Registration(login, password, email);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegistrationAsync(string login, string password, string email) {
+            return base.Channel.RegistrationAsync(login, password, email);
+        }
+        
+        public Reminder.Data.ReminderService.UserDto[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
+        }
+        
+        public Reminder.Data.ReminderService.UserDto EditeUser(int id) {
+            return base.Channel.EditeUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.UserDto> EditeUserAsync(int id) {
+            return base.Channel.EditeUserAsync(id);
+        }
+        
+        public Reminder.Data.ReminderService.RoleDto[] GetRoles() {
+            return base.Channel.GetRoles();
+        }
+        
+        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.RoleDto[]> GetRolesAsync() {
+            return base.Channel.GetRolesAsync();
+        }
+        
+        public int UpdateUser(int id, string login, string email, int roleId) {
+            return base.Channel.UpdateUser(id, login, email, roleId);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateUserAsync(int id, string login, string email, int roleId) {
+            return base.Channel.UpdateUserAsync(id, login, email, roleId);
+        }
+        
+        public int DeleteUser(int id) {
+            return base.Channel.DeleteUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteUserAsync(int id) {
+            return base.Channel.DeleteUserAsync(id);
+        }
+        
+        public int UpdateProfile(int id, string login, string email) {
+            return base.Channel.UpdateProfile(id, login, email);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateProfileAsync(int id, string login, string email) {
+            return base.Channel.UpdateProfileAsync(id, login, email);
+        }
+        
+        public int UpdatePassword(int id, string password) {
+            return base.Channel.UpdatePassword(id, password);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePasswordAsync(int id, string password) {
+            return base.Channel.UpdatePasswordAsync(id, password);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReminderService.ICategoryService")]
+    public interface ICategoryService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetAllCategories", ReplyAction="http://tempuri.org/ICategoryService/GetAllCategoriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/ICategoryService/GetAllCategoriesServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        Reminder.Data.ReminderService.CategoryDto[] GetAllCategories();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetAllCategories", ReplyAction="http://tempuri.org/ICategoryService/GetAllCategoriesResponse")]
+        System.Threading.Tasks.Task<Reminder.Data.ReminderService.CategoryDto[]> GetAllCategoriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/AddCategory", ReplyAction="http://tempuri.org/ICategoryService/AddCategoryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/ICategoryService/AddCategoryServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int AddCategory(string categoryName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/AddCategory", ReplyAction="http://tempuri.org/ICategoryService/AddCategoryResponse")]
+        System.Threading.Tasks.Task<int> AddCategoryAsync(string categoryName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/EditeCategory", ReplyAction="http://tempuri.org/ICategoryService/EditeCategoryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/ICategoryService/EditeCategoryServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int EditeCategory(int categoryId, string categoryName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/EditeCategory", ReplyAction="http://tempuri.org/ICategoryService/EditeCategoryResponse")]
+        System.Threading.Tasks.Task<int> EditeCategoryAsync(int categoryId, string categoryName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/DeleteCategory", ReplyAction="http://tempuri.org/ICategoryService/DeleteCategoryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Reminder.Data.ReminderService.ServiceErrorDto), Action="http://tempuri.org/ICategoryService/DeleteCategoryServiceErrorDtoFault", Name="ServiceErrorDto", Namespace="http://schemas.datacontract.org/2004/07/Reminder.Service.ModelDto.Dto")]
+        int DeleteCategory(int categoryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/DeleteCategory", ReplyAction="http://tempuri.org/ICategoryService/DeleteCategoryResponse")]
+        System.Threading.Tasks.Task<int> DeleteCategoryAsync(int categoryId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICategoryServiceChannel : Reminder.Data.ReminderService.ICategoryService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CategoryServiceClient : System.ServiceModel.ClientBase<Reminder.Data.ReminderService.ICategoryService>, Reminder.Data.ReminderService.ICategoryService {
+        
+        public CategoryServiceClient() {
+        }
+        
+        public CategoryServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CategoryServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CategoryServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CategoryServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
         public Reminder.Data.ReminderService.CategoryDto[] GetAllCategories() {
@@ -422,12 +851,28 @@ namespace Reminder.Data.ReminderService {
             return base.Channel.GetAllCategoriesAsync();
         }
         
-        public Reminder.Data.ReminderService.ReminderInfoDto GetReminderInfo(int reminderId) {
-            return base.Channel.GetReminderInfo(reminderId);
+        public int AddCategory(string categoryName) {
+            return base.Channel.AddCategory(categoryName);
         }
         
-        public System.Threading.Tasks.Task<Reminder.Data.ReminderService.ReminderInfoDto> GetReminderInfoAsync(int reminderId) {
-            return base.Channel.GetReminderInfoAsync(reminderId);
+        public System.Threading.Tasks.Task<int> AddCategoryAsync(string categoryName) {
+            return base.Channel.AddCategoryAsync(categoryName);
+        }
+        
+        public int EditeCategory(int categoryId, string categoryName) {
+            return base.Channel.EditeCategory(categoryId, categoryName);
+        }
+        
+        public System.Threading.Tasks.Task<int> EditeCategoryAsync(int categoryId, string categoryName) {
+            return base.Channel.EditeCategoryAsync(categoryId, categoryName);
+        }
+        
+        public int DeleteCategory(int categoryId) {
+            return base.Channel.DeleteCategory(categoryId);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCategoryAsync(int categoryId) {
+            return base.Channel.DeleteCategoryAsync(categoryId);
         }
     }
 }

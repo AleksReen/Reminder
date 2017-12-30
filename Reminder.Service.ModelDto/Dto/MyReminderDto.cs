@@ -17,6 +17,8 @@ namespace Reminder.Service.Contracts.Models.Dto
         [DataMember]
         public string Image { get; set; }
         [DataMember]
-        public int CategoryId { get; set; }       
+        public int CategoryId { get; set; }
+        [DataMember]
+        public string CategoryName { get; set; }
     }
 }

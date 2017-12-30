@@ -16,11 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Reminder.WebUI.DependencyResolution {
-    using Business.Model;
-    using Business.Providers;
-    using Data.Clients;
-    using Data.DataBase;
-    using Data.DataProviders;
+
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
 

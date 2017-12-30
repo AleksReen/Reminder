@@ -1,19 +1,85 @@
-﻿
+﻿body {
+    background-image: url('bg-img/bg-light.png');
+}
+
 .reminder-item-conteiner{
     display: flex; 
     flex-direction: row; 
-    flex-wrap: wrap;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+    border-radius: 0 50px 0 50px; 
     padding: 10px; 
+    background-color:white;
+}
+
+.reminder-future{
+    box-shadow: 0 0 30px rgba(17%,40%,60%, 1);
+}
+.reminder-current{
+    box-shadow: 0 0 30px rgba(24%, 56%, 24%, 1);
+}
+.reminder-fail{
+    box-shadow: 0 0 30px rgba(73%, 17%, 16%, 1);
 }
 
 .image-conteiner{
     width:115px; 
     height:115px; 
-    background-color:aliceblue; 
     margin: 0px 20px 20px 0px;
 }
 
 .image-item{
     width: 100%;
 }
+
+.button-conteiner{
+    text-align:right;
+    padding-bottom:10px;
+}
+
+.details-button-conteiner{
+    text-align:right;
+}
+.details-button-conteiner > a {
+    margin-left:3px;
+}
+
+.datatimepicker-style{
+    max-width: 246px;
+    z-index: 9
+}
+
+.input-group{
+    max-width: 280px;
+}
+
+.block{
+    display:block;
+}
+
+.upload{
+    position:absolute;
+    z-index:2;
+    top:0; 
+    left:0;
+    filter: alpha(opacity=0); 
+    opacity:0;
+    background-color:transparent;
+    color:transparent;
+}
+.reminder-list{
+    text-align:center;
+}
+
+.block-header{
+    text-align:center;
+}
+
+#loader{
+    display:none;
+    position:absolute;
+    padding-left: 5px;
+}
+
+.table-color{
+    background-color:white;
+}
+ 

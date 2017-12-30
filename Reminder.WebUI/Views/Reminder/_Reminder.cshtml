@@ -1,0 +1,48 @@
+﻿@model Reminder.Common.Entity.MyReminder
+
+@{
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle" };
+}
+
+<div class="col-md-4">
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
+
+    <div class="reminder-item-conteiner">
+        <div class="image-conteiner">
+            <img class="image-item" src="@Model.Image" alt="No image available" />
+        </div>
+
+        <dl class="dl-vertical">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd id="reminderDate">
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReminderTime)
+            </dt>
+
+            <dd id="reminderTime">
+                @Html.DisplayFor(model => model.ReminderTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </dd>
+        </dl>
+    </div>
+    <br />
+    <div class="button-conteiner">
+        @Ajax.ActionLink("Details", "GetDetails", "Details", new { reminderId = Model.ReminderId }, options, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Edite", "EditeReminder", "Reminder", new { reminderId = Model.ReminderId }, new { @class = "btn  btn-warning" })
+        @Ajax.ActionLink("Delete", "DeleteReminder", "Reminder", new { reminderTitle = Model.Title, reminderId = Model.ReminderId}, options, new { @class = "btn btn-danger" })
+    </div>
+</div>

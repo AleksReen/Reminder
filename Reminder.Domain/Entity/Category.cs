@@ -1,11 +1,14 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Reminder.Common.Entity
 {
-    //essence describing Category
     public class Category
     {
+        [Display(Name = "Category")]
+        [Required(ErrorMessage = "Required field Category Name")]
         public int CategoryId { get; set; }
+
+        [Display(Name = "Category")]
         public string CategoryName { get; set; }
 
     }

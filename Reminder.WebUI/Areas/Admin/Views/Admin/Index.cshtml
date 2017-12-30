@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div class="col-md-4">
+    <h2>Welcom to Admin Mode</h2>
+
+    <div class="list-group list-unstyled">
+        @Html.ActionLink("Select an action", "Index", "Admin", new { area = "Admin" }, new { @class = "list-group-item active" })
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "CreateUser", "Admin", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-user'></span>  Create User"))
+        @Html.Raw(@Ajax.ActionLink("[replacetext]", "ModifyUsers", "Admin", options, new { @class = "list-group-item" }).ToHtmlString().Replace("[replacetext]", "<span class='glyphicon glyphicon-refresh'></span>  Modifier Users"))
+    </div>
+
+    <div>
+        @Html.ActionLink("Return to MyReminder", "Index", "Reminder", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+
+<div class="col-md-8">
+    <div id="result">
+        <h2>
+            Description
+            <span id="loader">
+                <img src="~/Content/loaders/loader-blue.png" />
+            </span>
+        </h2>
+        <p>
+            Administrator mode allows you to use the editor functions. The administrator can create, modify and delete users.
+        </p>
+    </div>
+</div>

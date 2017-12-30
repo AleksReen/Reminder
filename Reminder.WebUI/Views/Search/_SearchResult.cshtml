@@ -1,31 +1,24 @@
 ﻿@model IEnumerable<Reminder.Common.Entity.MyReminder>
 
-@if (!ViewBag.result)
-{
-    <div>No results</div>
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle"};
 }
-else
+
+@if (ViewBag.Result)
 {
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ReminderId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.ReminderTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
             </th>
             <th></th>
         </tr>
@@ -33,9 +26,6 @@ else
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReminderId)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
@@ -46,19 +36,23 @@ else
                     @Html.DisplayFor(modelItem => item.ReminderTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CategoryId)
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edite", "EditeReminder", "Reminder", new { reminderId = item.ReminderId, returnUrl = Url.Action("SearchList", "Search") }, null)|
+                    @Ajax.ActionLink("Details", "GetDetails", "Details", new { reminderId = item.ReminderId, returnUrl = Url.Action("GetSearchResult", "Search") }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle" }) |
+                    @Ajax.ActionLink("Delete", "DeleteReminder", "Reminder", new { reminderTitle = item.Title, reminderId = item.ReminderId, returnUrl = Url.Action("GetSearchResult", "Search") }, options)
                 </td>
             </tr>
         }
 
     </table>
 }
+
+else
+{
+    <p>@ViewBag.Message</p>
+}
+
+
 

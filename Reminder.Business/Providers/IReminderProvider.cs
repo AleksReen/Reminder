@@ -1,16 +1,16 @@
 ﻿using Reminder.Common.Entity;
+using Reminder.Common.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace Reminder.Business.Providers
 {
-    //provides an interface for class BusinessModel
     public interface IReminderProvider
     {
-        //method invokes a list of reminders
-        IReadOnlyList<MyReminder> GetReminders();
-        //method enumerates a list of categories
-        IReadOnlyList<Category> GetCategories();
-
+        IReadOnlyList<MyReminder> GetReminders(int userId);
         ReminderInfo GetReminderInfo(int id);
+        ServerResponse AddReminder(string title, DateTime date, DateTime dateReminder, string image, int categoryId, int userId, string actions, string descriptions);
+        ServerResponse UpdateReminder(int reminderId, string title, DateTime date, DateTime dateReminder, string image, int categoryId, string actions, string descriptions);
+        string DeleteReminder(int id);
     }
 }

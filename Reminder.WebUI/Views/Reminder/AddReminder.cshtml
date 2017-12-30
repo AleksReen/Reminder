@@ -1,0 +1,106 @@
+﻿@model Reminder.WebUI.Models.ViewsModels.ViewNewReminder
+
+@{
+    ViewBag.Title = "AddReminder";
+}
+
+<h2>New Reminder</h2>
+<hr />
+
+@using (Html.BeginForm("AddReminder", "Reminder", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reminder.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Reminder.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reminder.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reminder.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class='input-group' id='datetimepicker'>
+                        @Html.TextBoxFor(model => model.Reminder.Date, "", new { @class = "form-control datatimepicker-style" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Reminder.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reminder.ReminderTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class='input-group' id='datetimepicker2'>
+                        @Html.TextBoxFor(model => model.Reminder.ReminderTime, "", new { @class = "form-control datatimepicker-style", data_val_data = "false" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Reminder.ReminderTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, 5, 20, new { @class = "form-control", @style = "resize: none" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div id="action_conteiner">
+                <div id="action_group" class="form-group block">
+                    @Html.Label($"Action 1", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Actions, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <a id="newAction" style="cursor:pointer">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Add new Action
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reminder.Category.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Reminder.Category.CategoryId, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Select category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Reminder.Category.CategoryId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <a class='btn' href='javascript:;'>
+                        Choose File...
+                        <input type="file" name="Image" size="40" class="upload" onchange='$("#upload-file-info").html($(this).val());'>
+                    </a>
+                    <span class='label label-info' id="upload-file-info"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    @Html.ActionLink("Back to List", "Index", "Reminder", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+ }
+
+

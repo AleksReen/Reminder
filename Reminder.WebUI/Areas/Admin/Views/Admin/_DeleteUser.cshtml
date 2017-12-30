@@ -1,0 +1,24 @@
+﻿@model Reminder.Common.Entity.UserReminder
+
+@{
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div>
+    <h3>
+        Delete User
+        <span id="loader">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
+    <hr />
+
+    <h4>
+        <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c"></span>
+        Are you sure you want to delete user <b>@Model.Login</b>?
+    </h4>
+
+    @Ajax.ActionLink("Delete", "СonfirmedDeleteUser", "Admin", new { id = Model.UserId }, options, new { @class = "btn btn-danger" })
+    @Ajax.ActionLink("User List", "ModifyUsers", "Admin", options, new { @class = "btn btn-primary" })
+
+</div>

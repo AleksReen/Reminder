@@ -7,4 +7,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceErrorDto" nillable="true" type="tns:ServiceErrorDto" />
+  <xs:complexType name="UserDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserRole" nillable="true" type="tns:RoleDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDto" nillable="true" type="tns:UserDto" />
+  <xs:complexType name="RoleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleId" type="xs:int" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleDto" nillable="true" type="tns:RoleDto" />
+  <xs:complexType name="ArrayOfUserDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDto" nillable="true" type="tns:UserDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDto" nillable="true" type="tns:ArrayOfUserDto" />
+  <xs:complexType name="ArrayOfRoleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoleDto" nillable="true" type="tns:RoleDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoleDto" nillable="true" type="tns:ArrayOfRoleDto" />
 </xs:schema>

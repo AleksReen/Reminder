@@ -1,0 +1,34 @@
+﻿@model string
+
+@{
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div id="result">
+    <h3>
+        Create Category
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
+    <hr />
+
+    @if (ViewBag.Result)
+    {
+        <h4>
+            <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c"></span>
+            The <b>@Model</b> category was created successfully in the database
+        </h4>
+    }
+    else
+    {
+        <h4>
+            <span class="glyphicon glyphicon-remove-circle" style="color:#c12e2a"></span>
+            An attempt to add the category of <b>@Model</b> failed
+        </h4>
+    }
+
+    @Ajax.ActionLink("Back", "CreateCategory", "Editor", options, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
+
+</div>

@@ -1,0 +1,53 @@
+﻿@model Reminder.WebUI.Areas.Editor.Models.EditeCategory
+
+@{ 
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+}
+
+<div>
+    <h3>
+        Edite Category
+        <span id="loader" style="display:none">
+            <img src="~/Content/loaders/loader-blue.png" />
+        </span>
+    </h3>
+    <hr />
+    @using (Ajax.BeginForm("EditeCategory", options))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), "Select a category", new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.NewName, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(model => model.NewName, new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.NewName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <button class="btn btn-warning" type="submit">Edite</button>
+
+            @Html.ActionLink("Close", "Index", "Editor", new { area = "Editor" }, new { @class = "btn btn-primary" })
+
+        </div>
+        if (Model != null && !string.IsNullOrEmpty(Model.Message))
+        {
+            <div>@Model.Message</div>
+        }
+    }
+</div>
