@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Reminder.Common.Entity.MyReminder>
 
 @{ 
-    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle"};
 }
 
 @if (ViewBag.Result)
@@ -40,7 +40,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edite", "EditeReminder", "Reminder", new { reminderId = item.ReminderId, returnUrl = Url.Action("SearchList", "Search") }, null)|
-                    @Ajax.ActionLink("Details", "GetDetails", "Details", new { reminderId = item.ReminderId, returnUrl = Url.Action("GetSearchResult", "Search") }, options) |
+                    @Ajax.ActionLink("Details", "GetDetails", "Details", new { reminderId = item.ReminderId, returnUrl = Url.Action("GetSearchResult", "Search") }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle" }) |
                     @Ajax.ActionLink("Delete", "DeleteReminder", "Reminder", new { reminderTitle = item.Title, reminderId = item.ReminderId, returnUrl = Url.Action("GetSearchResult", "Search") }, options)
                 </td>
             </tr>

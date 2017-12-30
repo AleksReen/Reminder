@@ -1,7 +1,7 @@
 ﻿@model string
 
 @{
-    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader" };
+    var options = new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loader", OnSuccess = "reminderStyle" };
 }
 
 <div>
