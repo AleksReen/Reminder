@@ -58,7 +58,6 @@ namespace Reminder.WebUI.Controllers
                 throw new NullReferenceException();
             }
 
-
             if (!string.IsNullOrEmpty(filter.Name) || filter.Category != default(int) || filter.Date != default(DateTime))
             {
                 var user = User as UserPrincipal;

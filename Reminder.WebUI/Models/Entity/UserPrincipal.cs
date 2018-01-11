@@ -1,7 +1,4 @@
-﻿using Reminder.Common.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 
 namespace Reminder.WebUI.Models.Entity
 {

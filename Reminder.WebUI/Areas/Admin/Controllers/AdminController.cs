@@ -22,9 +22,9 @@ namespace Reminder.WebUI.Areas.Admin.Controllers
 
         public AdminController(IUserProvider provider, IAppCache cache)
         {
-            if (provider == null)
+            if (provider == null || cache == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "provider");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _provider = provider;
             _cache = cache;

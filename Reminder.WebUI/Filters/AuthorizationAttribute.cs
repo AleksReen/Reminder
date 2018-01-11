@@ -1,7 +1,4 @@
 ﻿using Reminder.WebUI.Models.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -14,19 +11,10 @@ namespace Reminder.WebUI.Filters
         {
             var user = HttpContext.Current.User as UserPrincipal;
 
-            if (user == null)
+            if (user == null || !user.IsInRole(Roles))
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Access", action = "Denied", area = "" }));
-                
-            }
-            else
-            { 
-                if (!user.IsInRole(Roles))
-                {
-                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Access", action = "Denied", area = "" }));
-                }
-            }
-            
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Access", action = "Denied", area = "" }));              
+            }            
         }
     }
 }

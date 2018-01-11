@@ -1,4 +1,5 @@
 ﻿using Reminder.Business.Providers;
+using Reminder.Business.ReminderCache;
 using Reminder.Common.Entity;
 using Reminder.Common.Enums;
 using Reminder.WebUI.Filters;
@@ -13,15 +14,18 @@ namespace Reminder.WebUI.Controllers
     [Authorization(Roles = "User, Editor, Admin")]
     public class ProfileController : Controller
     {
+        private readonly string cacheKeyUserInf = "UserInfo";
+        private IAppCache _cache;
         private IUserProvider _provider;
 
-        public ProfileController(IUserProvider provider)
+        public ProfileController(IUserProvider provider, IAppCache cache)
         {
             if (provider == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "provider");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _provider = provider;
+            _cache = cache;
         }
         // GET: Profile
         public ActionResult ProfilePage()
@@ -30,17 +34,12 @@ namespace Reminder.WebUI.Controllers
         }
         public ActionResult UserDetails()
         {
-            var user = User as UserPrincipal;
-            var profile = _provider.GetEditeUser(user.UserId);
-
-            return PartialView("_UserDetails", profile);
+            return PartialView("_UserDetails", GetUserInfo());
         }
 
         public ActionResult UpdateProfile()
-        {
-            var user = User as UserPrincipal;
-            var profile = _provider.GetEditeUser(user.UserId);
-            return PartialView("_UpdateProfile", profile);
+        { 
+            return PartialView("_UpdateProfile", GetUserInfo());
         }
 
         [HttpPost]
@@ -51,6 +50,7 @@ namespace Reminder.WebUI.Controllers
                 var result = _provider.UpdateProfile(update.UserId, update.Login, update.Email);
                 if (result == ServerResponse.NoError)
                 {
+                    _cache.RemoveValue(cacheKeyUserInf);
                     ViewBag.Result = true;
                     return PartialView("_ResultUpdateProfile", update.Login);
 
@@ -90,6 +90,12 @@ namespace Reminder.WebUI.Controllers
                 }
             }
             return PartialView("_SetPassword");
+        }
+
+        private UserReminder GetUserInfo()
+        {
+            var user = User as UserPrincipal;
+            return _cache.GetValue(cacheKeyUserInf, () => _provider.GetEditeUser(user.UserId));
         }
     }
 }

@@ -3,7 +3,6 @@ using Reminder.Business.ReminderCache;
 using Reminder.WebUI.Filters;
 using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Reminder.WebUI.Controllers
@@ -17,16 +16,11 @@ namespace Reminder.WebUI.Controllers
 
         public CategoryController(ICategoryProvider provider, IAppCache cache)
         {
-            if (provider == null)
+            if (provider == null || cache == null)
             {
-                throw new ArgumentException("Parameter cannot be null", "provider");
+                throw new ArgumentException("Parameter cannot be null");
             }
             _provider = provider;
-
-            if (provider == null)
-            {
-                throw new ArgumentException("Parameter cannot be null", "cache");
-            }
             _cache = cache;
         }
 
