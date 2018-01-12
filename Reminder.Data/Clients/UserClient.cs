@@ -189,9 +189,9 @@ namespace Reminder.Data.Clients
                         var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
 
                         HttpContext.Current.Response.Cookies.Add(authCookie);
-                    }
 
-                    return ServerResponse.NoError;
+                        return ServerResponse.NoError;
+                    }
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

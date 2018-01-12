@@ -131,6 +131,7 @@
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\default-img\No-image-found.jpg" />
     <Content Include="Content\loaders\loader-blue.png" />
     <Content Include="Content\ReminderStyle.css" />
     <Content Include="Content\Site.css" />
@@ -140,7 +141,6 @@
     <Content Include="Images\family.jpg" />
     <Content Include="Images\home.jpg" />
     <Content Include="Images\meeting.jpg" />
-    <Content Include="Images\No-image-found.jpg" />
     <Content Include="Images\rest.jpg" />
     <Content Include="LoggerWeb.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

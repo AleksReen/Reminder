@@ -16,7 +16,7 @@ namespace Reminder.WebUI.Controllers
     [Authorization(Roles = "User, Editor, Admin")]
     public class ReminderController : Controller
     {
-        private readonly string defaultPath = @"/Images/No-image-found.jpg";
+        private readonly string defaultPath = @"/Content/default-img/No-image-found.jpg";
         private readonly string cacheKeyCategory = "Categories";
         private readonly string cacheKeyReminders = "Reminders";
 
