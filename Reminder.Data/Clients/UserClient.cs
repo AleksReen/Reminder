@@ -54,6 +54,8 @@ namespace Reminder.Data.Clients
 
                     var userDto = client.EditeUser(id);
 
+                    client.Close();
+
                     if (userDto != null)
                     {
                         user.UserId = userDto.UserId;
@@ -66,8 +68,7 @@ namespace Reminder.Data.Clients
                             RoleName = userDto.UserRole.RoleName
                         };
                         user.UserRole = role;
-                    }
-                    client.Close();
+                    } 
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -88,6 +89,8 @@ namespace Reminder.Data.Clients
 
                     var rolesDto = client.GetRoles();
 
+                    client.Close();
+
                     if (rolesDto != null)
                     {
                         foreach (var role in rolesDto)
@@ -100,8 +103,7 @@ namespace Reminder.Data.Clients
                             
                             roleList.Add(r);
                         }
-                    }
-                    client.Close();
+                    }                    
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -121,6 +123,8 @@ namespace Reminder.Data.Clients
                     client.Open();
 
                     var usersDto = client.GetUsers();
+
+                    client.Close();
 
                     if (usersDto != null)
                     {
@@ -143,7 +147,6 @@ namespace Reminder.Data.Clients
                             listUsers.Add(u);
                         }
                     }
-                    client.Close();
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -162,6 +165,8 @@ namespace Reminder.Data.Clients
                     client.Open();
 
                     var resultDto = client.GetCurrentUser(login,password);
+
+                    client.Close();
 
                     if (resultDto.UserId != default(int) && !string.IsNullOrEmpty(resultDto.Login))
                     {
@@ -184,12 +189,9 @@ namespace Reminder.Data.Clients
                         var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
 
                         HttpContext.Current.Response.Cookies.Add(authCookie);
-
-                        return ServerResponse.NoError;
                     }
 
-                    client.Close();
-
+                    return ServerResponse.NoError;
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

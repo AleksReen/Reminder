@@ -106,6 +106,8 @@ namespace Reminder.Data.Clients
 
                     var categoriesDto = client.GetAllCategories();
 
+                    client.Close();
+
                     if (categoriesDto != null)
                     {
                         foreach (var category in categoriesDto)
@@ -118,8 +120,6 @@ namespace Reminder.Data.Clients
                             result.Add(cat);
                         }
                     }
-
-                    client.Close();
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {

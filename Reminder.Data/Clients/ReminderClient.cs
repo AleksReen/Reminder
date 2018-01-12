@@ -81,6 +81,8 @@ namespace Reminder.Data.Clients
 
                     var reminderInfoDto = client.GetReminderInfo(id);
 
+                    client.Close();
+
                     if (reminderInfoDto != null)
                     {
                         reminderInfo.Reminder.ReminderId = reminderInfoDto.Reminder.ReminderId;
@@ -93,9 +95,7 @@ namespace Reminder.Data.Clients
 
                         reminderInfo.Actions = reminderInfoDto.Actions.ToList();
                         reminderInfo.Description = reminderInfoDto.Description;
-                    }
-
-                    client.Close();
+                    }  
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
@@ -103,8 +103,8 @@ namespace Reminder.Data.Clients
                 }
                 
             }
-            return reminderInfo;
 
+            return reminderInfo;
         }
 
         public IReadOnlyList<MyReminder> GetReminders(int userId)
@@ -117,6 +117,8 @@ namespace Reminder.Data.Clients
                     client.Open();
 
                     var remindersDto = client.GetAllReminders(userId);
+
+                    client.Close();
 
                     if (remindersDto != null)
                     {
@@ -139,7 +141,6 @@ namespace Reminder.Data.Clients
                             listReminders.Add(rem);
                         }
                     }
-                    client.Close();
                 }
                 catch (FaultException<ReminderService.ServiceErrorDto> ex)
                 {
